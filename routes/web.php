@@ -12,7 +12,10 @@
 */
 
 Route::get('/', 'Home\HomeController@index');
-Route::get('/about', 'Home\HomeController@about');
+Route::get('/mission', 'Home\AboutController@mission');
+Route::get('/history', 'Home\AboutController@history');
+Route::get('/cultural-competency', 'Home\AboutController@culturalCompetency');
+Route::get('/privacy-policy', 'Home\AboutController@privacyPolicy');
 Route::get('/hiv-housing', 'Home\ServicesController@housing');
 Route::get('/hiv-services', 'Home\ServicesController@services');
 Route::get('/getting-started', 'Home\HomeController@gettingStarted');

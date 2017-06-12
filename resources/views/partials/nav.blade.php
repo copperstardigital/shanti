@@ -3,7 +3,14 @@
     <ul>
         <!-- Main menu -->
         <li><a href="/">Home</a>
-        <li><a href="/about">About Us</a></li>
+        <li><a href="#">About</a>
+            <ul>
+                <li><a href="/mission">Mission</a>
+                <li><a href="/history">History</a>
+                <li><a href="/cultural-competency">Cultural Competency</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+            </ul>
+        </li>
         <li><a href="/hiv-housing">HIV+ Housing</a></li>
         <li><a href="/hiv-services">HIV+ Services</a></li>
         <li><a href="/getting-started">Getting Started</a></li>
