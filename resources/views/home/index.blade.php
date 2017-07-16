@@ -45,8 +45,8 @@
 
             <br />
             <div class="text-center">
-                <h3><span class="color">Brave</span>. Most Amazing Theme Ever Made. <span class="color">Literally</span>.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut euismod sapien. Donec eu feugiat enim, sed tempus arcu. <br /> Pellentesque magna nisi, consectetur eget psum primis eros, et neque sit amet, lobortis elit. </p>
+                <h3><span class="color">Phoenix Shanti Group</span>. Most Amazing HIV Agency in the Valley. <span class="color">Literally</span>.</h3>
+                <p>Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.</p>
             </div>
 
             <div class="divider-1"></div>
@@ -65,9 +65,9 @@
                                 <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-cog"></i> </a>
                             </div>
                             <!-- Heading -->
-                            <h4><a href="#">Voluptatum</a></h4>
+                            <h4><a href="#">Housing</a></h4>
                             <!-- Paragraph -->
-                            <p>Deleniti atque corrupti quos dolores et quas molestias.</p>
+                            <p>Shanti offers transitional and permanent housing to homeless individuals.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -76,8 +76,8 @@
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-truck"></i> </a>
                                 <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-cloud"></i> </a>
                             </div>
-                            <h4><a href="#">Assumenda</a></h4>
-                            <p>Deleniti atque corrupti quos dolores et quas molestias.</p>
+                            <h4><a href="#">2nd Chances Store</a></h4>
+                            <p>PSG operates a 7,000-square-foot retail thrift store to help fund patient services.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -86,8 +86,8 @@
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-leaf"></i>  </a>
                                 <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-briefcase"></i> </a>
                             </div>
-                            <h4><a href="#">Dignissimos</a></h4>
-                            <p>Deleniti atque corrupti quos dolores et quas molestias.</p>
+                            <h4><a href="#">Treatment</a></h4>
+                            <p>Individualized treatment plans are tailored to clients to help rebuild lives.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -96,8 +96,8 @@
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-user"></i> </a>
                                 <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-gift"></i> </a>
                             </div>
-                            <h4><a href="#">Dignissimos</a></h4>
-                            <p>Deleniti atque corrupti quos dolores et quas molestias.</p>
+                            <h4><a href="#">HIV Services</a></h4>
+                            <p>Personalized support services for people infected with and affected by HIV/AIDS.</p>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
             <div class="divider-1"></div>
 
             <div class="block-heading-two text-center">
-                <h3><span>Our Company</span></h3>
+                <h3><span>Our Agency</span></h3>
             </div>
 
             <br />
@@ -117,7 +117,7 @@
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <h4>Our Expertise</h4>
-                    <p>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Sed ut euismod sapien. Donec eu feugiat enim, sed tempus arcu. Pellen tesque magna nisi, consec tetur eget psum primis eros,  et neque sit amet, lobortis auctor libero.</p>
+                    <p>Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.</p>
                     <ul class="list-2">
                         <li>Denounce 1with rhoncus  rhoncus indignation</li>
                         <li>Dislike rhoncus so rhoncus et  rhoncus demoralized</li>

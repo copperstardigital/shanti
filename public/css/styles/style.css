@@ -2482,6 +2482,9 @@ body.boxed.img-5 {
 .header-2 .logo {
 	margin: 10px 0px 25px 0px;
 }
+.header-2 .logo a img.shanti {
+	width: 100px;
+}
 .header-2 .logo h1 {
 	font-weight: 600;
 }

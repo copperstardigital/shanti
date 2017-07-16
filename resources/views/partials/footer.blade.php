@@ -9,14 +9,12 @@
                 <div class="foot-item">
                     <!-- Heading -->
                     <h5 class="bold"><i class="fa fa-user"></i>&nbsp;&nbsp;About</h5>
-                    <p>Itaque earum rerum hic tenetur a atque atatum dele niti atque tenetur a atque atatum tenetur volup tatum.</p>
+                    <p>"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity</p>
                     <div class="brand-bg">
                         <!-- Social Media Icons -->
-                        <a href="#" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
+                        <a href="http://www.facebook.com/phoenixshantigroup" title="Phoenix Shanti Group" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
+                        <a href="http://www.facebook.com/shanti2ndchances" title="Shanti 2nd Chances" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
                         <a href="#" class="twitter"><i class="fa fa-twitter circle-3"></i></a>
-                        <a href="#" class="google-plus"><i class="fa fa-google-plus circle-3"></i></a>
-                        <a href="#" class="linkedin"><i class="fa fa-linkedin circle-3"></i></a>
-                        <a href="#" class="pinterest"><i class="fa fa-pinterest circle-3"></i></a>
                     </div>
                     <div class="subscribe-box">
                         <h5 class="bold">Subscribe :</h5>
@@ -26,8 +24,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Enter Email Id">
                                 <span class="input-group-btn">
-												<button class="btn btn-color" type="button">Subscribe</button>
-											</span>
+                                    <button class="btn btn-color" type="button">Subscribe</button>
+                                </span>
                             </div>
                         </form>
                     </div>
@@ -86,14 +84,14 @@
                     <!-- Foot Item Content -->
                     <div class="foot-item-content address">
                         <!-- Heading -->
-                        <h6 class="bold"><i class="fa fa-home"></i>&nbsp;&nbsp;Hanks Ltd</h6>
+                        <h6 class="bold"><i class="fa fa-home"></i>&nbsp;&nbsp;Phoenix Shanti Group</h6>
                         <!-- Paragraph -->
                         <p class="add">
-                            Bharathi Nagar, South Cherry Road,<br />
-                            North Bangalore - 535089.</p>
-                        <p class="tel"> <i class="fa fa-phone"></i> Tel : + (833) - 839 8393<br />
-                            <i class="fa fa-envelope"></i>  Mail : <a href="#">infodesk@uk.com</a><br />
-                            <i class="fa fa-calendar"></i> Business Hours : 9:30 - 5:30</p>
+                            2345 West Glendale Avenue,<br />
+                            Phoenix, Arizona 85021</p>
+                        <p class="tel"> <i class="fa fa-phone"></i> Tel : (602) 279-0008<br />
+                            <i class="fa fa-envelope"></i>  Email : <a href="mailto:info@shantiaz.org">info@shantiaz.org</a><br />
+                            <i class="fa fa-calendar"></i> Business Hours : 8:30 am - 4:30 pm</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +108,7 @@
     <div class="container">
         <!-- Footer Content -->
         <!-- Paragraph -->
-        <p class="pull-left">Copyright &copy; 2014 - <a href="#">Your Site</a></p>
+        <p class="pull-left">Copyright &copy {{ date('Y') }} - <a href="#">Phoenix Shanti Group</a></p>
         <ul class="list-inline pull-right">
             <!-- List -->
             <li><a href="index.html">Home</a><li>
