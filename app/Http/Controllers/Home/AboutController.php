@@ -12,7 +12,7 @@ class AboutController extends Controller
      }
 
      public function history() {
-         return view('about.mission');
+         return view('about.history');
      }
 
      public function culturalCompetency() {
