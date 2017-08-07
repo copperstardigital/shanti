@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 55);
+/******/ 	return __webpack_require__(__webpack_require__.s = 83);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -528,7 +528,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)))
 
 /***/ }),
 /* 3 */
@@ -3312,8 +3312,8 @@ if (inBrowser && window.Vue) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(46);
 
 
 
@@ -4193,7 +4193,1206 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(53);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Getting Started | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
+        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"]
+    },
+    mounted: function mounted() {
+        document.title = 'Home | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 32 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Page Not Found | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Cultural Competency | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'History | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Mission | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Privacy Policy | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Board of Directors | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Main Office | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Staff | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'HIV+ Housing | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'HIV Services | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Donate | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Resources | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        document.title = 'Volunteer | Phoenix Shanti Group';
+    }
+});
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(11);
@@ -4210,7 +5409,7 @@ window.axios = __WEBPACK_IMPORTED_MODULE_2_axios___default.a;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
-/* 31 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4218,13 +5417,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __webpack_require__(35) }, { path: '/about/cultural-competency', component: __webpack_require__(37) }, { path: '/about/history', component: __webpack_require__(38) }, { path: '/about/mission', component: __webpack_require__(39) }, { path: '/about/privacy-policy', component: __webpack_require__(40) }, { path: '/contact/board', component: __webpack_require__(41) }, { path: '/contact/office', component: __webpack_require__(42) }, { path: '/contact/staff', component: __webpack_require__(43) }, { path: '/services/housing', component: __webpack_require__(65) }, { path: '/services/hiv', component: __webpack_require__(44) }, { path: '/support/donate', component: __webpack_require__(45) }, { path: '/support/resources', component: __webpack_require__(46) }, { path: '/support/volunteer', component: __webpack_require__(47) }, { path: '/about', component: __webpack_require__(33) }, { path: '/getting-started', component: __webpack_require__(34) }, { path: '*', component: __webpack_require__(36) }]
+    routes: [{ path: '/', component: __webpack_require__(51) }, { path: '/about/cultural-competency', component: __webpack_require__(53) }, { path: '/about/history', component: __webpack_require__(54) }, { path: '/about/mission', component: __webpack_require__(55) }, { path: '/about/privacy-policy', component: __webpack_require__(56) }, { path: '/contact/board', component: __webpack_require__(57) }, { path: '/contact/office', component: __webpack_require__(58) }, { path: '/contact/staff', component: __webpack_require__(59) }, { path: '/services/housing', component: __webpack_require__(60) }, { path: '/services/hiv', component: __webpack_require__(61) }, { path: '/support/donate', component: __webpack_require__(62) }, { path: '/support/resources', component: __webpack_require__(63) }, { path: '/support/volunteer', component: __webpack_require__(64) }, { path: '/about', component: __webpack_require__(49) }, { path: '/getting-started', component: __webpack_require__(50) }, { path: '*', component: __webpack_require__(52) }]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
-/* 32 */
+/* 47 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -4414,14 +5613,25 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 33 */
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * vue-carousel v0.6.5
+ * (c) 2017 todd.beauchamp@ssense.com
+ * https://github.com/ssense/vue-carousel#readme
+ */
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueCarousel=t():e.VueCarousel=t()}(this,function(){return function(e){function t(a){if(n[a])return n[a].exports;var i=n[a]={exports:{},id:a,loaded:!1};return e[a].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.Slide=t.Carousel=void 0;var i=n(1),r=a(i),o=n(21),s=a(o),u=function(e){e.component("carousel",r.default),e.component("slide",s.default)};t.default={install:u},t.Carousel=r.default,t.Slide=s.default},function(e,t,n){function a(e){n(2)}var i=n(7)(n(8),n(26),a,null,null);e.exports=i.exports},function(e,t,n){var a=n(3);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("70056466",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel{position:relative}.VueCarousel-wrapper{width:100%;position:relative;overflow:hidden}.VueCarousel-inner{display:flex;flex-direction:row;backface-visibility:hidden}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var a={},i=0;i<this.length;i++){var r=this[i][0];"number"==typeof r&&(a[r]=!0)}for(i=0;i<t.length;i++){var o=t[i];"number"==typeof o[0]&&a[o[0]]||(n&&!o[2]?o[2]=n:n&&(o[2]="("+o[2]+") and ("+n+")"),e.push(o))}},e}},function(e,t,n){function a(e){for(var t=0;t<e.length;t++){var n=e[t],a=d[n.id];if(a){a.refs++;for(var i=0;i<a.parts.length;i++)a.parts[i](n.parts[i]);for(;i<n.parts.length;i++)a.parts.push(r(n.parts[i]));a.parts.length>n.parts.length&&(a.parts.length=n.parts.length)}else{for(var o=[],i=0;i<n.parts.length;i++)o.push(r(n.parts[i]));d[n.id]={id:n.id,refs:1,parts:o}}}}function i(){var e=document.createElement("style");return e.type="text/css",c.appendChild(e),e}function r(e){var t,n,a=document.querySelector('style[data-vue-ssr-id~="'+e.id+'"]');if(a){if(h)return v;a.parentNode.removeChild(a)}if(g){var r=p++;a=f||(f=i()),t=o.bind(null,a,r,!1),n=o.bind(null,a,r,!0)}else a=i(),t=s.bind(null,a),n=function(){a.parentNode.removeChild(a)};return t(e),function(a){if(a){if(a.css===e.css&&a.media===e.media&&a.sourceMap===e.sourceMap)return;t(e=a)}else n()}}function o(e,t,n,a){var i=n?"":a.css;if(e.styleSheet)e.styleSheet.cssText=m(t,i);else{var r=document.createTextNode(i),o=e.childNodes;o[t]&&e.removeChild(o[t]),o.length?e.insertBefore(r,o[t]):e.appendChild(r)}}function s(e,t){var n=t.css,a=t.media,i=t.sourceMap;if(a&&e.setAttribute("media",a),i&&(n+="\n/*# sourceURL="+i.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var u="undefined"!=typeof document,l=n(6),d={},c=u&&(document.head||document.getElementsByTagName("head")[0]),f=null,p=0,h=!1,v=function(){},g="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());e.exports=function(e,t,n){h=n;var i=l(e,t);return a(i),function(t){for(var n=[],r=0;r<i.length;r++){var o=i[r],s=d[o.id];s.refs--,n.push(s)}t?(i=l(e,t),a(i)):i=[];for(var r=0;r<n.length;r++){var s=n[r];if(0===s.refs){for(var u=0;u<s.parts.length;u++)s.parts[u]();delete d[s.id]}}}};var m=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports=function(e,t){for(var n=[],a={},i=0;i<t.length;i++){var r=t[i],o=r[0],s=r[1],u=r[2],l=r[3],d={id:e+":"+i,css:s,media:u,sourceMap:l};a[o]?a[o].parts.push(d):n.push(a[o]={id:o,parts:[d]})}return n}},function(e,t){e.exports=function(e,t,n,a,i){var r,o=e=e||{},s=typeof e.default;"object"!==s&&"function"!==s||(r=e,o=e.default);var u="function"==typeof o?o.options:o;t&&(u.render=t.render,u.staticRenderFns=t.staticRenderFns),a&&(u._scopeId=a);var l;if(i?(l=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),n&&n.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(i)},u._ssrRegister=l):n&&(l=n),l){var d=u.functional,c=d?u.render:u.beforeCreate;d?u.render=function(e,t){return l.call(t),c(e,t)}:u.beforeCreate=c?[].concat(c,l):[l]}return{esModule:r,exports:o,options:u}}},function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(9),r=a(i),o=n(10),s=a(o),u=n(11),l=a(u),d=n(16),c=a(d),f=n(21),p=a(f);t.default={name:"carousel",beforeUpdate:function(){this.computeCarouselWidth()},components:{Navigation:l.default,Pagination:c.default,Slide:p.default},data:function(){return{browserWidth:null,carouselWidth:null,currentPage:0,dragOffset:0,dragStartX:0,mousedown:!1,slideCount:0}},mixins:[r.default],props:{easing:{type:String,default:"ease"},minSwipeDistance:{type:Number,default:8},navigationClickTargetSize:{type:Number,default:8},navigationEnabled:{type:Boolean,default:!1},navigationNextLabel:{type:String,default:"▶"},navigationPrevLabel:{type:String,default:"◀"},paginationActiveColor:{type:String,default:"#000000"},paginationColor:{type:String,default:"#efefef"},paginationEnabled:{type:Boolean,default:!0},paginationPadding:{type:Number,default:10},paginationSize:{type:Number,default:10},perPage:{type:Number,default:2},perPageCustom:{type:Array},scrollPerPage:{type:Boolean,default:!1},speed:{type:Number,default:500},loop:{type:Boolean,default:!1}},computed:{breakpointSlidesPerPage:function(){if(!this.perPageCustom)return this.perPage;var e=this.perPageCustom,t=this.browserWidth,n=e.sort(function(e,t){return e[0]>t[0]?-1:1}),a=n.filter(function(e){return t>=e[0]}),i=a[0]&&a[0][1];return i||this.perPage},canAdvanceForward:function(){return this.loop||this.currentPage<this.pageCount-1},canAdvanceBackward:function(){return this.loop||this.currentPage>0},currentPerPage:function(){return!this.perPageCustom||this.$isServer?this.perPage:this.breakpointSlidesPerPage},currentOffset:function(){var e=this.currentPage,t=this.slideWidth,n=this.dragOffset,a=this.scrollPerPage?e*t*this.currentPerPage:e*t;return(a+n)*-1},isHidden:function(){return this.carouselWidth<=0},pageCount:function(){var e=this.slideCount,t=this.currentPerPage;if(this.scrollPerPage){var n=Math.ceil(e/t);return n<1?1:n}return e-(this.currentPerPage-1)},slideWidth:function(){var e=this.carouselWidth,t=this.currentPerPage;return e/t},transitionStyle:function(){return this.speed/1e3+"s "+this.easing+" transform"}},methods:{getNextPage:function(){return this.currentPage<this.pageCount-1?this.currentPage+1:this.loop?0:this.currentPage},getPreviousPage:function(){return this.currentPage>0?this.currentPage-1:this.loop?this.pageCount-1:this.currentPage},advancePage:function(e){e&&"backward"===e&&this.canAdvanceBackward?this.goToPage(this.getPreviousPage()):(!e||e&&"backward"!==e)&&this.canAdvanceForward&&this.goToPage(this.getNextPage())},attachMutationObserver:function(){var e=this,t=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver;if(t){var n={attributes:!0,data:!0};this.mutationObserver=new t(function(){e.$nextTick(function(){e.computeCarouselWidth()})}),this.$parent.$el&&this.mutationObserver.observe(this.$parent.$el,n)}},detachMutationObserver:function(){this.mutationObserver&&this.mutationObserver.disconnect()},getBrowserWidth:function(){return this.browserWidth=window.innerWidth,this.browserWidth},getCarouselWidth:function(){return this.carouselWidth=this.$el&&this.$el.clientWidth||0,this.carouselWidth},getSlideCount:function(){this.slideCount=this.$slots&&this.$slots.default&&this.$slots.default.filter(function(e){return e.tag&&e.tag.indexOf("slide")>-1}).length||0},goToPage:function(e){e>=0&&e<=this.pageCount&&(this.currentPage=e,this.$emit("pageChange",this.currentPage))},handleMousedown:function(e){e.touches||e.preventDefault(),this.mousedown=!0,this.dragStartX="ontouchstart"in window?e.touches[0].clientX:e.clientX},handleMouseup:function(){this.mousedown=!1,this.dragOffset=0},handleMousemove:function(e){if(this.mousedown){var t="ontouchstart"in window?e.touches[0].clientX:e.clientX,n=this.dragStartX-t;this.dragOffset=n,this.dragOffset>this.minSwipeDistance?(this.handleMouseup(),this.advancePage()):this.dragOffset<-this.minSwipeDistance&&(this.handleMouseup(),this.advancePage("backward"))}},computeCarouselWidth:function(){this.getSlideCount(),this.getBrowserWidth(),this.getCarouselWidth(),this.setCurrentPageInBounds()},setCurrentPageInBounds:function(){if(!this.canAdvanceForward){var e=this.pageCount-1;this.currentPage=e>=0?e:0}}},mounted:function(){this.$isServer||(window.addEventListener("resize",(0,s.default)(this.computeCarouselWidth,16)),"ontouchstart"in window?(this.$el.addEventListener("touchstart",this.handleMousedown),this.$el.addEventListener("touchend",this.handleMouseup),this.$el.addEventListener("touchmove",this.handleMousemove)):(this.$el.addEventListener("mousedown",this.handleMousedown),this.$el.addEventListener("mouseup",this.handleMouseup),this.$el.addEventListener("mousemove",this.handleMousemove))),this.attachMutationObserver(),this.computeCarouselWidth()},destroyed:function(){this.$isServer||(this.detachMutationObserver(),window.removeEventListener("resize",this.getBrowserWidth),"ontouchstart"in window?this.$el.removeEventListener("touchmove",this.handleMousemove):this.$el.removeEventListener("mousemove",this.handleMousemove))}}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={props:{autoplay:{type:Boolean,default:!1},autoplayTimeout:{type:Number,default:2e3},autoplayHoverPause:{type:Boolean,default:!0}},data:function(){return{autoplayInterval:null}},destroyed:function(){this.$isServer||(this.$el.removeEventListener("mouseenter",this.pauseAutoplay),this.$el.removeEventListener("mouseleave",this.startAutoplay))},methods:{pauseAutoplay:function(){this.autoplayInterval&&(this.autoplayInterval=clearInterval(this.autoplayInterval))},startAutoplay:function(){this.autoplay&&(this.autoplayInterval=setInterval(this.advancePage,this.autoplayTimeout))}},mounted:function(){!this.$isServer&&this.autoplayHoverPause&&(this.$el.addEventListener("mouseenter",this.pauseAutoplay),this.$el.addEventListener("mouseleave",this.startAutoplay)),this.startAutoplay()}};t.default=n},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e,t,n){var a=void 0;return function(){var i=void 0,r=function(){a=null,n||e.apply(i)},o=n&&!a;clearTimeout(a),a=setTimeout(r,t),o&&e.apply(i)}};t.default=n},function(e,t,n){function a(e){n(12)}var i=n(7)(n(14),n(15),a,"data-v-7fed18e9",null);e.exports=i.exports},function(e,t,n){var a=n(13);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("58a44a73",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-navigation-button[data-v-7fed18e9]{position:absolute;top:50%;box-sizing:border-box;color:#000;text-decoration:none}.VueCarousel-navigation-next[data-v-7fed18e9]{right:0;transform:translateY(-50%) translateX(100%)}.VueCarousel-navigation-prev[data-v-7fed18e9]{left:0;transform:translateY(-50%) translateX(-100%)}.VueCarousel-navigation--disabled[data-v-7fed18e9]{opacity:.5;cursor:default}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"navigation",data:function(){return{parentContainer:this.$parent}},props:{clickTargetSize:{type:Number,default:8},nextLabel:{type:String,default:"▶"},prevLabel:{type:String,default:"◀"}},computed:{canAdvanceForward:function(){return this.parentContainer.canAdvanceForward||!1},canAdvanceBackward:function(){return this.parentContainer.canAdvanceBackward||!1}},methods:{triggerPageAdvance:function(e){e?this.$parent.advancePage(e):this.$parent.advancePage()}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel-navigation"},[n("a",{staticClass:"VueCarousel-navigation-button VueCarousel-navigation-prev",class:{"VueCarousel-navigation--disabled":!e.canAdvanceBackward},style:"padding: "+e.clickTargetSize+"px; margin-right: -"+e.clickTargetSize+"px;",attrs:{href:"#"},domProps:{innerHTML:e._s(e.prevLabel)},on:{click:function(t){t.preventDefault(),e.triggerPageAdvance("backward")}}}),e._v(" "),n("a",{staticClass:"VueCarousel-navigation-button VueCarousel-navigation-next",class:{"VueCarousel-navigation--disabled":!e.canAdvanceForward},style:"padding: "+e.clickTargetSize+"px; margin-left: -"+e.clickTargetSize+"px;",attrs:{href:"#"},domProps:{innerHTML:e._s(e.nextLabel)},on:{click:function(t){t.preventDefault(),e.triggerPageAdvance()}}})])},staticRenderFns:[]}},function(e,t,n){function a(e){n(17)}var i=n(7)(n(19),n(20),a,"data-v-7e42136f",null);e.exports=i.exports},function(e,t,n){var a=n(18);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("cc30be7c",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-pagination[data-v-7e42136f]{width:100%;float:left;text-align:center}.VueCarousel-dot-container[data-v-7e42136f]{display:inline-block;margin:0 auto}.VueCarousel-dot[data-v-7e42136f]{float:left;cursor:pointer}.VueCarousel-dot-inner[data-v-7e42136f]{border-radius:100%}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"pagination",data:function(){return{parentContainer:this.$parent}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{directives:[{name:"show",rawName:"v-show",value:e.parentContainer.pageCount>1,expression:"parentContainer.pageCount > 1"}],staticClass:"VueCarousel-pagination"},[n("div",{staticClass:"VueCarousel-dot-container"},e._l(e.parentContainer.pageCount,function(t,a){return n("div",{staticClass:"VueCarousel-dot",class:{"VueCarousel-dot--active":a===e.parentContainer.currentPage},style:"\n        margin-top: "+2*e.parentContainer.paginationPadding+"px;\n        padding: "+e.parentContainer.paginationPadding+"px;\n      ",on:{click:function(t){e.parentContainer.goToPage(a)}}},[n("div",{staticClass:"VueCarousel-dot-inner",style:"\n          width: "+e.parentContainer.paginationSize+"px;\n          height: "+e.parentContainer.paginationSize+"px;\n          background: "+(a===e.parentContainer.currentPage?e.parentContainer.paginationActiveColor:e.parentContainer.paginationColor)+";\n        "})])}))])},staticRenderFns:[]}},function(e,t,n){function a(e){n(22)}var i=n(7)(n(24),n(25),a,null,null);e.exports=i.exports},function(e,t,n){var a=n(23);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("647f10ac",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-slide{flex-basis:inherit;flex-grow:0;flex-shrink:0;user-select:none}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"slide",data:function(){return{width:null}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel-slide"},[e._t("default")],2)},staticRenderFns:[]}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel"},[n("div",{staticClass:"VueCarousel-wrapper"},[n("div",{staticClass:"VueCarousel-inner",style:"\n        transform: translateX("+e.currentOffset+"px);\n        transition: "+e.transitionStyle+";\n        flex-basis: "+e.slideWidth+"px;\n        visibility: "+(e.slideWidth?"visible":"hidden")+"\n      "},[e._t("default")],2)]),e._v(" "),e.paginationEnabled&&e.pageCount>0?n("pagination"):e._e(),e._v(" "),e.navigationEnabled?n("navigation",{attrs:{clickTargetSize:e.navigationClickTargetSize,nextLabel:e.navigationNextLabel,prevLabel:e.navigationPrevLabel}}):e._e()],1)},staticRenderFns:[]}}])});
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(29),
   /* template */
-  __webpack_require__(49),
+  __webpack_require__(72),
   /* scopeId */
   null,
   /* cssModules */
@@ -4448,14 +5658,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 34 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(87),
+  __webpack_require__(30),
   /* template */
-  __webpack_require__(68),
+  __webpack_require__(73),
   /* scopeId */
   null,
   /* cssModules */
@@ -4482,14 +5692,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 35 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(88),
+  __webpack_require__(31),
   /* template */
-  __webpack_require__(50),
+  __webpack_require__(77),
   /* scopeId */
   null,
   /* cssModules */
@@ -4516,14 +5726,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 36 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(89),
+  __webpack_require__(32),
   /* template */
-  __webpack_require__(64),
+  __webpack_require__(69),
   /* scopeId */
   null,
   /* cssModules */
@@ -4550,14 +5760,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 37 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(75),
+  __webpack_require__(33),
   /* template */
-  __webpack_require__(51),
+  __webpack_require__(78),
   /* scopeId */
   null,
   /* cssModules */
@@ -4584,14 +5794,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 38 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(76),
+  __webpack_require__(34),
   /* template */
-  __webpack_require__(52),
+  __webpack_require__(79),
   /* scopeId */
   null,
   /* cssModules */
@@ -4618,14 +5828,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 39 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(77),
+  __webpack_require__(35),
   /* template */
-  __webpack_require__(48),
+  __webpack_require__(68),
   /* scopeId */
   null,
   /* cssModules */
@@ -4652,14 +5862,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 40 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(78),
+  __webpack_require__(36),
   /* template */
-  __webpack_require__(90),
+  __webpack_require__(76),
   /* scopeId */
   null,
   /* cssModules */
@@ -4686,14 +5896,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(79),
+  __webpack_require__(37),
   /* template */
-  __webpack_require__(73),
+  __webpack_require__(74),
   /* scopeId */
   null,
   /* cssModules */
@@ -4720,14 +5930,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 42 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(80),
+  __webpack_require__(38),
   /* template */
-  __webpack_require__(72),
+  __webpack_require__(71),
   /* scopeId */
   null,
   /* cssModules */
@@ -4754,14 +5964,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(81),
+  __webpack_require__(39),
   /* template */
-  __webpack_require__(74),
+  __webpack_require__(67),
   /* scopeId */
   null,
   /* cssModules */
@@ -4788,14 +5998,48 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(83),
+  __webpack_require__(40),
   /* template */
-  __webpack_require__(67),
+  __webpack_require__(75),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
+  } else {
+    hotAPI.reload("data-v-5aabf0eb", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(41),
+  /* template */
+  __webpack_require__(66),
   /* scopeId */
   null,
   /* cssModules */
@@ -4822,14 +6066,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(84),
+  __webpack_require__(42),
   /* template */
-  __webpack_require__(69),
+  __webpack_require__(80),
   /* scopeId */
   null,
   /* cssModules */
@@ -4856,14 +6100,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 46 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(85),
+  __webpack_require__(43),
   /* template */
-  __webpack_require__(71),
+  __webpack_require__(70),
   /* scopeId */
   null,
   /* cssModules */
@@ -4890,14 +6134,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(86),
+  __webpack_require__(44),
   /* template */
-  __webpack_require__(70),
+  __webpack_require__(65),
   /* scopeId */
   null,
   /* cssModules */
@@ -4924,7 +6168,99 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Volunteer")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Help Us Help You")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_vm._v("\n                Have you been searching for an opportunity that fulfills your desire to give back to the community and see a direct difference and change brought about from your individual effort?\n            ")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group is a local 501c3 non-profit organization, which means, that amongst other things, when you interact with us, you are not a name-less, face-less individual giving your time and talents to a multi-national organization where you may or may not see the immediate effect of your giving.")]), _vm._v(" "), _c('p', [_vm._v("If you are looking for a more personal experience where you can see a direct impact due to your personal efforts, then we encourage you to read on, and find out more about the various opportunities available in which your help will be greatly appreciated:")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Food Pantry:")]), _vm._v(" Phoenix Shanti Group operates a canned goods/non-perishable foods pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of canned/non-perishable food items will assist us in keeping our food pantry stocked and provide our patients with the ability to have a nutritious meal.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Personal Hygiene Pantry:")]), _vm._v("  Phoenix Shanti Group operates a personal hygiene pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of personal hygiene items (toothpaste, dental floss, tooth brushes, razors, shaving cream, toilet paper, shampoo, soap, laundry detergent, mouthwash, deodorant, dish soap) will assist us in keeping the pantry stocked with these essential items.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Homeless Shelter Construction/Repair/Maintenance Coordinators:")]), _vm._v("  Phoenix Shanti Group operates homeless shelters for individuals with HIV/AIDS.  The shelters are in continuing need of various repairs and general maintenance, including interior/exterior painting.  Your donation of paint, power tools, construction supplies, or even more importantly, your time to participate in our shelter maintenance program will be greatly appreciated!")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Social Media Coordinators:")]), _vm._v(" Phoenix Shanti Group is looking for individuals to participate in our social media initiative.  Through the use of facebook, twitter, texting, and youtube, we are looking to individuals to friend, tweet, and forward on messages from Shanti regarding special events that are planned throughout the year.\n\n            ")]), _c('p', [_c('strong', [_vm._v("Special Events Coordinators:")]), _vm._v("  Special Events Coordinators will work directly with a staff member on individual events that are planned throughout the year.  These are events in which the cause of HIV/AIDS or Phoenix Shanti Group will be recognized or host/partially host an event.  Events range from theater/arts performances to professional sports games, as well as many other venues.")]), _vm._v(" "), _c('p', [_vm._v("Traditional Media Coordinators:  Traditional Media Coordinators will work directly with a staff member on individual media projects.  These projects include radio, television, electronic, and print interviews, public relations, advertising, and marketing campaigns.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Legal Assistance Coordinators:")]), _vm._v("  Legal Assistance Coordinators will work directly with a staff member on estate planning, end of life remembrance programs, and other legal/technical initiatives.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Corporate Incentives Coordinators:")]), _vm._v("  Corporate Incentive Coordinators will work directly with a staff member on outreach programs for corporate sponsorships, grants, donations, matching gifts programs, and speaking opportunities in which Phoenix Shanti Group is the primary recipient.Type your paragraph here.")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1772fe5b", module.exports)
+  }
+}
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("HIV Services")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Counseling, Vocational Rehab and Support")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_vm._v("\n                Phoenix Shanti Group operates four different levels of HIV Services: "), _c('br'), _vm._v("\n                Individual Counseling, Group Counseling, Vocational Rehabilitation and Peer Support.\n            ")]), _vm._v(" "), _c('h3', [_vm._v("Individual Counseling")]), _vm._v(" "), _c('p', [_vm._v("Individual counseling consists of one-on-one sessions with a trained clinician/therapist in an open, supportive, and confidential environment. At Phoenix Shanti Group, our focus is to assist you in resolving the issues that bring you to counseling. Topics addressed in individual counseling include, but are not limited to:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Exploration of feelings, beliefs, and behavior patterns")]), _vm._v(" "), _c('li', [_vm._v("Challenging or influential memories, including trauma")]), _vm._v(" "), _c('li', [_vm._v("Identifying aspects of life that you would like to change")]), _vm._v(" "), _c('li', [_vm._v("Increased insight/awareness/understanding of self and others")]), _vm._v(" "), _c('li', [_vm._v("Communication, boundaries, and how to navigate relationships")])]), _vm._v(" "), _c('p', [_vm._v("The length of individual treatment will be based on your unique needs and goals for therapy. Phoenix Shanti Group clinicians are trained to address a variety of presenting concerns including, but not limited to:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Mental Health (depression, anxiety, PTSD)")]), _vm._v(" "), _c('li', [_vm._v("Substance use/abuse")]), _vm._v(" "), _c('li', [_vm._v("Personal identity, self-esteem, self-worth")]), _vm._v(" "), _c('li', [_vm._v("Gender Identity")]), _vm._v(" "), _c('li', [_vm._v("Sexual/Affectional Orientation")]), _vm._v(" "), _c('li', [_vm._v("Chronic Illness (specializing in issues associated with HIV, including stigma and disclosure concerns)")]), _vm._v(" "), _c('li', [_vm._v("Trauma")])]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group has therapists from various backgrounds who are Master’s level clinicians licensed to practice in the State of Arizona. Our therapists are trained in utilizing a holistic approach to treatment, integrating mind and body. Phoenix Shanti Group therapists are also trained in an evidence-based trauma treatment called EMDR (Eye Movement Desensitization and Reprocessing). For more information on EMDR, please visit "), _c('a', {
+    attrs: {
+      "href": "http://www.emdr.com",
+      "target": "_blank"
+    }
+  }, [_vm._v("EMDR.com")])]), _vm._v(" "), _c('h3', [_vm._v("Group Counseling")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group offers an intensive outpatient program focused on substance use/abuse and HIV support/education. This program consists of multiple group sessions held at our clinic throughout the week. This program is for HIV+ individuals.")]), _vm._v(" "), _c('p', [_vm._v("Group members discuss and process a variety of issues including exploring relationships, improving self-esteem, relapse prevention, mental health concerns, HIV-related issues, stress management, and enhancing coping skills.  Group members are encouraged to share information about themselves and provide feedback to others. Group leaders aim to create a safe and supportive environment, which includes facilitating productive communication and respect. Group leaders may also encourage member engagement in the group process, give feedback, and offer support to individual members or the group as a whole. Group facilitators will also provide education surrounding common themes experienced by group members. Group members are asked to make a commitment to protect each other’s confidentiality by agreeing not to share information that would identify other members outside of group.")]), _vm._v(" "), _c('p', [_vm._v("At Phoenix Shanti Group, we have found that many experience relief from participating in  group treatment and recognizing that they are not alone in facing life’s challenges. Often, substance use can lead to isolation. Group participation allows individuals to re-engage in social settings and learn how to build healthy connections with others. Many members have also found it helpful to be able to learn from peers’ experiences and have shared that seeing others recover creates a sense of hope.")]), _vm._v(" "), _c('h3', [_vm._v("Vocational Rehabilitation / Job Skills Training")]), _vm._v(" "), _c('p', [_vm._v("PSG, through a 7,000 sq. foot re-sale store, provides a three module Voc Rehab curriculum program for trainees to gain knowledge, skill, and experience to re-enter the workforce.")]), _vm._v(" "), _c('p', [_vm._v("Trainees learn “hard skills” like computer use, internal inventory controls, donation pickup scheduling, organization, maintenance, pricing and item values, furniture repair and display, customer service, point of sale and money handling, workforce expectations, work ethics, and more.")]), _vm._v(" "), _c('p', [_vm._v("Trainees also learn “soft skills” like communication, boundaries, assertiveness training, problem solving, decision making, self-esteem, risk taking, value clarification, conflict resolution and more.")]), _vm._v(" "), _c('p', [_vm._v("Additionally, trainees learn how to create a resume, how to search for employment and receive interview coaching. It is our hope that by providing a long term solution thru education and training, individuals will be more likely to become self-sufficient and independent in the future.  We strive for a goal of either job placement or enrollment in a higher education institution by the time the trainee is ready to graduate from the program.  The Vocational Rehabilitation program is a 1 year program for most participants but can be extended further on a case by case basis.")]), _vm._v(" "), _c('p', [_vm._v("Shanti’s Second Chances thrift store and Voc Rehab program is an integral part of the Phoenix Shanti recovery experience. It is available to all clients of the Phoenix Shanti Group.")]), _vm._v(" "), _c('p', [_vm._v("Shanti’s 2nd Chances store is located at 4015 N 16th Street Phoenix, AZ, and is open Monday through Friday 9am – 6pm and on Saturday 9am-5pm. You can also shop from our Ebay store, ebay.com/usr/phoenix-shanti-group")]), _vm._v(" "), _c('p', [_vm._v("PSG offers a FREE valley-wide donation pickup service 6 days a week. You can schedule a pickup by calling us at 602-283-0100. Donations of furniture, clothing, patio, sporting goods, appliances (working or not), electronics, and other household items are gratefully accepted. Your donations are tax deductible and a tax receipt will be provided to you with any donation that you make. Thank you for your continued support.")]), _vm._v(" "), _c('h3', [_vm._v("Peer Support")]), _vm._v(" "), _c('p', [_vm._v("PSG employs a peer support specialist/recovery coach to include a personal approach to the individual and group therapy process. Our peer support/recovery coach draws from personal experience and knowledge of mental health and/or substance abuse services and recovery in collaborating with the team to promote personal growth, self-determination and consumer-choice in the planning, delivery and evaluation of treatment and support services.")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-18d3a9c0", module.exports)
+  }
+}
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Staff")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Our Team")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  })])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1d35e242", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5007,7 +6343,183 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Page Not Found")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("404 Error")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_c('p', [_vm._v("We're sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3836d024", module.exports)
+  }
+}
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Resources")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Let Us Help You")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  })])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3d5cfb76", module.exports)
+  }
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Contact")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Main Office")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-6"
+  }, [_c('iframe', {
+    staticStyle: {
+      "border": "0"
+    },
+    attrs: {
+      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942",
+      "width": "100%",
+      "height": "450",
+      "frameborder": "0",
+      "allowfullscreen": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-6"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_vm._v("\n                        In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.\n\n                        You can also use this page to write a testimonial about your experience at Shanti, request a FREE furniture or household goods donation pickup, or sign up for our eNewsletter for special announcements.\n                    ")]), _vm._v(" "), _c('div', {
+    staticClass: "divider-2"
+  }), _vm._v(" "), _c('form', {
+    attrs: {
+      "action": "/contact",
+      "method": "POST"
+    }
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "text",
+      "id": "name"
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "email",
+      "name": "email",
+      "id": "email"
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "subject"
+    }
+  }, [_vm._v("Subject:")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "subject",
+      "id": "subject"
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "message"
+    }
+  }, [_vm._v("Message:")]), _vm._v(" "), _c('textarea', {
+    staticClass: "form-control",
+    attrs: {
+      "id": "message",
+      "name": "message",
+      "rows": "10"
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Send Message")])])])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5024,7 +6536,7 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5033,15 +6545,149 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "main-block"
   }, [_c('div', {
-    staticClass: "parallax-slider"
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Getting Started")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Taking the First Step")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
   }, [_c('div', {
-    staticClass: "da-slider",
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_vm._v("\n                Your first step is to call us to schedule your intake appointment (602-279-0008). During this call, a staff member will request some initial information to determine if the services provided at Phoenix Shanti Group will meet your needs.\n            ")]), _vm._v(" "), _c('p', [_vm._v("If it is determined that our services fit your treatment needs, you will then be scheduled for an intake assessment. This appointment consists of a two-hour evaluation which provides you the opportunity to build rapport with the therapist, to share some of your background information, to discuss the reasons you are seeking services, and to set goals that you would like to accomplish. During this appointment, your intake therapist will provide you with information regarding confidentiality, services offered at Phoenix Shanti Group, and what to expect in therapy.")]), _vm._v(" "), _c('p', [_vm._v("The goal during the assessment is to ensure that your needs are identified and for the clinician to make appropriate recommendations for continued treatment. We will work with you to determine what kind of treatment is best for you. This process occasionally includes a referral to an outside agency that provides other specialized services that can help you to address the needs you present with. At the end of this appointment, the intake clinician will schedule you for your next session.")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4f1f7bdc", module.exports)
+  }
+}
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Board of Directors")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Our Management Team")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  })])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-51a29b48", module.exports)
+  }
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Housing")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Transitional and Permanent")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_vm._v("\n                Phoenix Shanti Group operates two different types of housing programs: "), _c('br'), _vm._v("\n                Transitional Housing and Permanent Supportive Housing.\n            ")]), _vm._v(" "), _c('h3', [_vm._v("Transitional Housing Program")]), _vm._v(" "), _c('p', [_vm._v("The Transitional Housing Program provides a structured, drug-free environment to homeless, or at risk of becoming homeless, HIV+ individuals.  Participants in this program may remain in the program for up to 24 months.  Some basic requirements for entry into the program are:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Lab results showing HIV+ status")]), _vm._v(" "), _c('li', [_vm._v("TB Screen test less than 3 months old")]), _vm._v(" "), _c('li', [_vm._v("Income verification (if applicable)")]), _vm._v(" "), _c('li', [_vm._v("Homeless, or at risk of becoming homeless")])]), _vm._v(" "), _c('p', [_vm._v("For additional questions regarding this program, please contact Justin Kimberlin ("), _c('a', {
     attrs: {
-      "id": "da-slider"
+      "href": "JustinK@ShantiAZ.org"
     }
+  }, [_vm._v("JustinK@ShantiAZ.org")]), _vm._v(") 602-279-0008 extension 112")]), _vm._v(" "), _c('p', [_vm._v("Funding for this program is provided in part by "), _c('a', {
+    attrs: {
+      "target": "_blank",
+      "href": "https://portal.hud.gov/hudportal/HUD?src=/program_offices/comm_planning/aidshousing"
+    }
+  }, [_vm._v("HOPWA")]), _vm._v(" and "), _c('a', {
+    attrs: {
+      "target": "_blank",
+      "href": "http://www.vsuw.org"
+    }
+  }, [_vm._v("Valley of the Sun United Way")]), _vm._v(".\n\n            ")]), _c('h3', [_vm._v("Permanent Supportive Housing")]), _vm._v(" "), _c('p', [_vm._v("The other type of housing option operated by Phoenix Shanti Group is Permanent Supportive Housing.  This program is for homeless HIV+ individuals/families who are capable of living independently.  The program provides individuals the opportunity for long term housing stability while utilizing community resources to work toward self sufficiency or home ownership.")]), _vm._v(" "), _c('p', [_vm._v("The Permanent Supportive Housing program supports a drug and alcohol free living environment.")]), _vm._v(" "), _c('p', [_vm._v("For additional questions regarding this program, please contact James Claymon ("), _c('a', {
+    attrs: {
+      "href": "JamesC@ShantiAZ.org"
+    }
+  }, [_vm._v("JamesC@ShantiAZ.org")]), _vm._v(") 602-279-0008 extension 107.")]), _vm._v(" "), _c('p', [_vm._v("Funding for this program is provided in part by the "), _c('a', {
+    attrs: {
+      "target": "_blank",
+      "href": "http://www.HUD.gov"
+    }
+  }, [_vm._v("Department of Housing and Urban Development")]), _vm._v(".")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
   }, [_c('div', {
-    staticClass: "da-slide"
-  }, [_c('h2', [_vm._v("Easy "), _c('span', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Privacy Policy")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("How We Protect You")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('h3', [_vm._v("Privacy Policy")]), _vm._v(" "), _c('p', [_vm._v("This site is owned and operated by Phoenix Shanti Group. Because we gather certain types of information about our users, we feel you should fully understand our policy and the terms and conditions surrounding the capture and use of that information. This privacy statement discloses what information we gather and how we use it.")]), _vm._v(" "), _c('h3', [_vm._v("Information We Gather and Track")]), _vm._v(" "), _c('p', [_vm._v("We gather two types of information about users:\n\n            ")]), _c('p', [_vm._v("1. Information that users provide through optional, voluntary submissions. These are voluntary submissions and can include to sign up as a user, receive electronic newsletters, fill out response forms, participate in polls, etc.")]), _vm._v(" "), _c('p', [_vm._v("2. Information we gather through aggregated tracking information derived mainly by tallying page views throughout our sites. This information allows us to better tailor our content to readers' needs.")]), _vm._v(" "), _c('p', [_vm._v("Consistent with the Federal Children's Online Privacy Protection Act of 1998 (COPPA), we will never knowingly request personally identifiable information from anyone under the age of 13 without requesting parental consent.")]), _vm._v(" "), _c('h3', [_vm._v("Usage Tracking")]), _vm._v(" "), _c('p', [_vm._v("We track user traffic patterns throughout all of our sites. However, we do not correlate this information with data about individual users. We do break down overall usage statistics according to a user's domain name, browser type, and MIME type by reading this information from the browser string (information passed to us by every user's browser).")]), _vm._v(" "), _c('p', [_vm._v("We use tracking information to determine which areas of our sites users like and don't like based on traffic to those areas. We do not track what individual users read, but rather how well each page performs overall. This helps us continue to build a better site for you.")]), _vm._v(" "), _c('h3', [_vm._v("Cookies")]), _vm._v(" "), _c('p', [_vm._v("We may place a text file called a \"cookie\" in the browser files of your computer. The cookie itself does not contain Personal Information although it can enable us to relate your use of this site to information that you have specifically and knowingly provided. But the only personal information a cookie can identify is information you supply yourself. A cookie can't read data off your hard disk or read cookie files created by other sites. We use cookies to track users who've signed-in and people who've participated in a poll.")]), _vm._v(" "), _c('p', [_vm._v("You can refuse cookies by turning them off in your browser. If you've set your browser to warn you before accepting cookies, you will receive the warning message with each cookie. You do not need to have cookies turned on to use this site.")]), _vm._v(" "), _c('h3', [_vm._v("Use Of Information")]), _vm._v(" "), _c('p', [_vm._v("As stated above, we use information that users voluntarily provide in order to send out electronic newsletters and to enable users to participate in the various parts of our site. Otherwise, we do not share your e-mail address or any other individually identifying information with any third parties.")]), _vm._v(" "), _c('p', [_vm._v("While we use tracking information to determine which areas of our sites users like and don't like based on traffic to those areas, we do not track what individual users read, but rather how well each page performs overall. This helps us continue to build a better service for you.")]), _vm._v(" "), _c('p', [_vm._v("We create aggregate reports on user demographics and traffic patterns for our internal use only. We will not disclose any information about any individual user except to comply with applicable law or valid legal process or to protect the personal safety of our users or the public.")]), _vm._v(" "), _c('h3', [_vm._v("Sharing Of The Information")]), _vm._v(" "), _c('p', [_vm._v("We will not sell, trade, rent or provide any information about individual users with any third party, except to send out electronic newsletters or to comply with applicable law or valid legal process or to protect the personal safety of our users or the public.")]), _vm._v(" "), _c('h3', [_vm._v("Security")]), _vm._v(" "), _c('p', [_vm._v("We use servers protected by industry standard firewall and password protection systems. Our security and privacy policies are periodically reviewed and enhanced as necessary and only authorized individuals have access to the information provided by our users.")]), _vm._v(" "), _c('h3', [_vm._v("Opt-Out Policy")]), _vm._v(" "), _c('p', [_vm._v("We give users options wherever necessary and practical. Such choices include:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Opting not to register as a user and receive our electronic newsletters.")]), _vm._v(" "), _c('li', [_vm._v("Opting not to participate in certain interactive areas, which completely alleviates the need to gather any personally identifiable information.")])]), _vm._v(" "), _c('h3', [_vm._v("Data Quality and Access")]), _vm._v(" "), _c('p', [_vm._v("The accuracy of your individual identifying information is important to us. Registered users can review their individual identifying information by signing in and following the instructions.")]), _vm._v(" "), _c('h3', [_vm._v("Linked Sites")]), _vm._v(" "), _c('p', [_vm._v("We provide links to other sites. The privacy policies of these linked sites are the responsibility of the linked site and we have no control or influence over their policies. Please check the policies of each site you visit for specific information. We cannot be held liable for damage or misdoings of other sites linked or otherwise.")]), _vm._v(" "), _c('h3', [_vm._v("Your Consent")]), _vm._v(" "), _c('p', [_vm._v("By using this site, you consent to our collection and use of this information you provide. If we decide to change our privacy policy, we will post those changes on this page, along with the date our privacy policy was last update, so that you are always aware of what information we collect, how we use it, and under what circumstances we disclose it.")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6b9630ae", module.exports)
+  }
+}
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('carousel', {
+    attrs: {
+      "autoplay": true,
+      "perPage": 1,
+      "navigationEnabled": true
+    }
+  }, [_c('slide', [_c('h2', [_vm._v("Easy "), _c('span', {
     staticClass: "color"
   }, [_vm._v("management")])]), _vm._v(" "), _c('p', [_vm._v("Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.")]), _vm._v(" "), _c('a', {
     staticClass: "da-link btn btn-color",
@@ -5055,9 +6701,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "img/parallax-slider/img1.png",
       "alt": "image01"
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "da-slide"
-  }, [_c('h2', [_c('span', {
+  })])]), _vm._v(" "), _c('slide', [_c('h2', [_c('span', {
     staticClass: "color"
   }, [_vm._v("It's")]), _vm._v(" Revolution")]), _vm._v(" "), _c('p', [_vm._v("A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.")]), _vm._v(" "), _c('a', {
     staticClass: "da-link btn btn-color",
@@ -5071,9 +6715,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "img/parallax-slider/img2.png",
       "alt": "image01"
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "da-slide"
-  }, [_c('h2', [_vm._v("Warm "), _c('span', {
+  })])]), _vm._v(" "), _c('slide', [_c('h2', [_vm._v("Warm "), _c('span', {
     staticClass: "color"
   }, [_vm._v("welcome")])]), _vm._v(" "), _c('p', [_vm._v("When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.")]), _vm._v(" "), _c('a', {
     staticClass: "da-link btn btn-color",
@@ -5087,9 +6729,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "img/parallax-slider/img3.png",
       "alt": "image01"
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "da-slide"
-  }, [_c('h2', [_vm._v("Quality "), _c('span', {
+  })])]), _vm._v(" "), _c('slide', [_c('h2', [_vm._v("Quality "), _c('span', {
     staticClass: "color"
   }, [_vm._v("Control")])]), _vm._v(" "), _c('p', [_vm._v("Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.")]), _vm._v(" "), _c('a', {
     staticClass: "da-link btn btn-color",
@@ -5103,23 +6743,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "img/parallax-slider/img4.png",
       "alt": "image01"
     }
-  })])]), _vm._v(" "), _c('nav', {
-    staticClass: "da-arrows"
-  }, [_c('span', {
-    staticClass: "da-arrows-prev"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "da-arrows-next"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('br'), _vm._v(" "), _c('div', {
+  })])])], 1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "divider-1"
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "divider-1"
+  }), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(4)], 1), _vm._v(" "), _vm._m(5)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "text-center"
   }, [_c('h3', [_c('span', {
     staticClass: "color"
   }, [_vm._v("Phoenix Shanti Group")]), _vm._v(". Most Amazing HIV Agency in the Valley. "), _c('span', {
     staticClass: "color"
-  }, [_vm._v("Literally")]), _vm._v(".")]), _vm._v(" "), _c('p', [_vm._v("Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.")])]), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _c('div', {
+  }, [_vm._v("Literally")]), _vm._v(".")]), _vm._v(" "), _c('p', [_vm._v("Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "icon-box-8 text-center"
   }, [_c('div', {
     staticClass: "row"
@@ -5219,11 +6857,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("HIV Services")])]), _vm._v(" "), _c('p', [_vm._v("Personalized support services for people infected with and affected by HIV/AIDS.")])])])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _c('div', {
+  }, [_vm._v("HIV Services")])]), _vm._v(" "), _c('p', [_vm._v("Personalized support services for people infected with and affected by HIV/AIDS.")])])])]), _vm._v(" "), _c('br')])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "block-heading-two text-center"
-  }, [_c('h3', [_c('span', [_vm._v("Our Agency")])])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+  }, [_c('h3', [_c('span', [_vm._v("Our Agency")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4 col-sm-6"
@@ -5346,7 +6986,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "sr-only"
-  }, [_vm._v("40% Complete (success)")])])])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }, [_vm._v("40% Complete (success)")])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "counter-one text-center"
   }, [_c('div', {
     staticClass: "counter-content"
@@ -5448,7 +7090,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('hr', {
     staticClass: "br-brown"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])])])])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "container"
   }, [_c('br'), _vm._v(" "), _c('div', {
     staticClass: "block-heading-two text-center"
@@ -5697,7 +7341,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "img/clients/c2-3.png",
       "alt": ""
     }
-  })])])])])])])
+  })])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -5708,7 +7352,7 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5739,7 +7383,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -5770,7 +7414,36 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v("Donate")]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v("Help Us Help You")])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  })])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ed8a8a24", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15862,10 +17535,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(54)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(82)))
 
 /***/ }),
-/* 54 */
+/* 82 */
 /***/ (function(module, exports) {
 
 var g;
@@ -15892,1686 +17565,12 @@ module.exports = g;
 
 
 /***/ }),
-/* 55 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);
 module.exports = __webpack_require__(10);
 
-
-/***/ }),
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Page Not Found")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("404 Error")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_c('p', [_vm._v("We're sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.")])])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3836d024", module.exports)
-  }
-}
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(82),
-  /* template */
-  __webpack_require__(66),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
-  } else {
-    hotAPI.reload("data-v-5aabf0eb", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Housing")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Transitional and Permanent")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                Phoenix Shanti Group operates two different types of housing programs: "), _c('br'), _vm._v("\n                Transitional Housing and Permanent Supportive Housing.\n            ")]), _vm._v(" "), _c('h3', [_vm._v("Transitional Housing Program")]), _vm._v(" "), _c('p', [_vm._v("The Transitional Housing Program provides a structured, drug-free environment to homeless, or at risk of becoming homeless, HIV+ individuals.  Participants in this program may remain in the program for up to 24 months.  Some basic requirements for entry into the program are:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Lab results showing HIV+ status")]), _vm._v(" "), _c('li', [_vm._v("TB Screen test less than 3 months old")]), _vm._v(" "), _c('li', [_vm._v("Income verification (if applicable)")]), _vm._v(" "), _c('li', [_vm._v("Homeless, or at risk of becoming homeless")])]), _vm._v(" "), _c('p', [_vm._v("For additional questions regarding this program, please contact Justin Kimberlin ("), _c('a', {
-    attrs: {
-      "href": "JustinK@ShantiAZ.org"
-    }
-  }, [_vm._v("JustinK@ShantiAZ.org")]), _vm._v(") 602-279-0008 extension 112")]), _vm._v(" "), _c('p', [_vm._v("Funding for this program is provided in part by "), _c('a', {
-    attrs: {
-      "target": "_blank",
-      "href": "https://portal.hud.gov/hudportal/HUD?src=/program_offices/comm_planning/aidshousing"
-    }
-  }, [_vm._v("HOPWA")]), _vm._v(" and "), _c('a', {
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.vsuw.org"
-    }
-  }, [_vm._v("Valley of the Sun United Way")]), _vm._v(".\n\n            ")]), _c('h3', [_vm._v("Permanent Supportive Housing")]), _vm._v(" "), _c('p', [_vm._v("The other type of housing option operated by Phoenix Shanti Group is Permanent Supportive Housing.  This program is for homeless HIV+ individuals/families who are capable of living independently.  The program provides individuals the opportunity for long term housing stability while utilizing community resources to work toward self sufficiency or home ownership.")]), _vm._v(" "), _c('p', [_vm._v("The Permanent Supportive Housing program supports a drug and alcohol free living environment.")]), _vm._v(" "), _c('p', [_vm._v("For additional questions regarding this program, please contact James Claymon ("), _c('a', {
-    attrs: {
-      "href": "JamesC@ShantiAZ.org"
-    }
-  }, [_vm._v("JamesC@ShantiAZ.org")]), _vm._v(") 602-279-0008 extension 107.")]), _vm._v(" "), _c('p', [_vm._v("Funding for this program is provided in part by the "), _c('a', {
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.HUD.gov"
-    }
-  }, [_vm._v("Department of Housing and Urban Development")]), _vm._v(".")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
-  }
-}
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("HIV Services")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Counseling, Vocational Rehab and Support")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                Phoenix Shanti Group operates four different levels of HIV Services: "), _c('br'), _vm._v("\n                Individual Counseling, Group Counseling, Vocational Rehabilitation and Peer Support.\n            ")]), _vm._v(" "), _c('h3', [_vm._v("Individual Counseling")]), _vm._v(" "), _c('p', [_vm._v("Individual counseling consists of one-on-one sessions with a trained clinician/therapist in an open, supportive, and confidential environment. At Phoenix Shanti Group, our focus is to assist you in resolving the issues that bring you to counseling. Topics addressed in individual counseling include, but are not limited to:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Exploration of feelings, beliefs, and behavior patterns")]), _vm._v(" "), _c('li', [_vm._v("Challenging or influential memories, including trauma")]), _vm._v(" "), _c('li', [_vm._v("Identifying aspects of life that you would like to change")]), _vm._v(" "), _c('li', [_vm._v("Increased insight/awareness/understanding of self and others")]), _vm._v(" "), _c('li', [_vm._v("Communication, boundaries, and how to navigate relationships")])]), _vm._v(" "), _c('p', [_vm._v("The length of individual treatment will be based on your unique needs and goals for therapy. Phoenix Shanti Group clinicians are trained to address a variety of presenting concerns including, but not limited to:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Mental Health (depression, anxiety, PTSD)")]), _vm._v(" "), _c('li', [_vm._v("Substance use/abuse")]), _vm._v(" "), _c('li', [_vm._v("Personal identity, self-esteem, self-worth")]), _vm._v(" "), _c('li', [_vm._v("Gender Identity")]), _vm._v(" "), _c('li', [_vm._v("Sexual/Affectional Orientation")]), _vm._v(" "), _c('li', [_vm._v("Chronic Illness (specializing in issues associated with HIV, including stigma and disclosure concerns)")]), _vm._v(" "), _c('li', [_vm._v("Trauma")])]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group has therapists from various backgrounds who are Master’s level clinicians licensed to practice in the State of Arizona. Our therapists are trained in utilizing a holistic approach to treatment, integrating mind and body. Phoenix Shanti Group therapists are also trained in an evidence-based trauma treatment called EMDR (Eye Movement Desensitization and Reprocessing). For more information on EMDR, please visit "), _c('a', {
-    attrs: {
-      "href": "http://www.emdr.com",
-      "target": "_blank"
-    }
-  }, [_vm._v("EMDR.com")])]), _vm._v(" "), _c('h3', [_vm._v("Group Counseling")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group offers an intensive outpatient program focused on substance use/abuse and HIV support/education. This program consists of multiple group sessions held at our clinic throughout the week. This program is for HIV+ individuals.")]), _vm._v(" "), _c('p', [_vm._v("Group members discuss and process a variety of issues including exploring relationships, improving self-esteem, relapse prevention, mental health concerns, HIV-related issues, stress management, and enhancing coping skills.  Group members are encouraged to share information about themselves and provide feedback to others. Group leaders aim to create a safe and supportive environment, which includes facilitating productive communication and respect. Group leaders may also encourage member engagement in the group process, give feedback, and offer support to individual members or the group as a whole. Group facilitators will also provide education surrounding common themes experienced by group members. Group members are asked to make a commitment to protect each other’s confidentiality by agreeing not to share information that would identify other members outside of group.")]), _vm._v(" "), _c('p', [_vm._v("At Phoenix Shanti Group, we have found that many experience relief from participating in  group treatment and recognizing that they are not alone in facing life’s challenges. Often, substance use can lead to isolation. Group participation allows individuals to re-engage in social settings and learn how to build healthy connections with others. Many members have also found it helpful to be able to learn from peers’ experiences and have shared that seeing others recover creates a sense of hope.")]), _vm._v(" "), _c('h3', [_vm._v("Vocational Rehabilitation / Job Skills Training")]), _vm._v(" "), _c('p', [_vm._v("PSG, through a 7,000 sq. foot re-sale store, provides a three module Voc Rehab curriculum program for trainees to gain knowledge, skill, and experience to re-enter the workforce.")]), _vm._v(" "), _c('p', [_vm._v("Trainees learn “hard skills” like computer use, internal inventory controls, donation pickup scheduling, organization, maintenance, pricing and item values, furniture repair and display, customer service, point of sale and money handling, workforce expectations, work ethics, and more.")]), _vm._v(" "), _c('p', [_vm._v("Trainees also learn “soft skills” like communication, boundaries, assertiveness training, problem solving, decision making, self-esteem, risk taking, value clarification, conflict resolution and more.")]), _vm._v(" "), _c('p', [_vm._v("Additionally, trainees learn how to create a resume, how to search for employment and receive interview coaching. It is our hope that by providing a long term solution thru education and training, individuals will be more likely to become self-sufficient and independent in the future.  We strive for a goal of either job placement or enrollment in a higher education institution by the time the trainee is ready to graduate from the program.  The Vocational Rehabilitation program is a 1 year program for most participants but can be extended further on a case by case basis.")]), _vm._v(" "), _c('p', [_vm._v("Shanti’s Second Chances thrift store and Voc Rehab program is an integral part of the Phoenix Shanti recovery experience. It is available to all clients of the Phoenix Shanti Group.")]), _vm._v(" "), _c('p', [_vm._v("Shanti’s 2nd Chances store is located at 4015 N 16th Street Phoenix, AZ, and is open Monday through Friday 9am – 6pm and on Saturday 9am-5pm. You can also shop from our Ebay store, ebay.com/usr/phoenix-shanti-group")]), _vm._v(" "), _c('p', [_vm._v("PSG offers a FREE valley-wide donation pickup service 6 days a week. You can schedule a pickup by calling us at 602-283-0100. Donations of furniture, clothing, patio, sporting goods, appliances (working or not), electronics, and other household items are gratefully accepted. Your donations are tax deductible and a tax receipt will be provided to you with any donation that you make. Thank you for your continued support.")]), _vm._v(" "), _c('h3', [_vm._v("Peer Support")]), _vm._v(" "), _c('p', [_vm._v("PSG employs a peer support specialist/recovery coach to include a personal approach to the individual and group therapy process. Our peer support/recovery coach draws from personal experience and knowledge of mental health and/or substance abuse services and recovery in collaborating with the team to promote personal growth, self-determination and consumer-choice in the planning, delivery and evaluation of treatment and support services.")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-18d3a9c0", module.exports)
-  }
-}
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Getting Started")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Taking the First Step")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                Your first step is to call us to schedule your intake appointment (602-279-0008). During this call, a staff member will request some initial information to determine if the services provided at Phoenix Shanti Group will meet your needs.\n            ")]), _vm._v(" "), _c('p', [_vm._v("If it is determined that our services fit your treatment needs, you will then be scheduled for an intake assessment. This appointment consists of a two-hour evaluation which provides you the opportunity to build rapport with the therapist, to share some of your background information, to discuss the reasons you are seeking services, and to set goals that you would like to accomplish. During this appointment, your intake therapist will provide you with information regarding confidentiality, services offered at Phoenix Shanti Group, and what to expect in therapy.")]), _vm._v(" "), _c('p', [_vm._v("The goal during the assessment is to ensure that your needs are identified and for the clinician to make appropriate recommendations for continued treatment. We will work with you to determine what kind of treatment is best for you. This process occasionally includes a referral to an outside agency that provides other specialized services that can help you to address the needs you present with. At the end of this appointment, the intake clinician will schedule you for your next session.")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4f1f7bdc", module.exports)
-  }
-}
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Donate")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Help Us Help You")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  })])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-ed8a8a24", module.exports)
-  }
-}
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Volunteer")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Help Us Help You")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                Have you been searching for an opportunity that fulfills your desire to give back to the community and see a direct difference and change brought about from your individual effort?\n            ")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group is a local 501c3 non-profit organization, which means, that amongst other things, when you interact with us, you are not a name-less, face-less individual giving your time and talents to a multi-national organization where you may or may not see the immediate effect of your giving.")]), _vm._v(" "), _c('p', [_vm._v("If you are looking for a more personal experience where you can see a direct impact due to your personal efforts, then we encourage you to read on, and find out more about the various opportunities available in which your help will be greatly appreciated:")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Food Pantry:")]), _vm._v(" Phoenix Shanti Group operates a canned goods/non-perishable foods pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of canned/non-perishable food items will assist us in keeping our food pantry stocked and provide our patients with the ability to have a nutritious meal.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Personal Hygiene Pantry:")]), _vm._v("  Phoenix Shanti Group operates a personal hygiene pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of personal hygiene items (toothpaste, dental floss, tooth brushes, razors, shaving cream, toilet paper, shampoo, soap, laundry detergent, mouthwash, deodorant, dish soap) will assist us in keeping the pantry stocked with these essential items.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Homeless Shelter Construction/Repair/Maintenance Coordinators:")]), _vm._v("  Phoenix Shanti Group operates homeless shelters for individuals with HIV/AIDS.  The shelters are in continuing need of various repairs and general maintenance, including interior/exterior painting.  Your donation of paint, power tools, construction supplies, or even more importantly, your time to participate in our shelter maintenance program will be greatly appreciated!")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Social Media Coordinators:")]), _vm._v(" Phoenix Shanti Group is looking for individuals to participate in our social media initiative.  Through the use of facebook, twitter, texting, and youtube, we are looking to individuals to friend, tweet, and forward on messages from Shanti regarding special events that are planned throughout the year.\n\n            ")]), _c('p', [_c('strong', [_vm._v("Special Events Coordinators:")]), _vm._v("  Special Events Coordinators will work directly with a staff member on individual events that are planned throughout the year.  These are events in which the cause of HIV/AIDS or Phoenix Shanti Group will be recognized or host/partially host an event.  Events range from theater/arts performances to professional sports games, as well as many other venues.")]), _vm._v(" "), _c('p', [_vm._v("Traditional Media Coordinators:  Traditional Media Coordinators will work directly with a staff member on individual media projects.  These projects include radio, television, electronic, and print interviews, public relations, advertising, and marketing campaigns.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Legal Assistance Coordinators:")]), _vm._v("  Legal Assistance Coordinators will work directly with a staff member on estate planning, end of life remembrance programs, and other legal/technical initiatives.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Corporate Incentives Coordinators:")]), _vm._v("  Corporate Incentive Coordinators will work directly with a staff member on outreach programs for corporate sponsorships, grants, donations, matching gifts programs, and speaking opportunities in which Phoenix Shanti Group is the primary recipient.Type your paragraph here.")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1772fe5b", module.exports)
-  }
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Resources")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Let Us Help You")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  })])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3d5cfb76", module.exports)
-  }
-}
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Contact")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Main Office")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('iframe', {
-    staticStyle: {
-      "border": "0"
-    },
-    attrs: {
-      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942",
-      "width": "100%",
-      "height": "450",
-      "frameborder": "0",
-      "allowfullscreen": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                        In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.\n\n                        You can also use this page to write a testimonial about your experience at Shanti, request a FREE furniture or household goods donation pickup, or sign up for our eNewsletter for special announcements.\n                    ")]), _vm._v(" "), _c('div', {
-    staticClass: "divider-2"
-  }), _vm._v(" "), _c('form', {
-    attrs: {
-      "action": "/contact",
-      "method": "POST"
-    }
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "name"
-    }
-  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "text",
-      "id": "name"
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "email"
-    }
-  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "email",
-      "id": "email"
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "subject"
-    }
-  }, [_vm._v("Subject:")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "subject",
-      "id": "subject"
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "message"
-    }
-  }, [_vm._v("Message:")]), _vm._v(" "), _c('textarea', {
-    staticClass: "form-control",
-    attrs: {
-      "id": "message",
-      "name": "message",
-      "rows": "10"
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Send Message")])])])])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
-  }
-}
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Board of Directors")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Our Management Team")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  })])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-51a29b48", module.exports)
-  }
-}
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Staff")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("Our Team")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  })])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1d35e242", module.exports)
-  }
-}
-
-/***/ }),
-/* 75 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Cultural Competency | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 76 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'History | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 77 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Mission | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 78 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Privacy Policy | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 79 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Board of Directors | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 80 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Main Office | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 81 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Staff | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 82 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'HIV+ Housing | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 83 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'HIV Services | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 84 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Donate | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 85 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Resources | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 86 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Volunteer | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 87 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Getting Started | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 88 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Home | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 89 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Page Not Found | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v("Privacy Policy")]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v("How We Protect You")])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('h3', [_vm._v("Privacy Policy")]), _vm._v(" "), _c('p', [_vm._v("This site is owned and operated by Phoenix Shanti Group. Because we gather certain types of information about our users, we feel you should fully understand our policy and the terms and conditions surrounding the capture and use of that information. This privacy statement discloses what information we gather and how we use it.")]), _vm._v(" "), _c('h3', [_vm._v("Information We Gather and Track")]), _vm._v(" "), _c('p', [_vm._v("We gather two types of information about users:\n\n            ")]), _c('p', [_vm._v("1. Information that users provide through optional, voluntary submissions. These are voluntary submissions and can include to sign up as a user, receive electronic newsletters, fill out response forms, participate in polls, etc.")]), _vm._v(" "), _c('p', [_vm._v("2. Information we gather through aggregated tracking information derived mainly by tallying page views throughout our sites. This information allows us to better tailor our content to readers' needs.")]), _vm._v(" "), _c('p', [_vm._v("Consistent with the Federal Children's Online Privacy Protection Act of 1998 (COPPA), we will never knowingly request personally identifiable information from anyone under the age of 13 without requesting parental consent.")]), _vm._v(" "), _c('h3', [_vm._v("Usage Tracking")]), _vm._v(" "), _c('p', [_vm._v("We track user traffic patterns throughout all of our sites. However, we do not correlate this information with data about individual users. We do break down overall usage statistics according to a user's domain name, browser type, and MIME type by reading this information from the browser string (information passed to us by every user's browser).")]), _vm._v(" "), _c('p', [_vm._v("We use tracking information to determine which areas of our sites users like and don't like based on traffic to those areas. We do not track what individual users read, but rather how well each page performs overall. This helps us continue to build a better site for you.")]), _vm._v(" "), _c('h3', [_vm._v("Cookies")]), _vm._v(" "), _c('p', [_vm._v("We may place a text file called a \"cookie\" in the browser files of your computer. The cookie itself does not contain Personal Information although it can enable us to relate your use of this site to information that you have specifically and knowingly provided. But the only personal information a cookie can identify is information you supply yourself. A cookie can't read data off your hard disk or read cookie files created by other sites. We use cookies to track users who've signed-in and people who've participated in a poll.")]), _vm._v(" "), _c('p', [_vm._v("You can refuse cookies by turning them off in your browser. If you've set your browser to warn you before accepting cookies, you will receive the warning message with each cookie. You do not need to have cookies turned on to use this site.")]), _vm._v(" "), _c('h3', [_vm._v("Use Of Information")]), _vm._v(" "), _c('p', [_vm._v("As stated above, we use information that users voluntarily provide in order to send out electronic newsletters and to enable users to participate in the various parts of our site. Otherwise, we do not share your e-mail address or any other individually identifying information with any third parties.")]), _vm._v(" "), _c('p', [_vm._v("While we use tracking information to determine which areas of our sites users like and don't like based on traffic to those areas, we do not track what individual users read, but rather how well each page performs overall. This helps us continue to build a better service for you.")]), _vm._v(" "), _c('p', [_vm._v("We create aggregate reports on user demographics and traffic patterns for our internal use only. We will not disclose any information about any individual user except to comply with applicable law or valid legal process or to protect the personal safety of our users or the public.")]), _vm._v(" "), _c('h3', [_vm._v("Sharing Of The Information")]), _vm._v(" "), _c('p', [_vm._v("We will not sell, trade, rent or provide any information about individual users with any third party, except to send out electronic newsletters or to comply with applicable law or valid legal process or to protect the personal safety of our users or the public.")]), _vm._v(" "), _c('h3', [_vm._v("Security")]), _vm._v(" "), _c('p', [_vm._v("We use servers protected by industry standard firewall and password protection systems. Our security and privacy policies are periodically reviewed and enhanced as necessary and only authorized individuals have access to the information provided by our users.")]), _vm._v(" "), _c('h3', [_vm._v("Opt-Out Policy")]), _vm._v(" "), _c('p', [_vm._v("We give users options wherever necessary and practical. Such choices include:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Opting not to register as a user and receive our electronic newsletters.")]), _vm._v(" "), _c('li', [_vm._v("Opting not to participate in certain interactive areas, which completely alleviates the need to gather any personally identifiable information.")])]), _vm._v(" "), _c('h3', [_vm._v("Data Quality and Access")]), _vm._v(" "), _c('p', [_vm._v("The accuracy of your individual identifying information is important to us. Registered users can review their individual identifying information by signing in and following the instructions.")]), _vm._v(" "), _c('h3', [_vm._v("Linked Sites")]), _vm._v(" "), _c('p', [_vm._v("We provide links to other sites. The privacy policies of these linked sites are the responsibility of the linked site and we have no control or influence over their policies. Please check the policies of each site you visit for specific information. We cannot be held liable for damage or misdoings of other sites linked or otherwise.")]), _vm._v(" "), _c('h3', [_vm._v("Your Consent")]), _vm._v(" "), _c('p', [_vm._v("By using this site, you consent to our collection and use of this information you provide. If we decide to change our privacy policy, we will post those changes on this page, along with the date our privacy policy was last update, so that you are always aware of what information we collect, how we use it, and under what circumstances we disclose it.")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6b9630ae", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

@@ -1,39 +1,32 @@
 <template>
     <div class="main-block">
-        <div class="parallax-slider">
-            <div id="da-slider" class="da-slider">
-                <div class="da-slide">
+        <div class="container">
+            <carousel :autoplay="true" :perPage="1" :navigationEnabled="true">
+                <slide>
                     <h2>Easy <span class="color">management</span></h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
                     <a href="#" class="da-link btn btn-color">Read more</a>
                     <div class="da-img"><img src="img/parallax-slider/img1.png" alt="image01" /></div>
-                </div>
-                <div class="da-slide">
+                </slide>
+                <slide>
                     <h2><span class="color">It's</span> Revolution</h2>
                     <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                     <a href="#" class="da-link btn btn-color">Read more</a>
                     <div class="da-img"><img src="img/parallax-slider/img2.png" alt="image01" /></div>
-                </div>
-                <div class="da-slide">
+                </slide>
+                <slide>
                     <h2>Warm <span class="color">welcome</span></h2>
                     <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
                     <a href="#" class="da-link btn btn-color">Read more</a>
                     <div class="da-img"><img src="img/parallax-slider/img3.png" alt="image01" /></div>
-                </div>
-                <div class="da-slide">
+                </slide>
+                <slide>
                     <h2>Quality <span class="color">Control</span></h2>
                     <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
                     <a href="#" class="da-link btn btn-color">Read more</a>
                     <div class="da-img"><img src="img/parallax-slider/img4.png" alt="image01" /></div>
-                </div>
-                <nav class="da-arrows">
-                    <span class="da-arrows-prev"></span>
-                    <span class="da-arrows-next"></span>
-                </nav>
-            </div>
-        </div>
-
-        <div class="container">
+                </slide>
+            </carousel>
 
             <br />
             <div class="text-center">
@@ -384,9 +377,15 @@
 </template>
 
 <script>
+    import { Carousel, Slide } from 'vue-carousel';
+
     export default {
+        components: {
+            Carousel,
+            Slide
+        },
         mounted() {
             document.title = 'Home | Phoenix Shanti Group';
         }
-    }
+    };
 </script>
