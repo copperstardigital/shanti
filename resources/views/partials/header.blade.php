@@ -130,7 +130,7 @@
                 <div class="col-md-2">
                     <!-- Logo section -->
                     <div class="logo">
-                        <a href="/"><img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group"></a>
+                        <router-link to="/" exact><img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group"></router-link>
                     </div>
                 </div>
                 <div class="col-md-9">

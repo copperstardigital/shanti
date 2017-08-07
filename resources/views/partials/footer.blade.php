@@ -1,6 +1,6 @@
 <router-view></router-view>
 
-</div>
+
 <!-- Foot Starts -->
 
 <div class="foot">
@@ -111,14 +111,15 @@
     <div class="container">
         <!-- Footer Content -->
         <!-- Paragraph -->
-        <p class="pull-left">Copyright &copy {{ date('Y') }} - <a href="/">Phoenix Shanti Group</a></p>
+        <p class="pull-left">Copyright &copy {{ date('Y') }} - <router-link to="/" exact>Phoenix Shan ti Group</router-link>
+        </p>
         <ul class="list-inline pull-right">
             <!-- List -->
-            <li><a href="/">Home</a><li>
-            <li><a href="/mission">Mission</a></li>
-            <li><a href="/hiv-housing">Housing</a></li>
-            <li><a href="/hiv-services">HIV Services</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <router-link to="/" exact>Home</router-link>
+            <router-link to="/about/mission">Mission</router-link>
+            <router-link to="/services/housing">Housing</router-link>
+            <router-link to="/services/hiv">HIV+ Services</router-link>
+            <router-link to="/contact/office">Contact</router-link>
         </ul>
         <!-- Clearfix -->
         <div class="clearfix"></div>
@@ -127,7 +128,7 @@
 
 <!-- Footer Ends -->
 
-</div>
+</div></div>
 
 <!-- Outer Ends -->
 
