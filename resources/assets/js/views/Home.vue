@@ -1,11 +1,4 @@
-@extends('layouts.master')
-
-@section('page_title', 'Home')
-
-@section('content')
-
-    <!-- Main content starts -->
-
+<template>
     <div class="main-block">
         <div class="parallax-slider">
             <div id="da-slider" class="da-slider">
@@ -388,7 +381,12 @@
 
         </div>
     </div>
+</template>
 
-    <!-- Main content ends -->
-
-@endsection
+<script>
+    export default {
+        mounted() {
+            document.title = 'Home | Phoenix Shanti Group';
+        }
+    }
+</script>

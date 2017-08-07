@@ -58,6 +58,8 @@
 <!-- Add "img-x" (1 to 5) for background images. -->
 <body>
 
+<div id="app">
+
 <!-- Outer Starts -->
 <div class="outer">
 
@@ -160,5 +162,6 @@
             </div>
         </div>
     </div>
+
 
     <!-- Header two ends -->

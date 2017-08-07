@@ -2,31 +2,31 @@
 <div class="navy">
     <ul>
         <!-- Main menu -->
-        <li><a href="/">Home</a>
+        <router-link to="/" tag="li" exact><a>Home</a></router-link>
         <li><a href="#">About</a>
             <ul>
-                <li><a href="/mission">Mission</a>
-                <li><a href="/history">History</a>
-                <li><a href="/cultural-competency">Cultural Competency</a></li>
-                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <router-link to="/about/mission" tag="li"><a>Mission</a></router-link>
+                <router-link to="/about/history" tag="li"><a>History</a></router-link>
+                <router-link to="/about/cultural-competency" tag="li"><a>Cultural Competency</a></router-link>
+                <router-link to="/about/privacy-policy" tag="li"><a>Privacy Policy</a></router-link>
             </ul>
         </li>
-        <li><a href="/hiv-housing">HIV+ Housing</a></li>
-        <li><a href="/hiv-services">HIV+ Services</a></li>
-        <li><a href="/getting-started">Getting Started</a></li>
+        <router-link to="/services/housing" tag="li"><a>HIV+ Housing</a></router-link>
+        <router-link to="/services/hiv" tag="li"><a>HIV+ Services</a></router-link>
+        <router-link to="/getting-started" tag="li"><a>Getting Started</a></router-link>
         <li><a href="#">Support</a>
             <ul>
-                <li><a href="/donate">Donate</a>
-                <li><a href="/volunteer">Volunteer</a>
-                <li><a href="/resources">Resources</a></li>
+                <router-link to="/support/donate" tag="li"><a>Donate</a></router-link>
+                <router-link to="/support/volunteer" tag="li"><a>Volunteer</a></router-link>
+                <router-link to="/support/resources" tag="li"><a>Resources</a></router-link>
             </ul>
         </li>
         <li><a href="http://store.shantiaz.org">Store</a></li>
         <li><a href="#">Contact</a>
             <ul>
-                <li><a href="/contact">Office</a>
-                <li><a href="/staff">Staff</a>
-                <li><a href="/board">Board</a>
+                <router-link to="/contact/office" tag="li"><a>Office</a></router-link>
+                <router-link to="/contact/staff" tag="li"><a>Staff</a></router-link>
+                <router-link to="/contact/board" tag="li"><a>Board</a></router-link>
             </ul>
         </li>
 

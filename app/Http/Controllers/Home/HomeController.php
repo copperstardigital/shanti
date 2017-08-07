@@ -18,4 +18,8 @@ class HomeController extends Controller
     public function gettingStarted() {
         return view('home.getting-started');
     }
+
+    public function main() {
+        return view('home.main');
+    }
 }

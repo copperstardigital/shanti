@@ -1,8 +1,4 @@
-@extends('layouts.master')
-
-@section('page_title', 'Volunteer')
-
-@section('content')
+<template>
     <div class="main-block">
 
         <!-- Page heading one starts -->
@@ -44,4 +40,13 @@
 
             </div>
         </div>
-@endsection
+    </div>
+</template>
+
+<script>
+    export default {
+        mounted() {
+            document.title = 'Volunteer | Phoenix Shanti Group';
+        }
+    }
+</script>

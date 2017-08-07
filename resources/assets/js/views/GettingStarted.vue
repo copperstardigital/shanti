@@ -1,8 +1,4 @@
-@extends('layouts.master')
-
-@section('page_title', 'Getting Started')
-
-@section('content')
+<template>
     <div class="main-block">
 
         <!-- Page heading one starts -->
@@ -28,4 +24,13 @@
 
             </div>
         </div>
-@endsection
+    </div>
+</template>
+
+<script>
+    export default {
+        mounted() {
+            document.title = 'Getting Started | Phoenix Shanti Group';
+        }
+    }
+</script>

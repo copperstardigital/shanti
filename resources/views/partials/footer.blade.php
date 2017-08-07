@@ -1,3 +1,6 @@
+<router-view></router-view>
+
+</div>
 <!-- Foot Starts -->
 
 <div class="foot">
@@ -108,14 +111,14 @@
     <div class="container">
         <!-- Footer Content -->
         <!-- Paragraph -->
-        <p class="pull-left">Copyright &copy {{ date('Y') }} - <a href="#">Phoenix Shanti Group</a></p>
+        <p class="pull-left">Copyright &copy {{ date('Y') }} - <a href="/">Phoenix Shanti Group</a></p>
         <ul class="list-inline pull-right">
             <!-- List -->
-            <li><a href="index.html">Home</a><li>
-            <li><a href="service.html">Service</a></li>
-            <li><a href="feature.html">Features</a></li>
-            <li><a href="about-us.html">About</a></li>
-            <li><a href="contact-us.html">Contact</a></li>
+            <li><a href="/">Home</a><li>
+            <li><a href="/mission">Mission</a></li>
+            <li><a href="/hiv-housing">Housing</a></li>
+            <li><a href="/hiv-services">HIV Services</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
         <!-- Clearfix -->
         <div class="clearfix"></div>
@@ -183,6 +186,6 @@
 
 <!-- Custom JS. Type your JS code in custom.js file -->
 <script src="/js/custom.js"></script>
-
+<script src="/js/app.js?t={{ time() }}"></script>
 </body>
 </html>
