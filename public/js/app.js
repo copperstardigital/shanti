@@ -3317,7 +3317,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-//Vue.component('example', require('./components/Example.vue'));
+Vue.component('footer-area', __webpack_require__(92));
 
 var app = new Vue({
     el: '#app',
@@ -17571,6 +17571,302 @@ module.exports = g;
 __webpack_require__(9);
 module.exports = __webpack_require__(10);
 
+
+/***/ }),
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(93),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Footer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Footer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6085d134", Component.options)
+  } else {
+    hotAPI.reload("data-v-6085d134", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "foot"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-user"
+  }), _vm._v("  About")]), _vm._v(" "), _c('p', [_vm._v("\"Shanti\" is a Sanskrit word meaning \"Inner Peace\" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity")]), _vm._v(" "), _c('div', {
+    staticClass: "brand-bg"
+  }, [_c('a', {
+    staticClass: "facebook",
+    attrs: {
+      "href": "http://www.facebook.com/phoenixshantigroup",
+      "title": "Phoenix Shanti Group"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook circle-3"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "facebook",
+    attrs: {
+      "href": "http://www.facebook.com/shanti2ndchances",
+      "title": "Shanti 2nd Chances"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook circle-3"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "twitter",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-twitter circle-3"
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "subscribe-box"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_vm._v("Subscribe :")]), _vm._v(" "), _c('form', {
+    attrs: {
+      "role": "form"
+    }
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Enter Email Id"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    staticClass: "btn btn-color",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Subscribe")])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-comments"
+  }), _vm._v("  Recent Posts")]), _vm._v(" "), _c('div', {
+    staticClass: "foot-item-content"
+  }, [_c('ul', {
+    staticClass: "list-unstyled"
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Denocing Sapientes Contain")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Dignissim Electronic Typeset")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Laborum Desktop Publishing")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Quibus PageMaker Including")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Denocing Sapientes Contain")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-picture-o"
+  }), _vm._v("  Recent Images")]), _vm._v(" "), _c('div', {
+    staticClass: "foot-item-content"
+  }, [_c('div', {
+    staticClass: "foot-recent-img"
+  }, [_c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/1.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/2.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/3.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/3.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "foot-recent-img"
+  }, [_c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/1.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/2.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/3.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/3.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "foot-recent-img"
+  }, [_c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/1.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/2.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/3.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/3.jpg",
+      "alt": ""
+    }
+  })])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-building-o"
+  }), _vm._v("  Contact Us")]), _vm._v(" "), _c('div', {
+    staticClass: "foot-item-content address"
+  }, [_c('h6', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-home"
+  }), _vm._v("  Phoenix Shanti Group")]), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                            2345 West Glendale Avenue,"), _c('br'), _vm._v("\n                            Phoenix, Arizona 85021")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" Tel : (602) 279-0008"), _c('br'), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-envelope"
+  }), _vm._v("  Email : "), _c('a', {
+    attrs: {
+      "href": "mailto:info@shantiaz.org"
+    }
+  }, [_vm._v("info@shantiaz.org")]), _c('br'), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-calendar"
+  }), _vm._v(" Business Hours : 8:30 am - 4:30 pm")])])])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6085d134", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
