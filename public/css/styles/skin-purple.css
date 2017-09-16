@@ -623,3 +623,11 @@ blockquote.blockquote-reverse {
 .foot {
   border-color: #cb79e6;
 }
+
+.mls {
+  margin-left: .25em;
+}
+
+.fs1 {
+  font-size: 40px;
+}

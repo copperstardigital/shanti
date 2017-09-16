@@ -50,7 +50,16 @@
     <link href="/css/custom.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/manifest.json">
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/48345/Shanti/style.css?ej4020">-->
+    <link rel="stylesheet" href="https://i.icomoon.io/public/373f33d17b/Shanti/style.css">
 </head>
 
 <!-- Add class "boxed" along with body for boxed layout. -->
@@ -134,7 +143,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    @include('partials.nav')
+                    <nav-area></nav-area>
                 </div>
 
                 <div class="col-md-1">

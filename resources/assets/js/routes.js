@@ -16,6 +16,7 @@ let router = new VueRouter({
         { path: '/support/resources', component: require('./views/support/Resources')},
         { path: '/support/volunteer', component: require('./views/support/Volunteer')},
         { path: '/about', component: require('./views/About')},
+        { path: '/blog', component: require('./views/blog/Posts')},
         { path: '/getting-started', component: require('./views/GettingStarted')},
         { path : '*',  component: require('./views/NotFound')},
     ]

@@ -61,7 +61,7 @@
                             <!-- Icon Box Eight Icon -->
                             <div class="icon-box-8-icon">
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-home"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-cog"></i> </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-home"></i> </a>
                             </div>
                             <!-- Heading -->
                             <h4><a href="#">Housing</a></h4>
@@ -73,7 +73,7 @@
                         <div class="icon-box-8-item bg-lblue">
                             <div class="icon-box-8-icon">
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-truck"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-cloud"></i> </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-truck"></i> </a>
                             </div>
                             <h4><a href="#">2nd Chances Store</a></h4>
                             <p>PSG operates a 7,000-square-foot retail thrift store to help fund patient services.</p>
@@ -83,7 +83,7 @@
                         <div class="icon-box-8-item bg-green">
                             <div class="icon-box-8-icon">
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-leaf"></i>  </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-briefcase"></i> </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-leaf"></i> </a>
                             </div>
                             <h4><a href="#">Treatment</a></h4>
                             <p>Individualized treatment plans are tailored to clients to help rebuild lives.</p>
@@ -93,7 +93,7 @@
                         <div class="icon-box-8-item bg-purple">
                             <div class="icon-box-8-icon">
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-user"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-gift"></i> </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-user"></i> </a>
                             </div>
                             <h4><a href="#">HIV Services</a></h4>
                             <p>Personalized support services for people infected with and affected by HIV/AIDS.</p>

@@ -46,43 +46,44 @@
                         <div class="icon-box-8-item bg-red">
                             <!-- Icon Box Eight Icon -->
                             <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-home"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-cog"></i> </a>
+                                <a href="#" class="icon-box-8-icon-top"> <span class="icon icon-awareness-ribbon"></span>
+                                </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <span class="icon icon-awareness-ribbon"></span> </a>
                             </div>
                             <!-- Heading -->
-                            <h4><a href="#">Housing</a></h4>
+                            <h4><router-link to="/services/hiv">HIV Services</router-link></h4>
                             <!-- Paragraph -->
-                            <p>Shanti offers transitional and permanent housing to homeless individuals.</p>
+                            <p>Personalized support services for people infected with and affected by HIV/AIDS.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="icon-box-8-item bg-lblue">
                             <div class="icon-box-8-icon">
                                 <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-truck"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-cloud"></i> </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-truck"></i> </a>
                             </div>
-                            <h4><a href="#">2nd Chances Store</a></h4>
+                            <h4><a href="http://store.shantiaz.org">2nd Chances Store</a></h4>
                             <p>PSG operates a 7,000-square-foot retail thrift store to help fund patient services.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="icon-box-8-item bg-green">
                             <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-leaf"></i>  </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-briefcase"></i> </a>
+                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-user"></i>  </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-user"></i> </a>
                             </div>
-                            <h4><a href="#">Treatment</a></h4>
+                            <h4><router-link to="/services/hiv">Treatment</router-link></h4>
                             <p>Individualized treatment plans are tailored to clients to help rebuild lives.</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="icon-box-8-item bg-purple">
                             <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-user"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-gift"></i> </a>
+                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-home"></i> </a>
+                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-home"></i> </a>
                             </div>
-                            <h4><a href="#">HIV Services</a></h4>
-                            <p>Personalized support services for people infected with and affected by HIV/AIDS.</p>
+                            <h4><router-link to="/services/housing">Housing</router-link></h4>
+                            <p>Shanti offers transitional and permanent housing to homeless individuals.</p>
                         </div>
                     </div>
                 </div>
@@ -260,115 +261,123 @@
 
             <br />
 
-            <div class="block-heading-two text-center">
-                <h3><span>Our Team</span></h3>
-            </div>
+            <!--<div class="block-heading-two text-center">-->
+                <!--<h3><span>Our Team</span></h3>-->
+            <!--</div>-->
 
-            <!-- Team #6 -->
-            <div class="team-six">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <!-- Team Member -->
-                        <div class="team-member">
-                            <!-- Image -->
-                            <img class="img-responsive" src="img/user/1.jpg" alt="" />
-                            <!-- Name -->
-                            <h4>Jennifer Doe</h4>
-                            <span class="deg">Creative</span>
-                            <!-- Team Links -->
-                            <div class="team-links">
-                                <a href="#"><i class="fa fa-comment"></i></a>
-                                <a href="#"><i class="fa fa-envelope"></i></a>
-                                <a href="#"><i class="fa fa-phone"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <!-- Team Member -->
-                        <div class="team-member">
-                            <!-- Image -->
-                            <img class="img-responsive" src="img/user/2.jpg" alt="" />
-                            <!-- Name -->
-                            <h4>Jennifer Doe</h4>
-                            <span class="deg">Programmer</span>
-                            <!-- Team Links -->
-                            <div class="team-links">
-                                <a href="#"><i class="fa fa-comment"></i></a>
-                                <a href="#"><i class="fa fa-envelope"></i></a>
-                                <a href="#"><i class="fa fa-phone"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <!-- Team Member -->
-                        <div class="team-member">
-                            <!-- Image -->
-                            <img class="img-responsive" src="img/user/3.jpg" alt="" />
-                            <!-- Name -->
-                            <h4>Jennifer Doe</h4>
-                            <span class="deg">CEO</span>
-                            <!-- Team Links -->
-                            <div class="team-links">
-                                <a href="#"><i class="fa fa-comment"></i></a>
-                                <a href="#"><i class="fa fa-envelope"></i></a>
-                                <a href="#"><i class="fa fa-phone"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <!-- Team Member -->
-                        <div class="team-member">
-                            <!-- Image -->
-                            <img class="img-responsive" src="img/user/4.jpg" alt="" />
-                            <!-- Name -->
-                            <h4>Jennifer Doe</h4>
-                            <span class="deg">Manager</span>
-                            <!-- Team Links -->
-                            <div class="team-links">
-                                <a href="#"><i class="fa fa-comment"></i></a>
-                                <a href="#"><i class="fa fa-envelope"></i></a>
-                                <a href="#"><i class="fa fa-phone"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--&lt;!&ndash; Team #6 &ndash;&gt;-->
+            <!--<div class="team-six">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-md-3 col-sm-6">-->
+                        <!--&lt;!&ndash; Team Member &ndash;&gt;-->
+                        <!--<div class="team-member">-->
+                            <!--&lt;!&ndash; Image &ndash;&gt;-->
+                            <!--<img class="img-responsive" src="img/user/1.jpg" alt="" />-->
+                            <!--&lt;!&ndash; Name &ndash;&gt;-->
+                            <!--<h4>Jennifer Doe</h4>-->
+                            <!--<span class="deg">Creative</span>-->
+                            <!--&lt;!&ndash; Team Links &ndash;&gt;-->
+                            <!--<div class="team-links">-->
+                                <!--<a href="#"><i class="fa fa-comment"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-envelope"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-phone"></i></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3 col-sm-6">-->
+                        <!--&lt;!&ndash; Team Member &ndash;&gt;-->
+                        <!--<div class="team-member">-->
+                            <!--&lt;!&ndash; Image &ndash;&gt;-->
+                            <!--<img class="img-responsive" src="img/user/2.jpg" alt="" />-->
+                            <!--&lt;!&ndash; Name &ndash;&gt;-->
+                            <!--<h4>Jennifer Doe</h4>-->
+                            <!--<span class="deg">Programmer</span>-->
+                            <!--&lt;!&ndash; Team Links &ndash;&gt;-->
+                            <!--<div class="team-links">-->
+                                <!--<a href="#"><i class="fa fa-comment"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-envelope"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-phone"></i></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3 col-sm-6">-->
+                        <!--&lt;!&ndash; Team Member &ndash;&gt;-->
+                        <!--<div class="team-member">-->
+                            <!--&lt;!&ndash; Image &ndash;&gt;-->
+                            <!--<img class="img-responsive" src="img/user/3.jpg" alt="" />-->
+                            <!--&lt;!&ndash; Name &ndash;&gt;-->
+                            <!--<h4>Jennifer Doe</h4>-->
+                            <!--<span class="deg">CEO</span>-->
+                            <!--&lt;!&ndash; Team Links &ndash;&gt;-->
+                            <!--<div class="team-links">-->
+                                <!--<a href="#"><i class="fa fa-comment"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-envelope"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-phone"></i></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-md-3 col-sm-6">-->
+                        <!--&lt;!&ndash; Team Member &ndash;&gt;-->
+                        <!--<div class="team-member">-->
+                            <!--&lt;!&ndash; Image &ndash;&gt;-->
+                            <!--<img class="img-responsive" src="img/user/4.jpg" alt="" />-->
+                            <!--&lt;!&ndash; Name &ndash;&gt;-->
+                            <!--<h4>Jennifer Doe</h4>-->
+                            <!--<span class="deg">Manager</span>-->
+                            <!--&lt;!&ndash; Team Links &ndash;&gt;-->
+                            <!--<div class="team-links">-->
+                                <!--<a href="#"><i class="fa fa-comment"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-envelope"></i></a>-->
+                                <!--<a href="#"><i class="fa fa-phone"></i></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
             <!-- Team #6 end -->
 
             <div class="divider-1"></div>
 
             <div class="block-heading-six">
-                <h4 class="bg-color">Our Clients</h4>
+                <h4 class="bg-color">Our Supporters</h4>
             </div>
 
             <div class="client-three">
-                <div id="owl-carousel" class="owl-carousel" data-items="5" data-auto-play="3500" data-pagination="false" data-single-item="false">
-                    <!-- Item -->
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-1.png" alt=""  class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-2.png" alt="" class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-3.png" alt="" class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-4.png" alt="" class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-5.png" alt=""  class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-6.png" alt="" class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-2.png" alt="" class="img-responsive" /></a>
-                    </div>
-                    <div class="c3-item">
-                        <a href="#"><img src="img/clients/c2-3.png" alt="" class="img-responsive" /></a>
-                    </div>
-                </div>
+                <carousel :autoplay="true" :perPage="1" :navigationEnabled="true">
+                    <slide>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="" target="_blank">
+                                    <img src="/img/sponsors/aunt_ritas.png" alt="Aunt Rita's Foundation" />
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="" target="_blank">
+                                    <img src="/img/sponsors/united_way.jpeg" alt="Valley of the Sun United Way" />
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="" target="_blank">
+                                    <img src="/img/sponsors/hivaz.png" alt="HIV AZ" />
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="" target="_blank">
+                                    <img src="/img/sponsors/elizabeth_taylor.png" alt="Elizabeth Taylor AIDS Foundation" />
+                                </a>
+                            </div>
+                        </div>
+                    </slide>
+                    <slide>
+
+                    </slide>
+                    <slide>
+
+                    </slide>
+                    <slide>
+
+                    </slide>
+                </carousel>
             </div>
 
 

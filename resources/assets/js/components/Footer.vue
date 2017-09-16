@@ -88,9 +88,15 @@
                             <p class="add">
                                 2345 West Glendale Avenue,<br />
                                 Phoenix, Arizona 85021</p>
-                            <p class="tel"> <i class="fa fa-phone"></i> Tel : (602) 279-0008<br />
+                            <p class="tel">
+                                <i class="fa fa-phone"></i> Main Office : (602) 279-0008<br />
+                                <i class="fa fa-fax"></i> Secure Fax : (602) 279-2004<br />
+                                <i class="fa fa-phone"></i> Store : (602) 283-0100<br />
+                                <i class="fa fa-fax"></i> Store Fax : (602) 283-0101<br />
                                 <i class="fa fa-envelope"></i>  Email : <a href="mailto:info@shantiaz.org">info@shantiaz.org</a><br />
-                                <i class="fa fa-calendar"></i> Business Hours : 8:30 am - 4:30 pm</p>
+                                <i class="fa fa-calendar"></i> Business Hours : 8:00 am - 4:00 pm
+
+                            </p>
                         </div>
                     </div>
                 </div>
