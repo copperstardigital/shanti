@@ -3,7 +3,7 @@
 
 <!-- Foot Starts -->
 
-<footer-area></footer-area>
+<psg-footer></psg-footer>
 
 <!-- Foot Ends -->
 

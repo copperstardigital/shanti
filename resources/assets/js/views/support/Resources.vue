@@ -1,28 +1,7 @@
 <template>
-    <div class="main-block">
-
-        <!-- Page heading one starts -->
-
-        <div class="page-heading-one">
-            <h2>Resources</h2>
-            <p class="bg-color">Let Us Help You</p>
-        </div>
-
-        <!-- Page heading one ends -->
-
-        <div class="container">
-
-            <div class="about-us-three">
-                <!-- About section hero -->
-                <div class="about-hero">
-
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
+    <psg-page title="Resources" subtitle="Let Us Help You" hero="Follow what's happening at the Phoenix Shanti Group on this page. You'll find news about what's happening at Shanti, as well as postings of Shanti events.">
+        <div slot="copy"></div>
+    </psg-page>
 </template>
 
 <script>

@@ -18,7 +18,7 @@
                     {{ hero }}
                 </div>
 
-
+                <slot name="copy"></slot>
             </div>
         </div>
     </div>

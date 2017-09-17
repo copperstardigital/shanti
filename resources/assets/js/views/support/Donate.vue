@@ -1,28 +1,7 @@
 <template>
-    <div class="main-block">
-
-        <!-- Page heading one starts -->
-
-        <div class="page-heading-one">
-            <h2>Donate</h2>
-            <p class="bg-color">Help Us Help You</p>
-        </div>
-
-        <!-- Page heading one ends -->
-
-        <div class="container">
-
-            <div class="about-us-three">
-                <!-- About section hero -->
-                <div class="about-hero">
-
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
+    <psg-page title="Donate" subtitle="Help Us Help You" hero="">
+        <div slot="copy"></div>
+    </psg-page>
 </template>
 
 <script>

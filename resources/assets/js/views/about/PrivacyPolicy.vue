@@ -1,22 +1,7 @@
 <template>
-    <div class="main-block">
-
-        <!-- Page heading one starts -->
-
-        <div class="page-heading-one">
-            <h2>Privacy Policy</h2>
-            <p class="bg-color">How We Protect You</p>
-        </div>
-
-        <!-- Page heading one ends -->
-
-        <div class="container">
-
+    <psg-page title="Privacy Policy" subtitle="How We Protect You" hero="This site is owned and operated by Phoenix Shanti Group. Because we gather certain types of information about our users, we feel you should fully understand our policy and the terms and conditions surrounding the capture and use of that information. This privacy statement discloses what information we gather and how we use it.">
+        <div slot="copy">
             <div class="about-us-three">
-                <h3>Privacy Policy</h3>
-
-                <p>This site is owned and operated by Phoenix Shanti Group. Because we gather certain types of information about our users, we feel you should fully understand our policy and the terms and conditions surrounding the capture and use of that information. This privacy statement discloses what information we gather and how we use it.</p>
-
                 <h3>Information We Gather and Track</h3>
 
                 <p>We gather two types of information about users:
@@ -78,9 +63,8 @@
                 <p>By using this site, you consent to our collection and use of this information you provide. If we decide to change our privacy policy, we will post those changes on this page, along with the date our privacy policy was last update, so that you are always aware of what information we collect, how we use it, and under what circumstances we disclose it.</p>
 
             </div>
-
         </div>
-    </div>
+    </psg-page>
 </template>
 
 

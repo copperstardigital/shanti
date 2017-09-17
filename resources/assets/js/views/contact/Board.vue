@@ -1,28 +1,7 @@
 <template>
-    <div class="main-block">
-
-        <!-- Page heading one starts -->
-
-        <div class="page-heading-one">
-            <h2>Board of Directors</h2>
-            <p class="bg-color">Our Management Team</p>
-        </div>
-
-        <!-- Page heading one ends -->
-
-        <div class="container">
-
-            <div class="about-us-three">
-                <!-- About section hero -->
-                <div class="about-hero">
-
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
+    <psg-page title="Board of Directors" subtitle="Our Management" hero="">
+        <div slot="copy"></div>
+    </psg-page>
 </template>
 
 <script>

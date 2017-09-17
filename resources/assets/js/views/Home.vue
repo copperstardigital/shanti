@@ -3,28 +3,7 @@
         <div class="container">
             <carousel :autoplay="true" :perPage="1" :navigationEnabled="true">
                 <slide>
-                    <h2>Easy <span class="color">management</span></h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                    <a href="#" class="da-link btn btn-color">Read more</a>
-                    <div class="da-img"><img src="img/parallax-slider/img1.png" alt="image01" /></div>
-                </slide>
-                <slide>
-                    <h2><span class="color">It's</span> Revolution</h2>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                    <a href="#" class="da-link btn btn-color">Read more</a>
-                    <div class="da-img"><img src="img/parallax-slider/img2.png" alt="image01" /></div>
-                </slide>
-                <slide>
-                    <h2>Warm <span class="color">welcome</span></h2>
-                    <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
-                    <a href="#" class="da-link btn btn-color">Read more</a>
-                    <div class="da-img"><img src="img/parallax-slider/img3.png" alt="image01" /></div>
-                </slide>
-                <slide>
-                    <h2>Quality <span class="color">Control</span></h2>
-                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                    <a href="#" class="da-link btn btn-color">Read more</a>
-                    <div class="da-img"><img src="img/parallax-slider/img4.png" alt="image01" /></div>
+
                 </slide>
             </carousel>
 
@@ -39,56 +18,7 @@
 
             <!-- Icon Box #8 Starts -->
 
-            <div class="icon-box-8 text-center">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <!-- Icon Box Eight Item -->
-                        <div class="icon-box-8-item bg-red">
-                            <!-- Icon Box Eight Icon -->
-                            <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <span class="icon icon-awareness-ribbon"></span>
-                                </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <span class="icon icon-awareness-ribbon"></span> </a>
-                            </div>
-                            <!-- Heading -->
-                            <h4><router-link to="/services/hiv">HIV Services</router-link></h4>
-                            <!-- Paragraph -->
-                            <p>Personalized support services for people infected with and affected by HIV/AIDS.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="icon-box-8-item bg-lblue">
-                            <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-truck"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-truck"></i> </a>
-                            </div>
-                            <h4><a href="http://store.shantiaz.org">2nd Chances Store</a></h4>
-                            <p>PSG operates a 7,000-square-foot retail thrift store to help fund patient services.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="icon-box-8-item bg-green">
-                            <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-user"></i>  </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-user"></i> </a>
-                            </div>
-                            <h4><router-link to="/services/hiv">Treatment</router-link></h4>
-                            <p>Individualized treatment plans are tailored to clients to help rebuild lives.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="icon-box-8-item bg-purple">
-                            <div class="icon-box-8-icon">
-                                <a href="#" class="icon-box-8-icon-top"> <i class="fa fa-home"></i> </a>
-                                <a href="#" class="icon-box-8-icon-bottom"> <i class="fa fa-home"></i> </a>
-                            </div>
-                            <h4><router-link to="/services/housing">Housing</router-link></h4>
-                            <p>Shanti offers transitional and permanent housing to homeless individuals.</p>
-                        </div>
-                    </div>
-                </div>
-                <br />
-            </div>
+            <psg-info-boxes></psg-info-boxes>
 
             <!-- Icon Box #8 Ends -->
 
@@ -387,11 +317,13 @@
 
 <script>
     import { Carousel, Slide } from 'vue-carousel';
+    import InfoBoxes from '../components/home/InfoBoxes';
 
     export default {
         components: {
             Carousel,
-            Slide
+            Slide,
+            'psg-info-boxes' : InfoBoxes
         },
         mounted() {
             document.title = 'Home | Phoenix Shanti Group';
