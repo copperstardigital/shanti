@@ -6,8 +6,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Donate | Phoenix Shanti Group';
-        }
+
     }
 </script>

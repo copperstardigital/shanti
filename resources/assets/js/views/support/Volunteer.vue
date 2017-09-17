@@ -26,8 +26,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Volunteer | Phoenix Shanti Group';
-        }
+
     }
 </script>

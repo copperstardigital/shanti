@@ -31,8 +31,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'HIV+ Housing | Phoenix Shanti Group';
-        }
+
     }
 </script>

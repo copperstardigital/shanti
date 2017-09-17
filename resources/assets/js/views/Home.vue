@@ -324,9 +324,6 @@
             Carousel,
             Slide,
             'psg-info-boxes' : InfoBoxes
-        },
-        mounted() {
-            document.title = 'Home | Phoenix Shanti Group';
         }
     };
 </script>

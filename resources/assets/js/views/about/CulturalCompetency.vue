@@ -17,8 +17,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Cultural Competency | Phoenix Shanti Group';
-        }
+
     }
 </script>

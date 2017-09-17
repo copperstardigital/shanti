@@ -12,8 +12,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Getting Started | Phoenix Shanti Group';
-        }
+
     }
 </script>

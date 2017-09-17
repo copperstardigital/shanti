@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>
-        @if (Request::is('admin/*'))
-            @if ($__env->yieldContent('page_title'))
-                Admin |
-                @yield('page_title')
-                | Phoenix Shanti Group
-            @else
-                Admin | Phoenix Shanti Group
-            @endif
-        @else
-            @if ($__env->yieldContent('page_title'))
-                @yield('page_title')
-                | Phoenix Shanti Group
-            @else
-                Phoenix Shanti Group
-            @endif
-        @endif
+        {{--@if (Request::is('admin/*'))--}}
+            {{--@if ($__env->yieldContent('page_title'))--}}
+                {{--Admin |--}}
+                {{--@yield('page_title')--}}
+                {{--| Phoenix Shanti Group--}}
+            {{--@else--}}
+                {{--Admin | Phoenix Shanti Group--}}
+            {{--@endif--}}
+        {{--@else--}}
+            {{--@if ($__env->yieldContent('page_title'))--}}
+                {{--@yield('page_title')--}}
+                {{--| Phoenix Shanti Group--}}
+            {{--@else--}}
+                {{--Phoenix Shanti Group--}}
+            {{--@endif--}}
+        {{--@endif--}}
     </title>
     <!-- Description, Keywords and Author -->
     <meta name="description" content="Your description">

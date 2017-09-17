@@ -54,8 +54,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Main Office | Phoenix Shanti Group';
-        }
+
     }
 </script>

@@ -37,8 +37,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Mission | Phoenix Shanti Group';
-        }
+
     }
 </script>

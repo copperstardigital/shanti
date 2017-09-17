@@ -6,8 +6,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Board of Directors | Phoenix Shanti Group';
-        }
+
     }
 </script>

@@ -70,8 +70,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'Privacy Policy | Phoenix Shanti Group';
-        }
+
     }
 </script>

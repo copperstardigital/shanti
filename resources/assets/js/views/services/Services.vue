@@ -56,8 +56,6 @@
 
 <script>
     export default {
-        mounted() {
-            document.title = 'HIV Services | Phoenix Shanti Group';
-        }
+
     }
 </script>
