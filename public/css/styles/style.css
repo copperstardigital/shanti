@@ -3535,9 +3535,10 @@ body.boxed.img-5 {
 .about-us-three .about-hero{
 	font-size:18px;
 	line-height:36px;
-	color:#888;
+	color: #5f1cba;
 	text-align:center;	
-	margin:10px 0px;
+	margin:10px auto;
+	width: 70%;
 }
 /* Our Process */
 .our-process h4{

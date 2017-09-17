@@ -20,3 +20,5 @@ Route::get('/', 'Home\HomeController@main');
 //Auth::routes();
 //
 //Route::get('/dashboard', 'Auth\DashboardController@index')->name('dashboard');
+
+Route::resource('posts', 'Vue\PostController');

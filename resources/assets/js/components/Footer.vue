@@ -14,6 +14,7 @@
                             <a href="http://www.facebook.com/phoenixshantigroup" title="Phoenix Shanti Group" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
                             <a href="http://www.facebook.com/shanti2ndchances" title="Shanti 2nd Chances" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
                             <a href="#" class="twitter"><i class="fa fa-twitter circle-3"></i></a>
+                            <a href="#" class="youtube"><i class="fa fa-youtube circle-3"></i></a>
                         </div>
                         <div class="subscribe-box">
                             <h5 class="bold">Subscribe :</h5>
@@ -39,11 +40,7 @@
                         <div class="foot-item-content">
                             <ul class="list-unstyled">
                                 <!-- Link -->
-                                <li><a href="#">Denocing Sapientes Contain</a></li>
-                                <li><a href="#">Dignissim Electronic Typeset</a></li>
-                                <li><a href="#">Laborum Desktop Publishing</a></li>
-                                <li><a href="#">Quibus PageMaker Including</a></li>
-                                <li><a href="#">Denocing Sapientes Contain</a></li>
+                                <router-link v-for="(post, index) in posts" :to="{ name: 'blog/view', params: { slug : post.slug }}" tag="li" key="index"><a>{{ post.headline}}</a></router-link>
                             </ul>
                         </div>
                     </div>
@@ -104,3 +101,25 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                posts: []
+            }
+        },
+        methods: {
+            getPosts() {
+                axios.get('/posts')
+                    .then(response => {
+                        this.posts = response.data.posts;
+                    })
+                    .catch(error => console.log(error));
+            }
+        },
+        beforeMount() {
+            this.getPosts();
+        }
+    }
+</script>

@@ -35,8 +35,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Type Something">
                                 <span class="input-group-btn">
-										<button class="btn btn-color" type="button">Search</button>
-									</span>
+                                    <button class="btn btn-color" type="button">Search</button>
+                                </span>
                             </div>
                         </form>
                     </div>
@@ -47,9 +47,10 @@
                 <div class="tb-social pull-right">
                     <div class="brand-bg text-right">
                         <!-- Brand Icons -->
-                        <a href="http://www.facebook.com/phoenixshantigroup" title="Phoenix Shanti Group" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
-                        <a href="http://www.facebook.com/shanti2ndchances" title="Shanti 2nd Chances" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+                        <a href="http://www.facebook.com/phoenixshantigroup" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+                        <a href="http://www.facebook.com/shanti2ndchances" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
                         <a href="#" class="twitter"><i class="fa fa-twitter square-2 rounded-1"></i></a>
+                        <a href="#" class="youtube"><i class="fa fa-youtube square-2 rounded-1"></i></a>
                     </div>
                 </div>
                 <!-- Social media ends -->
