@@ -1,5 +1,6 @@
-<router-view></router-view>
-
+<transition name="fade">
+    <router-view></router-view>
+</transition>
 
 <!-- Foot Starts -->
 

@@ -22,3 +22,4 @@ Route::get('/', 'Home\HomeController@main');
 //Route::get('/dashboard', 'Auth\DashboardController@index')->name('dashboard');
 
 Route::resource('posts', 'Vue\PostController');
+Route::post('mailchimp', 'Vue\MailChimpController@store');

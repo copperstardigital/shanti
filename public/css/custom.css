@@ -2,7 +2,7 @@
 .VueCarousel-slide {
     position: relative;
     color: #fff;
-    font-family: Arial;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     text-align: center;
     min-height: 100px;
@@ -13,5 +13,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+}
+
+.fade-enter-active {
+    transition-delay: .25s;
+}
+
+.fade-enter, .fade-leave-active {
+    opacity: 0
 }
 

@@ -19,13 +19,23 @@
                         <div class="subscribe-box">
                             <h5 class="bold">Subscribe :</h5>
                             <!-- Form -->
-                            <form role="form">
+                            <form role="form" method="POST">
                                 <!-- Input Group -->
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Enter Email Id">
+                                    <input type="text" v-model="email" class="form-control" placeholder="Enter Email Address">
                                     <span class="input-group-btn">
-                                    <button class="btn btn-color" type="button">Subscribe</button>
-                                </span>
+                                        <button class="btn btn-color" type="button" @click.prevent="subscribe">Subscribe</button>
+                                    </span>
+                                </div>
+
+                                <br />
+
+                                <div class="alert alert-success" v-if="subscriptionSuccess">
+                                    {{ subscriptionResult }}
+                                </div>
+
+                                <div class="alert alert-danger" v-if="!subscriptionSuccess && subscriptionResult">
+                                    {{ subscriptionResult }}
                                 </div>
                             </form>
                         </div>
@@ -106,7 +116,10 @@
     export default {
         data() {
             return {
-                posts: []
+                posts: [],
+                email: '',
+                subscriptionResult: '',
+                subscriptionSuccess: false
             }
         },
         methods: {
@@ -116,6 +129,17 @@
                         this.posts = response.data.posts;
                     })
                     .catch(error => console.log(error));
+            },
+            subscribe() {
+                axios.post('/mailchimp', { email : this.email })
+                    .then(response => {
+                         this.subscriptionResult = response.data.message;
+                         this.subscriptionSuccess = response.data.success;
+                    })
+                    .catch(error =>{
+                        this.subscriptionResult = error.data.message;
+                        this.subscriptionSuccess = false;
+                    });
             }
         },
         beforeMount() {
