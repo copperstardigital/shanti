@@ -10,39 +10,47 @@
                         <!-- About section hero -->
                         <div class="about-hero">
                             In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.
-
-                            You can also use this page to write a testimonial about your experience at Shanti, request a FREE furniture or household goods donation pickup, or sign up for our eNewsletter for special announcements.
                         </div>
+
+                        <alert :show.sync="showTop" placement="top-right" :duration="10000" :type="type" width="500px" dismissable>
+                            <span class="icon-ok-circled alert-icon-float-left"></span>
+                            <p>{{ flash }}</p>
+                        </alert>
 
                         <div class="divider-2"></div>
 
-                        <form action="/contact" method="POST">
+                        <form>
                             <div class="form-group">
                                 <label for="name">Name:</label>
-                                <input class="form-control" type="text" name="text" id="name" />
+                                <input class="form-control" type="text" name="text" id="name" v-model="name" />
                                 <p class="help-block">Required</p>
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input class="form-control" type="email" name="email" id="email" />
+                                <label for="email_address">Email:</label>
+                                <input class="form-control" type="email" name="email_address" id="email_address" v-model="emailAddress"/>
 
                                 <p class="help-block">Required</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone:</label>
+                                <input class="form-control" type="email" name="phone" id="phone" v-model="phone" />
                             </div>
 
                             <div class="form-group">
                                 <label for="subject">Subject:</label>
-                                <input class="form-control" type="text" name="subject" id="subject" />
+                                <input class="form-control" type="text" name="subject" id="subject" v-model="subject"/>
                                 <p class="help-block">Required</p>
                             </div>
 
                             <div class="form-group">
                                 <label for="message">Message:</label>
-                                <textarea class="form-control" id="message" name="message" rows="10"></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="10" v-model="message"></textarea>
                                 <p class="help-block">Required</p>
                             </div>
 
-                            <button type="submit" class="btn btn-color pull-right">Send Message</button>
+                            <button type="submit" class="btn btn-color pull-right" @click.prevent="sendMessage">Send Message</button>
                         </form>
 
                     </div>
@@ -53,7 +61,47 @@
 </template>
 
 <script>
-    export default {
+    import { alert } from 'vue-strap';
 
+    export default {
+        data() {
+            return {
+                name: '',
+                emailAddress : '',
+                phone: '',
+                subject: '',
+                message: '',
+                showTop: false,
+                showBottom: false,
+                type: 'success',
+                flash: ''
+            }
+        },
+        methods: {
+            sendMessage()  {
+                axios.post('/contact', {
+                    name: this.name,
+                    email: this.emailAddress,
+                    phone: this.phone,
+                    subject: this.subject,
+                    message: this.message
+                }).then(response => {
+                    this.showTop = true;
+                    this.flash = 'Thank you for contacting Shanti. We will be in touch shortly.'
+                }).catch(error => {
+                    this.showTop = true;
+                    this.type = 'danger';
+                    this.flash = error.message;
+                });
+            }
+        },
+        computed: {
+            showSuccess() {
+                return !this.show;
+            }
+        },
+        components: {
+            alert: alert
+        }
     }
 </script>

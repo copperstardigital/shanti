@@ -23,3 +23,4 @@ Route::get('/', 'Home\HomeController@main');
 
 Route::resource('posts', 'Vue\PostController');
 Route::post('mailchimp', 'Vue\MailChimpController@store');
+Route::post('contact', 'Vue\EmailController@contact');
