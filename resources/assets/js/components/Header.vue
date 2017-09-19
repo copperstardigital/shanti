@@ -47,10 +47,10 @@
                 <div class="tb-social pull-right">
                     <div class="brand-bg text-right">
                         <!-- Brand Icons -->
-                        <a href="http://www.facebook.com/phoenixshantigroup" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
-                        <a href="http://www.facebook.com/shanti2ndchances" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
-                        <a href="#" class="twitter"><i class="fa fa-twitter square-2 rounded-1"></i></a>
-                        <a href="#" class="youtube"><i class="fa fa-youtube square-2 rounded-1"></i></a>
+                        <a target="_blank" href="http://www.facebook.com/phoenixshantigroup" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+                        <a target="_blank" href="http://www.facebook.com/shanti2ndchances" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+                        <a target="_blank" href="https://twitter.com/PhoenixShanti" class="twitter"><i class="fa fa-twitter square-2 rounded-1"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/user/PhoenixShantiGroup" class="youtube"><i class="fa fa-youtube square-2 rounded-1"></i></a>
                     </div>
                 </div>
                 <!-- Social media ends -->

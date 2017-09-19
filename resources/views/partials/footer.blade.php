@@ -67,26 +67,26 @@
 <script src="/js/jquery.countTo.js"></script>
 
 <script type="text/javascript">
-    $('#da-slider').cslider({
-        autoplay	: true,
-        bgincrement	: 150
-    });
+//    $('#da-slider').cslider({
+//        autoplay	: true,
+//        bgincrement	: 150
+//    });
 </script>
 
 <script type="text/javascript">
     <!-- Counting code -->
-    $(document).ready(function(){
-        // Way Points With Count To()
-        $('.number-count').waypoint(function(down){
-            if(!$(this).hasClass('stop-counter'))
-            {
-                $(this).countTo();
-                $(this).addClass('stop-counter');
-            }
-        }, {
-            offset: '90%'
-        });
-    });
+//    $(document).ready(function(){
+//        // Way Points With Count To()
+//        $('.number-count').waypoint(function(down){
+//            if(!$(this).hasClass('stop-counter'))
+//            {
+//                $(this).countTo();
+//                $(this).addClass('stop-counter');
+//            }
+//        }, {
+//            offset: '90%'
+//        });
+//    });
 </script>
 
 <!-- Custom JS. Type your JS code in custom.js file -->

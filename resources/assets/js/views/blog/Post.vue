@@ -1,5 +1,5 @@
 <template>
-    <psg-page :title="post.headline" :subtitle="post.category.category_name" :hero="post.hero_text">
+    <psg-page :pageLoaded="pageLoaded" :title="post.headline" :subtitle="post.category.category_name" :hero="post.hero_text">
         <div slot="copy">
             <div v-if="post.image">
                 <div class="row">
@@ -9,7 +9,7 @@
                                 <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
                             </a>
                         </div>
-                        <div v-i>
+                        <div v-if="post.image">
                             <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
                         </div>
                     </div>
@@ -27,7 +27,6 @@
                     <a :href="post.link" class="btn btn-primary pull-right">More Information</a>
                 </div>
             </div>
-
         </div>
     </psg-page>
 </template>
@@ -43,7 +42,7 @@
                     },
                     hero_text: '',
                     body: ''
-                }
+                },
             }
         },
         methods: {
@@ -53,6 +52,9 @@
                         this.post = response.data.post;
                     })
                     .catch(error => console.log(error));
+            },
+            pageLoaded() {
+                return false;
             }
         },
         watch: {
@@ -60,8 +62,18 @@
                 this.getPost(to.params.slug);
             }
         },
-        beforeMount() {
-            this.getPost(this.$route.params.slug);
+        beforeRouteEnter(to, from, next) {
+            http
+                .get('/posts/' + to.params.slug)
+                .use(saCache)
+                .then(response => {
+                    let post = response.body.post;
+                    next(vm => {
+                        vm.post = post;
+                    });
+                }).catch(error => {
+                    console.error(error);
+                });
         }
     }
 </script>

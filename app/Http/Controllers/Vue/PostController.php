@@ -19,6 +19,12 @@ class PostController extends Controller
         return response()->json(['posts' => $posts]);
     }
 
+    public function carousel()
+    {
+        $events = Post::where('category_id', 2)->latest()->take(5)->get();
+        return response()->json(['events' => $events]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

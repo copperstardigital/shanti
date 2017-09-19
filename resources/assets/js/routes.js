@@ -17,15 +17,24 @@ let router = new VueRouter({
         { path: '/support/volunteer', component: require('./views/support/Volunteer'), meta: { title: 'Volunteer'}},
         { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
         { path: '/blog', component: require('./views/blog/Posts'), meta: { title: 'Blog'}},
-        { path: '/blog/:slug', name: 'blog/view', component: require('./views/blog/Post'), meta: { title: 'Blog Post'}},
+        { path: '/blog/:slug', name: 'blog/view', component: require('./views/blog/Post'), meta: { title: ''}},
         { path: '/getting-started', component: require('./views/about/GettingStarted'), meta: { title: 'Getting Started'}},
         { path : '*',  component: require('./views/NotFound'), meta: { title: 'Page Not Found'}},
     ]
 });
 
 router.beforeEach((to, from, next) => {
-    document.title = to.meta.title + ' | Phoenix Shanti Group'
+    if (to.name === 'blog/view') {
+        let slug = to.params.slug;
+        axios.get('/posts/' + slug)
+            .then(response => {
+                document.title = response.data.post.headline + ' | Phoenix Shanti Group';
+            })
+            .catch(error => console.log(error));
+    } else {
+        document.title = to.meta.title + ' | Phoenix Shanti Group';
+    }
     next()
-})
+});
 
 export default router;

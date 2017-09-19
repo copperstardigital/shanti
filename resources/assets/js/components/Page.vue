@@ -15,8 +15,10 @@
             <div class="about-us-three">
                 <!-- About section hero -->
                 <div class="about-hero">
-                    {{ hero }}
+                    <div v-html="hero"></div>
                 </div>
+
+                <hr />
 
                 <slot name="copy"></slot>
             </div>

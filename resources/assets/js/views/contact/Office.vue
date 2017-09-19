@@ -72,7 +72,6 @@
                 subject: '',
                 message: '',
                 showTop: false,
-                showBottom: false,
                 type: 'success',
                 flash: ''
             }
@@ -93,11 +92,6 @@
                     this.type = 'danger';
                     this.flash = error.message;
                 });
-            }
-        },
-        computed: {
-            showSuccess() {
-                return !this.show;
             }
         },
         components: {

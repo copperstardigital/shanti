@@ -11,10 +11,10 @@
                         <p>"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity</p>
                         <div class="brand-bg">
                             <!-- Social Media Icons -->
-                            <a href="http://www.facebook.com/phoenixshantigroup" title="Phoenix Shanti Group" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
-                            <a href="http://www.facebook.com/shanti2ndchances" title="Shanti 2nd Chances" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter circle-3"></i></a>
-                            <a href="#" class="youtube"><i class="fa fa-youtube circle-3"></i></a>
+                            <a target="_blank" href="http://www.facebook.com/phoenixshantigroup" title="Phoenix Shanti Group" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
+                            <a target="_blank" href="http://www.facebook.com/shanti2ndchances" title="Shanti 2nd Chances" class="facebook"><i class="fa fa-facebook circle-3"></i></a>
+                            <a target="_blank" href="https://twitter.com/PhoenixShanti" class="twitter"><i class="fa fa-twitter circle-3"></i></a>
+                            <a target="_blank" href="https://www.youtube.com/user/PhoenixShantiGroup" class="youtube"><i class="fa fa-youtube circle-3"></i></a>
                         </div>
                         <div class="subscribe-box">
                             <h5 class="bold">Subscribe :</h5>
@@ -124,11 +124,14 @@
         },
         methods: {
             getPosts() {
-                axios.get('/posts')
+                http
+                    .get('/posts')
+                    .use(saCache)
                     .then(response => {
-                        this.posts = response.data.posts;
-                    })
-                    .catch(error => console.log(error));
+                        this.posts = response.body.posts;
+                    }).catch(error => {
+                        console.error(error);
+                    });
             },
             subscribe() {
                 axios.post('/mailchimp', { email : this.email })
