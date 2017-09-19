@@ -47,11 +47,14 @@
                         <!-- Heading -->
                         <h5 class="bold"><i class="fa fa-comments"></i>&nbsp;&nbsp;Recent Posts</h5>
                         <!-- Foot Item Content -->
-                        <div class="foot-item-content">
+                        <div class="foot-item-content" v-if="posts">
                             <ul class="list-unstyled">
                                 <!-- Link -->
                                 <router-link v-for="(post, index) in posts" :to="{ name: 'blog/view', params: { slug : post.slug }}" tag="li" key="index"><a>{{ post.headline}}</a></router-link>
                             </ul>
+                        </div>
+                        <div v-if="!posts">
+                            <p>There are no current posts.</p>
                         </div>
                     </div>
                 </div>
@@ -125,7 +128,7 @@
         methods: {
             getPosts() {
                 http
-                    .get('/posts')
+                    .get('/posts/footer')
                     .use(saCache)
                     .then(response => {
                         this.posts = response.body.posts;

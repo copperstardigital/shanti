@@ -1,5 +1,5 @@
 <template>
-    <psg-page title="Housing" subtitle="Transitional and Permanent" hero="Phoenix Shanti Group operates two different types of housing programs: Transitional Housing and Permanent Supportive Housing.">
+    <psg-page title="Housing" subtitle="Transitional and Permanent" hero="Phoenix Shanti Group operates two different types of housing programs:<br /> Transitional Housing and Permanent Supportive Housing.">
         <div slot="copy">
             <h3>Transitional Housing Program</h3>
 
@@ -12,9 +12,11 @@
                 <li>Homeless, or at risk of becoming homeless</li>
             </ul>
 
-            <p>For additional questions regarding this program, please contact Michael Stantz (<a href="MichaelS@ShantiAZ.org"MichaelS@ShantiAZ.org</a>) 602-279-0008 extension 112</p>
+            <p>For additional questions regarding this program, please contact Michael Stantz (<a href="MichaelS@ShantiAZ.org">MichaelS@ShantiAZ.org</a>) 602-279-0008 extension 112</p>
 
             <p>Funding for this program is provided in part by <a target="_blank" href="https://portal.hud.gov/hudportal/HUD?src=/program_offices/comm_planning/aidshousing">HOPWA</a> and <a target="_blank" href="http://www.vsuw.org">Valley of the Sun United Way</a>.
+
+            <hr />
 
             <h3>Permanent Supportive Housing</h3>
 

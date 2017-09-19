@@ -16,7 +16,7 @@
                     <div class="col-md-8">
                         <div v-html="post.body"></div>
                         <div v-if="post.link">
-                            <a :href="post.link" class="btn btn-primary pull-right">More Information</a>
+                            <a :href="post.link" class="btn btn-color pull-right">More Information</a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
             <div v-if="!post.image">
                 <div v-html="post.body"></div>
                 <div v-if="post.link">
-                    <a :href="post.link" class="btn btn-primary pull-right">More Information</a>
+                    <a :href="post.link" class="btn btn-color pull-right">More Information</a>
                 </div>
             </div>
         </div>

@@ -2,35 +2,21 @@
 
 namespace App\Http\Controllers\Vue;
 
-use App\Models\Post;
-use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @param null $footer
      * @return \Illuminate\Http\Response
      */
-    public function index($footer = null)
+    public function index()
     {
-        if (!empty($footer)) {
-            $posts = Post::where('expires_at', '>', Carbon::now())->latest()->take(5)->get();
-        } else {
-            $posts = Post::where('expires_at', '>', Carbon::now())->latest()->get();
-        }
-
-        return response()->json(['posts' => $posts]);
-
-    }
-
-    public function carousel()
-    {
-        $events = Post::where('category_id', 2)->latest()->take(5)->get();
-        return response()->json(['events' => $events]);
+        $staff = User::with('staff')->where('is_staff', true)->orderBy('staff_order')->get();
+        return response()->json(['staff' => $staff]);
     }
 
     /**
@@ -57,13 +43,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $post = Post::with('category')->findOrFail($slug);
-        return response()->json(['post' => $post]);
+        //
     }
 
     /**

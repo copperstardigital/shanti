@@ -1,11 +1,22 @@
 <template>
-    <psg-page title="Staff" subtitle="Our Team" hero="">
-        <div slot="copy"></div>
+    <psg-page title="Staff" subtitle="Our Team" hero="Hero text">
+        <div slot="copy">
+            <psg-staff></psg-staff>
+        </div>
     </psg-page>
 </template>
 
 <script>
-    export default {
+    import Staff from '../../components/contact/Staff';
 
+    export default {
+        data() {
+            return {
+                staff: []
+            }
+        },
+        components: {
+            'psg-staff': Staff
+        }
     }
 </script>

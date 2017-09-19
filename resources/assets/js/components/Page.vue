@@ -21,6 +21,7 @@
                 <hr />
 
                 <slot name="copy"></slot>
+                <slot name="posts"></slot>
             </div>
         </div>
     </div>

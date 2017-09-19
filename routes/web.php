@@ -21,7 +21,9 @@ Route::get('/', 'Home\HomeController@main');
 //
 //Route::get('/dashboard', 'Auth\DashboardController@index')->name('dashboard');
 
+Route::get('posts/footer', 'Vue\PostController@index');
 Route::resource('posts', 'Vue\PostController');
 Route::get('carousel', 'Vue\PostController@carousel');
 Route::post('mailchimp', 'Vue\MailChimpController@store');
 Route::post('contact', 'Vue\EmailController@contact');
+Route::resource('staff', 'Vue\StaffController');

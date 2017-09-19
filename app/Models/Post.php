@@ -12,6 +12,8 @@ class Post extends Model
 
     public $incrementing = false;
 
+    protected $dates = ['expires_at'];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
