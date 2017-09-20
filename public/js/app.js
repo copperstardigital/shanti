@@ -437,7 +437,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(27);
+var normalizeHeaderName = __webpack_require__(28);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -528,7 +528,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ }),
 /* 3 */
@@ -538,12 +538,12 @@ module.exports = defaults;
 
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(19);
-var buildURL = __webpack_require__(22);
-var parseHeaders = __webpack_require__(28);
-var isURLSameOrigin = __webpack_require__(26);
+var settle = __webpack_require__(20);
+var buildURL = __webpack_require__(23);
+var parseHeaders = __webpack_require__(29);
+var isURLSameOrigin = __webpack_require__(27);
 var createError = __webpack_require__(6);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(21);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(22);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -639,7 +639,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(24);
+      var cookies = __webpack_require__(25);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -759,7 +759,7 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(18);
+var enhanceError = __webpack_require__(19);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -3327,8162 +3327,6 @@ if (inBrowser && window.Vue) {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(56);
-
-
-
-Vue.component('psg-header', __webpack_require__(69));
-Vue.component('psg-footer', __webpack_require__(68));
-Vue.component('psg-page', __webpack_require__(71));
-
-var app = new Vue({
-    el: '#app',
-    router: __WEBPACK_IMPORTED_MODULE_1__routes__["a" /* default */]
-});
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(13);
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-var bind = __webpack_require__(7);
-var Axios = __webpack_require__(15);
-var defaults = __webpack_require__(2);
-
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
-function createInstance(defaultConfig) {
-  var context = new Axios(defaultConfig);
-  var instance = bind(Axios.prototype.request, context);
-
-  // Copy axios.prototype to instance
-  utils.extend(instance, Axios.prototype, context);
-
-  // Copy context to instance
-  utils.extend(instance, context);
-
-  return instance;
-}
-
-// Create the default instance to be exported
-var axios = createInstance(defaults);
-
-// Expose Axios class to allow class inheritance
-axios.Axios = Axios;
-
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(utils.merge(defaults, instanceConfig));
-};
-
-// Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(4);
-axios.CancelToken = __webpack_require__(14);
-axios.isCancel = __webpack_require__(5);
-
-// Expose all/spread
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = __webpack_require__(29);
-
-module.exports = axios;
-
-// Allow use of default import syntax in TypeScript
-module.exports.default = axios;
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Cancel = __webpack_require__(4);
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(2);
-var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(16);
-var dispatchRequest = __webpack_require__(17);
-var isAbsoluteURL = __webpack_require__(25);
-var combineURLs = __webpack_require__(23);
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = utils.merge({
-      url: arguments[0]
-    }, arguments[1]);
-  }
-
-  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-
-  // Support baseURL config
-  if (config.baseURL && !isAbsoluteURL(config.url)) {
-    config.url = combineURLs(config.baseURL, config.url);
-  }
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-function InterceptorManager() {
-  this.handlers = [];
-}
-
-/**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-  this.handlers.push({
-    fulfilled: fulfilled,
-    rejected: rejected
-  });
-  return this.handlers.length - 1;
-};
-
-/**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
-InterceptorManager.prototype.eject = function eject(id) {
-  if (this.handlers[id]) {
-    this.handlers[id] = null;
-  }
-};
-
-/**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
-InterceptorManager.prototype.forEach = function forEach(fn) {
-  utils.forEach(this.handlers, function forEachHandler(h) {
-    if (h !== null) {
-      fn(h);
-    }
-  });
-};
-
-module.exports = InterceptorManager;
-
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-var transformData = __webpack_require__(20);
-var isCancel = __webpack_require__(5);
-var defaults = __webpack_require__(2);
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-}
-
-/**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
-module.exports = function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-
-  // Ensure headers exist
-  config.headers = config.headers || {};
-
-  // Transform request data
-  config.data = transformData(
-    config.data,
-    config.headers,
-    config.transformRequest
-  );
-
-  // Flatten headers
-  config.headers = utils.merge(
-    config.headers.common || {},
-    config.headers[config.method] || {},
-    config.headers || {}
-  );
-
-  utils.forEach(
-    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-    function cleanHeaderConfig(method) {
-      delete config.headers[method];
-    }
-  );
-
-  var adapter = config.adapter || defaults.adapter;
-
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-
-    // Transform response data
-    response.data = transformData(
-      response.data,
-      response.headers,
-      config.transformResponse
-    );
-
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-
-      // Transform response data
-      if (reason && reason.response) {
-        reason.response.data = transformData(
-          reason.response.data,
-          reason.response.headers,
-          config.transformResponse
-        );
-      }
-    }
-
-    return Promise.reject(reason);
-  });
-};
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- @ @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-  error.response = response;
-  return error;
-};
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(6);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-/**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
-module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
-  utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
-  });
-
-  return data;
-};
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      }
-
-      if (!utils.isArray(val)) {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
-};
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs support document.cookie
-  (function standardBrowserEnv() {
-    return {
-      write: function write(name, value, expires, path, domain, secure) {
-        var cookie = [];
-        cookie.push(name + '=' + encodeURIComponent(value));
-
-        if (utils.isNumber(expires)) {
-          cookie.push('expires=' + new Date(expires).toGMTString());
-        }
-
-        if (utils.isString(path)) {
-          cookie.push('path=' + path);
-        }
-
-        if (utils.isString(domain)) {
-          cookie.push('domain=' + domain);
-        }
-
-        if (secure === true) {
-          cookie.push('secure');
-        }
-
-        document.cookie = cookie.join('; ');
-      },
-
-      read: function read(name) {
-        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-        return (match ? decodeURIComponent(match[3]) : null);
-      },
-
-      remove: function remove(name) {
-        this.write(name, '', Date.now() - 86400000);
-      }
-    };
-  })() :
-
-  // Non standard browser env (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return {
-      write: function write() {},
-      read: function read() { return null; },
-      remove: function remove() {}
-    };
-  })()
-);
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
-module.exports = function isAbsoluteURL(url) {
-  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-  // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-};
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-  (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
-    var urlParsingNode = document.createElement('a');
-    var originURL;
-
-    /**
-    * Parse a URL to discover it's components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */
-    function resolveURL(url) {
-      var href = url;
-
-      if (msie) {
-        // IE needs attribute set twice to normalize properties
-        urlParsingNode.setAttribute('href', href);
-        href = urlParsingNode.href;
-      }
-
-      urlParsingNode.setAttribute('href', href);
-
-      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-      return {
-        href: urlParsingNode.href,
-        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-        host: urlParsingNode.host,
-        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-        hostname: urlParsingNode.hostname,
-        port: urlParsingNode.port,
-        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-                  urlParsingNode.pathname :
-                  '/' + urlParsingNode.pathname
-      };
-    }
-
-    originURL = resolveURL(window.location.href);
-
-    /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */
-    return function isURLSameOrigin(requestURL) {
-      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-      return (parsed.protocol === originURL.protocol &&
-            parsed.host === originURL.host);
-    };
-  })() :
-
-  // Non standard browser envs (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return function isURLSameOrigin() {
-      return true;
-    };
-  })()
-);
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-    }
-  });
-
-  return parsed;
-};
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
-module.exports = function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-};
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            posts: [],
-            email: '',
-            subscriptionResult: '',
-            subscriptionSuccess: false
-        };
-    },
-
-    methods: {
-        getPosts: function getPosts() {
-            var _this = this;
-
-            http.get('/posts/footer').use(saCache).then(function (response) {
-                _this.posts = response.body.posts;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        },
-        subscribe: function subscribe() {
-            var _this2 = this;
-
-            axios.post('/mailchimp', { email: this.email }).then(function (response) {
-                _this2.subscriptionResult = response.data.message;
-                _this2.subscriptionSuccess = response.data.success;
-            }).catch(function (error) {
-                _this2.subscriptionResult = error.data.message;
-                _this2.subscriptionSuccess = false;
-            });
-        }
-    },
-    beforeMount: function beforeMount() {
-        this.getPosts();
-    }
-});
-
-/***/ }),
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Nav__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Nav___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Nav__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        'psg-nav': __WEBPACK_IMPORTED_MODULE_0__Nav___default.a
-    }
-});
-
-/***/ }),
-/* 32 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'subtitle', 'hero']
-});
-
-/***/ }),
-/* 33 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__StaffMember__);
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            staff: []
-        };
-    },
-
-    methods: {
-        getStaff: function getStaff() {
-            var _this = this;
-
-            http.get('/staff')
-            //.use(saCache)
-            .then(function (response) {
-                _this.staff = response.body.staff;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
-    },
-    mounted: function mounted() {
-        this.getStaff();
-    },
-
-    components: {
-        'psg-staff-member': __WEBPACK_IMPORTED_MODULE_0__StaffMember___default.a
-    }
-});
-
-/***/ }),
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['member']
-});
-
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['color', 'icon', 'headline', 'link', 'copy']
-});
-
-/***/ }),
-/* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__InfoBox__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            boxes: [{
-                color: 'bg-red',
-                icon: 'icon icon-awareness-ribbon',
-                title: 'HIV Services',
-                copy: 'Personalized support services for people infected with and affected by HIV/AIDS.',
-                link: '/services/hiv'
-            }, {
-                color: 'bg-lblue',
-                icon: 'fa fa-truck',
-                title: '2nd Chances Store',
-                copy: 'PSG operates a 7,000-square-foot retail thrift store to help fund patient services.',
-                link: 'http://store.shantiaz.org'
-            }, {
-                color: 'bg-green',
-                icon: 'fa fa-user',
-                title: 'Treatment',
-                copy: 'Individualized treatment plans are tailored to clients to help rebuild lives.',
-                link: '/services/hiv'
-            }, {
-                color: 'bg-purple',
-                icon: 'fa fa-home',
-                title: 'Housing',
-                copy: 'Shanti offers transitional and permanent housing to homeless individuals.',
-                link: '/services/housing'
-            }]
-        };
-    },
-
-    components: {
-        'psg-info-box': __WEBPACK_IMPORTED_MODULE_0__InfoBox___default.a
-    }
-});
-
-/***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'About | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            events: []
-        };
-    },
-
-    methods: {
-        //            getCarousel() {
-        //                http
-        //                    .get('/carousel')
-        //                    .use(saCache)
-        //                    .then(response => {
-        //                        this.events = response.body.events;
-        //                    }).catch(error => {
-        //                        console.error(error);
-        //                    });
-        //            }
-    },
-    components: {
-        Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
-        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"],
-        'psg-info-boxes': __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes___default.a
-    },
-    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-        http.get('/carousel').use(saCache).then(function (response) {
-            next(function (vm) {
-                vm.events = response.body.events;
-            });
-        }).catch(function (error) {
-            console.error(error);
-        });
-    }
-});
-
-/***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        document.title = 'Page Not Found | Phoenix Shanti Group';
-    }
-});
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {}
-});
-
-/***/ }),
-/* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 42 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 43 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    computed: {
-        yearsSinceFounding: function yearsSinceFounding() {
-            return new Date().getFullYear() - new Date('1987-09-01').getFullYear();
-        }
-    }
-});
-
-/***/ }),
-/* 44 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 45 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            post: {
-                headline: '',
-                category: {
-                    category_name: ''
-                },
-                hero_text: '',
-                body: ''
-            }
-        };
-    },
-
-    methods: {
-        getPost: function getPost(slug) {
-            var _this = this;
-
-            axios.get('/posts/' + slug).then(function (response) {
-                _this.post = response.data.post;
-            }).catch(function (error) {
-                return console.log(error);
-            });
-        },
-        pageLoaded: function pageLoaded() {
-            return false;
-        }
-    },
-    watch: {
-        '$route': function $route(to, from) {
-            this.getPost(to.params.slug);
-        }
-    },
-    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-        http.get('/posts/' + to.params.slug).use(saCache).then(function (response) {
-            var post = response.body.post;
-            next(function (vm) {
-                vm.post = post;
-            });
-        }).catch(function (error) {
-            console.error(error);
-        });
-    }
-});
-
-/***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            posts: []
-        };
-    },
-
-    methods: {
-        getPosts: function getPosts() {
-            var _this = this;
-
-            http.get('/posts')
-            //.use(saCache)
-            .then(function (response) {
-                _this.posts = response.body.posts;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
-    },
-    beforeMount: function beforeMount() {
-        this.getPosts();
-    }
-});
-
-/***/ }),
-/* 47 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 48 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            name: '',
-            emailAddress: '',
-            phone: '',
-            subject: '',
-            message: '',
-            showTop: false,
-            type: 'success',
-            flash: ''
-        };
-    },
-
-    methods: {
-        sendMessage: function sendMessage() {
-            var _this = this;
-
-            axios.post('/contact', {
-                name: this.name,
-                email: this.emailAddress,
-                phone: this.phone,
-                subject: this.subject,
-                message: this.message
-            }).then(function (response) {
-                _this.showTop = true;
-                _this.flash = 'Thank you for contacting Shanti. We will be in touch shortly.';
-            }).catch(function (error) {
-                _this.showTop = true;
-                _this.type = 'danger';
-                _this.flash = error.message;
-            });
-        }
-    },
-    components: {
-        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
-    }
-});
-
-/***/ }),
-/* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__);
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            staff: []
-        };
-    },
-
-    components: {
-        'psg-staff': __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff___default.a
-    }
-});
-
-/***/ }),
-/* 50 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 51 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 52 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 53 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 54 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 55 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-
-
-
-window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
-
-
-window.axios = __WEBPACK_IMPORTED_MODULE_2_axios___default.a;
-
-var cacheModule = __webpack_require__(57);
-var cache = new cacheModule({ storage: 'session', defaultExpiration: 60 });
-
-// Require superagent-cache-plugin and pass your cache module
-var superagentCache = __webpack_require__(59)(cache, {
-    expiration: 60 * 30
-});
-window.saCache = superagentCache;
-
-var http = __webpack_require__(61);
-window.http = http;
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-/***/ }),
-/* 56 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(9);
-
-
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __webpack_require__(77), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(79), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(81), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(82), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(83), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(86), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(87), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(88), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(89), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(90), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(91), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(92), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(93), meta: { title: 'Volunteer' } }, { path: '/about', component: __webpack_require__(76), meta: { title: 'About' } }, { path: '/blog', component: __webpack_require__(85), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(84), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(80), meta: { title: 'Getting Started' } }, { path: '*', component: __webpack_require__(78), meta: { title: 'Page Not Found' } }]
-});
-
-router.beforeEach(function (to, from, next) {
-    if (to.name === 'blog/view') {
-        var slug = to.params.slug;
-        axios.get('/posts/' + slug).then(function (response) {
-            document.title = response.data.post.headline + ' | Phoenix Shanti Group';
-        }).catch(function (error) {
-            return console.log(error);
-        });
-    } else {
-        document.title = to.meta.title + ' | Phoenix Shanti Group';
-    }
-    next();
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (router);
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports) {
-
-/**
- * cacheModule constructor
- * @param config: {
- *    type:                           {string  | 'cache-module'}
- *    verbose:                        {boolean | false},
- *    defaultExpiration:              {integer | 900},
- *    readOnly:                       {boolean | false},
- *    checkOnPreviousEmpty:           {boolean | true},
- *    backgroundRefreshIntervalCheck: {boolean | true},
- *    backgroundRefreshInterval:      {integer | 60000},
- *    backgroundRefreshMinTtl:        {integer | 70000},
- *    storage:                        {string  | null},
- *    storageMock:                    {object  | null}
- * }
- */
-function cacheModule(config){
-  var self = this;
-  config = config || {};
-  self.type = config.type || 'cache-module';
-  self.verbose = config.verbose || false;
-  self.defaultExpiration = config.defaultExpiration || 900;
-  self.readOnly = config.readOnly || false;
-  self.checkOnPreviousEmpty = (typeof config.checkOnPreviousEmpty === 'boolean') ? config.checkOnPreviousEmpty : true;
-  self.backgroundRefreshIntervalCheck = (typeof config.backgroundRefreshIntervalCheck === 'boolean') ? config.backgroundRefreshIntervalCheck : true;
-  self.backgroundRefreshInterval = config.backgroundRefreshInterval || 60000;
-  self.backgroundRefreshMinTtl = config.backgroundRefreshMinTtl || 70000;
-  var store = null;
-  var storageMock = config.storageMock || false;
-  var backgroundRefreshEnabled = false;
-  var browser = (typeof window !== 'undefined');
-  var cache = {
-    db: {},
-    expirations: {},
-    refreshKeys: {}
-  };
-  var storageKey;
-
-  setupBrowserStorage();
-  log(false, 'Cache-module client created with the following defaults:', {type: self.type, defaultExpiration: self.defaultExpiration, verbose: self.verbose, readOnly: self.readOnly});
-
-  /**
-   * Get the value associated with a given key
-   * @param {string} key
-   * @param {function} cb
-   */
-  self.get = function(key, cb){
-    throwErrorIf((arguments.length < 2), 'ARGUMENT_EXCEPTION: .get() requires 2 arguments.');
-    log(false, 'get() called:', {key: key});
-    try {
-      var now = Date.now();
-      var expiration = cache.expirations[key];
-      if(expiration > now){
-        cb(null, cache.db[key]);
-      }
-      else{
-        expire(key);
-        cb(null, null);
-      }
-    } catch (err) {
-      cb({name: 'GetException', message: err}, null);
-    }
-  }
-
-  /**
-   * Get multiple values given multiple keys
-   * @param {array} keys
-   * @param {function} cb
-   * @param {integer} index
-   */
-  self.mget = function(keys, cb, index){
-    throwErrorIf((arguments.length < 2), 'ARGUMENT_EXCEPTION: .mget() requires 2 arguments.');
-    log(false, '.mget() called:', {keys: keys});
-    var values = {};
-    for(var i = 0; i < keys.length; i++){
-      var key = keys[i];
-      self.get(key, function(err, response){
-        if(response !== null){
-          values[key] = response;
-        }
-      });
-    }
-    cb(null, values, index);
-  }
-
-  /**
-   * Associate a key and value and optionally set an expiration
-   * @param {string} key
-   * @param {string | object} value
-   * @param {integer} expiration
-   * @param {function} refresh
-   * @param {function} cb
-   */
-  self.set = function(){
-    throwErrorIf((arguments.length < 2), 'ARGUMENT_EXCEPTION: .set() requires at least 2 arguments.');
-    var key = arguments[0];
-    var value = arguments[1];
-    var expiration = arguments[2] || null;
-    var refresh = (arguments.length == 5) ? arguments[3] : null;
-    var cb = (arguments.length == 5) ? arguments[4] : arguments[3];
-    log(false, '.set() called:', {key: key, value: value});
-    if(!self.readOnly){
-      try {
-        expiration = (expiration) ? (expiration * 1000) : (self.defaultExpiration * 1000);
-        var exp = expiration + Date.now();
-        cache.expirations[key] = exp;
-        cache.db[key] = value;
-        if(cb) cb();
-        if(refresh){
-          cache.refreshKeys[key] = {expiration: exp, lifeSpan: expiration, refresh: refresh};
-          backgroundRefreshInit();
-        }
-        overwriteBrowserStorage();
-      } catch (err) {
-        log(true, '.set() failed for cache of type ' + self.type, {name: 'CacheModuleSetException', message: err});
-      }
-    }
-  }
-
-  /**
-   * Associate multiple keys with multiple values and optionally set expirations per function and/or key
-   * @param {object} obj
-   * @param {integer} expiration
-   * @param {function} cb
-   */
-  self.mset = function(obj, expiration, cb){
-    throwErrorIf((arguments.length < 1), 'ARGUMENT_EXCEPTION: .mset() requires at least 1 argument.');
-    log(false, '.mset() called:', {data: obj});
-    for(var key in obj){
-      if(obj.hasOwnProperty(key)){
-        var tempExpiration = expiration || self.defaultExpiration;
-        var value = obj[key];
-        if(typeof value === 'object' && value.cacheValue){
-          tempExpiration = value.expiration || tempExpiration;
-          value = value.cacheValue;
-        }
-        self.set(key, value, tempExpiration);
-      }
-    }
-    if(cb) cb();
-  }
-
-  /**
-   * Delete the provided keys and their associated values
-   * @param {array} keys
-   * @param {function} cb
-   */
-  self.del = function(keys, cb){
-    throwErrorIf((arguments.length < 1), 'ARGUMENT_EXCEPTION: .del() requires at least 1 argument.');
-    log(false, '.del() called:', {keys: keys});
-    if(typeof keys === 'object'){
-      for(var i = 0; i < keys.length; i++){
-        var key = keys[i];
-        delete cache.db[key];
-        delete cache.expirations[key];
-        delete cache.refreshKeys[key];
-      }
-      if(cb) cb(null, keys.length);
-    }
-    else{
-      delete cache.db[keys];
-      delete cache.expirations[keys];
-      delete cache.refreshKeys[keys];
-      if(cb) cb(null, 1); 
-    }
-    overwriteBrowserStorage();
-  }
-
-  /**
-   * Flush all keys and values
-   * @param {function} cb
-   */
-  self.flush = function(cb){
-    log(false, '.flush() called');
-    cache.db = {};
-    cache.expirations = {};
-    cache.refreshKeys = {};
-    if(cb) cb();
-    overwriteBrowserStorage();
-  }
-
-  /**
-   * Enable browser storage if desired and available
-   */
-  function setupBrowserStorage(){
-    if(browser || storageMock){
-      if(storageMock){
-        store = storageMock;
-        storageKey = 'cache-module-storage-mock';
-      }
-      else{
-        var storageType = (config.storage === 'local' || config.storage === 'session') ? config.storage : null;
-        store = (storageType && typeof Storage !== void(0)) ? window[storageType + 'Storage'] : false;
-        storageKey = (storageType) ? 'cache-module-' + storageType + '-storage' : null;
-      }
-      if(store){
-        var db = store.getItem(storageKey);
-        try {
-          cache = JSON.parse(db) || cache;
-        } catch (err) { /* Do nothing */ }
-      }
-      // If storageType is set but store is not, the desired storage mechanism was not available
-      else if(storageType){
-        log(true, 'Browser storage is not supported by this browser. Defaulting to an in-memory cache.');
-      }
-    }
-  }
-
-  /**
-   * Overwrite namespaced browser storage with current cache
-   */
-  function overwriteBrowserStorage(){
-    if((browser && store) || storageMock){
-      var db = cache;
-      try {
-        db = JSON.stringify(db);
-      } catch (err) { /* Do nothing */ }
-      store.setItem(storageKey, db);
-    }
-  }
-
-  /**
-   * Throw a given error if error is true
-   * @param {boolean} error
-   * @param {string} message
-   */
-  function throwErrorIf(error, message){
-    if(error) throw new Error(message);
-  }
-
-  /**
-   * Delete a given key from cache.db and cache.expirations but not from cache.refreshKeys
-   * @param {string} key
-   */
-  function expire(key){
-    delete cache.db[key];
-    delete cache.expirations[key];
-    overwriteBrowserStorage();
-  }
-
-  /**
-   * Initialize background refresh
-   */
-  function backgroundRefreshInit(){
-    if(!backgroundRefreshEnabled){
-      backgroundRefreshEnabled = true;
-      if(self.backgroundRefreshIntervalCheck){
-        if(self.backgroundRefreshInterval > self.backgroundRefreshMinTtl){
-          throw new Error('BACKGROUND_REFRESH_INTERVAL_EXCEPTION: backgroundRefreshInterval cannot be greater than backgroundRefreshMinTtl.');
-        }
-      }
-      setInterval(backgroundRefresh, self.backgroundRefreshInterval);
-    }
-  }
-
-  /**
-   * Handle the refresh callback from the consumer, save the data to redis.
-   *
-   * @param {string} key The key used to save.
-   * @param {Object} data refresh keys data.
-   * @param {Error|null} err consumer callback failure.
-   * @param {*} response The consumer response.
-   */
-  function handleRefreshResponse (key, data, err, response) {
-    if(!err) {
-      this.set(key, response, (data.lifeSpan / 1000), data.refresh, function(){});
-    }
-  }
-
-  /**
-   * Refreshes all keys that were set with a refresh function
-   */
-  function backgroundRefresh() {
-    var keys = Object.keys(cache.refreshKeys);
-    keys.forEach(function(key) {
-      var data = cache.refreshKeys[key];
-      if(data.expiration - Date.now() < this.backgroundRefreshMinTtl){
-        data.refresh(key, handleRefreshResponse.bind(this, key, data));
-      }
-    }, self);
-  }
-
-  /**
-   * Error logging logic
-   * @param {boolean} isError
-   * @param {string} message
-   * @param {object} data
-   */
-  function log(isError, message, data){
-    if(self.verbose || isError){
-      if(data) console.log(self.type + ': ' + message, data);
-      else console.log(self.type + message);
-    }
-  }
-}
-
-module.exports = cacheModule;
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var utils = __webpack_require__(60);
-
-/**
- * superagentCache constructor
- * @constructor
- * @param {cache module} cache
- * @param {object} defaults (optional)
- */
-module.exports = function(cache, defaults){
-  var self = this;
-  var supportedMethods = ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE'];
-  var cacheableMethods = ['GET', 'HEAD'];
-  this.cache = cache;
-  this.defaults = defaults || {};
-
-  return function (Request) {
-    var props = utils.resetProps(self.defaults);
-
-    /**
-     * Whether to execute an http query if the cache does not have the generated key
-     * @param {boolean} doQuery
-     */
-    Request.doQuery = function(doQuery){
-      props.doQuery = doQuery;
-      return Request;
-    }
-
-    /**
-     * Remove the given params from the query object after executing an http query and before generating a cache key
-     * @param {array of strings} pruneQuery
-     */
-    Request.pruneQuery = function(pruneQuery){
-      props.pruneQuery = pruneQuery;
-      return Request;
-    }
-
-    /**
-     * Remove the given options from the headers object after executing an http query and before generating a cache key
-     * @param {boolean} pruneHeader
-     */
-    Request.pruneHeader = function(pruneHeader){
-      props.pruneHeader = pruneHeader;
-      return Request;
-    }
-
-    /**
-     * Execute some logic on superagent's http response object before caching and returning it
-     * @param {function} prune
-     */
-    Request.prune = function(prune){
-      props.prune = prune;
-      return Request;
-    }
-
-    /**
-     * Retrieve a top-level property from superagent's http response object before to cache and return
-     * @param {string} responseProp
-     */
-    Request.responseProp = function(responseProp){
-      props.responseProp = responseProp;
-      return Request;
-    }
-
-    /**
-     * Set an expiration for Request key that will override the configured cache's default expiration
-     * @param {integer} expiration (seconds)
-     */
-    Request.expiration = function(expiration){
-      props.expiration = expiration;
-      return Request;
-    }
-
-    /**
-     * Whether to cache superagent's http response object when it "empty"--especially useful with .prune and .pruneQuery
-     * @param {boolean} cacheWhenEmpty
-     */
-    Request.cacheWhenEmpty = function(cacheWhenEmpty){
-      props.cacheWhenEmpty = cacheWhenEmpty;
-      return Request;
-    }
-
-    /**
-     * Whether to execute an http query regardless of whether the cache has the generated key
-     * @param {boolean} forceUpdate
-     */
-    Request.forceUpdate = function(forceUpdate){
-      props.forceUpdate = (typeof forceUpdate === 'boolean') ? forceUpdate : true;
-      return Request;
-    }
-
-    /**
-     * Save the exisitng .end() value ("namespaced" in case of other plugins)
-     * so that we can provide our customized .end() and then call through to
-     * the underlying implementation.
-     */
-    var end = Request.end;
-
-    /**
-     * Execute all caching and http logic
-     * @param {function} cb
-     */
-    Request.end = function(cb){
-      Request.scRedirectsList = Request.scRedirectsList || [];
-      Request.scRedirectsList = Request.scRedirectsList.concat(Request._redirectList);
-      if(~supportedMethods.indexOf(Request.method.toUpperCase())){
-        var _Request = Request;
-        var key = utils.keygen(Request, props);
-        if(~cacheableMethods.indexOf(Request.method.toUpperCase())){
-          cache.get(key, function (err, response){
-            if(!err && response && !props.forceUpdate){
-              utils.callbackExecutor(cb, err, response, key);
-            }
-            else{
-              if(props.doQuery){
-                end.call(Request, function (err, response){
-                  if(err){
-                    return utils.callbackExecutor(cb, err, response, key);
-                  }
-                  else if(!err && response){
-                    response.redirects = _Request.scRedirectsList;
-                    if(props.prune){
-                      response = props.prune(response);
-                    }
-                    else if(props.responseProp){
-                      response = response[props.responseProp] || null;
-                    }
-                    else{
-                      response = utils.gutResponse(response);
-                    }
-                    if(!utils.isEmpty(response) || props.cacheWhenEmpty){
-                      cache.set(key, response, props.expiration, function (){
-                        return utils.callbackExecutor(cb, err, response, key);
-                      });
-                    }
-                    else{
-                      return utils.callbackExecutor(cb, err, response, key);
-                    }
-                  }
-                });
-              }
-              else{
-                return utils.callbackExecutor(cb, null, null, key);
-              }
-            }
-          });
-        }
-        else{
-          end.call(Request, function (err, response){
-            if(err){
-              return utils.callbackExecutor(cb, err, response, key);
-            }
-            if(!err && response){
-              var keyGet = key.replace('"method":"' + _Request.method + '"', '"method":"GET"');
-              var keyHead = key.replace('"method":"' + _Request.method + '"', '"method":"HEAD"');
-              cache.del([keyGet, keyHead], function (){
-                utils.callbackExecutor(cb, err, response, key);
-              });
-            }
-          });
-        }
-      }
-      else{
-        end.call(Request, function (err, response){
-          return utils.callbackExecutor(cb, err, response, undefined);
-        });
-      }
-    }
-
-    return Request;
-  }
-}
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  /**
-   * Generate a cache key unique to this query
-   * @param {superagent} agent
-   * @param {object} reg
-   * @param {object} cProps
-   */
-  keygen: function(req, props){
-    var cleanParams = null;
-    var cleanOptions = null;
-    var params = this.getQueryParams(req);
-    var options = this.getHeaderOptions(req);
-    if(props.pruneQuery || props.pruneHeader){
-      cleanParams = (props.pruneQuery) ? this.pruneObj(this.cloneObject(params), props.pruneQuery) : params;
-      cleanOptions = (props.pruneHeader) ? this.pruneObj(this.cloneObject(options), props.pruneHeader, true) : options;
-    }
-    return JSON.stringify({
-      method: req.method,
-      uri: req.url,
-      params: cleanParams || params || null,
-      options: cleanOptions || options || null
-    });
-  },
-
-  /**
-   * Find and extract query params
-   * @param {object} reg
-   */
-  getQueryParams: function(req){
-    if(req && req.qs && !this.isEmpty(req.qs)){
-      return req.qs;
-    }
-    else if(req && req.qsRaw){
-      return this.arrayToObj(req.qsRaw);
-    }
-    else if(req && req.req){
-      return this.stringToObj(req.req.path);
-    }
-    else if(req && req._query){
-      return this.stringToObj(req._query.join('&'));
-    }
-    return null;
-  },
-
-  /**
-   * Find and extract headers
-   * @param {object} reg
-   */
-  getHeaderOptions: function(req){
-    //I have to remove the User-Agent header ever since superagent 1.7.0
-    if(req && req._header){
-      return this.pruneObj(req._header, ['User-Agent', 'user-agent']);
-    }
-    else if(req && req.req && req.req._headers){
-      return this.pruneObj(req.req._headers, ['User-Agent', 'user-agent']);
-    }
-    else if(req && req.header){
-      return this.pruneObj(req.header, ['User-Agent', 'user-agent']);
-    }
-    return null;
-  },
-
-  /**
-   * Convert an array to an object
-   * @param {array} arr
-   */
-  arrayToObj: function(arr){
-    if(arr && arr.length){
-      var obj = {};
-      for(var i = 0; i < arr.length; i++){
-        var str = arr[i];
-        var kvArray = str.split('&');
-        for(var j = 0; j < kvArray.length; j++){
-          var kvString = kvArray[j].split('=');
-          obj[kvString[0]] = kvString[1];
-        }
-      }
-      return obj;
-    }
-    return null;
-  },
-
-  /**
-   * Convert a string to an object
-   * @param {string} str
-   */
-  stringToObj: function(str){
-    if(str){
-      var obj = {};
-      if(~str.indexOf('?')){
-        var strs = str.split('?');
-        str = strs[1];
-      }
-      var kvArray = str.split('&');
-      for(var i = 0; i < kvArray.length; i++){
-        var kvString = kvArray[i].split('=');
-        obj[kvString[0]] = kvString[1];
-      }
-      return obj;
-    }
-    return null;
-  },
-
-  /**
-   * Remove properties from an object
-   * @param {object} obj
-   * @param {array} props
-   * @param {boolean} isOptions
-   */
-  pruneObj: function(obj, props, isOptions){
-    for(var i = 0; i < props.length; i++){
-      var prop = props[i];
-      if(isOptions){
-        delete obj[prop.toLowerCase()];
-      }
-      delete obj[prop];
-    }
-    return obj;
-  },
-
-  /**
-   * Simplify superagent's http response object
-   * @param {object} r
-   */
-  gutResponse: function(r){
-    var newResponse = {};
-    newResponse.body = r.body;
-    newResponse.text = r.text;
-    newResponse.headers = r.headers;
-    newResponse.statusCode = r.statusCode;
-    newResponse.status = r.status;
-    newResponse.ok = r.ok;
-    return newResponse;
-  },
-
-  /**
-   * Determine whether a value is considered empty
-   * @param {*} val
-   */
-  isEmpty: function(val){
-    return (val === false || val === null || (typeof val == 'object' && Object.keys(val).length == 0));
-  },
-
-  /**
-   * Return a clone of an object
-   * @param {object} obj
-   */
-  cloneObject: function(obj){
-    var newObj = {};
-    for(var attr in obj) {
-      if (obj.hasOwnProperty(attr)){
-        newObj[attr] = obj[attr];
-      }
-    }
-    return newObj;
-  },
-
-  /**
-   * Reset superagent-cache's default query properties using the defaults object
-   * @param {object} d
-   */
-  resetProps: function(d){
-    return {
-      doQuery: (typeof d.doQuery === 'boolean') ? d.doQuery : true,
-      cacheWhenEmpty: (typeof d.cacheWhenEmpty === 'boolean') ? d.cacheWhenEmpty : true,
-      prune: d.prune,
-      pruneQuery: d.pruneQuery,
-      pruneHeader: d.pruneHeader,
-      responseProp: d.responseProp,
-      expiration: d.expiration,
-      forceUpdate: d.forceUpdate,
-      preventDuplicateCalls: d.preventDuplicateCalls,
-      backgroundRefresh: d.backgroundRefresh
-    };
-  },
-
-  /**
-   * Handle the varying number of callback output params
-   * @param {function} cb
-   * @param {object} err
-   * @param {object} response
-   * @param {string} key
-   */
-  callbackExecutor: function(cb, err, response, key){
-    if(cb.length === 1){
-      cb(response);
-    }
-    else if(cb.length > 1){
-      cb(err, response, key);
-    }
-    else{
-      throw new Error('UnsupportedCallbackException: Your .end() callback must pass at least one argument.');
-    }
-  }
-}
-
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Root reference for iframes.
- */
-
-var root;
-if (typeof window !== 'undefined') { // Browser window
-  root = window;
-} else if (typeof self !== 'undefined') { // Web Worker
-  root = self;
-} else { // Other environments
-  console.warn("Using browser-only version of superagent in non-browser environment");
-  root = this;
-}
-
-var Emitter = __webpack_require__(66);
-var RequestBase = __webpack_require__(62);
-var isObject = __webpack_require__(8);
-var ResponseBase = __webpack_require__(63);
-var shouldRetry = __webpack_require__(64);
-
-/**
- * Noop.
- */
-
-function noop(){};
-
-/**
- * Expose `request`.
- */
-
-var request = exports = module.exports = function(method, url) {
-  // callback
-  if ('function' == typeof url) {
-    return new exports.Request('GET', method).end(url);
-  }
-
-  // url first
-  if (1 == arguments.length) {
-    return new exports.Request('GET', method);
-  }
-
-  return new exports.Request(method, url);
-}
-
-exports.Request = Request;
-
-/**
- * Determine XHR.
- */
-
-request.getXHR = function () {
-  if (root.XMLHttpRequest
-      && (!root.location || 'file:' != root.location.protocol
-          || !root.ActiveXObject)) {
-    return new XMLHttpRequest;
-  } else {
-    try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
-    try { return new ActiveXObject('Msxml2.XMLHTTP.6.0'); } catch(e) {}
-    try { return new ActiveXObject('Msxml2.XMLHTTP.3.0'); } catch(e) {}
-    try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
-  }
-  throw Error("Browser-only version of superagent could not find XHR");
-};
-
-/**
- * Removes leading and trailing whitespace, added to support IE.
- *
- * @param {String} s
- * @return {String}
- * @api private
- */
-
-var trim = ''.trim
-  ? function(s) { return s.trim(); }
-  : function(s) { return s.replace(/(^\s*|\s*$)/g, ''); };
-
-/**
- * Serialize the given `obj`.
- *
- * @param {Object} obj
- * @return {String}
- * @api private
- */
-
-function serialize(obj) {
-  if (!isObject(obj)) return obj;
-  var pairs = [];
-  for (var key in obj) {
-    pushEncodedKeyValuePair(pairs, key, obj[key]);
-  }
-  return pairs.join('&');
-}
-
-/**
- * Helps 'serialize' with serializing arrays.
- * Mutates the pairs array.
- *
- * @param {Array} pairs
- * @param {String} key
- * @param {Mixed} val
- */
-
-function pushEncodedKeyValuePair(pairs, key, val) {
-  if (val != null) {
-    if (Array.isArray(val)) {
-      val.forEach(function(v) {
-        pushEncodedKeyValuePair(pairs, key, v);
-      });
-    } else if (isObject(val)) {
-      for(var subkey in val) {
-        pushEncodedKeyValuePair(pairs, key + '[' + subkey + ']', val[subkey]);
-      }
-    } else {
-      pairs.push(encodeURIComponent(key)
-        + '=' + encodeURIComponent(val));
-    }
-  } else if (val === null) {
-    pairs.push(encodeURIComponent(key));
-  }
-}
-
-/**
- * Expose serialization method.
- */
-
- request.serializeObject = serialize;
-
- /**
-  * Parse the given x-www-form-urlencoded `str`.
-  *
-  * @param {String} str
-  * @return {Object}
-  * @api private
-  */
-
-function parseString(str) {
-  var obj = {};
-  var pairs = str.split('&');
-  var pair;
-  var pos;
-
-  for (var i = 0, len = pairs.length; i < len; ++i) {
-    pair = pairs[i];
-    pos = pair.indexOf('=');
-    if (pos == -1) {
-      obj[decodeURIComponent(pair)] = '';
-    } else {
-      obj[decodeURIComponent(pair.slice(0, pos))] =
-        decodeURIComponent(pair.slice(pos + 1));
-    }
-  }
-
-  return obj;
-}
-
-/**
- * Expose parser.
- */
-
-request.parseString = parseString;
-
-/**
- * Default MIME type map.
- *
- *     superagent.types.xml = 'application/xml';
- *
- */
-
-request.types = {
-  html: 'text/html',
-  json: 'application/json',
-  xml: 'text/xml',
-  urlencoded: 'application/x-www-form-urlencoded',
-  'form': 'application/x-www-form-urlencoded',
-  'form-data': 'application/x-www-form-urlencoded'
-};
-
-/**
- * Default serialization map.
- *
- *     superagent.serialize['application/xml'] = function(obj){
- *       return 'generated xml here';
- *     };
- *
- */
-
- request.serialize = {
-   'application/x-www-form-urlencoded': serialize,
-   'application/json': JSON.stringify
- };
-
- /**
-  * Default parsers.
-  *
-  *     superagent.parse['application/xml'] = function(str){
-  *       return { object parsed from str };
-  *     };
-  *
-  */
-
-request.parse = {
-  'application/x-www-form-urlencoded': parseString,
-  'application/json': JSON.parse
-};
-
-/**
- * Parse the given header `str` into
- * an object containing the mapped fields.
- *
- * @param {String} str
- * @return {Object}
- * @api private
- */
-
-function parseHeader(str) {
-  var lines = str.split(/\r?\n/);
-  var fields = {};
-  var index;
-  var line;
-  var field;
-  var val;
-
-  lines.pop(); // trailing CRLF
-
-  for (var i = 0, len = lines.length; i < len; ++i) {
-    line = lines[i];
-    index = line.indexOf(':');
-    field = line.slice(0, index).toLowerCase();
-    val = trim(line.slice(index + 1));
-    fields[field] = val;
-  }
-
-  return fields;
-}
-
-/**
- * Check if `mime` is json or has +json structured syntax suffix.
- *
- * @param {String} mime
- * @return {Boolean}
- * @api private
- */
-
-function isJSON(mime) {
-  return /[\/+]json\b/.test(mime);
-}
-
-/**
- * Initialize a new `Response` with the given `xhr`.
- *
- *  - set flags (.ok, .error, etc)
- *  - parse header
- *
- * Examples:
- *
- *  Aliasing `superagent` as `request` is nice:
- *
- *      request = superagent;
- *
- *  We can use the promise-like API, or pass callbacks:
- *
- *      request.get('/').end(function(res){});
- *      request.get('/', function(res){});
- *
- *  Sending data can be chained:
- *
- *      request
- *        .post('/user')
- *        .send({ name: 'tj' })
- *        .end(function(res){});
- *
- *  Or passed to `.send()`:
- *
- *      request
- *        .post('/user')
- *        .send({ name: 'tj' }, function(res){});
- *
- *  Or passed to `.post()`:
- *
- *      request
- *        .post('/user', { name: 'tj' })
- *        .end(function(res){});
- *
- * Or further reduced to a single call for simple cases:
- *
- *      request
- *        .post('/user', { name: 'tj' }, function(res){});
- *
- * @param {XMLHTTPRequest} xhr
- * @param {Object} options
- * @api private
- */
-
-function Response(req) {
-  this.req = req;
-  this.xhr = this.req.xhr;
-  // responseText is accessible only if responseType is '' or 'text' and on older browsers
-  this.text = ((this.req.method !='HEAD' && (this.xhr.responseType === '' || this.xhr.responseType === 'text')) || typeof this.xhr.responseType === 'undefined')
-     ? this.xhr.responseText
-     : null;
-  this.statusText = this.req.xhr.statusText;
-  var status = this.xhr.status;
-  // handle IE9 bug: http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
-  if (status === 1223) {
-      status = 204;
-  }
-  this._setStatusProperties(status);
-  this.header = this.headers = parseHeader(this.xhr.getAllResponseHeaders());
-  // getAllResponseHeaders sometimes falsely returns "" for CORS requests, but
-  // getResponseHeader still works. so we get content-type even if getting
-  // other headers fails.
-  this.header['content-type'] = this.xhr.getResponseHeader('content-type');
-  this._setHeaderProperties(this.header);
-
-  if (null === this.text && req._responseType) {
-    this.body = this.xhr.response;
-  } else {
-    this.body = this.req.method != 'HEAD'
-      ? this._parseBody(this.text ? this.text : this.xhr.response)
-      : null;
-  }
-}
-
-ResponseBase(Response.prototype);
-
-/**
- * Parse the given body `str`.
- *
- * Used for auto-parsing of bodies. Parsers
- * are defined on the `superagent.parse` object.
- *
- * @param {String} str
- * @return {Mixed}
- * @api private
- */
-
-Response.prototype._parseBody = function(str){
-  var parse = request.parse[this.type];
-  if(this.req._parser) {
-    return this.req._parser(this, str);
-  }
-  if (!parse && isJSON(this.type)) {
-    parse = request.parse['application/json'];
-  }
-  return parse && str && (str.length || str instanceof Object)
-    ? parse(str)
-    : null;
-};
-
-/**
- * Return an `Error` representative of this response.
- *
- * @return {Error}
- * @api public
- */
-
-Response.prototype.toError = function(){
-  var req = this.req;
-  var method = req.method;
-  var url = req.url;
-
-  var msg = 'cannot ' + method + ' ' + url + ' (' + this.status + ')';
-  var err = new Error(msg);
-  err.status = this.status;
-  err.method = method;
-  err.url = url;
-
-  return err;
-};
-
-/**
- * Expose `Response`.
- */
-
-request.Response = Response;
-
-/**
- * Initialize a new `Request` with the given `method` and `url`.
- *
- * @param {String} method
- * @param {String} url
- * @api public
- */
-
-function Request(method, url) {
-  var self = this;
-  this._query = this._query || [];
-  this.method = method;
-  this.url = url;
-  this.header = {}; // preserves header name case
-  this._header = {}; // coerces header names to lowercase
-  this.on('end', function(){
-    var err = null;
-    var res = null;
-
-    try {
-      res = new Response(self);
-    } catch(e) {
-      err = new Error('Parser is unable to parse the response');
-      err.parse = true;
-      err.original = e;
-      // issue #675: return the raw response if the response parsing fails
-      if (self.xhr) {
-        // ie9 doesn't have 'response' property
-        err.rawResponse = typeof self.xhr.responseType == 'undefined' ? self.xhr.responseText : self.xhr.response;
-        // issue #876: return the http status code if the response parsing fails
-        err.status = self.xhr.status ? self.xhr.status : null;
-        err.statusCode = err.status; // backwards-compat only
-      } else {
-        err.rawResponse = null;
-        err.status = null;
-      }
-
-      return self.callback(err);
-    }
-
-    self.emit('response', res);
-
-    var new_err;
-    try {
-      if (!self._isResponseOK(res)) {
-        new_err = new Error(res.statusText || 'Unsuccessful HTTP response');
-        new_err.original = err;
-        new_err.response = res;
-        new_err.status = res.status;
-      }
-    } catch(e) {
-      new_err = e; // #985 touching res may cause INVALID_STATE_ERR on old Android
-    }
-
-    // #1000 don't catch errors from the callback to avoid double calling it
-    if (new_err) {
-      self.callback(new_err, res);
-    } else {
-      self.callback(null, res);
-    }
-  });
-}
-
-/**
- * Mixin `Emitter` and `RequestBase`.
- */
-
-Emitter(Request.prototype);
-RequestBase(Request.prototype);
-
-/**
- * Set Content-Type to `type`, mapping values from `request.types`.
- *
- * Examples:
- *
- *      superagent.types.xml = 'application/xml';
- *
- *      request.post('/')
- *        .type('xml')
- *        .send(xmlstring)
- *        .end(callback);
- *
- *      request.post('/')
- *        .type('application/xml')
- *        .send(xmlstring)
- *        .end(callback);
- *
- * @param {String} type
- * @return {Request} for chaining
- * @api public
- */
-
-Request.prototype.type = function(type){
-  this.set('Content-Type', request.types[type] || type);
-  return this;
-};
-
-/**
- * Set Accept to `type`, mapping values from `request.types`.
- *
- * Examples:
- *
- *      superagent.types.json = 'application/json';
- *
- *      request.get('/agent')
- *        .accept('json')
- *        .end(callback);
- *
- *      request.get('/agent')
- *        .accept('application/json')
- *        .end(callback);
- *
- * @param {String} accept
- * @return {Request} for chaining
- * @api public
- */
-
-Request.prototype.accept = function(type){
-  this.set('Accept', request.types[type] || type);
-  return this;
-};
-
-/**
- * Set Authorization field value with `user` and `pass`.
- *
- * @param {String} user
- * @param {String} [pass] optional in case of using 'bearer' as type
- * @param {Object} options with 'type' property 'auto', 'basic' or 'bearer' (default 'basic')
- * @return {Request} for chaining
- * @api public
- */
-
-Request.prototype.auth = function(user, pass, options){
-  if (typeof pass === 'object' && pass !== null) { // pass is optional and can substitute for options
-    options = pass;
-  }
-  if (!options) {
-    options = {
-      type: 'function' === typeof btoa ? 'basic' : 'auto',
-    }
-  }
-
-  switch (options.type) {
-    case 'basic':
-      this.set('Authorization', 'Basic ' + btoa(user + ':' + pass));
-    break;
-
-    case 'auto':
-      this.username = user;
-      this.password = pass;
-    break;
-
-    case 'bearer': // usage would be .auth(accessToken, { type: 'bearer' })
-      this.set('Authorization', 'Bearer ' + user);
-    break;
-  }
-  return this;
-};
-
-/**
- * Add query-string `val`.
- *
- * Examples:
- *
- *   request.get('/shoes')
- *     .query('size=10')
- *     .query({ color: 'blue' })
- *
- * @param {Object|String} val
- * @return {Request} for chaining
- * @api public
- */
-
-Request.prototype.query = function(val){
-  if ('string' != typeof val) val = serialize(val);
-  if (val) this._query.push(val);
-  return this;
-};
-
-/**
- * Queue the given `file` as an attachment to the specified `field`,
- * with optional `options` (or filename).
- *
- * ``` js
- * request.post('/upload')
- *   .attach('content', new Blob(['<a id="a"><b id="b">hey!</b></a>'], { type: "text/html"}))
- *   .end(callback);
- * ```
- *
- * @param {String} field
- * @param {Blob|File} file
- * @param {String|Object} options
- * @return {Request} for chaining
- * @api public
- */
-
-Request.prototype.attach = function(field, file, options){
-  if (file) {
-    if (this._data) {
-      throw Error("superagent can't mix .send() and .attach()");
-    }
-
-    this._getFormData().append(field, file, options || file.name);
-  }
-  return this;
-};
-
-Request.prototype._getFormData = function(){
-  if (!this._formData) {
-    this._formData = new root.FormData();
-  }
-  return this._formData;
-};
-
-/**
- * Invoke the callback with `err` and `res`
- * and handle arity check.
- *
- * @param {Error} err
- * @param {Response} res
- * @api private
- */
-
-Request.prototype.callback = function(err, res){
-  // console.log(this._retries, this._maxRetries)
-  if (this._maxRetries && this._retries++ < this._maxRetries && shouldRetry(err, res)) {
-    return this._retry();
-  }
-
-  var fn = this._callback;
-  this.clearTimeout();
-
-  if (err) {
-    if (this._maxRetries) err.retries = this._retries - 1;
-    this.emit('error', err);
-  }
-
-  fn(err, res);
-};
-
-/**
- * Invoke callback with x-domain error.
- *
- * @api private
- */
-
-Request.prototype.crossDomainError = function(){
-  var err = new Error('Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc.');
-  err.crossDomain = true;
-
-  err.status = this.status;
-  err.method = this.method;
-  err.url = this.url;
-
-  this.callback(err);
-};
-
-// This only warns, because the request is still likely to work
-Request.prototype.buffer = Request.prototype.ca = Request.prototype.agent = function(){
-  console.warn("This is not supported in browser version of superagent");
-  return this;
-};
-
-// This throws, because it can't send/receive data as expected
-Request.prototype.pipe = Request.prototype.write = function(){
-  throw Error("Streaming is not supported in browser version of superagent");
-};
-
-/**
- * Check if `obj` is a host object,
- * we don't want to serialize these :)
- *
- * @param {Object} obj
- * @return {Boolean}
- * @api private
- */
-Request.prototype._isHost = function _isHost(obj) {
-  // Native objects stringify to [object File], [object Blob], [object FormData], etc.
-  return obj && 'object' === typeof obj && !Array.isArray(obj) && Object.prototype.toString.call(obj) !== '[object Object]';
-}
-
-/**
- * Initiate request, invoking callback `fn(res)`
- * with an instanceof `Response`.
- *
- * @param {Function} fn
- * @return {Request} for chaining
- * @api public
- */
-
-Request.prototype.end = function(fn){
-  if (this._endCalled) {
-    console.warn("Warning: .end() was called twice. This is not supported in superagent");
-  }
-  this._endCalled = true;
-
-  // store callback
-  this._callback = fn || noop;
-
-  // querystring
-  this._finalizeQueryString();
-
-  return this._end();
-};
-
-Request.prototype._end = function() {
-  var self = this;
-  var xhr = this.xhr = request.getXHR();
-  var data = this._formData || this._data;
-
-  this._setTimeouts();
-
-  // state change
-  xhr.onreadystatechange = function(){
-    var readyState = xhr.readyState;
-    if (readyState >= 2 && self._responseTimeoutTimer) {
-      clearTimeout(self._responseTimeoutTimer);
-    }
-    if (4 != readyState) {
-      return;
-    }
-
-    // In IE9, reads to any property (e.g. status) off of an aborted XHR will
-    // result in the error "Could not complete the operation due to error c00c023f"
-    var status;
-    try { status = xhr.status } catch(e) { status = 0; }
-
-    if (!status) {
-      if (self.timedout || self._aborted) return;
-      return self.crossDomainError();
-    }
-    self.emit('end');
-  };
-
-  // progress
-  var handleProgress = function(direction, e) {
-    if (e.total > 0) {
-      e.percent = e.loaded / e.total * 100;
-    }
-    e.direction = direction;
-    self.emit('progress', e);
-  }
-  if (this.hasListeners('progress')) {
-    try {
-      xhr.onprogress = handleProgress.bind(null, 'download');
-      if (xhr.upload) {
-        xhr.upload.onprogress = handleProgress.bind(null, 'upload');
-      }
-    } catch(e) {
-      // Accessing xhr.upload fails in IE from a web worker, so just pretend it doesn't exist.
-      // Reported here:
-      // https://connect.microsoft.com/IE/feedback/details/837245/xmlhttprequest-upload-throws-invalid-argument-when-used-from-web-worker-context
-    }
-  }
-
-  // initiate request
-  try {
-    if (this.username && this.password) {
-      xhr.open(this.method, this.url, true, this.username, this.password);
-    } else {
-      xhr.open(this.method, this.url, true);
-    }
-  } catch (err) {
-    // see #1149
-    return this.callback(err);
-  }
-
-  // CORS
-  if (this._withCredentials) xhr.withCredentials = true;
-
-  // body
-  if (!this._formData && 'GET' != this.method && 'HEAD' != this.method && 'string' != typeof data && !this._isHost(data)) {
-    // serialize stuff
-    var contentType = this._header['content-type'];
-    var serialize = this._serializer || request.serialize[contentType ? contentType.split(';')[0] : ''];
-    if (!serialize && isJSON(contentType)) {
-      serialize = request.serialize['application/json'];
-    }
-    if (serialize) data = serialize(data);
-  }
-
-  // set header fields
-  for (var field in this.header) {
-    if (null == this.header[field]) continue;
-
-    if (this.header.hasOwnProperty(field))
-      xhr.setRequestHeader(field, this.header[field]);
-  }
-
-  if (this._responseType) {
-    xhr.responseType = this._responseType;
-  }
-
-  // send stuff
-  this.emit('request', this);
-
-  // IE11 xhr.send(undefined) sends 'undefined' string as POST payload (instead of nothing)
-  // We need null here if data is undefined
-  xhr.send(typeof data !== 'undefined' ? data : null);
-  return this;
-};
-
-/**
- * GET `url` with optional callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed|Function} [data] or fn
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-request.get = function(url, data, fn){
-  var req = request('GET', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.query(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-/**
- * HEAD `url` with optional callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed|Function} [data] or fn
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-request.head = function(url, data, fn){
-  var req = request('HEAD', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.query(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-/**
- * OPTIONS query to `url` with optional callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed|Function} [data] or fn
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-request.options = function(url, data, fn){
-  var req = request('OPTIONS', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.send(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-/**
- * DELETE `url` with optional `data` and callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed} [data]
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-function del(url, data, fn){
-  var req = request('DELETE', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.send(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-request['del'] = del;
-request['delete'] = del;
-
-/**
- * PATCH `url` with optional `data` and callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed} [data]
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-request.patch = function(url, data, fn){
-  var req = request('PATCH', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.send(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-/**
- * POST `url` with optional `data` and callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed} [data]
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-request.post = function(url, data, fn){
-  var req = request('POST', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.send(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-/**
- * PUT `url` with optional `data` and callback `fn(res)`.
- *
- * @param {String} url
- * @param {Mixed|Function} [data] or fn
- * @param {Function} [fn]
- * @return {Request}
- * @api public
- */
-
-request.put = function(url, data, fn){
-  var req = request('PUT', url);
-  if ('function' == typeof data) fn = data, data = null;
-  if (data) req.send(data);
-  if (fn) req.end(fn);
-  return req;
-};
-
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Module of mixed-in functions shared between node and client code
- */
-var isObject = __webpack_require__(8);
-
-/**
- * Expose `RequestBase`.
- */
-
-module.exports = RequestBase;
-
-/**
- * Initialize a new `RequestBase`.
- *
- * @api public
- */
-
-function RequestBase(obj) {
-  if (obj) return mixin(obj);
-}
-
-/**
- * Mixin the prototype properties.
- *
- * @param {Object} obj
- * @return {Object}
- * @api private
- */
-
-function mixin(obj) {
-  for (var key in RequestBase.prototype) {
-    obj[key] = RequestBase.prototype[key];
-  }
-  return obj;
-}
-
-/**
- * Clear previous timeout.
- *
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.clearTimeout = function _clearTimeout(){
-  clearTimeout(this._timer);
-  clearTimeout(this._responseTimeoutTimer);
-  delete this._timer;
-  delete this._responseTimeoutTimer;
-  return this;
-};
-
-/**
- * Override default response body parser
- *
- * This function will be called to convert incoming data into request.body
- *
- * @param {Function}
- * @api public
- */
-
-RequestBase.prototype.parse = function parse(fn){
-  this._parser = fn;
-  return this;
-};
-
-/**
- * Set format of binary response body.
- * In browser valid formats are 'blob' and 'arraybuffer',
- * which return Blob and ArrayBuffer, respectively.
- *
- * In Node all values result in Buffer.
- *
- * Examples:
- *
- *      req.get('/')
- *        .responseType('blob')
- *        .end(callback);
- *
- * @param {String} val
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.responseType = function(val){
-  this._responseType = val;
-  return this;
-};
-
-/**
- * Override default request body serializer
- *
- * This function will be called to convert data set via .send or .attach into payload to send
- *
- * @param {Function}
- * @api public
- */
-
-RequestBase.prototype.serialize = function serialize(fn){
-  this._serializer = fn;
-  return this;
-};
-
-/**
- * Set timeouts.
- *
- * - response timeout is time between sending request and receiving the first byte of the response. Includes DNS and connection time.
- * - deadline is the time from start of the request to receiving response body in full. If the deadline is too short large files may not load at all on slow connections.
- *
- * Value of 0 or false means no timeout.
- *
- * @param {Number|Object} ms or {response, deadline}
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.timeout = function timeout(options){
-  if (!options || 'object' !== typeof options) {
-    this._timeout = options;
-    this._responseTimeout = 0;
-    return this;
-  }
-
-  for(var option in options) {
-    switch(option) {
-      case 'deadline':
-        this._timeout = options.deadline;
-        break;
-      case 'response':
-        this._responseTimeout = options.response;
-        break;
-      default:
-        console.warn("Unknown timeout option", option);
-    }
-  }
-  return this;
-};
-
-/**
- * Set number of retry attempts on error.
- *
- * Failed requests will be retried 'count' times if timeout or err.code >= 500.
- *
- * @param {Number} count
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.retry = function retry(count){
-  // Default to 1 if no count passed or true
-  if (arguments.length === 0 || count === true) count = 1;
-  if (count <= 0) count = 0;
-  this._maxRetries = count;
-  this._retries = 0;
-  return this;
-};
-
-/**
- * Retry request
- *
- * @return {Request} for chaining
- * @api private
- */
-
-RequestBase.prototype._retry = function() {
-  this.clearTimeout();
-
-  // node
-  if (this.req) {
-    this.req = null;
-    this.req = this.request();
-  }
-
-  this._aborted = false;
-  this.timedout = false;
-
-  return this._end();
-};
-
-/**
- * Promise support
- *
- * @param {Function} resolve
- * @param {Function} [reject]
- * @return {Request}
- */
-
-RequestBase.prototype.then = function then(resolve, reject) {
-  if (!this._fullfilledPromise) {
-    var self = this;
-    if (this._endCalled) {
-      console.warn("Warning: superagent request was sent twice, because both .end() and .then() were called. Never call .end() if you use promises");
-    }
-    this._fullfilledPromise = new Promise(function(innerResolve, innerReject){
-      self.end(function(err, res){
-        if (err) innerReject(err); else innerResolve(res);
-      });
-    });
-  }
-  return this._fullfilledPromise.then(resolve, reject);
-}
-
-RequestBase.prototype.catch = function(cb) {
-  return this.then(undefined, cb);
-};
-
-/**
- * Allow for extension
- */
-
-RequestBase.prototype.use = function use(fn) {
-  fn(this);
-  return this;
-}
-
-RequestBase.prototype.ok = function(cb) {
-  if ('function' !== typeof cb) throw Error("Callback required");
-  this._okCallback = cb;
-  return this;
-};
-
-RequestBase.prototype._isResponseOK = function(res) {
-  if (!res) {
-    return false;
-  }
-
-  if (this._okCallback) {
-    return this._okCallback(res);
-  }
-
-  return res.status >= 200 && res.status < 300;
-};
-
-
-/**
- * Get request header `field`.
- * Case-insensitive.
- *
- * @param {String} field
- * @return {String}
- * @api public
- */
-
-RequestBase.prototype.get = function(field){
-  return this._header[field.toLowerCase()];
-};
-
-/**
- * Get case-insensitive header `field` value.
- * This is a deprecated internal API. Use `.get(field)` instead.
- *
- * (getHeader is no longer used internally by the superagent code base)
- *
- * @param {String} field
- * @return {String}
- * @api private
- * @deprecated
- */
-
-RequestBase.prototype.getHeader = RequestBase.prototype.get;
-
-/**
- * Set header `field` to `val`, or multiple fields with one object.
- * Case-insensitive.
- *
- * Examples:
- *
- *      req.get('/')
- *        .set('Accept', 'application/json')
- *        .set('X-API-Key', 'foobar')
- *        .end(callback);
- *
- *      req.get('/')
- *        .set({ Accept: 'application/json', 'X-API-Key': 'foobar' })
- *        .end(callback);
- *
- * @param {String|Object} field
- * @param {String} val
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.set = function(field, val){
-  if (isObject(field)) {
-    for (var key in field) {
-      this.set(key, field[key]);
-    }
-    return this;
-  }
-  this._header[field.toLowerCase()] = val;
-  this.header[field] = val;
-  return this;
-};
-
-/**
- * Remove header `field`.
- * Case-insensitive.
- *
- * Example:
- *
- *      req.get('/')
- *        .unset('User-Agent')
- *        .end(callback);
- *
- * @param {String} field
- */
-RequestBase.prototype.unset = function(field){
-  delete this._header[field.toLowerCase()];
-  delete this.header[field];
-  return this;
-};
-
-/**
- * Write the field `name` and `val`, or multiple fields with one object
- * for "multipart/form-data" request bodies.
- *
- * ``` js
- * request.post('/upload')
- *   .field('foo', 'bar')
- *   .end(callback);
- *
- * request.post('/upload')
- *   .field({ foo: 'bar', baz: 'qux' })
- *   .end(callback);
- * ```
- *
- * @param {String|Object} name
- * @param {String|Blob|File|Buffer|fs.ReadStream} val
- * @return {Request} for chaining
- * @api public
- */
-RequestBase.prototype.field = function(name, val) {
-
-  // name should be either a string or an object.
-  if (null === name ||  undefined === name) {
-    throw new Error('.field(name, val) name can not be empty');
-  }
-
-  if (this._data) {
-    console.error(".field() can't be used if .send() is used. Please use only .send() or only .field() & .attach()");
-  }
-
-  if (isObject(name)) {
-    for (var key in name) {
-      this.field(key, name[key]);
-    }
-    return this;
-  }
-
-  if (Array.isArray(val)) {
-    for (var i in val) {
-      this.field(name, val[i]);
-    }
-    return this;
-  }
-
-  // val should be defined now
-  if (null === val || undefined === val) {
-    throw new Error('.field(name, val) val can not be empty');
-  }
-  if ('boolean' === typeof val) {
-    val = '' + val;
-  }
-  this._getFormData().append(name, val);
-  return this;
-};
-
-/**
- * Abort the request, and clear potential timeout.
- *
- * @return {Request}
- * @api public
- */
-RequestBase.prototype.abort = function(){
-  if (this._aborted) {
-    return this;
-  }
-  this._aborted = true;
-  this.xhr && this.xhr.abort(); // browser
-  this.req && this.req.abort(); // node
-  this.clearTimeout();
-  this.emit('abort');
-  return this;
-};
-
-/**
- * Enable transmission of cookies with x-domain requests.
- *
- * Note that for this to work the origin must not be
- * using "Access-Control-Allow-Origin" with a wildcard,
- * and also must set "Access-Control-Allow-Credentials"
- * to "true".
- *
- * @api public
- */
-
-RequestBase.prototype.withCredentials = function(on){
-  // This is browser-only functionality. Node side is no-op.
-  if(on==undefined) on = true;
-  this._withCredentials = on;
-  return this;
-};
-
-/**
- * Set the max redirects to `n`. Does noting in browser XHR implementation.
- *
- * @param {Number} n
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.redirects = function(n){
-  this._maxRedirects = n;
-  return this;
-};
-
-/**
- * Convert to a plain javascript object (not JSON string) of scalar properties.
- * Note as this method is designed to return a useful non-this value,
- * it cannot be chained.
- *
- * @return {Object} describing method, url, and data of this request
- * @api public
- */
-
-RequestBase.prototype.toJSON = function(){
-  return {
-    method: this.method,
-    url: this.url,
-    data: this._data,
-    headers: this._header
-  };
-};
-
-
-/**
- * Send `data` as the request body, defaulting the `.type()` to "json" when
- * an object is given.
- *
- * Examples:
- *
- *       // manual json
- *       request.post('/user')
- *         .type('json')
- *         .send('{"name":"tj"}')
- *         .end(callback)
- *
- *       // auto json
- *       request.post('/user')
- *         .send({ name: 'tj' })
- *         .end(callback)
- *
- *       // manual x-www-form-urlencoded
- *       request.post('/user')
- *         .type('form')
- *         .send('name=tj')
- *         .end(callback)
- *
- *       // auto x-www-form-urlencoded
- *       request.post('/user')
- *         .type('form')
- *         .send({ name: 'tj' })
- *         .end(callback)
- *
- *       // defaults to x-www-form-urlencoded
- *      request.post('/user')
- *        .send('name=tobi')
- *        .send('species=ferret')
- *        .end(callback)
- *
- * @param {String|Object} data
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.send = function(data){
-  var isObj = isObject(data);
-  var type = this._header['content-type'];
-
-  if (this._formData) {
-    console.error(".send() can't be used if .attach() or .field() is used. Please use only .send() or only .field() & .attach()");
-  }
-
-  if (isObj && !this._data) {
-    if (Array.isArray(data)) {
-      this._data = [];
-    } else if (!this._isHost(data)) {
-      this._data = {};
-    }
-  } else if (data && this._data && this._isHost(this._data)) {
-    throw Error("Can't merge these send calls");
-  }
-
-  // merge
-  if (isObj && isObject(this._data)) {
-    for (var key in data) {
-      this._data[key] = data[key];
-    }
-  } else if ('string' == typeof data) {
-    // default to x-www-form-urlencoded
-    if (!type) this.type('form');
-    type = this._header['content-type'];
-    if ('application/x-www-form-urlencoded' == type) {
-      this._data = this._data
-        ? this._data + '&' + data
-        : data;
-    } else {
-      this._data = (this._data || '') + data;
-    }
-  } else {
-    this._data = data;
-  }
-
-  if (!isObj || this._isHost(data)) {
-    return this;
-  }
-
-  // default to json
-  if (!type) this.type('json');
-  return this;
-};
-
-
-/**
- * Sort `querystring` by the sort function
- *
- *
- * Examples:
- *
- *       // default order
- *       request.get('/user')
- *         .query('name=Nick')
- *         .query('search=Manny')
- *         .sortQuery()
- *         .end(callback)
- *
- *       // customized sort function
- *       request.get('/user')
- *         .query('name=Nick')
- *         .query('search=Manny')
- *         .sortQuery(function(a, b){
- *           return a.length - b.length;
- *         })
- *         .end(callback)
- *
- *
- * @param {Function} sort
- * @return {Request} for chaining
- * @api public
- */
-
-RequestBase.prototype.sortQuery = function(sort) {
-  // _sort default to true but otherwise can be a function or boolean
-  this._sort = typeof sort === 'undefined' ? true : sort;
-  return this;
-};
-
-/**
- * Compose querystring to append to req.url
- *
- * @api private
- */
-RequestBase.prototype._finalizeQueryString = function(){
-  var query = this._query.join('&');
-  if (query) {
-    this.url += (this.url.indexOf('?') >= 0 ? '&' : '?') + query;
-  }
-  this._query.length = 0; // Makes the call idempotent
-
-  if (this._sort) {
-    var index = this.url.indexOf('?');
-    if (index >= 0) {
-      var queryArr = this.url.substring(index + 1).split('&');
-      if ('function' === typeof this._sort) {
-        queryArr.sort(this._sort);
-      } else {
-        queryArr.sort();
-      }
-      this.url = this.url.substring(0, index) + '?' + queryArr.join('&');
-    }
-  }
-};
-
-// For backwards compat only
-RequestBase.prototype._appendQueryString = function() {console.trace("Unsupported");}
-
-/**
- * Invoke callback with timeout error.
- *
- * @api private
- */
-
-RequestBase.prototype._timeoutError = function(reason, timeout, errno){
-  if (this._aborted) {
-    return;
-  }
-  var err = new Error(reason + timeout + 'ms exceeded');
-  err.timeout = timeout;
-  err.code = 'ECONNABORTED';
-  err.errno = errno;
-  this.timedout = true;
-  this.abort();
-  this.callback(err);
-};
-
-RequestBase.prototype._setTimeouts = function() {
-  var self = this;
-
-  // deadline
-  if (this._timeout && !this._timer) {
-    this._timer = setTimeout(function(){
-      self._timeoutError('Timeout of ', self._timeout, 'ETIME');
-    }, this._timeout);
-  }
-  // response timeout
-  if (this._responseTimeout && !this._responseTimeoutTimer) {
-    this._responseTimeoutTimer = setTimeout(function(){
-      self._timeoutError('Response timeout of ', self._responseTimeout, 'ETIMEDOUT');
-    }, this._responseTimeout);
-  }
-}
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * Module dependencies.
- */
-
-var utils = __webpack_require__(65);
-
-/**
- * Expose `ResponseBase`.
- */
-
-module.exports = ResponseBase;
-
-/**
- * Initialize a new `ResponseBase`.
- *
- * @api public
- */
-
-function ResponseBase(obj) {
-  if (obj) return mixin(obj);
-}
-
-/**
- * Mixin the prototype properties.
- *
- * @param {Object} obj
- * @return {Object}
- * @api private
- */
-
-function mixin(obj) {
-  for (var key in ResponseBase.prototype) {
-    obj[key] = ResponseBase.prototype[key];
-  }
-  return obj;
-}
-
-/**
- * Get case-insensitive `field` value.
- *
- * @param {String} field
- * @return {String}
- * @api public
- */
-
-ResponseBase.prototype.get = function(field){
-    return this.header[field.toLowerCase()];
-};
-
-/**
- * Set header related properties:
- *
- *   - `.type` the content type without params
- *
- * A response of "Content-Type: text/plain; charset=utf-8"
- * will provide you with a `.type` of "text/plain".
- *
- * @param {Object} header
- * @api private
- */
-
-ResponseBase.prototype._setHeaderProperties = function(header){
-    // TODO: moar!
-    // TODO: make this a util
-
-    // content-type
-    var ct = header['content-type'] || '';
-    this.type = utils.type(ct);
-
-    // params
-    var params = utils.params(ct);
-    for (var key in params) this[key] = params[key];
-
-    this.links = {};
-
-    // links
-    try {
-        if (header.link) {
-            this.links = utils.parseLinks(header.link);
-        }
-    } catch (err) {
-        // ignore
-    }
-};
-
-/**
- * Set flags such as `.ok` based on `status`.
- *
- * For example a 2xx response will give you a `.ok` of __true__
- * whereas 5xx will be __false__ and `.error` will be __true__. The
- * `.clientError` and `.serverError` are also available to be more
- * specific, and `.statusType` is the class of error ranging from 1..5
- * sometimes useful for mapping respond colors etc.
- *
- * "sugar" properties are also defined for common cases. Currently providing:
- *
- *   - .noContent
- *   - .badRequest
- *   - .unauthorized
- *   - .notAcceptable
- *   - .notFound
- *
- * @param {Number} status
- * @api private
- */
-
-ResponseBase.prototype._setStatusProperties = function(status){
-    var type = status / 100 | 0;
-
-    // status / class
-    this.status = this.statusCode = status;
-    this.statusType = type;
-
-    // basics
-    this.info = 1 == type;
-    this.ok = 2 == type;
-    this.redirect = 3 == type;
-    this.clientError = 4 == type;
-    this.serverError = 5 == type;
-    this.error = (4 == type || 5 == type)
-        ? this.toError()
-        : false;
-
-    // sugar
-    this.accepted = 202 == status;
-    this.noContent = 204 == status;
-    this.badRequest = 400 == status;
-    this.unauthorized = 401 == status;
-    this.notAcceptable = 406 == status;
-    this.forbidden = 403 == status;
-    this.notFound = 404 == status;
-};
-
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-var ERROR_CODES = [
-  'ECONNRESET',
-  'ETIMEDOUT',
-  'EADDRINFO',
-  'ESOCKETTIMEDOUT'
-];
-
-/**
- * Determine if a request should be retried.
- * (Borrowed from segmentio/superagent-retry)
- *
- * @param {Error} err
- * @param {Response} [res]
- * @returns {Boolean}
- */
-module.exports = function shouldRetry(err, res) {
-  if (err && err.code && ~ERROR_CODES.indexOf(err.code)) return true;
-  if (res && res.status && res.status >= 500) return true;
-  // Superagent timeout
-  if (err && 'timeout' in err && err.code == 'ECONNABORTED') return true;
-  if (err && 'crossDomain' in err) return true;
-  return false;
-};
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports) {
-
-
-/**
- * Return the mime type for the given `str`.
- *
- * @param {String} str
- * @return {String}
- * @api private
- */
-
-exports.type = function(str){
-  return str.split(/ *; */).shift();
-};
-
-/**
- * Return header field parameters.
- *
- * @param {String} str
- * @return {Object}
- * @api private
- */
-
-exports.params = function(str){
-  return str.split(/ *; */).reduce(function(obj, str){
-    var parts = str.split(/ *= */);
-    var key = parts.shift();
-    var val = parts.shift();
-
-    if (key && val) obj[key] = val;
-    return obj;
-  }, {});
-};
-
-/**
- * Parse Link header fields.
- *
- * @param {String} str
- * @return {Object}
- * @api private
- */
-
-exports.parseLinks = function(str){
-  return str.split(/ *, */).reduce(function(obj, str){
-    var parts = str.split(/ *; */);
-    var url = parts[0].slice(1, -1);
-    var rel = parts[1].split(/ *= */)[1].slice(1, -1);
-    obj[rel] = url;
-    return obj;
-  }, {});
-};
-
-/**
- * Strip content related fields from `header`.
- *
- * @param {Object} header
- * @return {Object} header
- * @api private
- */
-
-exports.cleanHeader = function(header, shouldStripCookie){
-  delete header['content-type'];
-  delete header['content-length'];
-  delete header['transfer-encoding'];
-  delete header['host'];
-  if (shouldStripCookie) {
-    delete header['cookie'];
-  }
-  return header;
-};
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/**
- * Expose `Emitter`.
- */
-
-if (true) {
-  module.exports = Emitter;
-}
-
-/**
- * Initialize a new `Emitter`.
- *
- * @api public
- */
-
-function Emitter(obj) {
-  if (obj) return mixin(obj);
-};
-
-/**
- * Mixin the emitter properties.
- *
- * @param {Object} obj
- * @return {Object}
- * @api private
- */
-
-function mixin(obj) {
-  for (var key in Emitter.prototype) {
-    obj[key] = Emitter.prototype[key];
-  }
-  return obj;
-}
-
-/**
- * Listen on the given `event` with `fn`.
- *
- * @param {String} event
- * @param {Function} fn
- * @return {Emitter}
- * @api public
- */
-
-Emitter.prototype.on =
-Emitter.prototype.addEventListener = function(event, fn){
-  this._callbacks = this._callbacks || {};
-  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
-    .push(fn);
-  return this;
-};
-
-/**
- * Adds an `event` listener that will be invoked a single
- * time then automatically removed.
- *
- * @param {String} event
- * @param {Function} fn
- * @return {Emitter}
- * @api public
- */
-
-Emitter.prototype.once = function(event, fn){
-  function on() {
-    this.off(event, on);
-    fn.apply(this, arguments);
-  }
-
-  on.fn = fn;
-  this.on(event, on);
-  return this;
-};
-
-/**
- * Remove the given callback for `event` or all
- * registered callbacks.
- *
- * @param {String} event
- * @param {Function} fn
- * @return {Emitter}
- * @api public
- */
-
-Emitter.prototype.off =
-Emitter.prototype.removeListener =
-Emitter.prototype.removeAllListeners =
-Emitter.prototype.removeEventListener = function(event, fn){
-  this._callbacks = this._callbacks || {};
-
-  // all
-  if (0 == arguments.length) {
-    this._callbacks = {};
-    return this;
-  }
-
-  // specific event
-  var callbacks = this._callbacks['$' + event];
-  if (!callbacks) return this;
-
-  // remove all handlers
-  if (1 == arguments.length) {
-    delete this._callbacks['$' + event];
-    return this;
-  }
-
-  // remove specific handler
-  var cb;
-  for (var i = 0; i < callbacks.length; i++) {
-    cb = callbacks[i];
-    if (cb === fn || cb.fn === fn) {
-      callbacks.splice(i, 1);
-      break;
-    }
-  }
-  return this;
-};
-
-/**
- * Emit `event` with the given args.
- *
- * @param {String} event
- * @param {Mixed} ...
- * @return {Emitter}
- */
-
-Emitter.prototype.emit = function(event){
-  this._callbacks = this._callbacks || {};
-  var args = [].slice.call(arguments, 1)
-    , callbacks = this._callbacks['$' + event];
-
-  if (callbacks) {
-    callbacks = callbacks.slice(0);
-    for (var i = 0, len = callbacks.length; i < len; ++i) {
-      callbacks[i].apply(this, args);
-    }
-  }
-
-  return this;
-};
-
-/**
- * Return array of callbacks for `event`.
- *
- * @param {String} event
- * @return {Array}
- * @api public
- */
-
-Emitter.prototype.listeners = function(event){
-  this._callbacks = this._callbacks || {};
-  return this._callbacks['$' + event] || [];
-};
-
-/**
- * Check if this emitter has `event` handlers.
- *
- * @param {String} event
- * @return {Boolean}
- * @api public
- */
-
-Emitter.prototype.hasListeners = function(event){
-  return !! this.listeners(event).length;
-};
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*!
- * vue-carousel v0.6.5
- * (c) 2017 todd.beauchamp@ssense.com
- * https://github.com/ssense/vue-carousel#readme
- */
-!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueCarousel=t():e.VueCarousel=t()}(this,function(){return function(e){function t(a){if(n[a])return n[a].exports;var i=n[a]={exports:{},id:a,loaded:!1};return e[a].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.Slide=t.Carousel=void 0;var i=n(1),r=a(i),o=n(21),s=a(o),u=function(e){e.component("carousel",r.default),e.component("slide",s.default)};t.default={install:u},t.Carousel=r.default,t.Slide=s.default},function(e,t,n){function a(e){n(2)}var i=n(7)(n(8),n(26),a,null,null);e.exports=i.exports},function(e,t,n){var a=n(3);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("70056466",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel{position:relative}.VueCarousel-wrapper{width:100%;position:relative;overflow:hidden}.VueCarousel-inner{display:flex;flex-direction:row;backface-visibility:hidden}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var a={},i=0;i<this.length;i++){var r=this[i][0];"number"==typeof r&&(a[r]=!0)}for(i=0;i<t.length;i++){var o=t[i];"number"==typeof o[0]&&a[o[0]]||(n&&!o[2]?o[2]=n:n&&(o[2]="("+o[2]+") and ("+n+")"),e.push(o))}},e}},function(e,t,n){function a(e){for(var t=0;t<e.length;t++){var n=e[t],a=d[n.id];if(a){a.refs++;for(var i=0;i<a.parts.length;i++)a.parts[i](n.parts[i]);for(;i<n.parts.length;i++)a.parts.push(r(n.parts[i]));a.parts.length>n.parts.length&&(a.parts.length=n.parts.length)}else{for(var o=[],i=0;i<n.parts.length;i++)o.push(r(n.parts[i]));d[n.id]={id:n.id,refs:1,parts:o}}}}function i(){var e=document.createElement("style");return e.type="text/css",c.appendChild(e),e}function r(e){var t,n,a=document.querySelector('style[data-vue-ssr-id~="'+e.id+'"]');if(a){if(h)return v;a.parentNode.removeChild(a)}if(g){var r=p++;a=f||(f=i()),t=o.bind(null,a,r,!1),n=o.bind(null,a,r,!0)}else a=i(),t=s.bind(null,a),n=function(){a.parentNode.removeChild(a)};return t(e),function(a){if(a){if(a.css===e.css&&a.media===e.media&&a.sourceMap===e.sourceMap)return;t(e=a)}else n()}}function o(e,t,n,a){var i=n?"":a.css;if(e.styleSheet)e.styleSheet.cssText=m(t,i);else{var r=document.createTextNode(i),o=e.childNodes;o[t]&&e.removeChild(o[t]),o.length?e.insertBefore(r,o[t]):e.appendChild(r)}}function s(e,t){var n=t.css,a=t.media,i=t.sourceMap;if(a&&e.setAttribute("media",a),i&&(n+="\n/*# sourceURL="+i.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var u="undefined"!=typeof document,l=n(6),d={},c=u&&(document.head||document.getElementsByTagName("head")[0]),f=null,p=0,h=!1,v=function(){},g="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());e.exports=function(e,t,n){h=n;var i=l(e,t);return a(i),function(t){for(var n=[],r=0;r<i.length;r++){var o=i[r],s=d[o.id];s.refs--,n.push(s)}t?(i=l(e,t),a(i)):i=[];for(var r=0;r<n.length;r++){var s=n[r];if(0===s.refs){for(var u=0;u<s.parts.length;u++)s.parts[u]();delete d[s.id]}}}};var m=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports=function(e,t){for(var n=[],a={},i=0;i<t.length;i++){var r=t[i],o=r[0],s=r[1],u=r[2],l=r[3],d={id:e+":"+i,css:s,media:u,sourceMap:l};a[o]?a[o].parts.push(d):n.push(a[o]={id:o,parts:[d]})}return n}},function(e,t){e.exports=function(e,t,n,a,i){var r,o=e=e||{},s=typeof e.default;"object"!==s&&"function"!==s||(r=e,o=e.default);var u="function"==typeof o?o.options:o;t&&(u.render=t.render,u.staticRenderFns=t.staticRenderFns),a&&(u._scopeId=a);var l;if(i?(l=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),n&&n.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(i)},u._ssrRegister=l):n&&(l=n),l){var d=u.functional,c=d?u.render:u.beforeCreate;d?u.render=function(e,t){return l.call(t),c(e,t)}:u.beforeCreate=c?[].concat(c,l):[l]}return{esModule:r,exports:o,options:u}}},function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(9),r=a(i),o=n(10),s=a(o),u=n(11),l=a(u),d=n(16),c=a(d),f=n(21),p=a(f);t.default={name:"carousel",beforeUpdate:function(){this.computeCarouselWidth()},components:{Navigation:l.default,Pagination:c.default,Slide:p.default},data:function(){return{browserWidth:null,carouselWidth:null,currentPage:0,dragOffset:0,dragStartX:0,mousedown:!1,slideCount:0}},mixins:[r.default],props:{easing:{type:String,default:"ease"},minSwipeDistance:{type:Number,default:8},navigationClickTargetSize:{type:Number,default:8},navigationEnabled:{type:Boolean,default:!1},navigationNextLabel:{type:String,default:"▶"},navigationPrevLabel:{type:String,default:"◀"},paginationActiveColor:{type:String,default:"#000000"},paginationColor:{type:String,default:"#efefef"},paginationEnabled:{type:Boolean,default:!0},paginationPadding:{type:Number,default:10},paginationSize:{type:Number,default:10},perPage:{type:Number,default:2},perPageCustom:{type:Array},scrollPerPage:{type:Boolean,default:!1},speed:{type:Number,default:500},loop:{type:Boolean,default:!1}},computed:{breakpointSlidesPerPage:function(){if(!this.perPageCustom)return this.perPage;var e=this.perPageCustom,t=this.browserWidth,n=e.sort(function(e,t){return e[0]>t[0]?-1:1}),a=n.filter(function(e){return t>=e[0]}),i=a[0]&&a[0][1];return i||this.perPage},canAdvanceForward:function(){return this.loop||this.currentPage<this.pageCount-1},canAdvanceBackward:function(){return this.loop||this.currentPage>0},currentPerPage:function(){return!this.perPageCustom||this.$isServer?this.perPage:this.breakpointSlidesPerPage},currentOffset:function(){var e=this.currentPage,t=this.slideWidth,n=this.dragOffset,a=this.scrollPerPage?e*t*this.currentPerPage:e*t;return(a+n)*-1},isHidden:function(){return this.carouselWidth<=0},pageCount:function(){var e=this.slideCount,t=this.currentPerPage;if(this.scrollPerPage){var n=Math.ceil(e/t);return n<1?1:n}return e-(this.currentPerPage-1)},slideWidth:function(){var e=this.carouselWidth,t=this.currentPerPage;return e/t},transitionStyle:function(){return this.speed/1e3+"s "+this.easing+" transform"}},methods:{getNextPage:function(){return this.currentPage<this.pageCount-1?this.currentPage+1:this.loop?0:this.currentPage},getPreviousPage:function(){return this.currentPage>0?this.currentPage-1:this.loop?this.pageCount-1:this.currentPage},advancePage:function(e){e&&"backward"===e&&this.canAdvanceBackward?this.goToPage(this.getPreviousPage()):(!e||e&&"backward"!==e)&&this.canAdvanceForward&&this.goToPage(this.getNextPage())},attachMutationObserver:function(){var e=this,t=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver;if(t){var n={attributes:!0,data:!0};this.mutationObserver=new t(function(){e.$nextTick(function(){e.computeCarouselWidth()})}),this.$parent.$el&&this.mutationObserver.observe(this.$parent.$el,n)}},detachMutationObserver:function(){this.mutationObserver&&this.mutationObserver.disconnect()},getBrowserWidth:function(){return this.browserWidth=window.innerWidth,this.browserWidth},getCarouselWidth:function(){return this.carouselWidth=this.$el&&this.$el.clientWidth||0,this.carouselWidth},getSlideCount:function(){this.slideCount=this.$slots&&this.$slots.default&&this.$slots.default.filter(function(e){return e.tag&&e.tag.indexOf("slide")>-1}).length||0},goToPage:function(e){e>=0&&e<=this.pageCount&&(this.currentPage=e,this.$emit("pageChange",this.currentPage))},handleMousedown:function(e){e.touches||e.preventDefault(),this.mousedown=!0,this.dragStartX="ontouchstart"in window?e.touches[0].clientX:e.clientX},handleMouseup:function(){this.mousedown=!1,this.dragOffset=0},handleMousemove:function(e){if(this.mousedown){var t="ontouchstart"in window?e.touches[0].clientX:e.clientX,n=this.dragStartX-t;this.dragOffset=n,this.dragOffset>this.minSwipeDistance?(this.handleMouseup(),this.advancePage()):this.dragOffset<-this.minSwipeDistance&&(this.handleMouseup(),this.advancePage("backward"))}},computeCarouselWidth:function(){this.getSlideCount(),this.getBrowserWidth(),this.getCarouselWidth(),this.setCurrentPageInBounds()},setCurrentPageInBounds:function(){if(!this.canAdvanceForward){var e=this.pageCount-1;this.currentPage=e>=0?e:0}}},mounted:function(){this.$isServer||(window.addEventListener("resize",(0,s.default)(this.computeCarouselWidth,16)),"ontouchstart"in window?(this.$el.addEventListener("touchstart",this.handleMousedown),this.$el.addEventListener("touchend",this.handleMouseup),this.$el.addEventListener("touchmove",this.handleMousemove)):(this.$el.addEventListener("mousedown",this.handleMousedown),this.$el.addEventListener("mouseup",this.handleMouseup),this.$el.addEventListener("mousemove",this.handleMousemove))),this.attachMutationObserver(),this.computeCarouselWidth()},destroyed:function(){this.$isServer||(this.detachMutationObserver(),window.removeEventListener("resize",this.getBrowserWidth),"ontouchstart"in window?this.$el.removeEventListener("touchmove",this.handleMousemove):this.$el.removeEventListener("mousemove",this.handleMousemove))}}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={props:{autoplay:{type:Boolean,default:!1},autoplayTimeout:{type:Number,default:2e3},autoplayHoverPause:{type:Boolean,default:!0}},data:function(){return{autoplayInterval:null}},destroyed:function(){this.$isServer||(this.$el.removeEventListener("mouseenter",this.pauseAutoplay),this.$el.removeEventListener("mouseleave",this.startAutoplay))},methods:{pauseAutoplay:function(){this.autoplayInterval&&(this.autoplayInterval=clearInterval(this.autoplayInterval))},startAutoplay:function(){this.autoplay&&(this.autoplayInterval=setInterval(this.advancePage,this.autoplayTimeout))}},mounted:function(){!this.$isServer&&this.autoplayHoverPause&&(this.$el.addEventListener("mouseenter",this.pauseAutoplay),this.$el.addEventListener("mouseleave",this.startAutoplay)),this.startAutoplay()}};t.default=n},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e,t,n){var a=void 0;return function(){var i=void 0,r=function(){a=null,n||e.apply(i)},o=n&&!a;clearTimeout(a),a=setTimeout(r,t),o&&e.apply(i)}};t.default=n},function(e,t,n){function a(e){n(12)}var i=n(7)(n(14),n(15),a,"data-v-7fed18e9",null);e.exports=i.exports},function(e,t,n){var a=n(13);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("58a44a73",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-navigation-button[data-v-7fed18e9]{position:absolute;top:50%;box-sizing:border-box;color:#000;text-decoration:none}.VueCarousel-navigation-next[data-v-7fed18e9]{right:0;transform:translateY(-50%) translateX(100%)}.VueCarousel-navigation-prev[data-v-7fed18e9]{left:0;transform:translateY(-50%) translateX(-100%)}.VueCarousel-navigation--disabled[data-v-7fed18e9]{opacity:.5;cursor:default}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"navigation",data:function(){return{parentContainer:this.$parent}},props:{clickTargetSize:{type:Number,default:8},nextLabel:{type:String,default:"▶"},prevLabel:{type:String,default:"◀"}},computed:{canAdvanceForward:function(){return this.parentContainer.canAdvanceForward||!1},canAdvanceBackward:function(){return this.parentContainer.canAdvanceBackward||!1}},methods:{triggerPageAdvance:function(e){e?this.$parent.advancePage(e):this.$parent.advancePage()}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel-navigation"},[n("a",{staticClass:"VueCarousel-navigation-button VueCarousel-navigation-prev",class:{"VueCarousel-navigation--disabled":!e.canAdvanceBackward},style:"padding: "+e.clickTargetSize+"px; margin-right: -"+e.clickTargetSize+"px;",attrs:{href:"#"},domProps:{innerHTML:e._s(e.prevLabel)},on:{click:function(t){t.preventDefault(),e.triggerPageAdvance("backward")}}}),e._v(" "),n("a",{staticClass:"VueCarousel-navigation-button VueCarousel-navigation-next",class:{"VueCarousel-navigation--disabled":!e.canAdvanceForward},style:"padding: "+e.clickTargetSize+"px; margin-left: -"+e.clickTargetSize+"px;",attrs:{href:"#"},domProps:{innerHTML:e._s(e.nextLabel)},on:{click:function(t){t.preventDefault(),e.triggerPageAdvance()}}})])},staticRenderFns:[]}},function(e,t,n){function a(e){n(17)}var i=n(7)(n(19),n(20),a,"data-v-7e42136f",null);e.exports=i.exports},function(e,t,n){var a=n(18);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("cc30be7c",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-pagination[data-v-7e42136f]{width:100%;float:left;text-align:center}.VueCarousel-dot-container[data-v-7e42136f]{display:inline-block;margin:0 auto}.VueCarousel-dot[data-v-7e42136f]{float:left;cursor:pointer}.VueCarousel-dot-inner[data-v-7e42136f]{border-radius:100%}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"pagination",data:function(){return{parentContainer:this.$parent}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{directives:[{name:"show",rawName:"v-show",value:e.parentContainer.pageCount>1,expression:"parentContainer.pageCount > 1"}],staticClass:"VueCarousel-pagination"},[n("div",{staticClass:"VueCarousel-dot-container"},e._l(e.parentContainer.pageCount,function(t,a){return n("div",{staticClass:"VueCarousel-dot",class:{"VueCarousel-dot--active":a===e.parentContainer.currentPage},style:"\n        margin-top: "+2*e.parentContainer.paginationPadding+"px;\n        padding: "+e.parentContainer.paginationPadding+"px;\n      ",on:{click:function(t){e.parentContainer.goToPage(a)}}},[n("div",{staticClass:"VueCarousel-dot-inner",style:"\n          width: "+e.parentContainer.paginationSize+"px;\n          height: "+e.parentContainer.paginationSize+"px;\n          background: "+(a===e.parentContainer.currentPage?e.parentContainer.paginationActiveColor:e.parentContainer.paginationColor)+";\n        "})])}))])},staticRenderFns:[]}},function(e,t,n){function a(e){n(22)}var i=n(7)(n(24),n(25),a,null,null);e.exports=i.exports},function(e,t,n){var a=n(23);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("647f10ac",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-slide{flex-basis:inherit;flex-grow:0;flex-shrink:0;user-select:none}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"slide",data:function(){return{width:null}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel-slide"},[e._t("default")],2)},staticRenderFns:[]}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel"},[n("div",{staticClass:"VueCarousel-wrapper"},[n("div",{staticClass:"VueCarousel-inner",style:"\n        transform: translateX("+e.currentOffset+"px);\n        transition: "+e.transitionStyle+";\n        flex-basis: "+e.slideWidth+"px;\n        visibility: "+(e.slideWidth?"visible":"hidden")+"\n      "},[e._t("default")],2)]),e._v(" "),e.paginationEnabled&&e.pageCount>0?n("pagination"):e._e(),e._v(" "),e.navigationEnabled?n("navigation",{attrs:{clickTargetSize:e.navigationClickTargetSize,nextLabel:e.navigationNextLabel,prevLabel:e.navigationPrevLabel}}):e._e()],1)},staticRenderFns:[]}}])});
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(30),
-  /* template */
-  __webpack_require__(109),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Footer.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Footer.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6085d134", Component.options)
-  } else {
-    hotAPI.reload("data-v-6085d134", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(31),
-  /* template */
-  __webpack_require__(100),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Header.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Header.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e210950", Component.options)
-  } else {
-    hotAPI.reload("data-v-1e210950", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  null,
-  /* template */
-  __webpack_require__(94),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Nav.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Nav.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-02eb9268", Component.options)
-  } else {
-    hotAPI.reload("data-v-02eb9268", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(32),
-  /* template */
-  __webpack_require__(96),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Page.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Page.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1396bb1a", Component.options)
-  } else {
-    hotAPI.reload("data-v-1396bb1a", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(33),
-  /* template */
-  __webpack_require__(113),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/contact/Staff.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-72d5db94", Component.options)
-  } else {
-    hotAPI.reload("data-v-72d5db94", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(34),
-  /* template */
-  __webpack_require__(117),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/contact/StaffMember.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] StaffMember.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a6382520", Component.options)
-  } else {
-    hotAPI.reload("data-v-a6382520", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(35),
-  /* template */
-  __webpack_require__(116),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/InfoBox.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] InfoBox.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8f4f7150", Component.options)
-  } else {
-    hotAPI.reload("data-v-8f4f7150", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(36),
-  /* template */
-  __webpack_require__(110),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/InfoBoxes.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] InfoBoxes.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-60f41d06", Component.options)
-  } else {
-    hotAPI.reload("data-v-60f41d06", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(37),
-  /* template */
-  __webpack_require__(105),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/About.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] About.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-44200c9e", Component.options)
-  } else {
-    hotAPI.reload("data-v-44200c9e", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(38),
-  /* template */
-  __webpack_require__(114),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Home.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-831f5044", Component.options)
-  } else {
-    hotAPI.reload("data-v-831f5044", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(39),
-  /* template */
-  __webpack_require__(102),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/NotFound.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] NotFound.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3836d024", Component.options)
-  } else {
-    hotAPI.reload("data-v-3836d024", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(40),
-  /* template */
-  __webpack_require__(115),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/CulturalCompetency.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] CulturalCompetency.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-837b8880", Component.options)
-  } else {
-    hotAPI.reload("data-v-837b8880", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(41),
-  /* template */
-  __webpack_require__(112),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/GettingStarted.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] GettingStarted.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6c5edc5e", Component.options)
-  } else {
-    hotAPI.reload("data-v-6c5edc5e", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(42),
-  /* template */
-  __webpack_require__(118),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/History.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] History.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-aa5234ba", Component.options)
-  } else {
-    hotAPI.reload("data-v-aa5234ba", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(43),
-  /* template */
-  __webpack_require__(101),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/Mission.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Mission.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2f6372ca", Component.options)
-  } else {
-    hotAPI.reload("data-v-2f6372ca", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(44),
-  /* template */
-  __webpack_require__(111),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/PrivacyPolicy.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] PrivacyPolicy.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6b9630ae", Component.options)
-  } else {
-    hotAPI.reload("data-v-6b9630ae", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(45),
-  /* template */
-  __webpack_require__(95),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Post.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Post.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-13311084", Component.options)
-  } else {
-    hotAPI.reload("data-v-13311084", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(46),
-  /* template */
-  __webpack_require__(106),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Posts.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Posts.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b99bdb6", Component.options)
-  } else {
-    hotAPI.reload("data-v-4b99bdb6", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(47),
-  /* template */
-  __webpack_require__(107),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Board.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Board.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-51a29b48", Component.options)
-  } else {
-    hotAPI.reload("data-v-51a29b48", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(48),
-  /* template */
-  __webpack_require__(104),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Office.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Office.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4082efca", Component.options)
-  } else {
-    hotAPI.reload("data-v-4082efca", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(49),
-  /* template */
-  __webpack_require__(99),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Staff.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1d35e242", Component.options)
-  } else {
-    hotAPI.reload("data-v-1d35e242", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(50),
-  /* template */
-  __webpack_require__(108),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
-  } else {
-    hotAPI.reload("data-v-5aabf0eb", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(51),
-  /* template */
-  __webpack_require__(98),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Services.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Services.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-18d3a9c0", Component.options)
-  } else {
-    hotAPI.reload("data-v-18d3a9c0", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(52),
-  /* template */
-  __webpack_require__(119),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/support/Donate.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Donate.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ed8a8a24", Component.options)
-  } else {
-    hotAPI.reload("data-v-ed8a8a24", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(53),
-  /* template */
-  __webpack_require__(103),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/support/Resources.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Resources.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3d5cfb76", Component.options)
-  } else {
-    hotAPI.reload("data-v-3d5cfb76", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(54),
-  /* template */
-  __webpack_require__(97),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/support/Volunteer.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Volunteer.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1772fe5b", Component.options)
-  } else {
-    hotAPI.reload("data-v-1772fe5b", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "navy"
-  }, [_c('ul', [_c('router-link', {
-    attrs: {
-      "to": "/",
-      "tag": "li",
-      "exact": ""
-    }
-  }, [_c('a', [_vm._v("Home")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("About")]), _vm._v(" "), _c('ul', [_c('router-link', {
-    attrs: {
-      "to": "/getting-started",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Getting Started")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/about/mission",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Mission")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/about/history",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("History")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/about/cultural-competency",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Cultural Competency")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/about/privacy-policy",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Privacy Policy")])])], 1)]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/services/housing",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("HIV+ Housing")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/services/hiv",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("HIV+ Services")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Support")]), _vm._v(" "), _c('ul', [_c('router-link', {
-    attrs: {
-      "to": "/support/donate",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Donate")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/support/volunteer",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Volunteer")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/support/resources",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Resources")])])], 1)]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/blog",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Blog")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Contact")]), _vm._v(" "), _c('ul', [_c('router-link', {
-    attrs: {
-      "to": "/contact/office",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Office")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/contact/staff",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Staff")])]), _vm._v(" "), _c('router-link', {
-    attrs: {
-      "to": "/contact/board",
-      "tag": "li"
-    }
-  }, [_c('a', [_vm._v("Board")])])], 1)])], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
-    attrs: {
-      "href": "http://store.shantiaz.org"
-    }
-  }, [_vm._v("Store")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-02eb9268", module.exports)
-  }
-}
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "pageLoaded": _vm.pageLoaded,
-      "title": _vm.post.headline,
-      "subtitle": _vm.post.category.category_name,
-      "hero": _vm.post.hero_text
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [(_vm.post.image) ? _c('div', [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-4"
-  }, [(_vm.post.link) ? _c('div', [_c('a', {
-    attrs: {
-      "href": _vm.post.link,
-      "target": "_blank"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": '/uploads/' + _vm.post.image,
-      "alt": _vm.post.headline
-    }
-  })])]) : _vm._e(), _vm._v(" "), (_vm.post.image) ? _c('div', [_c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": '/uploads/' + _vm.post.image,
-      "alt": _vm.post.headline
-    }
-  })]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-8"
-  }, [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.post.body)
-    }
-  }), _vm._v(" "), (_vm.post.link) ? _c('div', [_c('a', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "href": _vm.post.link
-    }
-  }, [_vm._v("More Information")])]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!_vm.post.image) ? _c('div', [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.post.body)
-    }
-  }), _vm._v(" "), (_vm.post.link) ? _c('div', [_c('a', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "href": _vm.post.link
-    }
-  }, [_vm._v("More Information")])]) : _vm._e()]) : _vm._e()])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-13311084", module.exports)
-  }
-}
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "page-heading-one"
-  }, [_c('h2', [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c('p', {
-    staticClass: "bg-color"
-  }, [_vm._v(_vm._s(_vm.subtitle))])]), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.hero)
-    }
-  })]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._t("copy"), _vm._v(" "), _vm._t("posts")], 2)])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1396bb1a", module.exports)
-  }
-}
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Volunteer",
-      "subtitle": "Help Us Help You",
-      "hero": "Have you been searching for an opportunity that fulfills your desire to give back to the community and see a direct difference and change brought about from your individual effort?"
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('p', [_vm._v("Phoenix Shanti Group is a local 501c3 non-profit organization, which means, that amongst other things, when you interact with us, you are not a name-less, face-less individual giving your time and talents to a multi-national organization where you may or may not see the immediate effect of your giving.")]), _vm._v(" "), _c('p', [_vm._v("If you are looking for a more personal experience where you can see a direct impact due to your personal efforts, then we encourage you to read on, and find out more about the various opportunities available in which your help will be greatly appreciated:")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Food Pantry:")]), _vm._v(" Phoenix Shanti Group operates a canned goods/non-perishable foods pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of canned/non-perishable food items will assist us in keeping our food pantry stocked and provide our patients with the ability to have a nutritious meal.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Personal Hygiene Pantry:")]), _vm._v("  Phoenix Shanti Group operates a personal hygiene pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of personal hygiene items (toothpaste, dental floss, tooth brushes, razors, shaving cream, toilet paper, shampoo, soap, laundry detergent, mouthwash, deodorant, dish soap) will assist us in keeping the pantry stocked with these essential items.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Homeless Shelter Construction/Repair/Maintenance Coordinators:")]), _vm._v("  Phoenix Shanti Group operates homeless shelters for individuals with HIV/AIDS.  The shelters are in continuing need of various repairs and general maintenance, including interior/exterior painting.  Your donation of paint, power tools, construction supplies, or even more importantly, your time to participate in our shelter maintenance program will be greatly appreciated!")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Social Media Coordinators:")]), _vm._v(" Phoenix Shanti Group is looking for individuals to participate in our social media initiative.  Through the use of facebook, twitter, texting, and youtube, we are looking to individuals to friend, tweet, and forward on messages from Shanti regarding special events that are planned throughout the year.\n\n        ")]), _c('p', [_c('strong', [_vm._v("Special Events Coordinators:")]), _vm._v("  Special Events Coordinators will work directly with a staff member on individual events that are planned throughout the year.  These are events in which the cause of HIV/AIDS or Phoenix Shanti Group will be recognized or host/partially host an event.  Events range from theater/arts performances to professional sports games, as well as many other venues.")]), _vm._v(" "), _c('p', [_vm._v("Traditional Media Coordinators:  Traditional Media Coordinators will work directly with a staff member on individual media projects.  These projects include radio, television, electronic, and print interviews, public relations, advertising, and marketing campaigns.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Legal Assistance Coordinators:")]), _vm._v("  Legal Assistance Coordinators will work directly with a staff member on estate planning, end of life remembrance programs, and other legal/technical initiatives.")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Corporate Incentives Coordinators:")]), _vm._v("  Corporate Incentive Coordinators will work directly with a staff member on outreach programs for corporate sponsorships, grants, donations, matching gifts programs, and speaking opportunities in which Phoenix Shanti Group is the primary recipient.Type your paragraph here.")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1772fe5b", module.exports)
-  }
-}
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "HIV Services",
-      "subtitle": "Counseling and Vocational Rehabilitation",
-      "hero": "Phoenix Shanti Group operates three different levels of HIV Services: <br />Individual Counseling, Group Counseling and Vocational Rehabilitation."
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('h3', [_vm._v("Individual Counseling")]), _vm._v(" "), _c('p', [_vm._v("Individual counseling consists of one-on-one sessions with a trained clinician/therapist in an open, supportive, and confidential environment. At Phoenix Shanti Group, our focus is to assist you in resolving the issues that bring you to counseling. Topics addressed in individual counseling include, but are not limited to:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Exploration of feelings, beliefs, and behavior patterns")]), _vm._v(" "), _c('li', [_vm._v("Challenging or influential memories, including trauma")]), _vm._v(" "), _c('li', [_vm._v("Identifying aspects of life that you would like to change")]), _vm._v(" "), _c('li', [_vm._v("Increased insight/awareness/understanding of self and others")]), _vm._v(" "), _c('li', [_vm._v("Communication, boundaries, and how to navigate relationships")])]), _vm._v(" "), _c('p', [_vm._v("The length of individual treatment will be based on your unique needs and goals for therapy. Phoenix Shanti Group clinicians are trained to address a variety of presenting concerns including, but not limited to:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Mental Health (depression, anxiety, PTSD)")]), _vm._v(" "), _c('li', [_vm._v("Substance use/abuse")]), _vm._v(" "), _c('li', [_vm._v("Personal identity, self-esteem, self-worth")]), _vm._v(" "), _c('li', [_vm._v("Gender Identity")]), _vm._v(" "), _c('li', [_vm._v("Sexual/Affectional Orientation")]), _vm._v(" "), _c('li', [_vm._v("Chronic Illness (specializing in issues associated with HIV, including stigma and disclosure concerns)")]), _vm._v(" "), _c('li', [_vm._v("Trauma")])]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group has therapists from various backgrounds who are Master’s level clinicians licensed to practice in the State of Arizona. Our therapists are trained in utilizing a holistic approach to treatment, integrating mind and body. Phoenix Shanti Group therapists are also trained in an evidence-based trauma treatment called EMDR (Eye Movement Desensitization and Reprocessing). For more information on EMDR, please visit "), _c('a', {
-    attrs: {
-      "href": "http://www.emdr.com",
-      "target": "_blank"
-    }
-  }, [_vm._v("EMDR.com")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Group Counseling")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group offers an intensive outpatient program focused on substance use/abuse and HIV support/education. This program consists of multiple group sessions held at our clinic throughout the week. This program is for HIV+ individuals.")]), _vm._v(" "), _c('p', [_vm._v("Group members discuss and process a variety of issues including exploring relationships, improving self-esteem, relapse prevention, mental health concerns, HIV-related issues, stress management, and enhancing coping skills.  Group members are encouraged to share information about themselves and provide feedback to others. Group leaders aim to create a safe and supportive environment, which includes facilitating productive communication and respect. Group leaders may also encourage member engagement in the group process, give feedback, and offer support to individual members or the group as a whole. Group facilitators will also provide education surrounding common themes experienced by group members. Group members are asked to make a commitment to protect each other’s confidentiality by agreeing not to share information that would identify other members outside of group.")]), _vm._v(" "), _c('p', [_vm._v("At Phoenix Shanti Group, we have found that many experience relief from participating in  group treatment and recognizing that they are not alone in facing life’s challenges. Often, substance use can lead to isolation. Group participation allows individuals to re-engage in social settings and learn how to build healthy connections with others. Many members have also found it helpful to be able to learn from peers’ experiences and have shared that seeing others recover creates a sense of hope.")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Vocational Rehabilitation / Job Skills Training")]), _vm._v(" "), _c('p', [_vm._v("PSG, through a 7,000 sq. foot re-sale store, provides a three module Voc Rehab curriculum program for trainees to gain knowledge, skill, and experience to re-enter the workforce.")]), _vm._v(" "), _c('p', [_vm._v("Trainees learn “hard skills” like computer use, internal inventory controls, donation pickup scheduling, organization, maintenance, pricing and item values, furniture repair and display, customer service, point of sale and money handling, workforce expectations, work ethics, and more.")]), _vm._v(" "), _c('p', [_vm._v("Trainees also learn “soft skills” like communication, boundaries, assertiveness training, problem solving, decision making, self-esteem, risk taking, value clarification, conflict resolution and more.")]), _vm._v(" "), _c('p', [_vm._v("Additionally, trainees learn how to create a resume, how to search for employment and receive interview coaching. It is our hope that by providing a long term solution thru education and training, individuals will be more likely to become self-sufficient and independent in the future.  We strive for a goal of either job placement or enrollment in a higher education institution by the time the trainee is ready to graduate from the program.  The Vocational Rehabilitation program is a 1 year program for most participants but can be extended further on a case by case basis.")]), _vm._v(" "), _c('p', [_vm._v("Shanti’s Second Chances thrift store and Voc Rehab program is an integral part of the Phoenix Shanti recovery experience. It is available to all clients of the Phoenix Shanti Group.")]), _vm._v(" "), _c('p', [_vm._v("Shanti’s 2nd Chances store is located at 4015 N 16th Street Phoenix, AZ, and is open Monday through Friday 9am – 6pm and on Saturday 9am-5pm. You can also shop from our Ebay store, ebay.com/usr/phoenix-shanti-group")]), _vm._v(" "), _c('p', [_vm._v("PSG offers a FREE valley-wide donation pickup service 6 days a week. You can schedule a pickup by calling us at 602-283-0100. Donations of furniture, clothing, patio, sporting goods, appliances (working or not), electronics, and other household items are gratefully accepted. Your donations are tax deductible and a tax receipt will be provided to you with any donation that you make. Thank you for your continued support.")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-18d3a9c0", module.exports)
-  }
-}
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Staff",
-      "subtitle": "Our Team",
-      "hero": "Hero text"
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('psg-staff')], 1)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1d35e242", module.exports)
-  }
-}
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "outer"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "header-2"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-2"
-  }, [_c('div', {
-    staticClass: "logo"
-  }, [_c('router-link', {
-    attrs: {
-      "to": "/",
-      "exact": ""
-    }
-  }, [_c('img', {
-    attrs: {
-      "width": "175px",
-      "src": "/img/shanti_logo.png",
-      "alt": "Phoenix Shanti Group"
-    }
-  })])], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-9"
-  }, [_c('psg-nav')], 1), _vm._v(" "), _vm._m(1)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "top-bar"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "tb-contact pull-left"
-  }, [_c('i', {
-    staticClass: "fa fa-envelope color"
-  }), _vm._v("   "), _c('a', {
-    attrs: {
-      "href": "mailto:info@shantiaz.org"
-    }
-  }, [_vm._v("info@shantiaz.org")]), _vm._v("\n                  \n                "), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-phone color"
-  }), _vm._v("  (602) 279-0008\n            ")]), _vm._v(" "), _c('div', {
-    staticClass: "tb-search pull-left"
-  }, [_c('a', {
-    staticClass: "b-dropdown",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "b-dropdown-block"
-  }, [_c('form', {
-    attrs: {
-      "role": "form"
-    }
-  }, [_c('div', {
-    staticClass: "input-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Type Something"
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-btn"
-  }, [_c('button', {
-    staticClass: "btn btn-color",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Search")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "tb-social pull-right"
-  }, [_c('div', {
-    staticClass: "brand-bg text-right"
-  }, [_c('a', {
-    staticClass: "facebook",
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.facebook.com/phoenixshantigroup"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-facebook square-2 rounded-1"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "facebook",
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.facebook.com/shanti2ndchances"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-facebook square-2 rounded-1"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "twitter",
-    attrs: {
-      "target": "_blank",
-      "href": "https://twitter.com/PhoenixShanti"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-twitter square-2 rounded-1"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "youtube",
-    attrs: {
-      "target": "_blank",
-      "href": "https://www.youtube.com/user/PhoenixShantiGroup"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-youtube square-2 rounded-1"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-1"
-  }, [_c('div', {
-    staticClass: "head-search pull-right"
-  }, [_c('a', {
-    staticClass: "b-dropdown",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "b-dropdown-block"
-  }, [_c('form', {
-    attrs: {
-      "role": "form"
-    }
-  }, [_c('div', {
-    staticClass: "input-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Type Something"
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-btn"
-  }, [_c('button', {
-    staticClass: "btn btn-color",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Search")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  })])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1e210950", module.exports)
-  }
-}
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "About Us",
-      "subtitle": "Something About Us",
-      "hero": "Founded back in 1987, our mission is to provide housing, education, and direct client services to individuals, families, and loved ones infected with and affected by HIV/AIDS. “Shanti” is a Sanskrit word meaning “Inner Peace” and is reflective of Phoenix Shanti Groups’ approach of promoting personal empowerment and maintaining independence and dignity"
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('div', {
-    staticClass: "block-heading-eight"
-  }, [_c('h3', [_c('i', {
-    staticClass: "fa fa-hand-o-right color"
-  }), _vm._v(" About Phoenix Shanti Group")])]), _vm._v(" "), _c('div', {
-    staticClass: "nav-tabs-two"
-  }, [_c('ul', {
-    staticClass: "nav nav-tabs"
-  }, [_c('li', {
-    staticClass: "active"
-  }, [_c('a', {
-    attrs: {
-      "href": "#home-2",
-      "data-toggle": "tab"
-    }
-  }, [_vm._v("What We Do?")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#profile-2",
-      "data-toggle": "tab"
-    }
-  }, [_vm._v("Why Choose Us?")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#messages-2",
-      "data-toggle": "tab"
-    }
-  }, [_vm._v("What Makes Us Special?")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#settings-2",
-      "data-toggle": "tab"
-    }
-  }, [_vm._v("Testimonials")])])]), _vm._v(" "), _c('div', {
-    staticClass: "tab-content"
-  }, [_c('div', {
-    staticClass: "tab-pane fade in active",
-    attrs: {
-      "id": "home-2"
-    }
-  }, [_c('p', [_vm._v("The Phoenix Shanti Group provides support, counseling, housing and other services to people infected with or affected by HIV/AIDS. In one form or another, Shanti has been serving the the HIV community in metro Phoenix for " + _vm._s(_vm.yearsSinceFounding) + " years.")])]), _vm._v(" "), _c('div', {
-    staticClass: "tab-pane fade",
-    attrs: {
-      "id": "profile-2"
-    }
-  }, [_c('p', [_vm._v("Shanti provides a stem-to-stern approach to HIV services. Some of our clients are homeless when they enter the Shanti program. Most clients, but not all, enter housing services upon entry to Shanti. In housing, clients can relate to other people living with HIV. Some are newly infected, others have been living with the virus for many years. Through counseling, medication and peer support, clients learn how to re-enter the world, without having to rely on drugs and alcohol. In our vocational rehabilitation program, clients gain valuable work skills and experience. By the time they graduate, clients are ready to take on the world anew.")])]), _vm._v(" "), _c('div', {
-    staticClass: "tab-pane fade",
-    attrs: {
-      "id": "messages-2"
-    }
-  }, [_c('p', [_vm._v("Through the boundless support provided by Shanti, many clients become quite fond of the agency and its staff. There is a familial feeling to Shanti.  Many of the clients become friends. After graduation, some former clients come back to help the organization in various ways.  Some serve on the Board.  Others volunteer for committees.  This website was created by a former client, who redeemed his life through the Shanti program.  At Shanti, through its curriculum, many clients have tackled lifelong issues and now that they are clean and sober, they feel an immense sense of gratitude that they want to pay forward.")])]), _vm._v(" "), _c('div', {
-    staticClass: "tab-pane fade",
-    attrs: {
-      "id": "settings-2"
-    }
-  })])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2f6372ca", module.exports)
-  }
-}
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Page Not Found",
-      "subtitle": "404 Error",
-      "hero": "We're sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later."
-    }
-  }, [_c('div', {
-    slot: "copy"
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3836d024", module.exports)
-  }
-}
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Resources",
-      "subtitle": "Let Us Help You",
-      "hero": "Follow what's happening at the Phoenix Shanti Group on this page. You'll find news about what's happening at Shanti, as well as postings of Shanti events."
-    }
-  }, [_c('div', {
-    slot: "copy"
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3d5cfb76", module.exports)
-  }
-}
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Contact Us",
-      "subtitle": "Main Office",
-      "hero": ""
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('iframe', {
-    staticStyle: {
-      "border": "0"
-    },
-    attrs: {
-      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942",
-      "width": "100%",
-      "height": "450",
-      "frameborder": "0",
-      "allowfullscreen": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                        In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.\n                    ")]), _vm._v(" "), _c('alert', {
-    attrs: {
-      "show": _vm.showTop,
-      "placement": "top-right",
-      "duration": 10000,
-      "type": _vm.type,
-      "width": "500px",
-      "dismissable": ""
-    },
-    on: {
-      "update:show": function($event) {
-        _vm.showTop = $event
-      }
-    }
-  }, [_c('span', {
-    staticClass: "icon-ok-circled alert-icon-float-left"
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('div', {
-    staticClass: "divider-2"
-  }), _vm._v(" "), _c('form', [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "name"
-    }
-  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.name),
-      expression: "name"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "text",
-      "id": "name"
-    },
-    domProps: {
-      "value": (_vm.name)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.name = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "email_address"
-    }
-  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.emailAddress),
-      expression: "emailAddress"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "email_address",
-      "id": "email_address"
-    },
-    domProps: {
-      "value": (_vm.emailAddress)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.emailAddress = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "phone"
-    }
-  }, [_vm._v("Phone:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.phone),
-      expression: "phone"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "phone",
-      "id": "phone"
-    },
-    domProps: {
-      "value": (_vm.phone)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.phone = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "subject"
-    }
-  }, [_vm._v("Subject:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.subject),
-      expression: "subject"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "subject",
-      "id": "subject"
-    },
-    domProps: {
-      "value": (_vm.subject)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.subject = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "message"
-    }
-  }, [_vm._v("Message:")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.message),
-      expression: "message"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "id": "message",
-      "name": "message",
-      "rows": "10"
-    },
-    domProps: {
-      "value": (_vm.message)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.message = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "type": "submit"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.sendMessage($event)
-      }
-    }
-  }, [_vm._v("Send Message")])])], 1)])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
-  }
-}
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('h2', [_vm._v("Test")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-44200c9e", module.exports)
-  }
-}
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Blog",
-      "subtitle": "What's Happening at Shanti",
-      "hero": "Follow what's happening at the Phoenix Shanti Group on this page. You'll find news about what's happening at Shanti, as well as postings of Shanti events."
-    }
-  }, [_c('div', {
-    slot: "posts"
-  }, _vm._l((_vm.posts), function(post, index) {
-    return _c('div', {
-      key: "index"
-    }, [_vm._v("\n            test\n            "), (post.image) ? _c('div', [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "col-md-4"
-    }, [(post.link) ? _c('div', [_c('a', {
-      attrs: {
-        "href": post.link,
-        "target": "_blank"
-      }
-    }, [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/' + post.image,
-        "alt": post.headline
-      }
-    })])]) : _vm._e(), _vm._v(" "), (post.image && !post.link) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/' + post.image,
-        "alt": post.headline
-      }
-    })]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-8"
-    }, [_c('div', {
-      domProps: {
-        "innerHTML": _vm._s(post.body)
-      }
-    }), _vm._v(" "), (post.link) ? _c('div', [_c('a', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "href": post.link
-      }
-    }, [_vm._v("More Information")])]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('div', {
-      domProps: {
-        "innerHTML": _vm._s(post.body)
-      }
-    }), _vm._v(" "), (post.link) ? _c('div', [_c('a', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "href": post.link
-      }
-    }, [_vm._v("More Information")])]) : _vm._e()]) : _vm._e()])
-  }))])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4b99bdb6", module.exports)
-  }
-}
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Board of Directors",
-      "subtitle": "Our Management",
-      "hero": ""
-    }
-  }, [_c('div', {
-    slot: "copy"
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-51a29b48", module.exports)
-  }
-}
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Housing",
-      "subtitle": "Transitional and Permanent",
-      "hero": "Phoenix Shanti Group operates two different types of housing programs:<br /> Transitional Housing and Permanent Supportive Housing."
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('h3', [_vm._v("Transitional Housing Program")]), _vm._v(" "), _c('p', [_vm._v("The Transitional Housing Program provides a structured, drug-free environment to homeless, or at risk of becoming homeless, HIV+ individuals.  Participants in this program may remain in the program for up to 24 months.  Some basic requirements for entry into the program are:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Lab results showing HIV+ status")]), _vm._v(" "), _c('li', [_vm._v("TB Screen test less than 3 months old")]), _vm._v(" "), _c('li', [_vm._v("Income verification (if applicable)")]), _vm._v(" "), _c('li', [_vm._v("Homeless, or at risk of becoming homeless")])]), _vm._v(" "), _c('p', [_vm._v("For additional questions regarding this program, please contact Michael Stantz ("), _c('a', {
-    attrs: {
-      "href": "MichaelS@ShantiAZ.org"
-    }
-  }, [_vm._v("MichaelS@ShantiAZ.org")]), _vm._v(") 602-279-0008 extension 112")]), _vm._v(" "), _c('p', [_vm._v("Funding for this program is provided in part by "), _c('a', {
-    attrs: {
-      "target": "_blank",
-      "href": "https://portal.hud.gov/hudportal/HUD?src=/program_offices/comm_planning/aidshousing"
-    }
-  }, [_vm._v("HOPWA")]), _vm._v(" and "), _c('a', {
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.vsuw.org"
-    }
-  }, [_vm._v("Valley of the Sun United Way")]), _vm._v(".\n\n        ")]), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Permanent Supportive Housing")]), _vm._v(" "), _c('p', [_vm._v("The other type of housing option operated by Phoenix Shanti Group is Permanent Supportive Housing.  This program is for homeless HIV+ individuals/families who are capable of living independently.  The program provides individuals the opportunity for long term housing stability while utilizing community resources to work toward self sufficiency or home ownership.")]), _vm._v(" "), _c('p', [_vm._v("The Permanent Supportive Housing program supports a drug and alcohol free living environment.")]), _vm._v(" "), _c('p', [_vm._v("For additional questions regarding this program, please contact James Claymon ("), _c('a', {
-    attrs: {
-      "href": "JamesC@ShantiAZ.org"
-    }
-  }, [_vm._v("JamesC@ShantiAZ.org")]), _vm._v(") 602-279-0008 extension 107.")]), _vm._v(" "), _c('p', [_vm._v("Funding for this program is provided in part by the "), _c('a', {
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.HUD.gov"
-    }
-  }, [_vm._v("Department of Housing and Urban Development")]), _vm._v(".")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
-  }
-}
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "foot"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-3 col-sm-6"
-  }, [_c('div', {
-    staticClass: "foot-item"
-  }, [_vm._m(0), _vm._v(" "), _c('p', [_vm._v("\"Shanti\" is a Sanskrit word meaning \"Inner Peace\" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
-    staticClass: "subscribe-box"
-  }, [_c('h5', {
-    staticClass: "bold"
-  }, [_vm._v("Subscribe :")]), _vm._v(" "), _c('form', {
-    attrs: {
-      "role": "form",
-      "method": "POST"
-    }
-  }, [_c('div', {
-    staticClass: "input-group"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.email),
-      expression: "email"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Enter Email Address"
-    },
-    domProps: {
-      "value": (_vm.email)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.email = $event.target.value
-      }
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-btn"
-  }, [_c('button', {
-    staticClass: "btn btn-color",
-    attrs: {
-      "type": "button"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.subscribe($event)
-      }
-    }
-  }, [_vm._v("Subscribe")])])]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.subscriptionSuccess) ? _c('div', {
-    staticClass: "alert alert-success"
-  }, [_vm._v("\n                                " + _vm._s(_vm.subscriptionResult) + "\n                            ")]) : _vm._e(), _vm._v(" "), (!_vm.subscriptionSuccess && _vm.subscriptionResult) ? _c('div', {
-    staticClass: "alert alert-danger"
-  }, [_vm._v("\n                                " + _vm._s(_vm.subscriptionResult) + "\n                            ")]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3 col-sm-6"
-  }, [_c('div', {
-    staticClass: "foot-item"
-  }, [_vm._m(2), _vm._v(" "), (_vm.posts) ? _c('div', {
-    staticClass: "foot-item-content"
-  }, [_c('ul', {
-    staticClass: "list-unstyled"
-  }, _vm._l((_vm.posts), function(post, index) {
-    return _c('router-link', {
-      key: "index",
-      attrs: {
-        "to": {
-          name: 'blog/view',
-          params: {
-            slug: post.slug
-          }
-        },
-        "tag": "li"
-      }
-    }, [_c('a', [_vm._v(_vm._s(post.headline))])])
-  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h5', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-user"
-  }), _vm._v("  About")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "brand-bg"
-  }, [_c('a', {
-    staticClass: "facebook",
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.facebook.com/phoenixshantigroup",
-      "title": "Phoenix Shanti Group"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-facebook circle-3"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "facebook",
-    attrs: {
-      "target": "_blank",
-      "href": "http://www.facebook.com/shanti2ndchances",
-      "title": "Shanti 2nd Chances"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-facebook circle-3"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "twitter",
-    attrs: {
-      "target": "_blank",
-      "href": "https://twitter.com/PhoenixShanti"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-twitter circle-3"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "youtube",
-    attrs: {
-      "target": "_blank",
-      "href": "https://www.youtube.com/user/PhoenixShantiGroup"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-youtube circle-3"
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h5', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-comments"
-  }), _vm._v("  Recent Posts")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3 col-sm-6"
-  }, [_c('div', {
-    staticClass: "foot-item"
-  }, [_c('h5', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-picture-o"
-  }), _vm._v("  Recent Images")]), _vm._v(" "), _c('div', {
-    staticClass: "foot-item-content"
-  }, [_c('div', {
-    staticClass: "foot-recent-img"
-  }, [_c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/1.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/1.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/2.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/2.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/3.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/3.jpg",
-      "alt": ""
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "foot-recent-img"
-  }, [_c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/1.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/1.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/2.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/2.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/3.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/3.jpg",
-      "alt": ""
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "foot-recent-img"
-  }, [_c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/1.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/1.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/2.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/2.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "lightbox",
-    attrs: {
-      "href": "img/gallery/small/3.jpg"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive img-thumbnail",
-    attrs: {
-      "src": "img/gallery/small/3.jpg",
-      "alt": ""
-    }
-  })])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3 col-sm-6"
-  }, [_c('div', {
-    staticClass: "foot-item"
-  }, [_c('h5', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-building-o"
-  }), _vm._v("  Contact Us")]), _vm._v(" "), _c('div', {
-    staticClass: "foot-item-content address"
-  }, [_c('h6', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-home"
-  }), _vm._v("  Phoenix Shanti Group")]), _vm._v(" "), _c('p', {
-    staticClass: "add"
-  }, [_vm._v("\n                            2345 West Glendale Avenue,"), _c('br'), _vm._v("\n                            Phoenix, Arizona 85021")]), _vm._v(" "), _c('p', {
-    staticClass: "tel"
-  }, [_c('i', {
-    staticClass: "fa fa-phone"
-  }), _vm._v(" Main Office : (602) 279-0008"), _c('br'), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-fax"
-  }), _vm._v(" Secure Fax : (602) 279-2004"), _c('br'), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-phone"
-  }), _vm._v(" Store : (602) 283-0100"), _c('br'), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-fax"
-  }), _vm._v(" Store Fax : (602) 283-0101"), _c('br'), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-envelope"
-  }), _vm._v("  Email : "), _c('a', {
-    attrs: {
-      "href": "mailto:info@shantiaz.org"
-    }
-  }, [_vm._v("info@shantiaz.org")]), _c('br'), _vm._v(" "), _c('i', {
-    staticClass: "fa fa-calendar"
-  }), _vm._v(" Business Hours : 8:00 am - 4:00 pm\n\n                        ")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6085d134", module.exports)
-  }
-}
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "icon-box-8 text-center"
-  }, [_c('div', {
-    staticClass: "row"
-  }, _vm._l((_vm.boxes), function(box, index) {
-    return _c('psg-info-box', {
-      key: "index",
-      attrs: {
-        "color": box.color,
-        "icon": box.icon,
-        "headline": box.title,
-        "link": box.link,
-        "copy": box.copy
-      }
-    })
-  })), _vm._v(" "), _c('br')])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-60f41d06", module.exports)
-  }
-}
-
-/***/ }),
-/* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Privacy Policy",
-      "subtitle": "How We Protect You",
-      "hero": "This site is owned and operated by Phoenix Shanti Group. Because we gather certain types of information about our users, we feel you should fully understand our policy and the terms and conditions surrounding the capture and use of that information. This privacy statement discloses what information we gather and how we use it."
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('h3', [_vm._v("Information We Gather and Track")]), _vm._v(" "), _c('p', [_vm._v("We gather two types of information about users:\n\n            ")]), _c('p', [_vm._v("1. Information that users provide through optional, voluntary submissions. These are voluntary submissions and can include to sign up as a user, receive electronic newsletters, fill out response forms, participate in polls, etc.")]), _vm._v(" "), _c('p', [_vm._v("2. Information we gather through aggregated tracking information derived mainly by tallying page views throughout our sites. This information allows us to better tailor our content to readers' needs.")]), _vm._v(" "), _c('p', [_vm._v("Consistent with the Federal Children's Online Privacy Protection Act of 1998 (COPPA), we will never knowingly request personally identifiable information from anyone under the age of 13 without requesting parental consent.")]), _vm._v(" "), _c('h3', [_vm._v("Usage Tracking")]), _vm._v(" "), _c('p', [_vm._v("We track user traffic patterns throughout all of our sites. However, we do not correlate this information with data about individual users. We do break down overall usage statistics according to a user's domain name, browser type, and MIME type by reading this information from the browser string (information passed to us by every user's browser).")]), _vm._v(" "), _c('p', [_vm._v("We use tracking information to determine which areas of our sites users like and don't like based on traffic to those areas. We do not track what individual users read, but rather how well each page performs overall. This helps us continue to build a better site for you.")]), _vm._v(" "), _c('h3', [_vm._v("Cookies")]), _vm._v(" "), _c('p', [_vm._v("We may place a text file called a \"cookie\" in the browser files of your computer. The cookie itself does not contain Personal Information although it can enable us to relate your use of this site to information that you have specifically and knowingly provided. But the only personal information a cookie can identify is information you supply yourself. A cookie can't read data off your hard disk or read cookie files created by other sites. We use cookies to track users who've signed-in and people who've participated in a poll.")]), _vm._v(" "), _c('p', [_vm._v("You can refuse cookies by turning them off in your browser. If you've set your browser to warn you before accepting cookies, you will receive the warning message with each cookie. You do not need to have cookies turned on to use this site.")]), _vm._v(" "), _c('h3', [_vm._v("Use Of Information")]), _vm._v(" "), _c('p', [_vm._v("As stated above, we use information that users voluntarily provide in order to send out electronic newsletters and to enable users to participate in the various parts of our site. Otherwise, we do not share your e-mail address or any other individually identifying information with any third parties.")]), _vm._v(" "), _c('p', [_vm._v("While we use tracking information to determine which areas of our sites users like and don't like based on traffic to those areas, we do not track what individual users read, but rather how well each page performs overall. This helps us continue to build a better service for you.")]), _vm._v(" "), _c('p', [_vm._v("We create aggregate reports on user demographics and traffic patterns for our internal use only. We will not disclose any information about any individual user except to comply with applicable law or valid legal process or to protect the personal safety of our users or the public.")]), _vm._v(" "), _c('h3', [_vm._v("Sharing Of The Information")]), _vm._v(" "), _c('p', [_vm._v("We will not sell, trade, rent or provide any information about individual users with any third party, except to send out electronic newsletters or to comply with applicable law or valid legal process or to protect the personal safety of our users or the public.")]), _vm._v(" "), _c('h3', [_vm._v("Security")]), _vm._v(" "), _c('p', [_vm._v("We use servers protected by industry standard firewall and password protection systems. Our security and privacy policies are periodically reviewed and enhanced as necessary and only authorized individuals have access to the information provided by our users.")]), _vm._v(" "), _c('h3', [_vm._v("Opt-Out Policy")]), _vm._v(" "), _c('p', [_vm._v("We give users options wherever necessary and practical. Such choices include:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Opting not to register as a user and receive our electronic newsletters.")]), _vm._v(" "), _c('li', [_vm._v("Opting not to participate in certain interactive areas, which completely alleviates the need to gather any personally identifiable information.")])]), _vm._v(" "), _c('h3', [_vm._v("Data Quality and Access")]), _vm._v(" "), _c('p', [_vm._v("The accuracy of your individual identifying information is important to us. Registered users can review their individual identifying information by signing in and following the instructions.")]), _vm._v(" "), _c('h3', [_vm._v("Linked Sites")]), _vm._v(" "), _c('p', [_vm._v("We provide links to other sites. The privacy policies of these linked sites are the responsibility of the linked site and we have no control or influence over their policies. Please check the policies of each site you visit for specific information. We cannot be held liable for damage or misdoings of other sites linked or otherwise.")]), _vm._v(" "), _c('h3', [_vm._v("Your Consent")]), _vm._v(" "), _c('p', [_vm._v("By using this site, you consent to our collection and use of this information you provide. If we decide to change our privacy policy, we will post those changes on this page, along with the date our privacy policy was last update, so that you are always aware of what information we collect, how we use it, and under what circumstances we disclose it.")])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6b9630ae", module.exports)
-  }
-}
-
-/***/ }),
-/* 112 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Getting Started",
-      "subtitle": "Taking the First Step",
-      "hero": "Your first step is to call us to schedule your intake appointment (602-279-0008). During this call, a staff member will request some initial information to determine if the services provided at Phoenix Shanti Group will meet your needs."
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('p', [_vm._v("If it is determined that our services fit your treatment needs, you will then be scheduled for an intake assessment. This appointment consists of a two-hour evaluation which provides you the opportunity to build rapport with the therapist, to share some of your background information, to discuss the reasons you are seeking services, and to set goals that you would like to accomplish. During this appointment, your intake therapist will provide you with information regarding confidentiality, services offered at Phoenix Shanti Group, and what to expect in therapy.")]), _vm._v(" "), _c('p', [_vm._v("The goal during the assessment is to ensure that your needs are identified and for the clinician to make appropriate recommendations for continued treatment. We will work with you to determine what kind of treatment is best for you. This process occasionally includes a referral to an outside agency that provides other specialized services that can help you to address the needs you present with. At the end of this appointment, the intake clinician will schedule you for your next session.")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6c5edc5e", module.exports)
-  }
-}
-
-/***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', _vm._l((_vm.staff), function(member) {
-    return _c('psg-staff-member', {
-      attrs: {
-        "member": member
-      }
-    })
-  }))
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-72d5db94", module.exports)
-  }
-}
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "main-block"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('carousel', {
-    attrs: {
-      "loop": true,
-      "autoplay": true,
-      "autoplayTimeout": 7000,
-      "perPage": 1,
-      "navigationEnabled": true
-    }
-  }, _vm._l((_vm.events), function(event, index) {
-    return _c('slide', {
-      key: "index"
-    }, [(event.image) ? _c('div', [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "col-md-5"
-    }, [(event.link) ? _c('div', [_c('a', {
-      attrs: {
-        "href": event.link,
-        "target": "_blank"
-      }
-    }, [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/' + event.image,
-        "alt": event.headline
-      }
-    })])]) : _vm._e(), _vm._v(" "), (event.image) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/' + event.image,
-        "alt": event.headline
-      }
-    })]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-7"
-    }, [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(event.hero_text)
-      }
-    }), _vm._v(" "), _c('br'), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": {
-          name: 'blog/view',
-          params: {
-            slug: event.slug
-          }
-        }
-      }
-    }, [_vm._v("Read More...")])], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(event.hero_text)
-      }
-    }), _vm._v(" "), _c('br'), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": {
-          name: 'blog/view',
-          params: {
-            slug: event.slug
-          }
-        }
-      }
-    }, [_vm._v("Read More...")])], 1) : _vm._e()])
-  })), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _c('psg-info-boxes'), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(3)], 1), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('br'), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
-    staticClass: "client-three"
-  }, [_c('carousel', {
-    attrs: {
-      "loop": true,
-      "autoplay": true,
-      "autoplayTimeout": 7000,
-      "perPage": 1,
-      "navigationEnabled": true
-    }
-  }, [_c('slide', [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-3"
-  }, [_c('a', {
-    attrs: {
-      "href": "",
-      "target": "_blank"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "/img/sponsors/aunt_ritas.png",
-      "alt": "Aunt Rita's Foundation"
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('a', {
-    attrs: {
-      "href": "",
-      "target": "_blank"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "/img/sponsors/united_way.jpeg",
-      "alt": "Valley of the Sun United Way"
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('a', {
-    attrs: {
-      "href": "",
-      "target": "_blank"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "/img/sponsors/hivaz.png",
-      "alt": "HIV AZ"
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-3"
-  }, [_c('a', {
-    attrs: {
-      "href": "",
-      "target": "_blank"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "/img/sponsors/elizabeth_taylor.png",
-      "alt": "Elizabeth Taylor AIDS Foundation"
-    }
-  })])])])]), _vm._v(" "), _c('slide'), _vm._v(" "), _c('slide'), _vm._v(" "), _c('slide')], 1)], 1)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "text-center"
-  }, [_c('h3', [_c('span', {
-    staticClass: "color"
-  }, [_vm._v("Phoenix Shanti Group")]), _vm._v(". Most Amazing HIV Agency in the Valley. "), _c('span', {
-    staticClass: "color"
-  }, [_vm._v("Literally")]), _vm._v(".")]), _vm._v(" "), _c('p', [_vm._v("Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "block-heading-two text-center"
-  }, [_c('h3', [_c('span', [_vm._v("Our Agency")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-4 col-sm-6"
-  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.")]), _vm._v(" "), _c('ul', {
-    staticClass: "list-2"
-  }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4 col-sm-6"
-  }, [_c('div', {
-    staticClass: "carousel slide",
-    attrs: {
-      "id": "bs-carousel-1",
-      "data-ride": "carousel",
-      "data-interval": "5000",
-      "data-pause": "hover",
-      "data-wrap": "true"
-    }
-  }, [_c('ol', {
-    staticClass: "carousel-indicators"
-  }, [_c('li', {
-    staticClass: "active",
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "0"
-    }
-  }), _vm._v(" "), _c('li', {
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "1"
-    }
-  }), _vm._v(" "), _c('li', {
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "2"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "carousel-inner"
-  }, [_c('div', {
-    staticClass: "item active"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-1.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-2.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-3.jpg",
-      "alt": ""
-    }
-  })])]), _vm._v(" "), _c('a', {
-    staticClass: "left carousel-control",
-    attrs: {
-      "href": "#bs-carousel-1",
-      "role": "button",
-      "data-slide": "prev"
-    }
-  }, [_c('span', {
-    staticClass: "fa fa-chevron-left"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "right carousel-control",
-    attrs: {
-      "href": "#bs-carousel-1",
-      "role": "button",
-      "data-slide": "next"
-    }
-  }, [_c('span', {
-    staticClass: "fa fa-chevron-right"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4 col-sm-6"
-  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Lorem ipsum dolor consectetursit amet, consectetur adipiscing elit consectetur euismod ed  euismod  adipiscing elit sapien. Donec eu feugiat enim,  tempus arcu. ")]), _vm._v(" "), _c('h6', [_vm._v("Web Designing")]), _vm._v(" "), _c('div', {
-    staticClass: "progress pb-sm"
-  }, [_c('div', {
-    staticClass: "progress-bar progress-bar-red",
-    staticStyle: {
-      "width": "40%"
-    },
-    attrs: {
-      "role": "progressbar",
-      "aria-valuenow": "40",
-      "aria-valuemin": "0",
-      "aria-valuemax": "100"
-    }
-  }, [_c('span', {
-    staticClass: "sr-only"
-  }, [_vm._v("40% Complete (success)")])])]), _vm._v(" "), _c('h6', [_vm._v("Doing Party")]), _vm._v(" "), _c('div', {
-    staticClass: "progress pb-sm"
-  }, [_c('div', {
-    staticClass: "progress-bar progress-bar-green",
-    staticStyle: {
-      "width": "60%"
-    },
-    attrs: {
-      "role": "progressbar",
-      "aria-valuenow": "60",
-      "aria-valuemin": "0",
-      "aria-valuemax": "100"
-    }
-  }, [_c('span', {
-    staticClass: "sr-only"
-  }, [_vm._v("40% Complete (success)")])])]), _vm._v(" "), _c('h6', [_vm._v("Money Making")]), _vm._v(" "), _c('div', {
-    staticClass: "progress pb-sm"
-  }, [_c('div', {
-    staticClass: "progress-bar progress-bar-lblue",
-    staticStyle: {
-      "width": "80%"
-    },
-    attrs: {
-      "role": "progressbar",
-      "aria-valuenow": "80",
-      "aria-valuemin": "0",
-      "aria-valuemax": "100"
-    }
-  }, [_c('span', {
-    staticClass: "sr-only"
-  }, [_vm._v("40% Complete (success)")])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "counter-one text-center"
-  }, [_c('div', {
-    staticClass: "counter-content"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-2 col-sm-4 col-xs-6"
-  }, [_c('div', {
-    staticClass: "counter-item"
-  }, [_c('i', {
-    staticClass: "fa fa-paper-plane red"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "number-count",
-    attrs: {
-      "data-from": "0",
-      "data-to": "290",
-      "data-speed": "2000",
-      "data-refresh-interval": "100"
-    }
-  }), _vm._v(" "), _c('hr', {
-    staticClass: "br-red"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-2 col-sm-4 col-xs-6"
-  }, [_c('div', {
-    staticClass: "counter-item"
-  }, [_c('i', {
-    staticClass: "fa fa-trophy green"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "number-count",
-    attrs: {
-      "data-from": "0",
-      "data-to": "150",
-      "data-speed": "2000",
-      "data-refresh-interval": "100"
-    }
-  }), _vm._v(" "), _c('hr', {
-    staticClass: "br-green"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-2 col-sm-4 col-xs-6"
-  }, [_c('div', {
-    staticClass: "counter-item"
-  }, [_c('i', {
-    staticClass: "fa fa-taxi lblue"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "number-count",
-    attrs: {
-      "data-from": "0",
-      "data-to": "300",
-      "data-speed": "2000",
-      "data-refresh-interval": "100"
-    }
-  }), _vm._v(" "), _c('hr', {
-    staticClass: "br-lblue"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-2 col-sm-4 col-xs-6"
-  }, [_c('div', {
-    staticClass: "counter-item"
-  }, [_c('i', {
-    staticClass: "fa fa-database yellow"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "number-count",
-    attrs: {
-      "data-from": "0",
-      "data-to": "250",
-      "data-speed": "2000",
-      "data-refresh-interval": "100"
-    }
-  }), _vm._v(" "), _c('hr', {
-    staticClass: "br-yellow"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-2 col-sm-4 col-xs-6"
-  }, [_c('div', {
-    staticClass: "counter-item"
-  }, [_c('i', {
-    staticClass: "fa fa-cube purple"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "number-count",
-    attrs: {
-      "data-from": "0",
-      "data-to": "120",
-      "data-speed": "2000",
-      "data-refresh-interval": "100"
-    }
-  }), _vm._v(" "), _c('hr', {
-    staticClass: "br-purple"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-2 col-sm-4 col-xs-6"
-  }, [_c('div', {
-    staticClass: "counter-item"
-  }, [_c('i', {
-    staticClass: "fa fa-fax brown"
-  }), _vm._v(" "), _c('span', {
-    staticClass: "number-count",
-    attrs: {
-      "data-from": "0",
-      "data-to": "350",
-      "data-speed": "2000",
-      "data-refresh-interval": "100"
-    }
-  }), _vm._v(" "), _c('hr', {
-    staticClass: "br-brown"
-  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "block-heading-six"
-  }, [_c('h4', {
-    staticClass: "bg-color"
-  }, [_vm._v("Our Supporters")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-831f5044", module.exports)
-  }
-}
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Cultural Competency",
-      "subtitle": "Serving Diverse Populations",
-      "hero": "Phoenix Shanti Group is dedicated to providing services to diverse populations with a focus on cultural competence through the application of culturally and linguistically appropriate services.  We have an on-going assessment process that addresses key areas of focus in implementing and refining our cultural competency strategy program. This strategy includes, but is not limited to:"
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('ul', [_c('li', [_vm._v("On-going leadership and staff training, both through internal staff development, as well as outside resources.  These resources include attending local/regional conferences and training workshops.")]), _vm._v(" "), _c('li', [_vm._v("Offering language assistance to individuals who have limited English proficiency and/or other communication needs, at no cost to them, to facilitate timely access to all health care and services")]), _vm._v(" "), _c('li', [_vm._v("Establishing culturally and linguistically appropriate goals, policies, and management accountability, and infusing them throughout our organizations planning and operations.")]), _vm._v(" "), _c('li', [_vm._v("Conducting ongoing assessments of our organizations culturally and linguistically appropriate services to measure outcomes and seek continuous quality improvement activities.")])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-837b8880", module.exports)
-  }
-}
-
-/***/ }),
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3 col-sm-6"
-  }, [_c('div', {
-    staticClass: "icon-box-8-item",
-    class: _vm.color
-  }, [_c('div', {
-    staticClass: "icon-box-8-icon"
-  }, [_c('a', {
-    staticClass: "icon-box-8-icon-top",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    class: _vm.icon
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "icon-box-8-icon-bottom",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    class: _vm.icon
-  })])]), _vm._v(" "), _c('h4', [_c('router-link', {
-    attrs: {
-      "to": _vm.link
-    }
-  }, [_vm._v(_vm._s(_vm.headline))])], 1), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.copy))])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-8f4f7150", module.exports)
-  }
-}
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row",
-    staticStyle: {
-      "margin-bottom": "20px"
-    }
-  }, [(_vm.member.staff) ? _c('div', [(_vm.member.staff.image) ? _c('div', [_c('div', {
-    staticClass: "col-md-4"
-  }, [_c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": '/uploads/staff/' + _vm.member.staff.image,
-      "alt": _vm.member.first_name + ' ' + _vm.member.last_name
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-8"
-  }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.member.staff.bio) ? _c('div', [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.member.staff.bio)
-    }
-  })]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.bio) ? _c('div', [_c('p', [_vm._v("Profile information is unavailable.")])]) : _vm._e()])]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.image) ? _c('div', [(_vm.member.staff.bio) ? _c('div', [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.member.staff.bio)
-    }
-  })])]) : _vm._e()]) : _vm._e()]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-a6382520", module.exports)
-  }
-}
-
-/***/ }),
-/* 118 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "History",
-      "subtitle": "1987 - Present",
-      "hero": ""
-    }
-  }, [_c('div', {
-    slot: "copy"
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-aa5234ba", module.exports)
-  }
-}
-
-/***/ }),
-/* 119 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "title": "Donate",
-      "subtitle": "Help Us Help You",
-      "hero": ""
-    }
-  }, [_c('div', {
-    slot: "copy"
-  })])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-ed8a8a24", module.exports)
-  }
-}
-
-/***/ }),
-/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -21063,6 +12907,8859 @@ return /******/ (function(modules) { // webpackBootstrap
 });
 ;
 //# sourceMappingURL=vue-strap.js.map
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(57);
+
+
+
+Vue.component('psg-header', __webpack_require__(70));
+Vue.component('psg-footer', __webpack_require__(69));
+Vue.component('psg-page', __webpack_require__(72));
+
+var app = new Vue({
+    el: '#app',
+    router: __WEBPACK_IMPORTED_MODULE_1__routes__["a" /* default */]
+});
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(14);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+var bind = __webpack_require__(7);
+var Axios = __webpack_require__(16);
+var defaults = __webpack_require__(2);
+
+/**
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ * @return {Axios} A new instance of Axios
+ */
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  // Copy axios.prototype to instance
+  utils.extend(instance, Axios.prototype, context);
+
+  // Copy context to instance
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(utils.merge(defaults, instanceConfig));
+};
+
+// Expose Cancel & CancelToken
+axios.Cancel = __webpack_require__(4);
+axios.CancelToken = __webpack_require__(15);
+axios.isCancel = __webpack_require__(5);
+
+// Expose all/spread
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = __webpack_require__(30);
+
+module.exports = axios;
+
+// Allow use of default import syntax in TypeScript
+module.exports.default = axios;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Cancel = __webpack_require__(4);
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var defaults = __webpack_require__(2);
+var utils = __webpack_require__(1);
+var InterceptorManager = __webpack_require__(17);
+var dispatchRequest = __webpack_require__(18);
+var isAbsoluteURL = __webpack_require__(26);
+var combineURLs = __webpack_require__(24);
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+
+  // Support baseURL config
+  if (config.baseURL && !isAbsoluteURL(config.url)) {
+    config.url = combineURLs(config.baseURL, config.url);
+  }
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+/**
+ * Add a new interceptor to the stack
+ *
+ * @param {Function} fulfilled The function to handle `then` for a `Promise`
+ * @param {Function} rejected The function to handle `reject` for a `Promise`
+ *
+ * @return {Number} An ID used to remove interceptor later
+ */
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+/**
+ * Remove an interceptor from the stack
+ *
+ * @param {Number} id The ID that was returned by `use`
+ */
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+/**
+ * Iterate over all the registered interceptors
+ *
+ * This method is particularly useful for skipping over any
+ * interceptors that may have become `null` calling `eject`.
+ *
+ * @param {Function} fn The function to call for each interceptor
+ */
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+var transformData = __webpack_require__(21);
+var isCancel = __webpack_require__(5);
+var defaults = __webpack_require__(2);
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData(
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers || {}
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData(
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData(
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ @ @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+  error.response = response;
+  return error;
+};
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var createError = __webpack_require__(6);
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response
+    ));
+  }
+};
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+/**
+ * Transform the data for a request or a response
+ *
+ * @param {Object|String} data The data to be transformed
+ * @param {Array} headers The headers for the request or response
+ * @param {Array|Function} fns A single function or Array of functions
+ * @returns {*} The resulting transformed data
+ */
+module.exports = function transformData(data, headers, fns) {
+  /*eslint no-param-reassign:0*/
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+function E() {
+  this.message = 'String contains an invalid character';
+}
+E.prototype = new Error;
+E.prototype.code = 5;
+E.prototype.name = 'InvalidCharacterError';
+
+function btoa(input) {
+  var str = String(input);
+  var output = '';
+  for (
+    // initialize result and counter
+    var block, charCode, idx = 0, map = chars;
+    // if the next str index does not exist:
+    //   change the mapping table to "="
+    //   check if d has no fractional digits
+    str.charAt(idx | 0) || (map = '=', idx % 1);
+    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+  ) {
+    charCode = str.charCodeAt(idx += 3 / 4);
+    if (charCode > 0xFF) {
+      throw new E();
+    }
+    block = block << 8 | charCode;
+  }
+  return output;
+}
+
+module.exports = btoa;
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      }
+
+      if (!utils.isArray(val)) {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
+};
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs support document.cookie
+  (function standardBrowserEnv() {
+    return {
+      write: function write(name, value, expires, path, domain, secure) {
+        var cookie = [];
+        cookie.push(name + '=' + encodeURIComponent(value));
+
+        if (utils.isNumber(expires)) {
+          cookie.push('expires=' + new Date(expires).toGMTString());
+        }
+
+        if (utils.isString(path)) {
+          cookie.push('path=' + path);
+        }
+
+        if (utils.isString(domain)) {
+          cookie.push('domain=' + domain);
+        }
+
+        if (secure === true) {
+          cookie.push('secure');
+        }
+
+        document.cookie = cookie.join('; ');
+      },
+
+      read: function read(name) {
+        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+        return (match ? decodeURIComponent(match[3]) : null);
+      },
+
+      remove: function remove(name) {
+        this.write(name, '', Date.now() - 86400000);
+      }
+    };
+  })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return {
+      write: function write() {},
+      read: function read() { return null; },
+      remove: function remove() {}
+    };
+  })()
+);
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the specified URL is absolute
+ *
+ * @param {string} url The URL to test
+ * @returns {boolean} True if the specified URL is absolute, otherwise false
+ */
+module.exports = function isAbsoluteURL(url) {
+  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+  // by any combination of letters, digits, plus, period, or hyphen.
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs have full support of the APIs needed to test
+  // whether the request URL is of the same origin as current location.
+  (function standardBrowserEnv() {
+    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var urlParsingNode = document.createElement('a');
+    var originURL;
+
+    /**
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
+    function resolveURL(url) {
+      var href = url;
+
+      if (msie) {
+        // IE needs attribute set twice to normalize properties
+        urlParsingNode.setAttribute('href', href);
+        href = urlParsingNode.href;
+      }
+
+      urlParsingNode.setAttribute('href', href);
+
+      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+      return {
+        href: urlParsingNode.href,
+        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+        host: urlParsingNode.host,
+        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+        hostname: urlParsingNode.hostname,
+        port: urlParsingNode.port,
+        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+                  urlParsingNode.pathname :
+                  '/' + urlParsingNode.pathname
+      };
+    }
+
+    originURL = resolveURL(window.location.href);
+
+    /**
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
+    return function isURLSameOrigin(requestURL) {
+      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+      return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+    };
+  })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return function isURLSameOrigin() {
+      return true;
+    };
+  })()
+);
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+    }
+  });
+
+  return parsed;
+};
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            posts: [],
+            email: '',
+            subscriptionResult: '',
+            subscriptionSuccess: false
+        };
+    },
+
+    methods: {
+        getPosts: function getPosts() {
+            var _this = this;
+
+            http.get('/posts/footer').use(saCache).then(function (response) {
+                _this.posts = response.body.posts;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        },
+        subscribe: function subscribe() {
+            var _this2 = this;
+
+            axios.post('/mailchimp', { email: this.email }).then(function (response) {
+                _this2.subscriptionResult = response.data.message;
+                _this2.subscriptionSuccess = response.data.success;
+            }).catch(function (error) {
+                _this2.subscriptionResult = error.data.message;
+                _this2.subscriptionSuccess = false;
+            });
+        }
+    },
+    computed: {
+        currentYear: function currentYear() {
+            return new Date().getFullYear();
+        }
+    },
+    beforeMount: function beforeMount() {
+        this.getPosts();
+    }
+});
+
+/***/ }),
+/* 32 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Nav__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Nav___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Nav__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'psg-nav': __WEBPACK_IMPORTED_MODULE_0__Nav___default.a
+    }
+});
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['article']
+});
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__StaffMember__);
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            staff: []
+        };
+    },
+
+    methods: {
+        getStaff: function getStaff() {
+            var _this = this;
+
+            http.get('/staff')
+            //.use(saCache)
+            .then(function (response) {
+                _this.staff = response.body.staff;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getStaff();
+    },
+
+    components: {
+        'psg-staff-member': __WEBPACK_IMPORTED_MODULE_0__StaffMember___default.a
+    }
+});
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['member']
+});
+
+/***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['color', 'icon', 'headline', 'link', 'copy']
+});
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__InfoBox__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            boxes: [{
+                color: 'bg-red',
+                icon: 'icon icon-awareness-ribbon',
+                title: 'HIV Services',
+                copy: 'Personalized support services for people infected with and affected by HIV/AIDS.',
+                link: '/services/hiv'
+            }, {
+                color: 'bg-lblue',
+                icon: 'fa fa-truck',
+                title: '2nd Chances Store',
+                copy: 'PSG operates a 7,000-square-foot retail thrift store to help fund patient services.',
+                link: 'http://store.shantiaz.org'
+            }, {
+                color: 'bg-green',
+                icon: 'fa fa-user',
+                title: 'Treatment',
+                copy: 'Individualized treatment plans are tailored to clients to help rebuild lives.',
+                link: '/services/hiv'
+            }, {
+                color: 'bg-purple',
+                icon: 'fa fa-home',
+                title: 'Housing',
+                copy: 'Shanti offers transitional and permanent housing to homeless individuals.',
+                link: '/services/housing'
+            }]
+        };
+    },
+
+    components: {
+        'psg-info-box': __WEBPACK_IMPORTED_MODULE_0__InfoBox___default.a
+    }
+});
+
+/***/ }),
+/* 38 */,
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            events: []
+        };
+    },
+
+    methods: {
+        //            getCarousel() {
+        //                http
+        //                    .get('/carousel')
+        //                    .use(saCache)
+        //                    .then(response => {
+        //                        this.events = response.body.events;
+        //                    }).catch(error => {
+        //                        console.error(error);
+        //                    });
+        //            }
+    },
+    components: {
+        Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
+        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"],
+        'psg-info-boxes': __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes___default.a
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/carousel').use(saCache).then(function (response) {
+            next(function (vm) {
+                vm.events = response.body.events;
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {
+                headline: 'Page Not Found',
+                subhead: '404 Error',
+                callout: 'We\'re sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.',
+                body: ''
+            }
+        };
+    }
+});
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/4')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/1')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/3')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/2')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    },
+
+    computed: {
+        yearsSinceFounding: function yearsSinceFounding() {
+            return new Date().getFullYear() - new Date('1987-09-01').getFullYear();
+        }
+    }
+});
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/5')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            post: {
+                headline: '',
+                category: {
+                    category_name: ''
+                },
+                hero_text: '',
+                body: ''
+            }
+        };
+    },
+
+    methods: {
+        getPost: function getPost(slug) {
+            var _this = this;
+
+            axios.get('/posts/' + slug).then(function (response) {
+                _this.post = response.data.post;
+            }).catch(function (error) {
+                return console.log(error);
+            });
+        },
+        pageLoaded: function pageLoaded() {
+            return false;
+        }
+    },
+    watch: {
+        '$route': function $route(to, from) {
+            this.getPost(to.params.slug);
+        }
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/posts/' + to.params.slug).use(saCache).then(function (response) {
+            var post = response.body.post;
+            next(function (vm) {
+                vm.post = post;
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            posts: []
+        };
+    },
+
+    methods: {
+        getPosts: function getPosts() {
+            var _this = this;
+
+            http.get('/posts')
+            //.use(saCache)
+            .then(function (response) {
+                _this.posts = response.body.posts;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    },
+    beforeMount: function beforeMount() {
+        this.getPosts();
+    }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            name: '',
+            emailAddress: '',
+            phone: '',
+            subject: '',
+            message: '',
+            showTop: false,
+            type: 'success',
+            flash: ''
+        };
+    },
+
+    methods: {
+        sendMessage: function sendMessage() {
+            var _this = this;
+
+            axios.post('/contact', {
+                name: this.name,
+                email: this.emailAddress,
+                phone: this.phone,
+                subject: this.subject,
+                message: this.message
+            }).then(function (response) {
+                _this.showTop = true;
+                _this.flash = 'Thank you for contacting Shanti. We will be in touch shortly.';
+            }).catch(function (error) {
+                _this.showTop = true;
+                _this.type = 'danger';
+                _this.flash = error.message;
+            });
+        }
+    },
+    components: {
+        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+    }
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            staff: []
+        };
+    },
+
+    components: {
+        'psg-staff': __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff___default.a
+    }
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/6')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/7')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/8')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/10')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            firstName: '',
+            lastName: '',
+            emailAddress: '',
+            phone: '',
+            position: 'None',
+            comments: '',
+            showTop: false,
+            type: 'success',
+            flash: '',
+            article: {}
+        };
+    },
+
+    methods: {
+        volunteer: function volunteer() {
+            var _this = this;
+
+            axios.post('/volunteer/form', {
+                name: this.firstName + ' ' + this.lastName,
+                email: this.emailAddress,
+                phone: this.phone,
+                position: this.position,
+                comments: this.comments
+            }).then(function (response) {
+                _this.showTop = true;
+                _this.flash = 'Thank you for contacting Shanti about our volunteer opportunities. We will be in touch shortly.';
+                _this.firstName = '';
+                _this.lastName = '';
+                _this.emailAddress = '';
+                _this.phone = '';
+                _this.position = 'None';
+                _this.comments = '';
+            }).catch(function (error) {
+                _this.showTop = true;
+                _this.type = 'danger';
+                _this.flash = error.message;
+            });
+        }
+    },
+    components: {
+        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        http.get('/articles/9')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+            next(function (vm) {
+                vm.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+            });
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
+
+
+window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+
+
+window.axios = __WEBPACK_IMPORTED_MODULE_2_axios___default.a;
+
+var cacheModule = __webpack_require__(58);
+var cache = new cacheModule({ storage: 'session', defaultExpiration: 60 });
+
+// Require superagent-cache-plugin and pass your cache module
+var superagentCache = __webpack_require__(60)(cache, {
+    expiration: 60 * 30
+});
+window.saCache = superagentCache;
+
+var http = __webpack_require__(62);
+window.http = http;
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(9);
+
+
+var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    routes: [{ path: '/', component: __webpack_require__(78), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(80), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(82), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(83), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(84), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(87), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(88), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(89), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(90), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(91), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(92), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(93), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(94), meta: { title: 'Volunteer' } },
+    // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
+    { path: '/blog', component: __webpack_require__(86), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(85), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(81), meta: { title: 'Getting Started' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
+});
+
+router.beforeEach(function (to, from, next) {
+    if (to.name === 'blog/view') {
+        var slug = to.params.slug;
+        axios.get('/posts/' + slug).then(function (response) {
+            document.title = response.data.post.headline + ' | Phoenix Shanti Group';
+        }).catch(function (error) {
+            return console.log(error);
+        });
+    } else {
+        document.title = to.meta.title + ' | Phoenix Shanti Group';
+    }
+    next();
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (router);
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
+
+/**
+ * cacheModule constructor
+ * @param config: {
+ *    type:                           {string  | 'cache-module'}
+ *    verbose:                        {boolean | false},
+ *    defaultExpiration:              {integer | 900},
+ *    readOnly:                       {boolean | false},
+ *    checkOnPreviousEmpty:           {boolean | true},
+ *    backgroundRefreshIntervalCheck: {boolean | true},
+ *    backgroundRefreshInterval:      {integer | 60000},
+ *    backgroundRefreshMinTtl:        {integer | 70000},
+ *    storage:                        {string  | null},
+ *    storageMock:                    {object  | null}
+ * }
+ */
+function cacheModule(config){
+  var self = this;
+  config = config || {};
+  self.type = config.type || 'cache-module';
+  self.verbose = config.verbose || false;
+  self.defaultExpiration = config.defaultExpiration || 900;
+  self.readOnly = config.readOnly || false;
+  self.checkOnPreviousEmpty = (typeof config.checkOnPreviousEmpty === 'boolean') ? config.checkOnPreviousEmpty : true;
+  self.backgroundRefreshIntervalCheck = (typeof config.backgroundRefreshIntervalCheck === 'boolean') ? config.backgroundRefreshIntervalCheck : true;
+  self.backgroundRefreshInterval = config.backgroundRefreshInterval || 60000;
+  self.backgroundRefreshMinTtl = config.backgroundRefreshMinTtl || 70000;
+  var store = null;
+  var storageMock = config.storageMock || false;
+  var backgroundRefreshEnabled = false;
+  var browser = (typeof window !== 'undefined');
+  var cache = {
+    db: {},
+    expirations: {},
+    refreshKeys: {}
+  };
+  var storageKey;
+
+  setupBrowserStorage();
+  log(false, 'Cache-module client created with the following defaults:', {type: self.type, defaultExpiration: self.defaultExpiration, verbose: self.verbose, readOnly: self.readOnly});
+
+  /**
+   * Get the value associated with a given key
+   * @param {string} key
+   * @param {function} cb
+   */
+  self.get = function(key, cb){
+    throwErrorIf((arguments.length < 2), 'ARGUMENT_EXCEPTION: .get() requires 2 arguments.');
+    log(false, 'get() called:', {key: key});
+    try {
+      var now = Date.now();
+      var expiration = cache.expirations[key];
+      if(expiration > now){
+        cb(null, cache.db[key]);
+      }
+      else{
+        expire(key);
+        cb(null, null);
+      }
+    } catch (err) {
+      cb({name: 'GetException', message: err}, null);
+    }
+  }
+
+  /**
+   * Get multiple values given multiple keys
+   * @param {array} keys
+   * @param {function} cb
+   * @param {integer} index
+   */
+  self.mget = function(keys, cb, index){
+    throwErrorIf((arguments.length < 2), 'ARGUMENT_EXCEPTION: .mget() requires 2 arguments.');
+    log(false, '.mget() called:', {keys: keys});
+    var values = {};
+    for(var i = 0; i < keys.length; i++){
+      var key = keys[i];
+      self.get(key, function(err, response){
+        if(response !== null){
+          values[key] = response;
+        }
+      });
+    }
+    cb(null, values, index);
+  }
+
+  /**
+   * Associate a key and value and optionally set an expiration
+   * @param {string} key
+   * @param {string | object} value
+   * @param {integer} expiration
+   * @param {function} refresh
+   * @param {function} cb
+   */
+  self.set = function(){
+    throwErrorIf((arguments.length < 2), 'ARGUMENT_EXCEPTION: .set() requires at least 2 arguments.');
+    var key = arguments[0];
+    var value = arguments[1];
+    var expiration = arguments[2] || null;
+    var refresh = (arguments.length == 5) ? arguments[3] : null;
+    var cb = (arguments.length == 5) ? arguments[4] : arguments[3];
+    log(false, '.set() called:', {key: key, value: value});
+    if(!self.readOnly){
+      try {
+        expiration = (expiration) ? (expiration * 1000) : (self.defaultExpiration * 1000);
+        var exp = expiration + Date.now();
+        cache.expirations[key] = exp;
+        cache.db[key] = value;
+        if(cb) cb();
+        if(refresh){
+          cache.refreshKeys[key] = {expiration: exp, lifeSpan: expiration, refresh: refresh};
+          backgroundRefreshInit();
+        }
+        overwriteBrowserStorage();
+      } catch (err) {
+        log(true, '.set() failed for cache of type ' + self.type, {name: 'CacheModuleSetException', message: err});
+      }
+    }
+  }
+
+  /**
+   * Associate multiple keys with multiple values and optionally set expirations per function and/or key
+   * @param {object} obj
+   * @param {integer} expiration
+   * @param {function} cb
+   */
+  self.mset = function(obj, expiration, cb){
+    throwErrorIf((arguments.length < 1), 'ARGUMENT_EXCEPTION: .mset() requires at least 1 argument.');
+    log(false, '.mset() called:', {data: obj});
+    for(var key in obj){
+      if(obj.hasOwnProperty(key)){
+        var tempExpiration = expiration || self.defaultExpiration;
+        var value = obj[key];
+        if(typeof value === 'object' && value.cacheValue){
+          tempExpiration = value.expiration || tempExpiration;
+          value = value.cacheValue;
+        }
+        self.set(key, value, tempExpiration);
+      }
+    }
+    if(cb) cb();
+  }
+
+  /**
+   * Delete the provided keys and their associated values
+   * @param {array} keys
+   * @param {function} cb
+   */
+  self.del = function(keys, cb){
+    throwErrorIf((arguments.length < 1), 'ARGUMENT_EXCEPTION: .del() requires at least 1 argument.');
+    log(false, '.del() called:', {keys: keys});
+    if(typeof keys === 'object'){
+      for(var i = 0; i < keys.length; i++){
+        var key = keys[i];
+        delete cache.db[key];
+        delete cache.expirations[key];
+        delete cache.refreshKeys[key];
+      }
+      if(cb) cb(null, keys.length);
+    }
+    else{
+      delete cache.db[keys];
+      delete cache.expirations[keys];
+      delete cache.refreshKeys[keys];
+      if(cb) cb(null, 1); 
+    }
+    overwriteBrowserStorage();
+  }
+
+  /**
+   * Flush all keys and values
+   * @param {function} cb
+   */
+  self.flush = function(cb){
+    log(false, '.flush() called');
+    cache.db = {};
+    cache.expirations = {};
+    cache.refreshKeys = {};
+    if(cb) cb();
+    overwriteBrowserStorage();
+  }
+
+  /**
+   * Enable browser storage if desired and available
+   */
+  function setupBrowserStorage(){
+    if(browser || storageMock){
+      if(storageMock){
+        store = storageMock;
+        storageKey = 'cache-module-storage-mock';
+      }
+      else{
+        var storageType = (config.storage === 'local' || config.storage === 'session') ? config.storage : null;
+        store = (storageType && typeof Storage !== void(0)) ? window[storageType + 'Storage'] : false;
+        storageKey = (storageType) ? 'cache-module-' + storageType + '-storage' : null;
+      }
+      if(store){
+        var db = store.getItem(storageKey);
+        try {
+          cache = JSON.parse(db) || cache;
+        } catch (err) { /* Do nothing */ }
+      }
+      // If storageType is set but store is not, the desired storage mechanism was not available
+      else if(storageType){
+        log(true, 'Browser storage is not supported by this browser. Defaulting to an in-memory cache.');
+      }
+    }
+  }
+
+  /**
+   * Overwrite namespaced browser storage with current cache
+   */
+  function overwriteBrowserStorage(){
+    if((browser && store) || storageMock){
+      var db = cache;
+      try {
+        db = JSON.stringify(db);
+      } catch (err) { /* Do nothing */ }
+      store.setItem(storageKey, db);
+    }
+  }
+
+  /**
+   * Throw a given error if error is true
+   * @param {boolean} error
+   * @param {string} message
+   */
+  function throwErrorIf(error, message){
+    if(error) throw new Error(message);
+  }
+
+  /**
+   * Delete a given key from cache.db and cache.expirations but not from cache.refreshKeys
+   * @param {string} key
+   */
+  function expire(key){
+    delete cache.db[key];
+    delete cache.expirations[key];
+    overwriteBrowserStorage();
+  }
+
+  /**
+   * Initialize background refresh
+   */
+  function backgroundRefreshInit(){
+    if(!backgroundRefreshEnabled){
+      backgroundRefreshEnabled = true;
+      if(self.backgroundRefreshIntervalCheck){
+        if(self.backgroundRefreshInterval > self.backgroundRefreshMinTtl){
+          throw new Error('BACKGROUND_REFRESH_INTERVAL_EXCEPTION: backgroundRefreshInterval cannot be greater than backgroundRefreshMinTtl.');
+        }
+      }
+      setInterval(backgroundRefresh, self.backgroundRefreshInterval);
+    }
+  }
+
+  /**
+   * Handle the refresh callback from the consumer, save the data to redis.
+   *
+   * @param {string} key The key used to save.
+   * @param {Object} data refresh keys data.
+   * @param {Error|null} err consumer callback failure.
+   * @param {*} response The consumer response.
+   */
+  function handleRefreshResponse (key, data, err, response) {
+    if(!err) {
+      this.set(key, response, (data.lifeSpan / 1000), data.refresh, function(){});
+    }
+  }
+
+  /**
+   * Refreshes all keys that were set with a refresh function
+   */
+  function backgroundRefresh() {
+    var keys = Object.keys(cache.refreshKeys);
+    keys.forEach(function(key) {
+      var data = cache.refreshKeys[key];
+      if(data.expiration - Date.now() < this.backgroundRefreshMinTtl){
+        data.refresh(key, handleRefreshResponse.bind(this, key, data));
+      }
+    }, self);
+  }
+
+  /**
+   * Error logging logic
+   * @param {boolean} isError
+   * @param {string} message
+   * @param {object} data
+   */
+  function log(isError, message, data){
+    if(self.verbose || isError){
+      if(data) console.log(self.type + ': ' + message, data);
+      else console.log(self.type + message);
+    }
+  }
+}
+
+module.exports = cacheModule;
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var utils = __webpack_require__(61);
+
+/**
+ * superagentCache constructor
+ * @constructor
+ * @param {cache module} cache
+ * @param {object} defaults (optional)
+ */
+module.exports = function(cache, defaults){
+  var self = this;
+  var supportedMethods = ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE'];
+  var cacheableMethods = ['GET', 'HEAD'];
+  this.cache = cache;
+  this.defaults = defaults || {};
+
+  return function (Request) {
+    var props = utils.resetProps(self.defaults);
+
+    /**
+     * Whether to execute an http query if the cache does not have the generated key
+     * @param {boolean} doQuery
+     */
+    Request.doQuery = function(doQuery){
+      props.doQuery = doQuery;
+      return Request;
+    }
+
+    /**
+     * Remove the given params from the query object after executing an http query and before generating a cache key
+     * @param {array of strings} pruneQuery
+     */
+    Request.pruneQuery = function(pruneQuery){
+      props.pruneQuery = pruneQuery;
+      return Request;
+    }
+
+    /**
+     * Remove the given options from the headers object after executing an http query and before generating a cache key
+     * @param {boolean} pruneHeader
+     */
+    Request.pruneHeader = function(pruneHeader){
+      props.pruneHeader = pruneHeader;
+      return Request;
+    }
+
+    /**
+     * Execute some logic on superagent's http response object before caching and returning it
+     * @param {function} prune
+     */
+    Request.prune = function(prune){
+      props.prune = prune;
+      return Request;
+    }
+
+    /**
+     * Retrieve a top-level property from superagent's http response object before to cache and return
+     * @param {string} responseProp
+     */
+    Request.responseProp = function(responseProp){
+      props.responseProp = responseProp;
+      return Request;
+    }
+
+    /**
+     * Set an expiration for Request key that will override the configured cache's default expiration
+     * @param {integer} expiration (seconds)
+     */
+    Request.expiration = function(expiration){
+      props.expiration = expiration;
+      return Request;
+    }
+
+    /**
+     * Whether to cache superagent's http response object when it "empty"--especially useful with .prune and .pruneQuery
+     * @param {boolean} cacheWhenEmpty
+     */
+    Request.cacheWhenEmpty = function(cacheWhenEmpty){
+      props.cacheWhenEmpty = cacheWhenEmpty;
+      return Request;
+    }
+
+    /**
+     * Whether to execute an http query regardless of whether the cache has the generated key
+     * @param {boolean} forceUpdate
+     */
+    Request.forceUpdate = function(forceUpdate){
+      props.forceUpdate = (typeof forceUpdate === 'boolean') ? forceUpdate : true;
+      return Request;
+    }
+
+    /**
+     * Save the exisitng .end() value ("namespaced" in case of other plugins)
+     * so that we can provide our customized .end() and then call through to
+     * the underlying implementation.
+     */
+    var end = Request.end;
+
+    /**
+     * Execute all caching and http logic
+     * @param {function} cb
+     */
+    Request.end = function(cb){
+      Request.scRedirectsList = Request.scRedirectsList || [];
+      Request.scRedirectsList = Request.scRedirectsList.concat(Request._redirectList);
+      if(~supportedMethods.indexOf(Request.method.toUpperCase())){
+        var _Request = Request;
+        var key = utils.keygen(Request, props);
+        if(~cacheableMethods.indexOf(Request.method.toUpperCase())){
+          cache.get(key, function (err, response){
+            if(!err && response && !props.forceUpdate){
+              utils.callbackExecutor(cb, err, response, key);
+            }
+            else{
+              if(props.doQuery){
+                end.call(Request, function (err, response){
+                  if(err){
+                    return utils.callbackExecutor(cb, err, response, key);
+                  }
+                  else if(!err && response){
+                    response.redirects = _Request.scRedirectsList;
+                    if(props.prune){
+                      response = props.prune(response);
+                    }
+                    else if(props.responseProp){
+                      response = response[props.responseProp] || null;
+                    }
+                    else{
+                      response = utils.gutResponse(response);
+                    }
+                    if(!utils.isEmpty(response) || props.cacheWhenEmpty){
+                      cache.set(key, response, props.expiration, function (){
+                        return utils.callbackExecutor(cb, err, response, key);
+                      });
+                    }
+                    else{
+                      return utils.callbackExecutor(cb, err, response, key);
+                    }
+                  }
+                });
+              }
+              else{
+                return utils.callbackExecutor(cb, null, null, key);
+              }
+            }
+          });
+        }
+        else{
+          end.call(Request, function (err, response){
+            if(err){
+              return utils.callbackExecutor(cb, err, response, key);
+            }
+            if(!err && response){
+              var keyGet = key.replace('"method":"' + _Request.method + '"', '"method":"GET"');
+              var keyHead = key.replace('"method":"' + _Request.method + '"', '"method":"HEAD"');
+              cache.del([keyGet, keyHead], function (){
+                utils.callbackExecutor(cb, err, response, key);
+              });
+            }
+          });
+        }
+      }
+      else{
+        end.call(Request, function (err, response){
+          return utils.callbackExecutor(cb, err, response, undefined);
+        });
+      }
+    }
+
+    return Request;
+  }
+}
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  /**
+   * Generate a cache key unique to this query
+   * @param {superagent} agent
+   * @param {object} reg
+   * @param {object} cProps
+   */
+  keygen: function(req, props){
+    var cleanParams = null;
+    var cleanOptions = null;
+    var params = this.getQueryParams(req);
+    var options = this.getHeaderOptions(req);
+    if(props.pruneQuery || props.pruneHeader){
+      cleanParams = (props.pruneQuery) ? this.pruneObj(this.cloneObject(params), props.pruneQuery) : params;
+      cleanOptions = (props.pruneHeader) ? this.pruneObj(this.cloneObject(options), props.pruneHeader, true) : options;
+    }
+    return JSON.stringify({
+      method: req.method,
+      uri: req.url,
+      params: cleanParams || params || null,
+      options: cleanOptions || options || null
+    });
+  },
+
+  /**
+   * Find and extract query params
+   * @param {object} reg
+   */
+  getQueryParams: function(req){
+    if(req && req.qs && !this.isEmpty(req.qs)){
+      return req.qs;
+    }
+    else if(req && req.qsRaw){
+      return this.arrayToObj(req.qsRaw);
+    }
+    else if(req && req.req){
+      return this.stringToObj(req.req.path);
+    }
+    else if(req && req._query){
+      return this.stringToObj(req._query.join('&'));
+    }
+    return null;
+  },
+
+  /**
+   * Find and extract headers
+   * @param {object} reg
+   */
+  getHeaderOptions: function(req){
+    //I have to remove the User-Agent header ever since superagent 1.7.0
+    if(req && req._header){
+      return this.pruneObj(req._header, ['User-Agent', 'user-agent']);
+    }
+    else if(req && req.req && req.req._headers){
+      return this.pruneObj(req.req._headers, ['User-Agent', 'user-agent']);
+    }
+    else if(req && req.header){
+      return this.pruneObj(req.header, ['User-Agent', 'user-agent']);
+    }
+    return null;
+  },
+
+  /**
+   * Convert an array to an object
+   * @param {array} arr
+   */
+  arrayToObj: function(arr){
+    if(arr && arr.length){
+      var obj = {};
+      for(var i = 0; i < arr.length; i++){
+        var str = arr[i];
+        var kvArray = str.split('&');
+        for(var j = 0; j < kvArray.length; j++){
+          var kvString = kvArray[j].split('=');
+          obj[kvString[0]] = kvString[1];
+        }
+      }
+      return obj;
+    }
+    return null;
+  },
+
+  /**
+   * Convert a string to an object
+   * @param {string} str
+   */
+  stringToObj: function(str){
+    if(str){
+      var obj = {};
+      if(~str.indexOf('?')){
+        var strs = str.split('?');
+        str = strs[1];
+      }
+      var kvArray = str.split('&');
+      for(var i = 0; i < kvArray.length; i++){
+        var kvString = kvArray[i].split('=');
+        obj[kvString[0]] = kvString[1];
+      }
+      return obj;
+    }
+    return null;
+  },
+
+  /**
+   * Remove properties from an object
+   * @param {object} obj
+   * @param {array} props
+   * @param {boolean} isOptions
+   */
+  pruneObj: function(obj, props, isOptions){
+    for(var i = 0; i < props.length; i++){
+      var prop = props[i];
+      if(isOptions){
+        delete obj[prop.toLowerCase()];
+      }
+      delete obj[prop];
+    }
+    return obj;
+  },
+
+  /**
+   * Simplify superagent's http response object
+   * @param {object} r
+   */
+  gutResponse: function(r){
+    var newResponse = {};
+    newResponse.body = r.body;
+    newResponse.text = r.text;
+    newResponse.headers = r.headers;
+    newResponse.statusCode = r.statusCode;
+    newResponse.status = r.status;
+    newResponse.ok = r.ok;
+    return newResponse;
+  },
+
+  /**
+   * Determine whether a value is considered empty
+   * @param {*} val
+   */
+  isEmpty: function(val){
+    return (val === false || val === null || (typeof val == 'object' && Object.keys(val).length == 0));
+  },
+
+  /**
+   * Return a clone of an object
+   * @param {object} obj
+   */
+  cloneObject: function(obj){
+    var newObj = {};
+    for(var attr in obj) {
+      if (obj.hasOwnProperty(attr)){
+        newObj[attr] = obj[attr];
+      }
+    }
+    return newObj;
+  },
+
+  /**
+   * Reset superagent-cache's default query properties using the defaults object
+   * @param {object} d
+   */
+  resetProps: function(d){
+    return {
+      doQuery: (typeof d.doQuery === 'boolean') ? d.doQuery : true,
+      cacheWhenEmpty: (typeof d.cacheWhenEmpty === 'boolean') ? d.cacheWhenEmpty : true,
+      prune: d.prune,
+      pruneQuery: d.pruneQuery,
+      pruneHeader: d.pruneHeader,
+      responseProp: d.responseProp,
+      expiration: d.expiration,
+      forceUpdate: d.forceUpdate,
+      preventDuplicateCalls: d.preventDuplicateCalls,
+      backgroundRefresh: d.backgroundRefresh
+    };
+  },
+
+  /**
+   * Handle the varying number of callback output params
+   * @param {function} cb
+   * @param {object} err
+   * @param {object} response
+   * @param {string} key
+   */
+  callbackExecutor: function(cb, err, response, key){
+    if(cb.length === 1){
+      cb(response);
+    }
+    else if(cb.length > 1){
+      cb(err, response, key);
+    }
+    else{
+      throw new Error('UnsupportedCallbackException: Your .end() callback must pass at least one argument.');
+    }
+  }
+}
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Root reference for iframes.
+ */
+
+var root;
+if (typeof window !== 'undefined') { // Browser window
+  root = window;
+} else if (typeof self !== 'undefined') { // Web Worker
+  root = self;
+} else { // Other environments
+  console.warn("Using browser-only version of superagent in non-browser environment");
+  root = this;
+}
+
+var Emitter = __webpack_require__(67);
+var RequestBase = __webpack_require__(63);
+var isObject = __webpack_require__(8);
+var ResponseBase = __webpack_require__(64);
+var shouldRetry = __webpack_require__(65);
+
+/**
+ * Noop.
+ */
+
+function noop(){};
+
+/**
+ * Expose `request`.
+ */
+
+var request = exports = module.exports = function(method, url) {
+  // callback
+  if ('function' == typeof url) {
+    return new exports.Request('GET', method).end(url);
+  }
+
+  // url first
+  if (1 == arguments.length) {
+    return new exports.Request('GET', method);
+  }
+
+  return new exports.Request(method, url);
+}
+
+exports.Request = Request;
+
+/**
+ * Determine XHR.
+ */
+
+request.getXHR = function () {
+  if (root.XMLHttpRequest
+      && (!root.location || 'file:' != root.location.protocol
+          || !root.ActiveXObject)) {
+    return new XMLHttpRequest;
+  } else {
+    try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
+    try { return new ActiveXObject('Msxml2.XMLHTTP.6.0'); } catch(e) {}
+    try { return new ActiveXObject('Msxml2.XMLHTTP.3.0'); } catch(e) {}
+    try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
+  }
+  throw Error("Browser-only version of superagent could not find XHR");
+};
+
+/**
+ * Removes leading and trailing whitespace, added to support IE.
+ *
+ * @param {String} s
+ * @return {String}
+ * @api private
+ */
+
+var trim = ''.trim
+  ? function(s) { return s.trim(); }
+  : function(s) { return s.replace(/(^\s*|\s*$)/g, ''); };
+
+/**
+ * Serialize the given `obj`.
+ *
+ * @param {Object} obj
+ * @return {String}
+ * @api private
+ */
+
+function serialize(obj) {
+  if (!isObject(obj)) return obj;
+  var pairs = [];
+  for (var key in obj) {
+    pushEncodedKeyValuePair(pairs, key, obj[key]);
+  }
+  return pairs.join('&');
+}
+
+/**
+ * Helps 'serialize' with serializing arrays.
+ * Mutates the pairs array.
+ *
+ * @param {Array} pairs
+ * @param {String} key
+ * @param {Mixed} val
+ */
+
+function pushEncodedKeyValuePair(pairs, key, val) {
+  if (val != null) {
+    if (Array.isArray(val)) {
+      val.forEach(function(v) {
+        pushEncodedKeyValuePair(pairs, key, v);
+      });
+    } else if (isObject(val)) {
+      for(var subkey in val) {
+        pushEncodedKeyValuePair(pairs, key + '[' + subkey + ']', val[subkey]);
+      }
+    } else {
+      pairs.push(encodeURIComponent(key)
+        + '=' + encodeURIComponent(val));
+    }
+  } else if (val === null) {
+    pairs.push(encodeURIComponent(key));
+  }
+}
+
+/**
+ * Expose serialization method.
+ */
+
+ request.serializeObject = serialize;
+
+ /**
+  * Parse the given x-www-form-urlencoded `str`.
+  *
+  * @param {String} str
+  * @return {Object}
+  * @api private
+  */
+
+function parseString(str) {
+  var obj = {};
+  var pairs = str.split('&');
+  var pair;
+  var pos;
+
+  for (var i = 0, len = pairs.length; i < len; ++i) {
+    pair = pairs[i];
+    pos = pair.indexOf('=');
+    if (pos == -1) {
+      obj[decodeURIComponent(pair)] = '';
+    } else {
+      obj[decodeURIComponent(pair.slice(0, pos))] =
+        decodeURIComponent(pair.slice(pos + 1));
+    }
+  }
+
+  return obj;
+}
+
+/**
+ * Expose parser.
+ */
+
+request.parseString = parseString;
+
+/**
+ * Default MIME type map.
+ *
+ *     superagent.types.xml = 'application/xml';
+ *
+ */
+
+request.types = {
+  html: 'text/html',
+  json: 'application/json',
+  xml: 'text/xml',
+  urlencoded: 'application/x-www-form-urlencoded',
+  'form': 'application/x-www-form-urlencoded',
+  'form-data': 'application/x-www-form-urlencoded'
+};
+
+/**
+ * Default serialization map.
+ *
+ *     superagent.serialize['application/xml'] = function(obj){
+ *       return 'generated xml here';
+ *     };
+ *
+ */
+
+ request.serialize = {
+   'application/x-www-form-urlencoded': serialize,
+   'application/json': JSON.stringify
+ };
+
+ /**
+  * Default parsers.
+  *
+  *     superagent.parse['application/xml'] = function(str){
+  *       return { object parsed from str };
+  *     };
+  *
+  */
+
+request.parse = {
+  'application/x-www-form-urlencoded': parseString,
+  'application/json': JSON.parse
+};
+
+/**
+ * Parse the given header `str` into
+ * an object containing the mapped fields.
+ *
+ * @param {String} str
+ * @return {Object}
+ * @api private
+ */
+
+function parseHeader(str) {
+  var lines = str.split(/\r?\n/);
+  var fields = {};
+  var index;
+  var line;
+  var field;
+  var val;
+
+  lines.pop(); // trailing CRLF
+
+  for (var i = 0, len = lines.length; i < len; ++i) {
+    line = lines[i];
+    index = line.indexOf(':');
+    field = line.slice(0, index).toLowerCase();
+    val = trim(line.slice(index + 1));
+    fields[field] = val;
+  }
+
+  return fields;
+}
+
+/**
+ * Check if `mime` is json or has +json structured syntax suffix.
+ *
+ * @param {String} mime
+ * @return {Boolean}
+ * @api private
+ */
+
+function isJSON(mime) {
+  return /[\/+]json\b/.test(mime);
+}
+
+/**
+ * Initialize a new `Response` with the given `xhr`.
+ *
+ *  - set flags (.ok, .error, etc)
+ *  - parse header
+ *
+ * Examples:
+ *
+ *  Aliasing `superagent` as `request` is nice:
+ *
+ *      request = superagent;
+ *
+ *  We can use the promise-like API, or pass callbacks:
+ *
+ *      request.get('/').end(function(res){});
+ *      request.get('/', function(res){});
+ *
+ *  Sending data can be chained:
+ *
+ *      request
+ *        .post('/user')
+ *        .send({ name: 'tj' })
+ *        .end(function(res){});
+ *
+ *  Or passed to `.send()`:
+ *
+ *      request
+ *        .post('/user')
+ *        .send({ name: 'tj' }, function(res){});
+ *
+ *  Or passed to `.post()`:
+ *
+ *      request
+ *        .post('/user', { name: 'tj' })
+ *        .end(function(res){});
+ *
+ * Or further reduced to a single call for simple cases:
+ *
+ *      request
+ *        .post('/user', { name: 'tj' }, function(res){});
+ *
+ * @param {XMLHTTPRequest} xhr
+ * @param {Object} options
+ * @api private
+ */
+
+function Response(req) {
+  this.req = req;
+  this.xhr = this.req.xhr;
+  // responseText is accessible only if responseType is '' or 'text' and on older browsers
+  this.text = ((this.req.method !='HEAD' && (this.xhr.responseType === '' || this.xhr.responseType === 'text')) || typeof this.xhr.responseType === 'undefined')
+     ? this.xhr.responseText
+     : null;
+  this.statusText = this.req.xhr.statusText;
+  var status = this.xhr.status;
+  // handle IE9 bug: http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
+  if (status === 1223) {
+      status = 204;
+  }
+  this._setStatusProperties(status);
+  this.header = this.headers = parseHeader(this.xhr.getAllResponseHeaders());
+  // getAllResponseHeaders sometimes falsely returns "" for CORS requests, but
+  // getResponseHeader still works. so we get content-type even if getting
+  // other headers fails.
+  this.header['content-type'] = this.xhr.getResponseHeader('content-type');
+  this._setHeaderProperties(this.header);
+
+  if (null === this.text && req._responseType) {
+    this.body = this.xhr.response;
+  } else {
+    this.body = this.req.method != 'HEAD'
+      ? this._parseBody(this.text ? this.text : this.xhr.response)
+      : null;
+  }
+}
+
+ResponseBase(Response.prototype);
+
+/**
+ * Parse the given body `str`.
+ *
+ * Used for auto-parsing of bodies. Parsers
+ * are defined on the `superagent.parse` object.
+ *
+ * @param {String} str
+ * @return {Mixed}
+ * @api private
+ */
+
+Response.prototype._parseBody = function(str){
+  var parse = request.parse[this.type];
+  if(this.req._parser) {
+    return this.req._parser(this, str);
+  }
+  if (!parse && isJSON(this.type)) {
+    parse = request.parse['application/json'];
+  }
+  return parse && str && (str.length || str instanceof Object)
+    ? parse(str)
+    : null;
+};
+
+/**
+ * Return an `Error` representative of this response.
+ *
+ * @return {Error}
+ * @api public
+ */
+
+Response.prototype.toError = function(){
+  var req = this.req;
+  var method = req.method;
+  var url = req.url;
+
+  var msg = 'cannot ' + method + ' ' + url + ' (' + this.status + ')';
+  var err = new Error(msg);
+  err.status = this.status;
+  err.method = method;
+  err.url = url;
+
+  return err;
+};
+
+/**
+ * Expose `Response`.
+ */
+
+request.Response = Response;
+
+/**
+ * Initialize a new `Request` with the given `method` and `url`.
+ *
+ * @param {String} method
+ * @param {String} url
+ * @api public
+ */
+
+function Request(method, url) {
+  var self = this;
+  this._query = this._query || [];
+  this.method = method;
+  this.url = url;
+  this.header = {}; // preserves header name case
+  this._header = {}; // coerces header names to lowercase
+  this.on('end', function(){
+    var err = null;
+    var res = null;
+
+    try {
+      res = new Response(self);
+    } catch(e) {
+      err = new Error('Parser is unable to parse the response');
+      err.parse = true;
+      err.original = e;
+      // issue #675: return the raw response if the response parsing fails
+      if (self.xhr) {
+        // ie9 doesn't have 'response' property
+        err.rawResponse = typeof self.xhr.responseType == 'undefined' ? self.xhr.responseText : self.xhr.response;
+        // issue #876: return the http status code if the response parsing fails
+        err.status = self.xhr.status ? self.xhr.status : null;
+        err.statusCode = err.status; // backwards-compat only
+      } else {
+        err.rawResponse = null;
+        err.status = null;
+      }
+
+      return self.callback(err);
+    }
+
+    self.emit('response', res);
+
+    var new_err;
+    try {
+      if (!self._isResponseOK(res)) {
+        new_err = new Error(res.statusText || 'Unsuccessful HTTP response');
+        new_err.original = err;
+        new_err.response = res;
+        new_err.status = res.status;
+      }
+    } catch(e) {
+      new_err = e; // #985 touching res may cause INVALID_STATE_ERR on old Android
+    }
+
+    // #1000 don't catch errors from the callback to avoid double calling it
+    if (new_err) {
+      self.callback(new_err, res);
+    } else {
+      self.callback(null, res);
+    }
+  });
+}
+
+/**
+ * Mixin `Emitter` and `RequestBase`.
+ */
+
+Emitter(Request.prototype);
+RequestBase(Request.prototype);
+
+/**
+ * Set Content-Type to `type`, mapping values from `request.types`.
+ *
+ * Examples:
+ *
+ *      superagent.types.xml = 'application/xml';
+ *
+ *      request.post('/')
+ *        .type('xml')
+ *        .send(xmlstring)
+ *        .end(callback);
+ *
+ *      request.post('/')
+ *        .type('application/xml')
+ *        .send(xmlstring)
+ *        .end(callback);
+ *
+ * @param {String} type
+ * @return {Request} for chaining
+ * @api public
+ */
+
+Request.prototype.type = function(type){
+  this.set('Content-Type', request.types[type] || type);
+  return this;
+};
+
+/**
+ * Set Accept to `type`, mapping values from `request.types`.
+ *
+ * Examples:
+ *
+ *      superagent.types.json = 'application/json';
+ *
+ *      request.get('/agent')
+ *        .accept('json')
+ *        .end(callback);
+ *
+ *      request.get('/agent')
+ *        .accept('application/json')
+ *        .end(callback);
+ *
+ * @param {String} accept
+ * @return {Request} for chaining
+ * @api public
+ */
+
+Request.prototype.accept = function(type){
+  this.set('Accept', request.types[type] || type);
+  return this;
+};
+
+/**
+ * Set Authorization field value with `user` and `pass`.
+ *
+ * @param {String} user
+ * @param {String} [pass] optional in case of using 'bearer' as type
+ * @param {Object} options with 'type' property 'auto', 'basic' or 'bearer' (default 'basic')
+ * @return {Request} for chaining
+ * @api public
+ */
+
+Request.prototype.auth = function(user, pass, options){
+  if (typeof pass === 'object' && pass !== null) { // pass is optional and can substitute for options
+    options = pass;
+  }
+  if (!options) {
+    options = {
+      type: 'function' === typeof btoa ? 'basic' : 'auto',
+    }
+  }
+
+  switch (options.type) {
+    case 'basic':
+      this.set('Authorization', 'Basic ' + btoa(user + ':' + pass));
+    break;
+
+    case 'auto':
+      this.username = user;
+      this.password = pass;
+    break;
+
+    case 'bearer': // usage would be .auth(accessToken, { type: 'bearer' })
+      this.set('Authorization', 'Bearer ' + user);
+    break;
+  }
+  return this;
+};
+
+/**
+ * Add query-string `val`.
+ *
+ * Examples:
+ *
+ *   request.get('/shoes')
+ *     .query('size=10')
+ *     .query({ color: 'blue' })
+ *
+ * @param {Object|String} val
+ * @return {Request} for chaining
+ * @api public
+ */
+
+Request.prototype.query = function(val){
+  if ('string' != typeof val) val = serialize(val);
+  if (val) this._query.push(val);
+  return this;
+};
+
+/**
+ * Queue the given `file` as an attachment to the specified `field`,
+ * with optional `options` (or filename).
+ *
+ * ``` js
+ * request.post('/upload')
+ *   .attach('content', new Blob(['<a id="a"><b id="b">hey!</b></a>'], { type: "text/html"}))
+ *   .end(callback);
+ * ```
+ *
+ * @param {String} field
+ * @param {Blob|File} file
+ * @param {String|Object} options
+ * @return {Request} for chaining
+ * @api public
+ */
+
+Request.prototype.attach = function(field, file, options){
+  if (file) {
+    if (this._data) {
+      throw Error("superagent can't mix .send() and .attach()");
+    }
+
+    this._getFormData().append(field, file, options || file.name);
+  }
+  return this;
+};
+
+Request.prototype._getFormData = function(){
+  if (!this._formData) {
+    this._formData = new root.FormData();
+  }
+  return this._formData;
+};
+
+/**
+ * Invoke the callback with `err` and `res`
+ * and handle arity check.
+ *
+ * @param {Error} err
+ * @param {Response} res
+ * @api private
+ */
+
+Request.prototype.callback = function(err, res){
+  // console.log(this._retries, this._maxRetries)
+  if (this._maxRetries && this._retries++ < this._maxRetries && shouldRetry(err, res)) {
+    return this._retry();
+  }
+
+  var fn = this._callback;
+  this.clearTimeout();
+
+  if (err) {
+    if (this._maxRetries) err.retries = this._retries - 1;
+    this.emit('error', err);
+  }
+
+  fn(err, res);
+};
+
+/**
+ * Invoke callback with x-domain error.
+ *
+ * @api private
+ */
+
+Request.prototype.crossDomainError = function(){
+  var err = new Error('Request has been terminated\nPossible causes: the network is offline, Origin is not allowed by Access-Control-Allow-Origin, the page is being unloaded, etc.');
+  err.crossDomain = true;
+
+  err.status = this.status;
+  err.method = this.method;
+  err.url = this.url;
+
+  this.callback(err);
+};
+
+// This only warns, because the request is still likely to work
+Request.prototype.buffer = Request.prototype.ca = Request.prototype.agent = function(){
+  console.warn("This is not supported in browser version of superagent");
+  return this;
+};
+
+// This throws, because it can't send/receive data as expected
+Request.prototype.pipe = Request.prototype.write = function(){
+  throw Error("Streaming is not supported in browser version of superagent");
+};
+
+/**
+ * Check if `obj` is a host object,
+ * we don't want to serialize these :)
+ *
+ * @param {Object} obj
+ * @return {Boolean}
+ * @api private
+ */
+Request.prototype._isHost = function _isHost(obj) {
+  // Native objects stringify to [object File], [object Blob], [object FormData], etc.
+  return obj && 'object' === typeof obj && !Array.isArray(obj) && Object.prototype.toString.call(obj) !== '[object Object]';
+}
+
+/**
+ * Initiate request, invoking callback `fn(res)`
+ * with an instanceof `Response`.
+ *
+ * @param {Function} fn
+ * @return {Request} for chaining
+ * @api public
+ */
+
+Request.prototype.end = function(fn){
+  if (this._endCalled) {
+    console.warn("Warning: .end() was called twice. This is not supported in superagent");
+  }
+  this._endCalled = true;
+
+  // store callback
+  this._callback = fn || noop;
+
+  // querystring
+  this._finalizeQueryString();
+
+  return this._end();
+};
+
+Request.prototype._end = function() {
+  var self = this;
+  var xhr = this.xhr = request.getXHR();
+  var data = this._formData || this._data;
+
+  this._setTimeouts();
+
+  // state change
+  xhr.onreadystatechange = function(){
+    var readyState = xhr.readyState;
+    if (readyState >= 2 && self._responseTimeoutTimer) {
+      clearTimeout(self._responseTimeoutTimer);
+    }
+    if (4 != readyState) {
+      return;
+    }
+
+    // In IE9, reads to any property (e.g. status) off of an aborted XHR will
+    // result in the error "Could not complete the operation due to error c00c023f"
+    var status;
+    try { status = xhr.status } catch(e) { status = 0; }
+
+    if (!status) {
+      if (self.timedout || self._aborted) return;
+      return self.crossDomainError();
+    }
+    self.emit('end');
+  };
+
+  // progress
+  var handleProgress = function(direction, e) {
+    if (e.total > 0) {
+      e.percent = e.loaded / e.total * 100;
+    }
+    e.direction = direction;
+    self.emit('progress', e);
+  }
+  if (this.hasListeners('progress')) {
+    try {
+      xhr.onprogress = handleProgress.bind(null, 'download');
+      if (xhr.upload) {
+        xhr.upload.onprogress = handleProgress.bind(null, 'upload');
+      }
+    } catch(e) {
+      // Accessing xhr.upload fails in IE from a web worker, so just pretend it doesn't exist.
+      // Reported here:
+      // https://connect.microsoft.com/IE/feedback/details/837245/xmlhttprequest-upload-throws-invalid-argument-when-used-from-web-worker-context
+    }
+  }
+
+  // initiate request
+  try {
+    if (this.username && this.password) {
+      xhr.open(this.method, this.url, true, this.username, this.password);
+    } else {
+      xhr.open(this.method, this.url, true);
+    }
+  } catch (err) {
+    // see #1149
+    return this.callback(err);
+  }
+
+  // CORS
+  if (this._withCredentials) xhr.withCredentials = true;
+
+  // body
+  if (!this._formData && 'GET' != this.method && 'HEAD' != this.method && 'string' != typeof data && !this._isHost(data)) {
+    // serialize stuff
+    var contentType = this._header['content-type'];
+    var serialize = this._serializer || request.serialize[contentType ? contentType.split(';')[0] : ''];
+    if (!serialize && isJSON(contentType)) {
+      serialize = request.serialize['application/json'];
+    }
+    if (serialize) data = serialize(data);
+  }
+
+  // set header fields
+  for (var field in this.header) {
+    if (null == this.header[field]) continue;
+
+    if (this.header.hasOwnProperty(field))
+      xhr.setRequestHeader(field, this.header[field]);
+  }
+
+  if (this._responseType) {
+    xhr.responseType = this._responseType;
+  }
+
+  // send stuff
+  this.emit('request', this);
+
+  // IE11 xhr.send(undefined) sends 'undefined' string as POST payload (instead of nothing)
+  // We need null here if data is undefined
+  xhr.send(typeof data !== 'undefined' ? data : null);
+  return this;
+};
+
+/**
+ * GET `url` with optional callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed|Function} [data] or fn
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+request.get = function(url, data, fn){
+  var req = request('GET', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.query(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+/**
+ * HEAD `url` with optional callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed|Function} [data] or fn
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+request.head = function(url, data, fn){
+  var req = request('HEAD', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.query(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+/**
+ * OPTIONS query to `url` with optional callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed|Function} [data] or fn
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+request.options = function(url, data, fn){
+  var req = request('OPTIONS', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.send(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+/**
+ * DELETE `url` with optional `data` and callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed} [data]
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+function del(url, data, fn){
+  var req = request('DELETE', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.send(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+request['del'] = del;
+request['delete'] = del;
+
+/**
+ * PATCH `url` with optional `data` and callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed} [data]
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+request.patch = function(url, data, fn){
+  var req = request('PATCH', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.send(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+/**
+ * POST `url` with optional `data` and callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed} [data]
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+request.post = function(url, data, fn){
+  var req = request('POST', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.send(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+/**
+ * PUT `url` with optional `data` and callback `fn(res)`.
+ *
+ * @param {String} url
+ * @param {Mixed|Function} [data] or fn
+ * @param {Function} [fn]
+ * @return {Request}
+ * @api public
+ */
+
+request.put = function(url, data, fn){
+  var req = request('PUT', url);
+  if ('function' == typeof data) fn = data, data = null;
+  if (data) req.send(data);
+  if (fn) req.end(fn);
+  return req;
+};
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Module of mixed-in functions shared between node and client code
+ */
+var isObject = __webpack_require__(8);
+
+/**
+ * Expose `RequestBase`.
+ */
+
+module.exports = RequestBase;
+
+/**
+ * Initialize a new `RequestBase`.
+ *
+ * @api public
+ */
+
+function RequestBase(obj) {
+  if (obj) return mixin(obj);
+}
+
+/**
+ * Mixin the prototype properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in RequestBase.prototype) {
+    obj[key] = RequestBase.prototype[key];
+  }
+  return obj;
+}
+
+/**
+ * Clear previous timeout.
+ *
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.clearTimeout = function _clearTimeout(){
+  clearTimeout(this._timer);
+  clearTimeout(this._responseTimeoutTimer);
+  delete this._timer;
+  delete this._responseTimeoutTimer;
+  return this;
+};
+
+/**
+ * Override default response body parser
+ *
+ * This function will be called to convert incoming data into request.body
+ *
+ * @param {Function}
+ * @api public
+ */
+
+RequestBase.prototype.parse = function parse(fn){
+  this._parser = fn;
+  return this;
+};
+
+/**
+ * Set format of binary response body.
+ * In browser valid formats are 'blob' and 'arraybuffer',
+ * which return Blob and ArrayBuffer, respectively.
+ *
+ * In Node all values result in Buffer.
+ *
+ * Examples:
+ *
+ *      req.get('/')
+ *        .responseType('blob')
+ *        .end(callback);
+ *
+ * @param {String} val
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.responseType = function(val){
+  this._responseType = val;
+  return this;
+};
+
+/**
+ * Override default request body serializer
+ *
+ * This function will be called to convert data set via .send or .attach into payload to send
+ *
+ * @param {Function}
+ * @api public
+ */
+
+RequestBase.prototype.serialize = function serialize(fn){
+  this._serializer = fn;
+  return this;
+};
+
+/**
+ * Set timeouts.
+ *
+ * - response timeout is time between sending request and receiving the first byte of the response. Includes DNS and connection time.
+ * - deadline is the time from start of the request to receiving response body in full. If the deadline is too short large files may not load at all on slow connections.
+ *
+ * Value of 0 or false means no timeout.
+ *
+ * @param {Number|Object} ms or {response, deadline}
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.timeout = function timeout(options){
+  if (!options || 'object' !== typeof options) {
+    this._timeout = options;
+    this._responseTimeout = 0;
+    return this;
+  }
+
+  for(var option in options) {
+    switch(option) {
+      case 'deadline':
+        this._timeout = options.deadline;
+        break;
+      case 'response':
+        this._responseTimeout = options.response;
+        break;
+      default:
+        console.warn("Unknown timeout option", option);
+    }
+  }
+  return this;
+};
+
+/**
+ * Set number of retry attempts on error.
+ *
+ * Failed requests will be retried 'count' times if timeout or err.code >= 500.
+ *
+ * @param {Number} count
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.retry = function retry(count){
+  // Default to 1 if no count passed or true
+  if (arguments.length === 0 || count === true) count = 1;
+  if (count <= 0) count = 0;
+  this._maxRetries = count;
+  this._retries = 0;
+  return this;
+};
+
+/**
+ * Retry request
+ *
+ * @return {Request} for chaining
+ * @api private
+ */
+
+RequestBase.prototype._retry = function() {
+  this.clearTimeout();
+
+  // node
+  if (this.req) {
+    this.req = null;
+    this.req = this.request();
+  }
+
+  this._aborted = false;
+  this.timedout = false;
+
+  return this._end();
+};
+
+/**
+ * Promise support
+ *
+ * @param {Function} resolve
+ * @param {Function} [reject]
+ * @return {Request}
+ */
+
+RequestBase.prototype.then = function then(resolve, reject) {
+  if (!this._fullfilledPromise) {
+    var self = this;
+    if (this._endCalled) {
+      console.warn("Warning: superagent request was sent twice, because both .end() and .then() were called. Never call .end() if you use promises");
+    }
+    this._fullfilledPromise = new Promise(function(innerResolve, innerReject){
+      self.end(function(err, res){
+        if (err) innerReject(err); else innerResolve(res);
+      });
+    });
+  }
+  return this._fullfilledPromise.then(resolve, reject);
+}
+
+RequestBase.prototype.catch = function(cb) {
+  return this.then(undefined, cb);
+};
+
+/**
+ * Allow for extension
+ */
+
+RequestBase.prototype.use = function use(fn) {
+  fn(this);
+  return this;
+}
+
+RequestBase.prototype.ok = function(cb) {
+  if ('function' !== typeof cb) throw Error("Callback required");
+  this._okCallback = cb;
+  return this;
+};
+
+RequestBase.prototype._isResponseOK = function(res) {
+  if (!res) {
+    return false;
+  }
+
+  if (this._okCallback) {
+    return this._okCallback(res);
+  }
+
+  return res.status >= 200 && res.status < 300;
+};
+
+
+/**
+ * Get request header `field`.
+ * Case-insensitive.
+ *
+ * @param {String} field
+ * @return {String}
+ * @api public
+ */
+
+RequestBase.prototype.get = function(field){
+  return this._header[field.toLowerCase()];
+};
+
+/**
+ * Get case-insensitive header `field` value.
+ * This is a deprecated internal API. Use `.get(field)` instead.
+ *
+ * (getHeader is no longer used internally by the superagent code base)
+ *
+ * @param {String} field
+ * @return {String}
+ * @api private
+ * @deprecated
+ */
+
+RequestBase.prototype.getHeader = RequestBase.prototype.get;
+
+/**
+ * Set header `field` to `val`, or multiple fields with one object.
+ * Case-insensitive.
+ *
+ * Examples:
+ *
+ *      req.get('/')
+ *        .set('Accept', 'application/json')
+ *        .set('X-API-Key', 'foobar')
+ *        .end(callback);
+ *
+ *      req.get('/')
+ *        .set({ Accept: 'application/json', 'X-API-Key': 'foobar' })
+ *        .end(callback);
+ *
+ * @param {String|Object} field
+ * @param {String} val
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.set = function(field, val){
+  if (isObject(field)) {
+    for (var key in field) {
+      this.set(key, field[key]);
+    }
+    return this;
+  }
+  this._header[field.toLowerCase()] = val;
+  this.header[field] = val;
+  return this;
+};
+
+/**
+ * Remove header `field`.
+ * Case-insensitive.
+ *
+ * Example:
+ *
+ *      req.get('/')
+ *        .unset('User-Agent')
+ *        .end(callback);
+ *
+ * @param {String} field
+ */
+RequestBase.prototype.unset = function(field){
+  delete this._header[field.toLowerCase()];
+  delete this.header[field];
+  return this;
+};
+
+/**
+ * Write the field `name` and `val`, or multiple fields with one object
+ * for "multipart/form-data" request bodies.
+ *
+ * ``` js
+ * request.post('/upload')
+ *   .field('foo', 'bar')
+ *   .end(callback);
+ *
+ * request.post('/upload')
+ *   .field({ foo: 'bar', baz: 'qux' })
+ *   .end(callback);
+ * ```
+ *
+ * @param {String|Object} name
+ * @param {String|Blob|File|Buffer|fs.ReadStream} val
+ * @return {Request} for chaining
+ * @api public
+ */
+RequestBase.prototype.field = function(name, val) {
+
+  // name should be either a string or an object.
+  if (null === name ||  undefined === name) {
+    throw new Error('.field(name, val) name can not be empty');
+  }
+
+  if (this._data) {
+    console.error(".field() can't be used if .send() is used. Please use only .send() or only .field() & .attach()");
+  }
+
+  if (isObject(name)) {
+    for (var key in name) {
+      this.field(key, name[key]);
+    }
+    return this;
+  }
+
+  if (Array.isArray(val)) {
+    for (var i in val) {
+      this.field(name, val[i]);
+    }
+    return this;
+  }
+
+  // val should be defined now
+  if (null === val || undefined === val) {
+    throw new Error('.field(name, val) val can not be empty');
+  }
+  if ('boolean' === typeof val) {
+    val = '' + val;
+  }
+  this._getFormData().append(name, val);
+  return this;
+};
+
+/**
+ * Abort the request, and clear potential timeout.
+ *
+ * @return {Request}
+ * @api public
+ */
+RequestBase.prototype.abort = function(){
+  if (this._aborted) {
+    return this;
+  }
+  this._aborted = true;
+  this.xhr && this.xhr.abort(); // browser
+  this.req && this.req.abort(); // node
+  this.clearTimeout();
+  this.emit('abort');
+  return this;
+};
+
+/**
+ * Enable transmission of cookies with x-domain requests.
+ *
+ * Note that for this to work the origin must not be
+ * using "Access-Control-Allow-Origin" with a wildcard,
+ * and also must set "Access-Control-Allow-Credentials"
+ * to "true".
+ *
+ * @api public
+ */
+
+RequestBase.prototype.withCredentials = function(on){
+  // This is browser-only functionality. Node side is no-op.
+  if(on==undefined) on = true;
+  this._withCredentials = on;
+  return this;
+};
+
+/**
+ * Set the max redirects to `n`. Does noting in browser XHR implementation.
+ *
+ * @param {Number} n
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.redirects = function(n){
+  this._maxRedirects = n;
+  return this;
+};
+
+/**
+ * Convert to a plain javascript object (not JSON string) of scalar properties.
+ * Note as this method is designed to return a useful non-this value,
+ * it cannot be chained.
+ *
+ * @return {Object} describing method, url, and data of this request
+ * @api public
+ */
+
+RequestBase.prototype.toJSON = function(){
+  return {
+    method: this.method,
+    url: this.url,
+    data: this._data,
+    headers: this._header
+  };
+};
+
+
+/**
+ * Send `data` as the request body, defaulting the `.type()` to "json" when
+ * an object is given.
+ *
+ * Examples:
+ *
+ *       // manual json
+ *       request.post('/user')
+ *         .type('json')
+ *         .send('{"name":"tj"}')
+ *         .end(callback)
+ *
+ *       // auto json
+ *       request.post('/user')
+ *         .send({ name: 'tj' })
+ *         .end(callback)
+ *
+ *       // manual x-www-form-urlencoded
+ *       request.post('/user')
+ *         .type('form')
+ *         .send('name=tj')
+ *         .end(callback)
+ *
+ *       // auto x-www-form-urlencoded
+ *       request.post('/user')
+ *         .type('form')
+ *         .send({ name: 'tj' })
+ *         .end(callback)
+ *
+ *       // defaults to x-www-form-urlencoded
+ *      request.post('/user')
+ *        .send('name=tobi')
+ *        .send('species=ferret')
+ *        .end(callback)
+ *
+ * @param {String|Object} data
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.send = function(data){
+  var isObj = isObject(data);
+  var type = this._header['content-type'];
+
+  if (this._formData) {
+    console.error(".send() can't be used if .attach() or .field() is used. Please use only .send() or only .field() & .attach()");
+  }
+
+  if (isObj && !this._data) {
+    if (Array.isArray(data)) {
+      this._data = [];
+    } else if (!this._isHost(data)) {
+      this._data = {};
+    }
+  } else if (data && this._data && this._isHost(this._data)) {
+    throw Error("Can't merge these send calls");
+  }
+
+  // merge
+  if (isObj && isObject(this._data)) {
+    for (var key in data) {
+      this._data[key] = data[key];
+    }
+  } else if ('string' == typeof data) {
+    // default to x-www-form-urlencoded
+    if (!type) this.type('form');
+    type = this._header['content-type'];
+    if ('application/x-www-form-urlencoded' == type) {
+      this._data = this._data
+        ? this._data + '&' + data
+        : data;
+    } else {
+      this._data = (this._data || '') + data;
+    }
+  } else {
+    this._data = data;
+  }
+
+  if (!isObj || this._isHost(data)) {
+    return this;
+  }
+
+  // default to json
+  if (!type) this.type('json');
+  return this;
+};
+
+
+/**
+ * Sort `querystring` by the sort function
+ *
+ *
+ * Examples:
+ *
+ *       // default order
+ *       request.get('/user')
+ *         .query('name=Nick')
+ *         .query('search=Manny')
+ *         .sortQuery()
+ *         .end(callback)
+ *
+ *       // customized sort function
+ *       request.get('/user')
+ *         .query('name=Nick')
+ *         .query('search=Manny')
+ *         .sortQuery(function(a, b){
+ *           return a.length - b.length;
+ *         })
+ *         .end(callback)
+ *
+ *
+ * @param {Function} sort
+ * @return {Request} for chaining
+ * @api public
+ */
+
+RequestBase.prototype.sortQuery = function(sort) {
+  // _sort default to true but otherwise can be a function or boolean
+  this._sort = typeof sort === 'undefined' ? true : sort;
+  return this;
+};
+
+/**
+ * Compose querystring to append to req.url
+ *
+ * @api private
+ */
+RequestBase.prototype._finalizeQueryString = function(){
+  var query = this._query.join('&');
+  if (query) {
+    this.url += (this.url.indexOf('?') >= 0 ? '&' : '?') + query;
+  }
+  this._query.length = 0; // Makes the call idempotent
+
+  if (this._sort) {
+    var index = this.url.indexOf('?');
+    if (index >= 0) {
+      var queryArr = this.url.substring(index + 1).split('&');
+      if ('function' === typeof this._sort) {
+        queryArr.sort(this._sort);
+      } else {
+        queryArr.sort();
+      }
+      this.url = this.url.substring(0, index) + '?' + queryArr.join('&');
+    }
+  }
+};
+
+// For backwards compat only
+RequestBase.prototype._appendQueryString = function() {console.trace("Unsupported");}
+
+/**
+ * Invoke callback with timeout error.
+ *
+ * @api private
+ */
+
+RequestBase.prototype._timeoutError = function(reason, timeout, errno){
+  if (this._aborted) {
+    return;
+  }
+  var err = new Error(reason + timeout + 'ms exceeded');
+  err.timeout = timeout;
+  err.code = 'ECONNABORTED';
+  err.errno = errno;
+  this.timedout = true;
+  this.abort();
+  this.callback(err);
+};
+
+RequestBase.prototype._setTimeouts = function() {
+  var self = this;
+
+  // deadline
+  if (this._timeout && !this._timer) {
+    this._timer = setTimeout(function(){
+      self._timeoutError('Timeout of ', self._timeout, 'ETIME');
+    }, this._timeout);
+  }
+  // response timeout
+  if (this._responseTimeout && !this._responseTimeoutTimer) {
+    this._responseTimeoutTimer = setTimeout(function(){
+      self._timeoutError('Response timeout of ', self._responseTimeout, 'ETIMEDOUT');
+    }, this._responseTimeout);
+  }
+}
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * Module dependencies.
+ */
+
+var utils = __webpack_require__(66);
+
+/**
+ * Expose `ResponseBase`.
+ */
+
+module.exports = ResponseBase;
+
+/**
+ * Initialize a new `ResponseBase`.
+ *
+ * @api public
+ */
+
+function ResponseBase(obj) {
+  if (obj) return mixin(obj);
+}
+
+/**
+ * Mixin the prototype properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in ResponseBase.prototype) {
+    obj[key] = ResponseBase.prototype[key];
+  }
+  return obj;
+}
+
+/**
+ * Get case-insensitive `field` value.
+ *
+ * @param {String} field
+ * @return {String}
+ * @api public
+ */
+
+ResponseBase.prototype.get = function(field){
+    return this.header[field.toLowerCase()];
+};
+
+/**
+ * Set header related properties:
+ *
+ *   - `.type` the content type without params
+ *
+ * A response of "Content-Type: text/plain; charset=utf-8"
+ * will provide you with a `.type` of "text/plain".
+ *
+ * @param {Object} header
+ * @api private
+ */
+
+ResponseBase.prototype._setHeaderProperties = function(header){
+    // TODO: moar!
+    // TODO: make this a util
+
+    // content-type
+    var ct = header['content-type'] || '';
+    this.type = utils.type(ct);
+
+    // params
+    var params = utils.params(ct);
+    for (var key in params) this[key] = params[key];
+
+    this.links = {};
+
+    // links
+    try {
+        if (header.link) {
+            this.links = utils.parseLinks(header.link);
+        }
+    } catch (err) {
+        // ignore
+    }
+};
+
+/**
+ * Set flags such as `.ok` based on `status`.
+ *
+ * For example a 2xx response will give you a `.ok` of __true__
+ * whereas 5xx will be __false__ and `.error` will be __true__. The
+ * `.clientError` and `.serverError` are also available to be more
+ * specific, and `.statusType` is the class of error ranging from 1..5
+ * sometimes useful for mapping respond colors etc.
+ *
+ * "sugar" properties are also defined for common cases. Currently providing:
+ *
+ *   - .noContent
+ *   - .badRequest
+ *   - .unauthorized
+ *   - .notAcceptable
+ *   - .notFound
+ *
+ * @param {Number} status
+ * @api private
+ */
+
+ResponseBase.prototype._setStatusProperties = function(status){
+    var type = status / 100 | 0;
+
+    // status / class
+    this.status = this.statusCode = status;
+    this.statusType = type;
+
+    // basics
+    this.info = 1 == type;
+    this.ok = 2 == type;
+    this.redirect = 3 == type;
+    this.clientError = 4 == type;
+    this.serverError = 5 == type;
+    this.error = (4 == type || 5 == type)
+        ? this.toError()
+        : false;
+
+    // sugar
+    this.accepted = 202 == status;
+    this.noContent = 204 == status;
+    this.badRequest = 400 == status;
+    this.unauthorized = 401 == status;
+    this.notAcceptable = 406 == status;
+    this.forbidden = 403 == status;
+    this.notFound = 404 == status;
+};
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+var ERROR_CODES = [
+  'ECONNRESET',
+  'ETIMEDOUT',
+  'EADDRINFO',
+  'ESOCKETTIMEDOUT'
+];
+
+/**
+ * Determine if a request should be retried.
+ * (Borrowed from segmentio/superagent-retry)
+ *
+ * @param {Error} err
+ * @param {Response} [res]
+ * @returns {Boolean}
+ */
+module.exports = function shouldRetry(err, res) {
+  if (err && err.code && ~ERROR_CODES.indexOf(err.code)) return true;
+  if (res && res.status && res.status >= 500) return true;
+  // Superagent timeout
+  if (err && 'timeout' in err && err.code == 'ECONNABORTED') return true;
+  if (err && 'crossDomain' in err) return true;
+  return false;
+};
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+
+/**
+ * Return the mime type for the given `str`.
+ *
+ * @param {String} str
+ * @return {String}
+ * @api private
+ */
+
+exports.type = function(str){
+  return str.split(/ *; */).shift();
+};
+
+/**
+ * Return header field parameters.
+ *
+ * @param {String} str
+ * @return {Object}
+ * @api private
+ */
+
+exports.params = function(str){
+  return str.split(/ *; */).reduce(function(obj, str){
+    var parts = str.split(/ *= */);
+    var key = parts.shift();
+    var val = parts.shift();
+
+    if (key && val) obj[key] = val;
+    return obj;
+  }, {});
+};
+
+/**
+ * Parse Link header fields.
+ *
+ * @param {String} str
+ * @return {Object}
+ * @api private
+ */
+
+exports.parseLinks = function(str){
+  return str.split(/ *, */).reduce(function(obj, str){
+    var parts = str.split(/ *; */);
+    var url = parts[0].slice(1, -1);
+    var rel = parts[1].split(/ *= */)[1].slice(1, -1);
+    obj[rel] = url;
+    return obj;
+  }, {});
+};
+
+/**
+ * Strip content related fields from `header`.
+ *
+ * @param {Object} header
+ * @return {Object} header
+ * @api private
+ */
+
+exports.cleanHeader = function(header, shouldStripCookie){
+  delete header['content-type'];
+  delete header['content-length'];
+  delete header['transfer-encoding'];
+  delete header['host'];
+  if (shouldStripCookie) {
+    delete header['cookie'];
+  }
+  return header;
+};
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/**
+ * Expose `Emitter`.
+ */
+
+if (true) {
+  module.exports = Emitter;
+}
+
+/**
+ * Initialize a new `Emitter`.
+ *
+ * @api public
+ */
+
+function Emitter(obj) {
+  if (obj) return mixin(obj);
+};
+
+/**
+ * Mixin the emitter properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in Emitter.prototype) {
+    obj[key] = Emitter.prototype[key];
+  }
+  return obj;
+}
+
+/**
+ * Listen on the given `event` with `fn`.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.on =
+Emitter.prototype.addEventListener = function(event, fn){
+  this._callbacks = this._callbacks || {};
+  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
+    .push(fn);
+  return this;
+};
+
+/**
+ * Adds an `event` listener that will be invoked a single
+ * time then automatically removed.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.once = function(event, fn){
+  function on() {
+    this.off(event, on);
+    fn.apply(this, arguments);
+  }
+
+  on.fn = fn;
+  this.on(event, on);
+  return this;
+};
+
+/**
+ * Remove the given callback for `event` or all
+ * registered callbacks.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.off =
+Emitter.prototype.removeListener =
+Emitter.prototype.removeAllListeners =
+Emitter.prototype.removeEventListener = function(event, fn){
+  this._callbacks = this._callbacks || {};
+
+  // all
+  if (0 == arguments.length) {
+    this._callbacks = {};
+    return this;
+  }
+
+  // specific event
+  var callbacks = this._callbacks['$' + event];
+  if (!callbacks) return this;
+
+  // remove all handlers
+  if (1 == arguments.length) {
+    delete this._callbacks['$' + event];
+    return this;
+  }
+
+  // remove specific handler
+  var cb;
+  for (var i = 0; i < callbacks.length; i++) {
+    cb = callbacks[i];
+    if (cb === fn || cb.fn === fn) {
+      callbacks.splice(i, 1);
+      break;
+    }
+  }
+  return this;
+};
+
+/**
+ * Emit `event` with the given args.
+ *
+ * @param {String} event
+ * @param {Mixed} ...
+ * @return {Emitter}
+ */
+
+Emitter.prototype.emit = function(event){
+  this._callbacks = this._callbacks || {};
+  var args = [].slice.call(arguments, 1)
+    , callbacks = this._callbacks['$' + event];
+
+  if (callbacks) {
+    callbacks = callbacks.slice(0);
+    for (var i = 0, len = callbacks.length; i < len; ++i) {
+      callbacks[i].apply(this, args);
+    }
+  }
+
+  return this;
+};
+
+/**
+ * Return array of callbacks for `event`.
+ *
+ * @param {String} event
+ * @return {Array}
+ * @api public
+ */
+
+Emitter.prototype.listeners = function(event){
+  this._callbacks = this._callbacks || {};
+  return this._callbacks['$' + event] || [];
+};
+
+/**
+ * Check if this emitter has `event` handlers.
+ *
+ * @param {String} event
+ * @return {Boolean}
+ * @api public
+ */
+
+Emitter.prototype.hasListeners = function(event){
+  return !! this.listeners(event).length;
+};
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * vue-carousel v0.6.5
+ * (c) 2017 todd.beauchamp@ssense.com
+ * https://github.com/ssense/vue-carousel#readme
+ */
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.VueCarousel=t():e.VueCarousel=t()}(this,function(){return function(e){function t(a){if(n[a])return n[a].exports;var i=n[a]={exports:{},id:a,loaded:!1};return e[a].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.Slide=t.Carousel=void 0;var i=n(1),r=a(i),o=n(21),s=a(o),u=function(e){e.component("carousel",r.default),e.component("slide",s.default)};t.default={install:u},t.Carousel=r.default,t.Slide=s.default},function(e,t,n){function a(e){n(2)}var i=n(7)(n(8),n(26),a,null,null);e.exports=i.exports},function(e,t,n){var a=n(3);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("70056466",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel{position:relative}.VueCarousel-wrapper{width:100%;position:relative;overflow:hidden}.VueCarousel-inner{display:flex;flex-direction:row;backface-visibility:hidden}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var a={},i=0;i<this.length;i++){var r=this[i][0];"number"==typeof r&&(a[r]=!0)}for(i=0;i<t.length;i++){var o=t[i];"number"==typeof o[0]&&a[o[0]]||(n&&!o[2]?o[2]=n:n&&(o[2]="("+o[2]+") and ("+n+")"),e.push(o))}},e}},function(e,t,n){function a(e){for(var t=0;t<e.length;t++){var n=e[t],a=d[n.id];if(a){a.refs++;for(var i=0;i<a.parts.length;i++)a.parts[i](n.parts[i]);for(;i<n.parts.length;i++)a.parts.push(r(n.parts[i]));a.parts.length>n.parts.length&&(a.parts.length=n.parts.length)}else{for(var o=[],i=0;i<n.parts.length;i++)o.push(r(n.parts[i]));d[n.id]={id:n.id,refs:1,parts:o}}}}function i(){var e=document.createElement("style");return e.type="text/css",c.appendChild(e),e}function r(e){var t,n,a=document.querySelector('style[data-vue-ssr-id~="'+e.id+'"]');if(a){if(h)return v;a.parentNode.removeChild(a)}if(g){var r=p++;a=f||(f=i()),t=o.bind(null,a,r,!1),n=o.bind(null,a,r,!0)}else a=i(),t=s.bind(null,a),n=function(){a.parentNode.removeChild(a)};return t(e),function(a){if(a){if(a.css===e.css&&a.media===e.media&&a.sourceMap===e.sourceMap)return;t(e=a)}else n()}}function o(e,t,n,a){var i=n?"":a.css;if(e.styleSheet)e.styleSheet.cssText=m(t,i);else{var r=document.createTextNode(i),o=e.childNodes;o[t]&&e.removeChild(o[t]),o.length?e.insertBefore(r,o[t]):e.appendChild(r)}}function s(e,t){var n=t.css,a=t.media,i=t.sourceMap;if(a&&e.setAttribute("media",a),i&&(n+="\n/*# sourceURL="+i.sources[0]+" */",n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(i))))+" */"),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}var u="undefined"!=typeof document,l=n(6),d={},c=u&&(document.head||document.getElementsByTagName("head")[0]),f=null,p=0,h=!1,v=function(){},g="undefined"!=typeof navigator&&/msie [6-9]\b/.test(navigator.userAgent.toLowerCase());e.exports=function(e,t,n){h=n;var i=l(e,t);return a(i),function(t){for(var n=[],r=0;r<i.length;r++){var o=i[r],s=d[o.id];s.refs--,n.push(s)}t?(i=l(e,t),a(i)):i=[];for(var r=0;r<n.length;r++){var s=n[r];if(0===s.refs){for(var u=0;u<s.parts.length;u++)s.parts[u]();delete d[s.id]}}}};var m=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()},function(e,t){e.exports=function(e,t){for(var n=[],a={},i=0;i<t.length;i++){var r=t[i],o=r[0],s=r[1],u=r[2],l=r[3],d={id:e+":"+i,css:s,media:u,sourceMap:l};a[o]?a[o].parts.push(d):n.push(a[o]={id:o,parts:[d]})}return n}},function(e,t){e.exports=function(e,t,n,a,i){var r,o=e=e||{},s=typeof e.default;"object"!==s&&"function"!==s||(r=e,o=e.default);var u="function"==typeof o?o.options:o;t&&(u.render=t.render,u.staticRenderFns=t.staticRenderFns),a&&(u._scopeId=a);var l;if(i?(l=function(e){e=e||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,e||"undefined"==typeof __VUE_SSR_CONTEXT__||(e=__VUE_SSR_CONTEXT__),n&&n.call(this,e),e&&e._registeredComponents&&e._registeredComponents.add(i)},u._ssrRegister=l):n&&(l=n),l){var d=u.functional,c=d?u.render:u.beforeCreate;d?u.render=function(e,t){return l.call(t),c(e,t)}:u.beforeCreate=c?[].concat(c,l):[l]}return{esModule:r,exports:o,options:u}}},function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var i=n(9),r=a(i),o=n(10),s=a(o),u=n(11),l=a(u),d=n(16),c=a(d),f=n(21),p=a(f);t.default={name:"carousel",beforeUpdate:function(){this.computeCarouselWidth()},components:{Navigation:l.default,Pagination:c.default,Slide:p.default},data:function(){return{browserWidth:null,carouselWidth:null,currentPage:0,dragOffset:0,dragStartX:0,mousedown:!1,slideCount:0}},mixins:[r.default],props:{easing:{type:String,default:"ease"},minSwipeDistance:{type:Number,default:8},navigationClickTargetSize:{type:Number,default:8},navigationEnabled:{type:Boolean,default:!1},navigationNextLabel:{type:String,default:"▶"},navigationPrevLabel:{type:String,default:"◀"},paginationActiveColor:{type:String,default:"#000000"},paginationColor:{type:String,default:"#efefef"},paginationEnabled:{type:Boolean,default:!0},paginationPadding:{type:Number,default:10},paginationSize:{type:Number,default:10},perPage:{type:Number,default:2},perPageCustom:{type:Array},scrollPerPage:{type:Boolean,default:!1},speed:{type:Number,default:500},loop:{type:Boolean,default:!1}},computed:{breakpointSlidesPerPage:function(){if(!this.perPageCustom)return this.perPage;var e=this.perPageCustom,t=this.browserWidth,n=e.sort(function(e,t){return e[0]>t[0]?-1:1}),a=n.filter(function(e){return t>=e[0]}),i=a[0]&&a[0][1];return i||this.perPage},canAdvanceForward:function(){return this.loop||this.currentPage<this.pageCount-1},canAdvanceBackward:function(){return this.loop||this.currentPage>0},currentPerPage:function(){return!this.perPageCustom||this.$isServer?this.perPage:this.breakpointSlidesPerPage},currentOffset:function(){var e=this.currentPage,t=this.slideWidth,n=this.dragOffset,a=this.scrollPerPage?e*t*this.currentPerPage:e*t;return(a+n)*-1},isHidden:function(){return this.carouselWidth<=0},pageCount:function(){var e=this.slideCount,t=this.currentPerPage;if(this.scrollPerPage){var n=Math.ceil(e/t);return n<1?1:n}return e-(this.currentPerPage-1)},slideWidth:function(){var e=this.carouselWidth,t=this.currentPerPage;return e/t},transitionStyle:function(){return this.speed/1e3+"s "+this.easing+" transform"}},methods:{getNextPage:function(){return this.currentPage<this.pageCount-1?this.currentPage+1:this.loop?0:this.currentPage},getPreviousPage:function(){return this.currentPage>0?this.currentPage-1:this.loop?this.pageCount-1:this.currentPage},advancePage:function(e){e&&"backward"===e&&this.canAdvanceBackward?this.goToPage(this.getPreviousPage()):(!e||e&&"backward"!==e)&&this.canAdvanceForward&&this.goToPage(this.getNextPage())},attachMutationObserver:function(){var e=this,t=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver;if(t){var n={attributes:!0,data:!0};this.mutationObserver=new t(function(){e.$nextTick(function(){e.computeCarouselWidth()})}),this.$parent.$el&&this.mutationObserver.observe(this.$parent.$el,n)}},detachMutationObserver:function(){this.mutationObserver&&this.mutationObserver.disconnect()},getBrowserWidth:function(){return this.browserWidth=window.innerWidth,this.browserWidth},getCarouselWidth:function(){return this.carouselWidth=this.$el&&this.$el.clientWidth||0,this.carouselWidth},getSlideCount:function(){this.slideCount=this.$slots&&this.$slots.default&&this.$slots.default.filter(function(e){return e.tag&&e.tag.indexOf("slide")>-1}).length||0},goToPage:function(e){e>=0&&e<=this.pageCount&&(this.currentPage=e,this.$emit("pageChange",this.currentPage))},handleMousedown:function(e){e.touches||e.preventDefault(),this.mousedown=!0,this.dragStartX="ontouchstart"in window?e.touches[0].clientX:e.clientX},handleMouseup:function(){this.mousedown=!1,this.dragOffset=0},handleMousemove:function(e){if(this.mousedown){var t="ontouchstart"in window?e.touches[0].clientX:e.clientX,n=this.dragStartX-t;this.dragOffset=n,this.dragOffset>this.minSwipeDistance?(this.handleMouseup(),this.advancePage()):this.dragOffset<-this.minSwipeDistance&&(this.handleMouseup(),this.advancePage("backward"))}},computeCarouselWidth:function(){this.getSlideCount(),this.getBrowserWidth(),this.getCarouselWidth(),this.setCurrentPageInBounds()},setCurrentPageInBounds:function(){if(!this.canAdvanceForward){var e=this.pageCount-1;this.currentPage=e>=0?e:0}}},mounted:function(){this.$isServer||(window.addEventListener("resize",(0,s.default)(this.computeCarouselWidth,16)),"ontouchstart"in window?(this.$el.addEventListener("touchstart",this.handleMousedown),this.$el.addEventListener("touchend",this.handleMouseup),this.$el.addEventListener("touchmove",this.handleMousemove)):(this.$el.addEventListener("mousedown",this.handleMousedown),this.$el.addEventListener("mouseup",this.handleMouseup),this.$el.addEventListener("mousemove",this.handleMousemove))),this.attachMutationObserver(),this.computeCarouselWidth()},destroyed:function(){this.$isServer||(this.detachMutationObserver(),window.removeEventListener("resize",this.getBrowserWidth),"ontouchstart"in window?this.$el.removeEventListener("touchmove",this.handleMousemove):this.$el.removeEventListener("mousemove",this.handleMousemove))}}},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={props:{autoplay:{type:Boolean,default:!1},autoplayTimeout:{type:Number,default:2e3},autoplayHoverPause:{type:Boolean,default:!0}},data:function(){return{autoplayInterval:null}},destroyed:function(){this.$isServer||(this.$el.removeEventListener("mouseenter",this.pauseAutoplay),this.$el.removeEventListener("mouseleave",this.startAutoplay))},methods:{pauseAutoplay:function(){this.autoplayInterval&&(this.autoplayInterval=clearInterval(this.autoplayInterval))},startAutoplay:function(){this.autoplay&&(this.autoplayInterval=setInterval(this.advancePage,this.autoplayTimeout))}},mounted:function(){!this.$isServer&&this.autoplayHoverPause&&(this.$el.addEventListener("mouseenter",this.pauseAutoplay),this.$el.addEventListener("mouseleave",this.startAutoplay)),this.startAutoplay()}};t.default=n},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(e,t,n){var a=void 0;return function(){var i=void 0,r=function(){a=null,n||e.apply(i)},o=n&&!a;clearTimeout(a),a=setTimeout(r,t),o&&e.apply(i)}};t.default=n},function(e,t,n){function a(e){n(12)}var i=n(7)(n(14),n(15),a,"data-v-7fed18e9",null);e.exports=i.exports},function(e,t,n){var a=n(13);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("58a44a73",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-navigation-button[data-v-7fed18e9]{position:absolute;top:50%;box-sizing:border-box;color:#000;text-decoration:none}.VueCarousel-navigation-next[data-v-7fed18e9]{right:0;transform:translateY(-50%) translateX(100%)}.VueCarousel-navigation-prev[data-v-7fed18e9]{left:0;transform:translateY(-50%) translateX(-100%)}.VueCarousel-navigation--disabled[data-v-7fed18e9]{opacity:.5;cursor:default}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"navigation",data:function(){return{parentContainer:this.$parent}},props:{clickTargetSize:{type:Number,default:8},nextLabel:{type:String,default:"▶"},prevLabel:{type:String,default:"◀"}},computed:{canAdvanceForward:function(){return this.parentContainer.canAdvanceForward||!1},canAdvanceBackward:function(){return this.parentContainer.canAdvanceBackward||!1}},methods:{triggerPageAdvance:function(e){e?this.$parent.advancePage(e):this.$parent.advancePage()}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel-navigation"},[n("a",{staticClass:"VueCarousel-navigation-button VueCarousel-navigation-prev",class:{"VueCarousel-navigation--disabled":!e.canAdvanceBackward},style:"padding: "+e.clickTargetSize+"px; margin-right: -"+e.clickTargetSize+"px;",attrs:{href:"#"},domProps:{innerHTML:e._s(e.prevLabel)},on:{click:function(t){t.preventDefault(),e.triggerPageAdvance("backward")}}}),e._v(" "),n("a",{staticClass:"VueCarousel-navigation-button VueCarousel-navigation-next",class:{"VueCarousel-navigation--disabled":!e.canAdvanceForward},style:"padding: "+e.clickTargetSize+"px; margin-left: -"+e.clickTargetSize+"px;",attrs:{href:"#"},domProps:{innerHTML:e._s(e.nextLabel)},on:{click:function(t){t.preventDefault(),e.triggerPageAdvance()}}})])},staticRenderFns:[]}},function(e,t,n){function a(e){n(17)}var i=n(7)(n(19),n(20),a,"data-v-7e42136f",null);e.exports=i.exports},function(e,t,n){var a=n(18);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("cc30be7c",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-pagination[data-v-7e42136f]{width:100%;float:left;text-align:center}.VueCarousel-dot-container[data-v-7e42136f]{display:inline-block;margin:0 auto}.VueCarousel-dot[data-v-7e42136f]{float:left;cursor:pointer}.VueCarousel-dot-inner[data-v-7e42136f]{border-radius:100%}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"pagination",data:function(){return{parentContainer:this.$parent}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{directives:[{name:"show",rawName:"v-show",value:e.parentContainer.pageCount>1,expression:"parentContainer.pageCount > 1"}],staticClass:"VueCarousel-pagination"},[n("div",{staticClass:"VueCarousel-dot-container"},e._l(e.parentContainer.pageCount,function(t,a){return n("div",{staticClass:"VueCarousel-dot",class:{"VueCarousel-dot--active":a===e.parentContainer.currentPage},style:"\n        margin-top: "+2*e.parentContainer.paginationPadding+"px;\n        padding: "+e.parentContainer.paginationPadding+"px;\n      ",on:{click:function(t){e.parentContainer.goToPage(a)}}},[n("div",{staticClass:"VueCarousel-dot-inner",style:"\n          width: "+e.parentContainer.paginationSize+"px;\n          height: "+e.parentContainer.paginationSize+"px;\n          background: "+(a===e.parentContainer.currentPage?e.parentContainer.paginationActiveColor:e.parentContainer.paginationColor)+";\n        "})])}))])},staticRenderFns:[]}},function(e,t,n){function a(e){n(22)}var i=n(7)(n(24),n(25),a,null,null);e.exports=i.exports},function(e,t,n){var a=n(23);"string"==typeof a&&(a=[[e.id,a,""]]),a.locals&&(e.exports=a.locals);n(5)("647f10ac",a,!0)},function(e,t,n){t=e.exports=n(4)(),t.push([e.id,".VueCarousel-slide{flex-basis:inherit;flex-grow:0;flex-shrink:0;user-select:none}",""])},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default={name:"slide",data:function(){return{width:null}}}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel-slide"},[e._t("default")],2)},staticRenderFns:[]}},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"VueCarousel"},[n("div",{staticClass:"VueCarousel-wrapper"},[n("div",{staticClass:"VueCarousel-inner",style:"\n        transform: translateX("+e.currentOffset+"px);\n        transition: "+e.transitionStyle+";\n        flex-basis: "+e.slideWidth+"px;\n        visibility: "+(e.slideWidth?"visible":"hidden")+"\n      "},[e._t("default")],2)]),e._v(" "),e.paginationEnabled&&e.pageCount>0?n("pagination"):e._e(),e._v(" "),e.navigationEnabled?n("navigation",{attrs:{clickTargetSize:e.navigationClickTargetSize,nextLabel:e.navigationNextLabel,prevLabel:e.navigationPrevLabel}}):e._e()],1)},staticRenderFns:[]}}])});
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(31),
+  /* template */
+  __webpack_require__(110),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Footer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Footer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6085d134", Component.options)
+  } else {
+    hotAPI.reload("data-v-6085d134", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(32),
+  /* template */
+  __webpack_require__(101),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Header.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Header.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1e210950", Component.options)
+  } else {
+    hotAPI.reload("data-v-1e210950", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(95),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Nav.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Nav.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-02eb9268", Component.options)
+  } else {
+    hotAPI.reload("data-v-02eb9268", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(33),
+  /* template */
+  __webpack_require__(97),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/Page.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Page.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1396bb1a", Component.options)
+  } else {
+    hotAPI.reload("data-v-1396bb1a", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(34),
+  /* template */
+  __webpack_require__(114),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/contact/Staff.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72d5db94", Component.options)
+  } else {
+    hotAPI.reload("data-v-72d5db94", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(35),
+  /* template */
+  __webpack_require__(118),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/contact/StaffMember.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] StaffMember.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a6382520", Component.options)
+  } else {
+    hotAPI.reload("data-v-a6382520", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(36),
+  /* template */
+  __webpack_require__(117),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/InfoBox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] InfoBox.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8f4f7150", Component.options)
+  } else {
+    hotAPI.reload("data-v-8f4f7150", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(37),
+  /* template */
+  __webpack_require__(111),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/InfoBoxes.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] InfoBoxes.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-60f41d06", Component.options)
+  } else {
+    hotAPI.reload("data-v-60f41d06", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */,
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(39),
+  /* template */
+  __webpack_require__(115),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Home.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-831f5044", Component.options)
+  } else {
+    hotAPI.reload("data-v-831f5044", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(40),
+  /* template */
+  __webpack_require__(103),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/NotFound.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] NotFound.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3836d024", Component.options)
+  } else {
+    hotAPI.reload("data-v-3836d024", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(41),
+  /* template */
+  __webpack_require__(116),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/CulturalCompetency.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CulturalCompetency.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-837b8880", Component.options)
+  } else {
+    hotAPI.reload("data-v-837b8880", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(42),
+  /* template */
+  __webpack_require__(113),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/GettingStarted.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] GettingStarted.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6c5edc5e", Component.options)
+  } else {
+    hotAPI.reload("data-v-6c5edc5e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(43),
+  /* template */
+  __webpack_require__(119),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/History.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] History.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-aa5234ba", Component.options)
+  } else {
+    hotAPI.reload("data-v-aa5234ba", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(44),
+  /* template */
+  __webpack_require__(102),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/Mission.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Mission.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2f6372ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-2f6372ca", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(45),
+  /* template */
+  __webpack_require__(112),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/about/PrivacyPolicy.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] PrivacyPolicy.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b9630ae", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b9630ae", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(46),
+  /* template */
+  __webpack_require__(96),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Post.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Post.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-13311084", Component.options)
+  } else {
+    hotAPI.reload("data-v-13311084", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(47),
+  /* template */
+  __webpack_require__(107),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Posts.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Posts.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4b99bdb6", Component.options)
+  } else {
+    hotAPI.reload("data-v-4b99bdb6", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(48),
+  /* template */
+  __webpack_require__(108),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Board.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Board.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-51a29b48", Component.options)
+  } else {
+    hotAPI.reload("data-v-51a29b48", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(49),
+  /* template */
+  __webpack_require__(105),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Office.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Office.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4082efca", Component.options)
+  } else {
+    hotAPI.reload("data-v-4082efca", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(50),
+  /* template */
+  __webpack_require__(100),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Staff.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1d35e242", Component.options)
+  } else {
+    hotAPI.reload("data-v-1d35e242", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(51),
+  /* template */
+  __webpack_require__(109),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
+  } else {
+    hotAPI.reload("data-v-5aabf0eb", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(52),
+  /* template */
+  __webpack_require__(99),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Services.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Services.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-18d3a9c0", Component.options)
+  } else {
+    hotAPI.reload("data-v-18d3a9c0", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(53),
+  /* template */
+  __webpack_require__(120),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/support/Donate.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Donate.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ed8a8a24", Component.options)
+  } else {
+    hotAPI.reload("data-v-ed8a8a24", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(54),
+  /* template */
+  __webpack_require__(104),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/support/Resources.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Resources.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d5cfb76", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d5cfb76", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(55),
+  /* template */
+  __webpack_require__(98),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/support/Volunteer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Volunteer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1772fe5b", Component.options)
+  } else {
+    hotAPI.reload("data-v-1772fe5b", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "navy"
+  }, [_c('ul', [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "tag": "li",
+      "exact": ""
+    }
+  }, [_c('a', [_vm._v("Home")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("About")]), _vm._v(" "), _c('ul', [_c('router-link', {
+    attrs: {
+      "to": "/getting-started",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Getting Started")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/about/mission",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Mission")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/about/history",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("History")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/about/cultural-competency",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Cultural Competency")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/about/privacy-policy",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Privacy Policy")])])], 1)]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/services/housing",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("HIV+ Housing")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/services/hiv",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("HIV+ Services")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Support")]), _vm._v(" "), _c('ul', [_c('router-link', {
+    attrs: {
+      "to": "/support/donate",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Donate")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/support/volunteer",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Volunteer")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/support/resources",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Resources")])])], 1)]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/blog",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Blog")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Contact")]), _vm._v(" "), _c('ul', [_c('router-link', {
+    attrs: {
+      "to": "/contact/office",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Office")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/contact/staff",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Staff")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/contact/board",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Board")])])], 1)])], 1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
+    attrs: {
+      "href": "http://store.shantiaz.org"
+    }
+  }, [_vm._v("Store")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-02eb9268", module.exports)
+  }
+}
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "title": _vm.post.headline,
+      "subtitle": _vm.post.category.category_name,
+      "hero": _vm.post.hero_text
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [(_vm.post.image) ? _c('div', [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [(_vm.post.link) ? _c('div', [_c('a', {
+    attrs: {
+      "href": _vm.post.link,
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": '/uploads/' + _vm.post.image,
+      "alt": _vm.post.headline
+    }
+  })])]) : _vm._e(), _vm._v(" "), (_vm.post.image && !_vm.post.link) ? _c('div', [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": '/uploads/' + _vm.post.image,
+      "alt": _vm.post.headline
+    }
+  })]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.post.body)
+    }
+  }), _vm._v(" "), (_vm.post.link) ? _c('div', [_c('a', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "href": _vm.post.link
+    }
+  }, [_vm._v("More Information")])]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!_vm.post.image) ? _c('div', [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.post.body)
+    }
+  }), _vm._v(" "), (_vm.post.link) ? _c('div', [_c('a', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "href": _vm.post.link
+    }
+  }, [_vm._v("More Information")])]) : _vm._e()]) : _vm._e()])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-13311084", module.exports)
+  }
+}
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "page-heading-one"
+  }, [_c('h2', [_vm._v(_vm._s(_vm.article.headline))]), _vm._v(" "), _c('p', {
+    staticClass: "bg-color"
+  }, [_vm._v(_vm._s(_vm.article.subhead))])]), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.callout)
+    }
+  })]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._t("copy"), _vm._v(" "), _vm._t("posts")], 2)])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1396bb1a", module.exports)
+  }
+}
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "well"
+  }, [_c('h3', [_vm._v("Become a Volunteer")]), _vm._v(" "), _c('p', [_vm._v("Fill out the form below to inquire about volunteer opportunities.")]), _vm._v(" "), _c('alert', {
+    attrs: {
+      "show": _vm.showTop,
+      "placement": "top-right",
+      "duration": 10000,
+      "type": _vm.type,
+      "width": "500px",
+      "dismissable": ""
+    },
+    on: {
+      "update:show": function($event) {
+        _vm.showTop = $event
+      }
+    }
+  }, [_c('span', {
+    staticClass: "icon-ok-circled alert-icon-float-left"
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('form', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("First Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.firstName),
+      expression: "firstName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "first_name"
+    },
+    domProps: {
+      "value": (_vm.firstName)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.firstName = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "last_name"
+    }
+  }, [_vm._v("Last Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.lastName),
+      expression: "lastName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "last_name"
+    },
+    domProps: {
+      "value": (_vm.lastName)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.lastName = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Email Address")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.emailAddress),
+      expression: "emailAddress"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "email"
+    },
+    domProps: {
+      "value": (_vm.emailAddress)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.emailAddress = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "phone"
+    }
+  }, [_vm._v("Phone")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.phone),
+      expression: "phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "phone"
+    },
+    domProps: {
+      "value": (_vm.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.phone = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "position"
+    }
+  }, [_vm._v("Position")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.position),
+      expression: "position"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "position"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.position = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "None"
+    }
+  }, [_vm._v("Select one...")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Food Pantry"
+    }
+  }, [_vm._v("Food Pantry")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Personal Hygiene Pantry"
+    }
+  }, [_vm._v("Personal Hygiene Pantry")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Shelter Construction/Repair"
+    }
+  }, [_vm._v("Shelter Construction/Repair")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Special Events Coordinator"
+    }
+  }, [_vm._v("Special Events Coordinator")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Traditional Media Coordinator"
+    }
+  }, [_vm._v("Traditional Media Coordinator")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Legal Assistance Coordinator"
+    }
+  }, [_vm._v("Legal Assistance Coordinator")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Legal Assistance Coordinator"
+    }
+  }, [_vm._v("Legal Assistance Coordinator")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Corporate Incentives Coordinator"
+    }
+  }, [_vm._v("Corporate Incentives Coordinator")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Other"
+    }
+  }, [_vm._v("Other")])])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "comments"
+    }
+  }, [_vm._v("Comments")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.comments),
+      expression: "comments"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "comments",
+      "rows": "10"
+    },
+    domProps: {
+      "value": (_vm.comments)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.comments = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('button', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.volunteer($event)
+      }
+    }
+  }, [_vm._v("Volunteer")])])]), _vm._v(" "), _c('br', {
+    staticStyle: {
+      "clear": "both"
+    }
+  })], 1)])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1772fe5b", module.exports)
+  }
+}
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-18d3a9c0", module.exports)
+  }
+}
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "title": "Staff",
+      "subtitle": "Our Team",
+      "hero": "Hero text"
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('psg-staff')], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1d35e242", module.exports)
+  }
+}
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "outer"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "header-2"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "logo"
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "exact": ""
+    }
+  }, [_c('img', {
+    attrs: {
+      "width": "175px",
+      "src": "/img/shanti_logo.png",
+      "alt": "Phoenix Shanti Group"
+    }
+  })])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-9"
+  }, [_c('psg-nav')], 1), _vm._v(" "), _vm._m(1)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "top-bar"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "tb-contact pull-left"
+  }, [_c('i', {
+    staticClass: "fa fa-envelope color"
+  }), _vm._v("   "), _c('a', {
+    attrs: {
+      "href": "mailto:info@shantiaz.org"
+    }
+  }, [_vm._v("info@shantiaz.org")]), _vm._v("\n                  \n                "), _vm._v(" "), _c('i', {
+    staticClass: "fa fa-phone color"
+  }), _vm._v("  (602) 279-0008\n            ")]), _vm._v(" "), _c('div', {
+    staticClass: "tb-search pull-left"
+  }, [_c('a', {
+    staticClass: "b-dropdown",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "b-dropdown-block"
+  }, [_c('form', {
+    attrs: {
+      "role": "form"
+    }
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Type Something"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    staticClass: "btn btn-color",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Search")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "tb-social pull-right"
+  }, [_c('div', {
+    staticClass: "brand-bg text-right"
+  }, [_c('a', {
+    staticClass: "facebook",
+    attrs: {
+      "target": "_blank",
+      "href": "http://www.facebook.com/phoenixshantigroup"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook square-2 rounded-1"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "facebook",
+    attrs: {
+      "target": "_blank",
+      "href": "http://www.facebook.com/shanti2ndchances"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook square-2 rounded-1"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "twitter",
+    attrs: {
+      "target": "_blank",
+      "href": "https://twitter.com/PhoenixShanti"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-twitter square-2 rounded-1"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "youtube",
+    attrs: {
+      "target": "_blank",
+      "href": "https://www.youtube.com/user/PhoenixShantiGroup"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-youtube square-2 rounded-1"
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-1"
+  }, [_c('div', {
+    staticClass: "head-search pull-right"
+  }, [_c('a', {
+    staticClass: "b-dropdown",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "b-dropdown-block"
+  }, [_c('form', {
+    attrs: {
+      "role": "form"
+    }
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Type Something"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    staticClass: "btn btn-color",
+    attrs: {
+      "type": "button"
+    }
+  }, [_vm._v("Search")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1e210950", module.exports)
+  }
+}
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2f6372ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3836d024", module.exports)
+  }
+}
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3d5cfb76", module.exports)
+  }
+}
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "title": "Contact Us",
+      "subtitle": "Main Office",
+      "hero": ""
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-6"
+  }, [_c('iframe', {
+    staticStyle: {
+      "border": "0"
+    },
+    attrs: {
+      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942",
+      "width": "100%",
+      "height": "450",
+      "frameborder": "0",
+      "allowfullscreen": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-6"
+  }, [_c('div', {
+    staticClass: "about-us-three"
+  }, [_c('div', {
+    staticClass: "about-hero"
+  }, [_vm._v("\n                        In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.\n                    ")]), _vm._v(" "), _c('alert', {
+    attrs: {
+      "show": _vm.showTop,
+      "placement": "top-right",
+      "duration": 10000,
+      "type": _vm.type,
+      "width": "500px",
+      "dismissable": ""
+    },
+    on: {
+      "update:show": function($event) {
+        _vm.showTop = $event
+      }
+    }
+  }, [_c('span', {
+    staticClass: "icon-ok-circled alert-icon-float-left"
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('div', {
+    staticClass: "divider-2"
+  }), _vm._v(" "), _c('form', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.name),
+      expression: "name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "text",
+      "id": "name"
+    },
+    domProps: {
+      "value": (_vm.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "email_address"
+    }
+  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.emailAddress),
+      expression: "emailAddress"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "email",
+      "name": "email_address",
+      "id": "email_address"
+    },
+    domProps: {
+      "value": (_vm.emailAddress)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.emailAddress = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "phone"
+    }
+  }, [_vm._v("Phone:")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.phone),
+      expression: "phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "email",
+      "name": "phone",
+      "id": "phone"
+    },
+    domProps: {
+      "value": (_vm.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.phone = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "subject"
+    }
+  }, [_vm._v("Subject:")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.subject),
+      expression: "subject"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "name": "subject",
+      "id": "subject"
+    },
+    domProps: {
+      "value": (_vm.subject)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.subject = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "message"
+    }
+  }, [_vm._v("Message:")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.message),
+      expression: "message"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "message",
+      "name": "message",
+      "rows": "10"
+    },
+    domProps: {
+      "value": (_vm.message)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.message = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.sendMessage($event)
+      }
+    }
+  }, [_vm._v("Send Message")])])], 1)])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
+  }
+}
+
+/***/ }),
+/* 106 */,
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "title": "Blog",
+      "subtitle": "What's Happening at Shanti",
+      "hero": "Follow what's happening at the Phoenix Shanti Group on this page. You'll find news about what's happening at Shanti, as well as postings of Shanti events."
+    }
+  }, [_c('div', {
+    slot: "posts"
+  }, _vm._l((_vm.posts), function(post, index) {
+    return _c('div', {
+      key: "index"
+    }, [_vm._v("\n            test\n            "), (post.image) ? _c('div', [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-4"
+    }, [(post.link) ? _c('div', [_c('a', {
+      attrs: {
+        "href": post.link,
+        "target": "_blank"
+      }
+    }, [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/' + post.image,
+        "alt": post.headline
+      }
+    })])]) : _vm._e(), _vm._v(" "), (post.image && !post.link) ? _c('div', [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/' + post.image,
+        "alt": post.headline
+      }
+    })]) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-8"
+    }, [_c('div', {
+      domProps: {
+        "innerHTML": _vm._s(post.body)
+      }
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('a', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "href": post.link
+      }
+    }, [_vm._v("More Information")])]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('div', {
+      domProps: {
+        "innerHTML": _vm._s(post.body)
+      }
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('a', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "href": post.link
+      }
+    }, [_vm._v("More Information")])]) : _vm._e()]) : _vm._e()])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4b99bdb6", module.exports)
+  }
+}
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "title": "Board of Directors",
+      "subtitle": "Our Management",
+      "hero": ""
+    }
+  }, [_c('div', {
+    slot: "copy"
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-51a29b48", module.exports)
+  }
+}
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
+  }
+}
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "foot"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_vm._m(0), _vm._v(" "), _c('p', [_vm._v("\"Shanti\" is a Sanskrit word meaning \"Inner Peace\" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity")]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "subscribe-box"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_vm._v("Subscribe :")]), _vm._v(" "), _c('form', {
+    attrs: {
+      "role": "form",
+      "method": "POST"
+    }
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.email),
+      expression: "email"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Enter Email Address"
+    },
+    domProps: {
+      "value": (_vm.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.email = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    staticClass: "btn btn-color",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.subscribe($event)
+      }
+    }
+  }, [_vm._v("Subscribe")])])]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.subscriptionSuccess) ? _c('div', {
+    staticClass: "alert alert-success"
+  }, [_vm._v("\n                                    " + _vm._s(_vm.subscriptionResult) + "\n                                ")]) : _vm._e(), _vm._v(" "), (!_vm.subscriptionSuccess && _vm.subscriptionResult) ? _c('div', {
+    staticClass: "alert alert-danger"
+  }, [_vm._v("\n                                    " + _vm._s(_vm.subscriptionResult) + "\n                                ")]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_vm._m(2), _vm._v(" "), (_vm.posts) ? _c('div', {
+    staticClass: "foot-item-content"
+  }, [_c('ul', {
+    staticClass: "list-unstyled"
+  }, _vm._l((_vm.posts), function(post, index) {
+    return _c('router-link', {
+      key: "index",
+      attrs: {
+        "to": {
+          name: 'blog/view',
+          params: {
+            slug: post.slug
+          }
+        },
+        "tag": "li"
+      }
+    }, [_c('a', [_vm._v(_vm._s(post.headline))])])
+  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])]), _vm._v(" "), _c('footer', [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('p', {
+    staticClass: "pull-left"
+  }, [_vm._v("Copyright © " + _vm._s(_vm.currentYear) + " - "), _c('router-link', {
+    attrs: {
+      "to": "/",
+      "exact": ""
+    }
+  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('ul', {
+    staticClass: "list-inline pull-right"
+  }, [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "exact": ""
+    }
+  }, [_vm._v("Home")]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/about/mission"
+    }
+  }, [_vm._v("Mission")]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/services/housing"
+    }
+  }, [_vm._v("Housing")]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/services/hiv"
+    }
+  }, [_vm._v("HIV+ Services")]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/contact/office"
+    }
+  }, [_vm._v("Contact")])], 1)])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-user"
+  }), _vm._v("  About")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "brand-bg"
+  }, [_c('p', [_c('a', {
+    staticClass: "facebook",
+    attrs: {
+      "target": "_blank",
+      "href": "http://www.facebook.com/phoenixshantigroup",
+      "title": "Phoenix Shanti Group"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook circle-3"
+  }), _vm._v("\n                                Phoenix Shanti Group Facebook")])]), _vm._v(" "), _c('p', [_c('a', {
+    staticClass: "facebook",
+    attrs: {
+      "target": "_blank",
+      "href": "http://www.facebook.com/shanti2ndchances",
+      "title": "Shanti 2nd Chances"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-facebook circle-3"
+  }), _vm._v("\n                                2nd Chances Store Facebook")])]), _vm._v(" "), _c('p', [_c('a', {
+    staticClass: "twitter",
+    attrs: {
+      "target": "_blank",
+      "href": "https://twitter.com/PhoenixShanti"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-twitter circle-3"
+  }), _vm._v("\n                                Phoenix Shanti Group Twitter")])]), _vm._v(" "), _c('p', [_c('a', {
+    staticClass: "youtube",
+    attrs: {
+      "target": "_blank",
+      "href": "https://www.youtube.com/user/PhoenixShantiGroup"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-youtube circle-3"
+  }), _vm._v("\n                                Phoenix Shanti Group YouTube")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-comments"
+  }), _vm._v("  Recent Posts")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-picture-o"
+  }), _vm._v("  Recent Images")]), _vm._v(" "), _c('div', {
+    staticClass: "foot-item-content"
+  }, [_c('div', {
+    staticClass: "foot-recent-img"
+  }, [_c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/1.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/2.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/3.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/3.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "foot-recent-img"
+  }, [_c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/1.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/2.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/3.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/3.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "foot-recent-img"
+  }, [_c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/1.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/2.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "lightbox",
+    attrs: {
+      "href": "img/gallery/small/3.jpg"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive img-thumbnail",
+    attrs: {
+      "src": "img/gallery/small/3.jpg",
+      "alt": ""
+    }
+  })])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-building-o"
+  }), _vm._v("  Contact Us")]), _vm._v(" "), _c('div', {
+    staticClass: "foot-item-content address"
+  }, [_c('h6', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-home"
+  }), _vm._v("  Phoenix Shanti Group")]), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                                2345 West Glendale Avenue,"), _c('br'), _vm._v("\n                                Phoenix, Arizona 85021\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" Main Office : (602) 279-0008\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-fax"
+  }), _vm._v(" Secure Fax : (602) 279-2004\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-envelope"
+  }), _vm._v("  Email : "), _c('a', {
+    attrs: {
+      "href": "mailto:info@shantiaz.org"
+    }
+  }, [_vm._v("info@shantiaz.org")])]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-calendar"
+  }), _vm._v(" Hours : 8 am - 4 pm\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                                Monday through Friday\n                            ")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h6', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-home"
+  }), _vm._v(" 2nd Chances Store")]), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                                4015 N 16th Street Suite E-F,"), _c('br'), _vm._v("\n                                Phoenix AZ, 85016\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" Store : (602) 283-0100\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-fax"
+  }), _vm._v(" Store Fax : (602) 283-0101\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "tel"
+  }, [_c('i', {
+    staticClass: "fa fa-calendar"
+  }), _vm._v(" Store Hours : 9 am - 6 pm, Monday\n                            ")]), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                                 through Friday; 9 am - 5 pm, Saturday\n                            ")]), _vm._v(" "), _c('p')])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('p', {
+    staticClass: "text-center"
+  }, [_vm._v("Design and Development by "), _c('a', {
+    attrs: {
+      "href": "https://www.copperstardigital.com"
+    }
+  }, [_vm._v("Copper Star Digital")])]), _vm._v(" "), _c('p', {
+    staticClass: "text-center"
+  }, [_c('a', {
+    attrs: {
+      "target": "_blank",
+      "href": "https://www.copperstardigital.com"
+    }
+  }, [_c('img', {
+    staticStyle: {
+      "width": "70%",
+      "margin": "0 auto"
+    },
+    attrs: {
+      "src": "/uploads/sponsors/copper_star.png",
+      "alt": "Copper Star Digital"
+    }
+  })])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6085d134", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "icon-box-8 text-center"
+  }, [_c('div', {
+    staticClass: "row"
+  }, _vm._l((_vm.boxes), function(box, index) {
+    return _c('psg-info-box', {
+      key: "index",
+      attrs: {
+        "color": box.color,
+        "icon": box.icon,
+        "headline": box.title,
+        "link": box.link,
+        "copy": box.copy
+      }
+    })
+  })), _vm._v(" "), _c('br')])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-60f41d06", module.exports)
+  }
+}
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6b9630ae", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6c5edc5e", module.exports)
+  }
+}
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', _vm._l((_vm.staff), function(member, index) {
+    return _c('psg-staff-member', {
+      key: "index",
+      attrs: {
+        "member": member
+      }
+    })
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-72d5db94", module.exports)
+  }
+}
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-block"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('carousel', {
+    attrs: {
+      "loop": true,
+      "autoplay": true,
+      "autoplayTimeout": 7000,
+      "perPage": 1,
+      "navigationEnabled": true
+    }
+  }, _vm._l((_vm.events), function(event, index) {
+    return _c('slide', {
+      key: "index"
+    }, [(event.image) ? _c('div', [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-5"
+    }, [(event.link) ? _c('div', [_c('a', {
+      attrs: {
+        "href": event.link,
+        "target": "_blank"
+      }
+    }, [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/' + event.image,
+        "alt": event.headline
+      }
+    })])]) : _vm._e(), _vm._v(" "), (event.image) ? _c('div', [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/' + event.image,
+        "alt": event.headline
+      }
+    })]) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-7"
+    }, [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.hero_text)
+      }
+    }), _vm._v(" "), _c('br'), _vm._v(" "), _c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": {
+          name: 'blog/view',
+          params: {
+            slug: event.slug
+          }
+        }
+      }
+    }, [_vm._v("Read More...")])], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.hero_text)
+      }
+    }), _vm._v(" "), _c('br'), _vm._v(" "), _c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": {
+          name: 'blog/view',
+          params: {
+            slug: event.slug
+          }
+        }
+      }
+    }, [_vm._v("Read More...")])], 1) : _vm._e()])
+  })), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "divider-1"
+  }), _vm._v(" "), _c('psg-info-boxes'), _vm._v(" "), _c('div', {
+    staticClass: "divider-1"
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(3)], 1), _vm._v(" "), _c('div', {
+    staticClass: "container"
+  }, [_c('br'), _vm._v(" "), _c('div', {
+    staticClass: "divider-1"
+  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
+    staticClass: "client-three"
+  }, [_c('carousel', {
+    attrs: {
+      "loop": true,
+      "autoplay": true,
+      "autoplayTimeout": 7000,
+      "perPage": 1,
+      "navigationEnabled": true
+    }
+  }, [_c('slide', [_c('div', {
+    staticClass: "row frame"
+  }, [_c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.auntritas.org/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/aunt_ritas.png",
+      "alt": "Aunt Rita's Foundation"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://vsuw.org",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/united_way.jpeg",
+      "alt": "Valley of the Sun United Way"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://elizabethtayloraidsfoundation.org/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/elizabeth_taylor.png",
+      "alt": "Elizabeth Taylor AIDS Foundation"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://broadwaycares.org/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/broadway_cares.jpeg",
+      "alt": "Broadway Cares"
+    }
+  })])])])]), _vm._v(" "), _c('slide', [_c('div', {
+    staticClass: "row frame"
+  }, [_c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.macys.com",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/macys.jpeg",
+      "alt": "Macy's"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://www.aidshealth.org/#/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/AHF.png",
+      "alt": "AIDS Healthcare Foundation"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.topazsystems.com/index.html",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/topaz.png",
+      "alt": "Topaz Systems"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://triyoung.com/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/triyoung.png",
+      "alt": "TriYoung Business Solutions"
+    }
+  })])])])]), _vm._v(" "), _c('slide', [_c('div', {
+    staticClass: "row frame"
+  }, [_c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://www.copperstardigital.com",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/copper_star.png",
+      "alt": "Copper Star Digital"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.la-z-boy.com/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/lazboy.png",
+      "alt": "La-Z-Boy"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.buffaloexchange.com",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/buffalo_exchange.jpeg",
+      "alt": "Buffalo Exchange"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.trashcity.com/",
+      "target": "_blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/uploads/sponsors/trash_city.jpg",
+      "alt": "Trash City Beads"
+    }
+  })])])])])], 1)], 1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "text-center"
+  }, [_c('h3', [_c('span', {
+    staticClass: "color"
+  }, [_vm._v("Phoenix Shanti Group")]), _vm._v(". Most Amazing HIV Agency in the Valley. "), _c('span', {
+    staticClass: "color"
+  }, [_vm._v("Literally")]), _vm._v(".")]), _vm._v(" "), _c('p', [_vm._v("Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "block-heading-two text-center"
+  }, [_c('h3', [_c('span', [_vm._v("Our Agency")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4 col-sm-6"
+  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.")]), _vm._v(" "), _c('ul', {
+    staticClass: "list-2"
+  }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4 col-sm-6"
+  }, [_c('div', {
+    staticClass: "carousel slide",
+    attrs: {
+      "id": "bs-carousel-1",
+      "data-ride": "carousel",
+      "data-interval": "5000",
+      "data-pause": "hover",
+      "data-wrap": "true"
+    }
+  }, [_c('ol', {
+    staticClass: "carousel-indicators"
+  }, [_c('li', {
+    staticClass: "active",
+    attrs: {
+      "data-target": "#bs-carousel-1",
+      "data-slide-to": "0"
+    }
+  }), _vm._v(" "), _c('li', {
+    attrs: {
+      "data-target": "#bs-carousel-1",
+      "data-slide-to": "1"
+    }
+  }), _vm._v(" "), _c('li', {
+    attrs: {
+      "data-target": "#bs-carousel-1",
+      "data-slide-to": "2"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "carousel-inner"
+  }, [_c('div', {
+    staticClass: "item active"
+  }, [_c('img', {
+    attrs: {
+      "src": "img/aboutus/about-office-1.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "item"
+  }, [_c('img', {
+    attrs: {
+      "src": "img/aboutus/about-office-2.jpg",
+      "alt": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "item"
+  }, [_c('img', {
+    attrs: {
+      "src": "img/aboutus/about-office-3.jpg",
+      "alt": ""
+    }
+  })])]), _vm._v(" "), _c('a', {
+    staticClass: "left carousel-control",
+    attrs: {
+      "href": "#bs-carousel-1",
+      "role": "button",
+      "data-slide": "prev"
+    }
+  }, [_c('span', {
+    staticClass: "fa fa-chevron-left"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "right carousel-control",
+    attrs: {
+      "href": "#bs-carousel-1",
+      "role": "button",
+      "data-slide": "next"
+    }
+  }, [_c('span', {
+    staticClass: "fa fa-chevron-right"
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4 col-sm-6"
+  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Lorem ipsum dolor consectetursit amet, consectetur adipiscing elit consectetur euismod ed  euismod  adipiscing elit sapien. Donec eu feugiat enim,  tempus arcu. ")]), _vm._v(" "), _c('h6', [_vm._v("Web Designing")]), _vm._v(" "), _c('div', {
+    staticClass: "progress pb-sm"
+  }, [_c('div', {
+    staticClass: "progress-bar progress-bar-red",
+    staticStyle: {
+      "width": "40%"
+    },
+    attrs: {
+      "role": "progressbar",
+      "aria-valuenow": "40",
+      "aria-valuemin": "0",
+      "aria-valuemax": "100"
+    }
+  }, [_c('span', {
+    staticClass: "sr-only"
+  }, [_vm._v("40% Complete (success)")])])]), _vm._v(" "), _c('h6', [_vm._v("Doing Party")]), _vm._v(" "), _c('div', {
+    staticClass: "progress pb-sm"
+  }, [_c('div', {
+    staticClass: "progress-bar progress-bar-green",
+    staticStyle: {
+      "width": "60%"
+    },
+    attrs: {
+      "role": "progressbar",
+      "aria-valuenow": "60",
+      "aria-valuemin": "0",
+      "aria-valuemax": "100"
+    }
+  }, [_c('span', {
+    staticClass: "sr-only"
+  }, [_vm._v("40% Complete (success)")])])]), _vm._v(" "), _c('h6', [_vm._v("Money Making")]), _vm._v(" "), _c('div', {
+    staticClass: "progress pb-sm"
+  }, [_c('div', {
+    staticClass: "progress-bar progress-bar-lblue",
+    staticStyle: {
+      "width": "80%"
+    },
+    attrs: {
+      "role": "progressbar",
+      "aria-valuenow": "80",
+      "aria-valuemin": "0",
+      "aria-valuemax": "100"
+    }
+  }, [_c('span', {
+    staticClass: "sr-only"
+  }, [_vm._v("40% Complete (success)")])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "counter-one text-center"
+  }, [_c('div', {
+    staticClass: "counter-content"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-2 col-sm-4 col-xs-6"
+  }, [_c('div', {
+    staticClass: "counter-item"
+  }, [_c('i', {
+    staticClass: "fa fa-paper-plane red"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "number-count",
+    attrs: {
+      "data-from": "0",
+      "data-to": "290",
+      "data-speed": "2000",
+      "data-refresh-interval": "100"
+    }
+  }), _vm._v(" "), _c('hr', {
+    staticClass: "br-red"
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2 col-sm-4 col-xs-6"
+  }, [_c('div', {
+    staticClass: "counter-item"
+  }, [_c('i', {
+    staticClass: "fa fa-trophy green"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "number-count",
+    attrs: {
+      "data-from": "0",
+      "data-to": "150",
+      "data-speed": "2000",
+      "data-refresh-interval": "100"
+    }
+  }), _vm._v(" "), _c('hr', {
+    staticClass: "br-green"
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2 col-sm-4 col-xs-6"
+  }, [_c('div', {
+    staticClass: "counter-item"
+  }, [_c('i', {
+    staticClass: "fa fa-taxi lblue"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "number-count",
+    attrs: {
+      "data-from": "0",
+      "data-to": "300",
+      "data-speed": "2000",
+      "data-refresh-interval": "100"
+    }
+  }), _vm._v(" "), _c('hr', {
+    staticClass: "br-lblue"
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2 col-sm-4 col-xs-6"
+  }, [_c('div', {
+    staticClass: "counter-item"
+  }, [_c('i', {
+    staticClass: "fa fa-database yellow"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "number-count",
+    attrs: {
+      "data-from": "0",
+      "data-to": "250",
+      "data-speed": "2000",
+      "data-refresh-interval": "100"
+    }
+  }), _vm._v(" "), _c('hr', {
+    staticClass: "br-yellow"
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2 col-sm-4 col-xs-6"
+  }, [_c('div', {
+    staticClass: "counter-item"
+  }, [_c('i', {
+    staticClass: "fa fa-cube purple"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "number-count",
+    attrs: {
+      "data-from": "0",
+      "data-to": "120",
+      "data-speed": "2000",
+      "data-refresh-interval": "100"
+    }
+  }), _vm._v(" "), _c('hr', {
+    staticClass: "br-purple"
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2 col-sm-4 col-xs-6"
+  }, [_c('div', {
+    staticClass: "counter-item"
+  }, [_c('i', {
+    staticClass: "fa fa-fax brown"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "number-count",
+    attrs: {
+      "data-from": "0",
+      "data-to": "350",
+      "data-speed": "2000",
+      "data-refresh-interval": "100"
+    }
+  }), _vm._v(" "), _c('hr', {
+    staticClass: "br-brown"
+  }), _vm._v(" "), _c('h5', [_vm._v("Equine Dolores")])])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "block-heading-six"
+  }, [_c('h4', {
+    staticClass: "bg-color"
+  }, [_vm._v("Our Supporters")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-831f5044", module.exports)
+  }
+}
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-837b8880", module.exports)
+  }
+}
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "icon-box-8-item",
+    class: _vm.color
+  }, [_c('div', {
+    staticClass: "icon-box-8-icon"
+  }, [_c('a', {
+    staticClass: "icon-box-8-icon-top",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    class: _vm.icon
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "icon-box-8-icon-bottom",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    class: _vm.icon
+  })])]), _vm._v(" "), _c('h4', [_c('router-link', {
+    attrs: {
+      "to": _vm.link
+    }
+  }, [_vm._v(_vm._s(_vm.headline))])], 1), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.copy))])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-8f4f7150", module.exports)
+  }
+}
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "row",
+    staticStyle: {
+      "margin-bottom": "20px"
+    }
+  }, [(_vm.member.staff) ? _c('div', [(_vm.member.staff.image) ? _c('div', [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": '/uploads/staff/' + _vm.member.staff.image,
+      "alt": _vm.member.first_name + ' ' + _vm.member.last_name
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
+    staticClass: "team-member"
+  }, [_c('div', {
+    staticClass: "team-links"
+  }, [(_vm.member.email) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'mailto:' + _vm.member.email
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope"
+  }), _vm._v(" " + _vm._s(_vm.member.email))])]) : _vm._e(), _vm._v(" "), (_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number + ' x' + _vm.member.extension
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" 602.279.0008 x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" 602.283-0100")])]) : _vm._e()])]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.member.staff.bio) ? _c('div', [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.member.staff.bio)
+    }
+  })]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.bio) ? _c('div', [_c('p', [_vm._v("Profile information is unavailable.")])]) : _vm._e()])]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.image) ? _c('div', [(_vm.member.staff.bio) ? _c('div', [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
+    staticClass: "team-links"
+  }, [(_vm.member.email) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'mailto:' + _vm.member.email
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope"
+  }), _vm._v(" " + _vm._s(_vm.member.email))])]) : _vm._e(), _vm._v(" "), (_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number + ' x' + _vm.member.extension
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" 602.279.0008 x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" 602.283-0100")])]) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.member.staff.bio)
+    }
+  })])]) : _vm._e()]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('hr')])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-a6382520", module.exports)
+  }
+}
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-aa5234ba", module.exports)
+  }
+}
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ed8a8a24", module.exports)
+  }
+}
 
 /***/ }),
 /* 121 */
@@ -31190,8 +31887,8 @@ module.exports = g;
 /* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(10);
-module.exports = __webpack_require__(11);
+__webpack_require__(11);
+module.exports = __webpack_require__(12);
 
 
 /***/ })

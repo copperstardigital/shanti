@@ -4,8 +4,8 @@
         <!-- Page heading one starts -->
 
         <div class="page-heading-one">
-            <h2>{{ title }}</h2>
-            <p class="bg-color">{{ subtitle }}</p>
+            <h2>{{ article.headline }}</h2>
+            <p class="bg-color">{{ article.subhead }}</p>
         </div>
 
         <!-- Page heading one ends -->
@@ -15,7 +15,7 @@
             <div class="about-us-three">
                 <!-- About section hero -->
                 <div class="about-hero">
-                    <div v-html="hero"></div>
+                    <div v-html="article.callout"></div>
                 </div>
 
                 <hr />
@@ -29,6 +29,6 @@
 
 <script>
     export default {
-        props: ['title', 'subtitle', 'hero']
+        props: ['article']
     }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <psg-staff-member v-for="member in staff" :member="member"></psg-staff-member>
+        <psg-staff-member v-for="(member, index) in staff" :member="member" key="index"></psg-staff-member>
     </div>
 </template>
 

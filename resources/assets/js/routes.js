@@ -15,7 +15,7 @@ let router = new VueRouter({
         { path: '/support/donate', component: require('./views/support/Donate'), meta: { title: 'Donate'}},
         { path: '/support/resources', component: require('./views/support/Resources'), meta: { title: 'Resources'}},
         { path: '/support/volunteer', component: require('./views/support/Volunteer'), meta: { title: 'Volunteer'}},
-        { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
+        // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
         { path: '/blog', component: require('./views/blog/Posts'), meta: { title: 'Blog'}},
         { path: '/blog/:slug', name: 'blog/view', component: require('./views/blog/Post'), meta: { title: ''}},
         { path: '/getting-started', component: require('./views/about/GettingStarted'), meta: { title: 'Getting Started'}},

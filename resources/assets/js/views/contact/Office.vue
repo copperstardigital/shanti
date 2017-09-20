@@ -1,4 +1,11 @@
 <template>
+    <psg-page :article="article">
+        <div slot="copy">
+            <div v-html="article.body"></div>
+        </div>
+    </psg-page>
+</template>
+<template>
     <psg-page title="Contact Us" subtitle="Main Office" hero="">
         <div slot="copy">
             <div class="row">

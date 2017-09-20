@@ -1,31 +1,138 @@
 <template>
-    <psg-page title="Volunteer" subtitle="Help Us Help You" hero="Have you been searching for an opportunity that fulfills your desire to give back to the community and see a direct difference and change brought about from your individual effort?">
+    <psg-page :article="article">
         <div slot="copy">
-            <p>Phoenix Shanti Group is a local 501c3 non-profit organization, which means, that amongst other things, when you interact with us, you are not a name-less, face-less individual giving your time and talents to a multi-national organization where you may or may not see the immediate effect of your giving.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div v-html="article.body"></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well">
+                            <h3>Become a Volunteer</h3>
 
-            <p>If you are looking for a more personal experience where you can see a direct impact due to your personal efforts, then we encourage you to read on, and find out more about the various opportunities available in which your help will be greatly appreciated:</p>
+                            <p>Fill out the form below to inquire about volunteer opportunities.</p>
 
-            <p><strong>Food Pantry:</strong> Phoenix Shanti Group operates a canned goods/non-perishable foods pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of canned/non-perishable food items will assist us in keeping our food pantry stocked and provide our patients with the ability to have a nutritious meal.</p>
+                            <alert :show.sync="showTop" placement="top-right" :duration="10000" :type="type" width="500px" dismissable>
+                                <span class="icon-ok-circled alert-icon-float-left"></span>
+                                <p>{{ flash }}</p>
+                            </alert>
 
-            <p><strong>Personal Hygiene Pantry:</strong>  Phoenix Shanti Group operates a personal hygiene pantry.  The pantry is made available during normal business hours for low/no income individuals receiving services at Shanti.  Your donation of personal hygiene items (toothpaste, dental floss, tooth brushes, razors, shaving cream, toilet paper, shampoo, soap, laundry detergent, mouthwash, deodorant, dish soap) will assist us in keeping the pantry stocked with these essential items.</p>
+                            <form>
+                                <div class="form-group">
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" id="first_name" v-model="firstName" class="form-control"/>
+                                </div>
 
-            <p><strong>Homeless Shelter Construction/Repair/Maintenance Coordinators:</strong>  Phoenix Shanti Group operates homeless shelters for individuals with HIV/AIDS.  The shelters are in continuing need of various repairs and general maintenance, including interior/exterior painting.  Your donation of paint, power tools, construction supplies, or even more importantly, your time to participate in our shelter maintenance program will be greatly appreciated!</p>
+                                <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" id="last_name" v-model="lastName" class="form-control"/>
+                                </div>
 
-            <p><strong>Social Media Coordinators:</strong> Phoenix Shanti Group is looking for individuals to participate in our social media initiative.  Through the use of facebook, twitter, texting, and youtube, we are looking to individuals to friend, tweet, and forward on messages from Shanti regarding special events that are planned throughout the year.
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="text" id="email" v-model="emailAddress" class="form-control"/>
+                                </div>
 
-            <p><strong>Special Events Coordinators:</strong>  Special Events Coordinators will work directly with a staff member on individual events that are planned throughout the year.  These are events in which the cause of HIV/AIDS or Phoenix Shanti Group will be recognized or host/partially host an event.  Events range from theater/arts performances to professional sports games, as well as many other venues.</p>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" id="phone" v-model="phone" class="form-control"/>
+                                </div>
 
-            <p>Traditional Media Coordinators:  Traditional Media Coordinators will work directly with a staff member on individual media projects.  These projects include radio, television, electronic, and print interviews, public relations, advertising, and marketing campaigns.</p>
+                                <div class="form-group">
+                                    <label for="position">Position</label>
+                                    <select v-model="position" class="form-control" id="position">
+                                        <option value="None">Select one...</option>
+                                        <option value="Food Pantry">Food Pantry</option>
+                                        <option value="Personal Hygiene Pantry">Personal Hygiene Pantry</option>
+                                        <option value="Shelter Construction/Repair">Shelter Construction/Repair</option>
+                                        <option value="Special Events Coordinator">Special Events Coordinator</option>
+                                        <option value="Traditional Media Coordinator">Traditional Media Coordinator</option>
+                                        <option value="Legal Assistance Coordinator">Legal Assistance Coordinator</option>
+                                        <option value="Legal Assistance Coordinator">Legal Assistance Coordinator</option>
+                                        <option value="Corporate Incentives Coordinator">Corporate Incentives Coordinator</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-            <p><strong>Legal Assistance Coordinators:</strong>  Legal Assistance Coordinators will work directly with a staff member on estate planning, end of life remembrance programs, and other legal/technical initiatives.</p>
+                                <div class="form-group">
+                                    <label for="comments">Comments</label>
+                                    <textarea class="form-control" id="comments" v-model="comments" rows="10"></textarea>
+                                </div>
 
-            <p><strong>Corporate Incentives Coordinators:</strong>  Corporate Incentive Coordinators will work directly with a staff member on outreach programs for corporate sponsorships, grants, donations, matching gifts programs, and speaking opportunities in which Phoenix Shanti Group is the primary recipient.Type your paragraph here.</p>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-color pull-right" @click.prevent="volunteer">Volunteer</button>
+                                </div>
+                            </form>
+
+                            <br style="clear:both;" />
+                        </div>
+                </div>
+            </div>
         </div>
     </psg-page>
 </template>
 
 <script>
-    export default {
+    import { alert } from 'vue-strap';
 
+    export default {
+        data() {
+            return {
+                firstName: '',
+                lastName: '',
+                emailAddress: '',
+                phone: '',
+                position: 'None',
+                comments: '',
+                showTop: false,
+                type: 'success',
+                flash: '',
+                article: {}
+            }
+        },
+        methods: {
+            volunteer() {
+                axios.post('/volunteer/form', {
+                    name: this.firstName + ' ' + this.lastName,
+                    email: this.emailAddress,
+                    phone: this.phone,
+                    position: this.position,
+                    comments: this.comments
+                }).then(response => {
+                    this.showTop = true;
+                    this.flash = 'Thank you for contacting Shanti about our volunteer opportunities. We will be in touch shortly.'
+                    this.firstName = '';
+                    this.lastName = '';
+                    this.emailAddress = '';
+                    this.phone = '';
+                    this.position = 'None';
+                    this.comments = '';
+                }).catch(error => {
+                    this.showTop = true;
+                    this.type = 'danger';
+                    this.flash = error.message;
+                });
+            }
+        },
+        components: {
+            alert: alert
+        },
+        beforeRouteEnter(to, from, next) {
+            http
+                .get('/articles/9')
+                //.use(saCache)
+                .then(response => {
+                    let article = response.body.article;
+                    next(vm => {
+                        vm.article = {
+                            headline: article.en_headline,
+                            subhead: article.en_subhead,
+                            callout: article.en_callout,
+                            body: article.en_body
+                        };
+                    });
+                }).catch(error => {
+                console.error(error);
+            });
+        }
     }
 </script>

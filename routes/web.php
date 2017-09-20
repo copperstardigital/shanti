@@ -27,3 +27,6 @@ Route::get('carousel', 'Vue\PostController@carousel');
 Route::post('mailchimp', 'Vue\MailChimpController@store');
 Route::post('contact', 'Vue\EmailController@contact');
 Route::resource('staff', 'Vue\StaffController');
+Route::resource('volunteer', 'Vue\VolunteerController');
+Route::resource('articles', 'Vue\ArticleController');
+Route::post('volunteer/form', 'Vue\EmailController@volunteer');

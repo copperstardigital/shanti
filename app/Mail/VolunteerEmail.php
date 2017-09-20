@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ContactEmail extends Mailable
+class VolunteerEmail extends Mailable
 {
     use Queueable, SerializesModels;
     /**
@@ -17,6 +17,7 @@ class ContactEmail extends Mailable
 
     /**
      * Create a new message instance.
+     *
      * @param $data
      */
     public function __construct($data)
@@ -31,8 +32,8 @@ class ContactEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.html.contact')
-            ->text('emails.plain.contact')
-            ->subject('Message from the Website');
+        return $this->view('emails.html.volunteer')
+            ->text('emails.plain.volunteer')
+            ->subject('Volunteer Opportunity');
     }
 }

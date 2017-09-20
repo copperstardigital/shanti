@@ -1,5 +1,5 @@
 <template>
-    <psg-page :pageLoaded="pageLoaded" :title="post.headline" :subtitle="post.category.category_name" :hero="post.hero_text">
+    <psg-page :title="post.headline" :subtitle="post.category.category_name" :hero="post.hero_text">
         <div slot="copy">
             <div v-if="post.image">
                 <div class="row">
@@ -9,7 +9,7 @@
                                 <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
                             </a>
                         </div>
-                        <div v-if="post.image">
+                        <div v-if="post.image && !post.link">
                             <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
                         </div>
                     </div>
