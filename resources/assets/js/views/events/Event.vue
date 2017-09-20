@@ -13,6 +13,9 @@
                 <div class="col-md-6">
                     <h1>{{ article.headline }}</h1>
                     <div v-html="article.body"></div>
+                    <div v-if="article.event_url">
+                        <a :href="article.event_url" class="btn btn-color pull-right" target="_blank">Read More...</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,9 +41,11 @@
                     this.article = {
                         headline: event.event_name,
                         subhead: new Date(event.event_start).toLocaleDateString(),
+                        callout: event.event_callout,
                         body: event.event_description,
                         map_link: event.map_link,
-                        image: event.image
+                        image: event.image,
+                        event_url: event.event_url
                     };
 
                     this.loading = false;

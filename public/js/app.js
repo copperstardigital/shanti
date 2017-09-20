@@ -16085,7 +16085,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{ path: '/', component: __webpack_require__(78), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(82), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(84), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(85), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(86), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(89), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(90), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(91), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(92), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(93), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(94), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(95), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(96), meta: { title: 'Volunteer' } },
     // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
-    { path: '/blog', component: __webpack_require__(88), meta: { title: 'Blog' } }, { path: '/blog/30', redirect: '/30' }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(87), meta: { title: '' } }, { path: '/events/:slug', name: 'event/view', component: __webpack_require__(158), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(83), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(81), meta: { title: 'Site Map' } }, { path: '/search-results', component: __webpack_require__(80), meta: { title: 'Search Results' } }, { path: '/30', component: __webpack_require__(155), meta: { title: '30th Anniversary' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
+    { path: '/blog', component: __webpack_require__(88), meta: { title: 'Blog' } }, { path: '/blog/30', redirect: '/30' }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(87), meta: { title: '' } }, { path: '/events', component: __webpack_require__(161), meta: { title: 'Events' } }, { path: '/events/:slug', name: 'event/view', component: __webpack_require__(158), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(83), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(81), meta: { title: 'Site Map' } }, { path: '/search-results', component: __webpack_require__(80), meta: { title: 'Search Results' } }, { path: '/30', component: __webpack_require__(155), meta: { title: '30th Anniversary' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
 });
 
 router.beforeEach(function (to, from, next) {
@@ -19987,12 +19987,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/support/resources",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Resources")])])], 1)]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v("Resources")])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("@shanti")]), _vm._v(" "), _c('ul', [_c('router-link', {
     attrs: {
       "to": "/blog",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Blog")])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v("Blog")])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/events",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v("Events")])])], 1)]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
@@ -21561,7 +21570,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('p', {
     staticClass: "text-center"
-  }, [_vm._v("Design and Development by "), _c('a', {
+  }, [_vm._v("Design, Development and Hosting by "), _c('a', {
     attrs: {
       "href": "https://www.copperstardigital.com"
     }
@@ -21578,7 +21587,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "margin": "0 auto"
     },
     attrs: {
-      "src": "/uploads/sponsors/copper_star.png",
+      "src": "/img/csd-wht-30.png",
       "alt": "Copper Star Digital"
     }
   })])])])
@@ -33012,6 +33021,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -33032,9 +33044,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.article = {
                 headline: event.event_name,
                 subhead: new Date(event.event_start).toLocaleDateString(),
+                callout: event.event_callout,
                 body: event.event_description,
                 map_link: event.map_link,
-                image: event.image
+                image: event.image,
+                event_url: event.event_url
             };
 
             _this.loading = false;
@@ -33076,7 +33090,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])])])
+  }), _vm._v(" "), (_vm.article.event_url) ? _c('div', [_c('a', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "href": _vm.article.event_url,
+      "target": "_blank"
+    }
+  }, [_vm._v("Read More...")])]) : _vm._e()])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -33085,6 +33105,157 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-03c55f63", module.exports)
   }
 }
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(163),
+  /* template */
+  __webpack_require__(162),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/events/Events.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Events.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-78922e20", Component.options)
+  } else {
+    hotAPI.reload("data-v-78922e20", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article,
+      "loading": _vm.loading,
+      "events": _vm.events
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, _vm._l((_vm.events), function(event, index) {
+    return _c('div', {
+      key: "index"
+    }, [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-6"
+    }, [(event.image) ? _c('div', [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + event.image,
+        "alt": "event.event_name"
+      }
+    })]) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-6"
+    }, [_c('h1', [_vm._v(_vm._s(event.event_name))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.event_callout)
+      }
+    }), _vm._v(" "), _c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": {
+          name: 'event/view',
+          params: {
+            slug: event.slug
+          }
+        }
+      }
+    }, [_vm._v("Read More...")])], 1)]), _vm._v(" "), _c('hr')])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-78922e20", module.exports)
+  }
+}
+
+/***/ }),
+/* 163 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {
+                headline: 'Events',
+                subhead: 'Shanti in the Community',
+                callout: 'Shanti frequently puts on or participates in events in the local community. You will find more information about them here.'
+            },
+            loading: false,
+            events: []
+        };
+    },
+
+    methods: {
+        getEvents: function getEvents() {
+            var _this = this;
+
+            this.loading = true;
+
+            http.get('/events').then(function (response) {
+                _this.events = response.body.events;
+
+                _this.loading = false;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getEvents();
+    }
+});
 
 /***/ })
 /******/ ]);

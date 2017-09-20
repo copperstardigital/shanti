@@ -19,6 +19,7 @@ let router = new VueRouter({
         { path: '/blog', component: require('./views/blog/Posts'), meta: { title: 'Blog'}},
         { path: '/blog/30', redirect: '/30'},
         { path: '/blog/:slug', name: 'blog/view', component: require('./views/blog/Post'), meta: { title: ''}},
+        { path: '/events', component: require('./views/events/Events'), meta: { title: 'Events'}},
         { path: '/events/:slug', name: 'event/view', component: require('./views/events/Event'), meta: { title: ''}},
         { path: '/getting-started', component: require('./views/about/GettingStarted'), meta: { title: 'Getting Started'}},
         { path: '/site-map', component: require('./views/Sitemap'), meta: { title: 'Site Map'}},

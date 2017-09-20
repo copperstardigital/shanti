@@ -189,8 +189,8 @@
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p class="text-center">Design and Development by <a href="https://www.copperstardigital.com">Copper Star Digital</a></p>
-                        <p class="text-center"><a target="_blank" href="https://www.copperstardigital.com"><img style="width:70%; margin:0 auto;" src="/uploads/sponsors/copper_star.png" alt="Copper Star Digital" /></a></p>
+                        <p class="text-center">Design, Development and Hosting by <a href="https://www.copperstardigital.com">Copper Star Digital</a></p>
+                        <p class="text-center"><a target="_blank" href="https://www.copperstardigital.com"><img style="width:70%; margin:0 auto;" src="/img/csd-wht-30.png" alt="Copper Star Digital" /></a></p>
                     </div>
                     <div class="col-md-4">
                         <ul class="list-inline pull-right">

@@ -22,7 +22,12 @@
                     <router-link to="/support/resources" tag="li"><a>Resources</a></router-link>
                 </ul>
             </li>
-            <router-link to="/blog" tag="li"><a>Blog</a></router-link>
+            <li><a href="#">@shanti</a>
+                <ul>
+                    <router-link to="/blog" tag="li"><a>Blog</a></router-link>
+                    <router-link to="/events" tag="li"><a>Events</a></router-link>
+                </ul>
+            </li>
             <li><a href="http://store.shantiaz.org">Store</a></li>
             <li><a href="#">Contact</a>
                 <ul>
