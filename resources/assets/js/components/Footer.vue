@@ -215,7 +215,7 @@
             getPosts() {
                 http
                     .get('/posts/footer')
-                    .use(saCache)
+                    //.use(saCache)
                     .then(response => {
                         this.posts = response.body.posts;
                     }).catch(error => {

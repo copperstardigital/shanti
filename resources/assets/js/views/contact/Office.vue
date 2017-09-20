@@ -1,5 +1,5 @@
 <template>
-    <psg-page :article="article">
+    <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-html="article.body"></div>
         </div>

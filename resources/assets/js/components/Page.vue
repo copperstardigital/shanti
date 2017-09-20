@@ -12,6 +12,10 @@
 
         <div class="container">
 
+            <div class="text-center">
+                <i v-show="loading" class="fa fa-refresh fa-spin fa-5x"></i>
+            </div>
+
             <div class="about-us-three">
                 <!-- About section hero -->
                 <div class="about-hero">
@@ -29,6 +33,6 @@
 
 <script>
     export default {
-        props: ['article']
+        props: ['article', 'loading']
     }
 </script>

@@ -6,7 +6,7 @@
     </psg-page>
 </template>
 <template>
-    <psg-page title="Staff" subtitle="Our Team" hero="Hero text">
+    <psg-page :article="article">
         <div slot="copy">
             <psg-staff></psg-staff>
         </div>
@@ -19,6 +19,11 @@
     export default {
         data() {
             return {
+                article: {
+                    headline: 'Staff',
+                    subhead: 'Our Team',
+                    callout: 'Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients.'
+                },
                 staff: []
             }
         },

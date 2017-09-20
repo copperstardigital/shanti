@@ -7,6 +7,9 @@
             </div>
 
             <div class="divider-1"></div>
+            <div class="text-center">
+                <i v-show="loading" class="fa fa-refresh fa-spin fa-5x"></i>
+            </div>
             <carousel :loop="true" :autoplay="true" :autoplayTimeout="7000" :perPage="1" :navigationEnabled="true">
                 <slide v-for="(event, index) in events" key="index">
                     <div v-if="event.image">
@@ -417,14 +420,15 @@
             Slide,
             'psg-info-boxes' : InfoBoxes
         },
-        beforeRouteEnter(to, from, next) {
+        created() {
+            this.loading = true;
+
             http
                 .get('/carousel')
-                .use(saCache)
+                //.use(saCache)
                 .then(response => {
-                    next(vm => {
-                        vm.events = response.body.events;
-                    });
+                    this.events = response.body.events;
+                    this.loading = false;
                 }).catch(error => {
                 console.error(error);
             });

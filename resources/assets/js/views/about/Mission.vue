@@ -1,5 +1,5 @@
 <template>
-    <psg-page :article="article">
+    <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-html="article.body"></div>
         </div>
@@ -13,23 +13,26 @@
                 article: {}
             }
         },
-        beforeRouteEnter(to, from, next) {
+        created() {
+            this.loading = true;
+
             http
                 .get('/articles/2')
                 //.use(saCache)
                 .then(response => {
                     let article = response.body.article;
-                    next(vm => {
-                        vm.article = {
-                            headline: article.en_headline,
-                            subhead: article.en_subhead,
-                            callout: article.en_callout,
-                            body: article.en_body
-                        };
-                    });
+
+                    this.article = {
+                        headline: article.en_headline,
+                        subhead: article.en_subhead,
+                        callout: article.en_callout,
+                        body: article.en_body
+                    };
+
+                    this.loading = false;
                 }).catch(error => {
-                console.error(error);
-            });
+                    console.error(error);
+                });
         },
         computed: {
             yearsSinceFounding() {
