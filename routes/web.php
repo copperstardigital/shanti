@@ -30,3 +30,4 @@ Route::resource('staff', 'Vue\StaffController');
 Route::resource('volunteer', 'Vue\VolunteerController');
 Route::resource('articles', 'Vue\ArticleController');
 Route::post('volunteer/form', 'Vue\EmailController@volunteer');
+Route::any('search', 'Vue\SearchController@search');

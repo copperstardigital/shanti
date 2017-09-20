@@ -21,33 +21,26 @@
         {{--@endif--}}
     </title>
     <!-- Description, Keywords and Author -->
-    <meta name="description" content="Your description">
-    <meta name="keywords" content="Your,Keywords">
-    <meta name="author" content="ResponsiveWebInc">
+    <meta name="description" content="Phoenix Shanti Group website">
+    <meta name="author" content="Copper Star Digital">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Styles -->
-    <!-- Bootstrap CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font awesome CSS -->
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <!-- Magnific Popup -->
-    <link href="/css/magnific-popup.css" rel="stylesheet">
+    <!--<link href="/css/magnific-popup.css" rel="stylesheet">-->
     <!-- Owl carousel -->
-    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <!--<link href="/css/owl.carousel.css" rel="stylesheet">-->
 
     <!-- CSS for this page -->
     <!-- Parallax slider -->
-    <link href="/css/parallax-slider.css" rel="stylesheet">
+    <!--<link href="/css/parallax-slider.css" rel="stylesheet">-->
 
     <!-- Base style -->
-    <link href="/css/styles/style.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
     <!-- Skin CSS -->
-    <link href="/css/styles/skin-purple.css" rel="stylesheet" id="color_theme">
-
-    <!-- Custom CSS. Type your CSS code in custom.css file -->
-    <link href="/css/custom.css" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/favicons/favicon.ico">

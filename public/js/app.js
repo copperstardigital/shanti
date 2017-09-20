@@ -14140,14 +14140,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            keywords: ''
+        };
+    },
+
+    methods: {
+        search: function search() {
+            this.$router.push({ path: 'search-results', query: { keywords: this.keywords } });
+        }
+    },
     components: {
         'psg-nav': __WEBPACK_IMPORTED_MODULE_0__Nav___default.a
     }
@@ -14411,8 +14418,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 38 */,
-/* 39 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14421,7 +14427,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_InfoBoxes__);
-//
 //
 //
 //
@@ -14854,7 +14859,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14876,6 +14881,78 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 subhead: '404 Error',
                 callout: 'We\'re sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.',
                 body: ''
+            }
+        };
+    }
+});
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {
+                headline: 'Site Map',
+                subhead: 'Available Pages',
+                callout: 'Below is a list of available page. Please refer to one of them to find your resource.'
             }
         };
     }
@@ -15178,7 +15255,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -15769,9 +15845,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: __webpack_require__(78), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(80), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(82), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(83), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(84), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(87), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(88), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(89), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(90), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(91), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(92), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(93), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(94), meta: { title: 'Volunteer' } },
+    routes: [{ path: '/', component: __webpack_require__(77), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(80), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(82), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(83), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(84), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(87), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(88), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(89), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(90), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(91), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(92), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(93), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(94), meta: { title: 'Volunteer' } },
     // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
-    { path: '/blog', component: __webpack_require__(86), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(85), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(81), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(133), meta: { title: 'Site Map' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
+    { path: '/blog', component: __webpack_require__(86), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(85), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(81), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(79), meta: { title: 'Site Map' } }, { path: '/search-results', component: __webpack_require__(153), meta: { title: 'Search Results' } }, { path: '*', component: __webpack_require__(78), meta: { title: 'Page Not Found' } }]
 });
 
 router.beforeEach(function (to, from, next) {
@@ -18892,13 +18968,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 77 */,
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(39),
+  __webpack_require__(38),
   /* template */
   __webpack_require__(115),
   /* scopeId */
@@ -18927,14 +19002,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(40),
+  __webpack_require__(39),
   /* template */
-  __webpack_require__(103),
+  __webpack_require__(104),
   /* scopeId */
   null,
   /* cssModules */
@@ -18954,6 +19029,40 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-3836d024", Component.options)
   } else {
     hotAPI.reload("data-v-3836d024", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(40),
+  /* template */
+  __webpack_require__(102),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Sitemap.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Sitemap.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2df06786", Component.options)
+  } else {
+    hotAPI.reload("data-v-2df06786", Component.options)
   }
 })()}
 
@@ -19070,7 +19179,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(44),
   /* template */
-  __webpack_require__(102),
+  __webpack_require__(103),
   /* scopeId */
   null,
   /* cssModules */
@@ -19240,7 +19349,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(49),
   /* template */
-  __webpack_require__(105),
+  __webpack_require__(106),
   /* scopeId */
   null,
   /* cssModules */
@@ -19410,7 +19519,7 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(54),
   /* template */
-  __webpack_require__(104),
+  __webpack_require__(105),
   /* scopeId */
   null,
   /* cssModules */
@@ -20000,7 +20109,42 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "outer"
+  }, [_c('div', {
+    staticClass: "top-bar"
+  }, [_c('div', {
+    staticClass: "container"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "tb-search pull-left"
+  }, [_c('form', {
+    attrs: {
+      "role": "form"
+    }
+  }, [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.keywords),
+      expression: "keywords"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Type Something"
+    },
+    domProps: {
+      "value": (_vm.keywords)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.keywords = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "header-2"
   }, [_c('div', {
     staticClass: "container"
@@ -20022,14 +20166,63 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "alt": "Phoenix Shanti Group"
     }
   })])], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-9"
-  }, [_c('psg-nav')], 1), _vm._v(" "), _vm._m(1)])])])])
+    staticClass: "col-md-8"
+  }, [_c('psg-nav')], 1), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "head-search pull-right"
+  }, [_c('form', [_c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.keywords),
+      expression: "keywords"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "maxlength": "100",
+      "name": "keywords",
+      "placeholder": "Enter keywords",
+      "type": "search"
+    },
+    domProps: {
+      "value": (_vm.keywords)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.keywords = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn",
+    staticStyle: {
+      "font-size": "15px"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.search($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search square-2 rounded-1 bg-color white",
+    staticStyle: {
+      "display": "block",
+      "height": "36px",
+      "padding-top": "4px"
+    }
+  })])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "clearfix"
+  })])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "top-bar"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('div', {
     staticClass: "tb-contact pull-left"
   }, [_c('i', {
     staticClass: "fa fa-envelope color"
@@ -20039,37 +20232,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("info@shantiaz.org")]), _vm._v("\n                  \n                "), _vm._v(" "), _c('i', {
     staticClass: "fa fa-phone color"
-  }), _vm._v("  (602) 279-0008\n            ")]), _vm._v(" "), _c('div', {
-    staticClass: "tb-search pull-left"
-  }, [_c('a', {
-    staticClass: "b-dropdown",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "b-dropdown-block"
-  }, [_c('form', {
-    attrs: {
-      "role": "form"
-    }
-  }, [_c('div', {
-    staticClass: "input-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Type Something"
-    }
-  }), _vm._v(" "), _c('span', {
+  }), _vm._v("  (602) 279-0008\n            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
     staticClass: "input-group-btn"
   }, [_c('button', {
     staticClass: "btn btn-color",
     attrs: {
       "type": "button"
     }
-  }, [_vm._v("Search")])])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Search")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "b-dropdown",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "tb-social pull-right"
   }, [_c('div', {
     staticClass: "brand-bg text-right"
@@ -20105,45 +20288,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-youtube square-2 rounded-1"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-1"
-  }, [_c('div', {
-    staticClass: "head-search pull-right"
-  }, [_c('a', {
-    staticClass: "b-dropdown",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "b-dropdown-block"
-  }, [_c('form', {
-    attrs: {
-      "role": "form"
-    }
-  }, [_c('div', {
-    staticClass: "input-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Type Something"
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-btn"
-  }, [_c('button', {
-    staticClass: "btn btn-color",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Search")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "clearfix"
-  })])
+  })])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -20155,6 +20300,91 @@ if (false) {
 
 /***/ }),
 /* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h3', [_vm._v("Home")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "exact": ""
+    }
+  }, [_vm._v("Home")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("About")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/mission"
+    }
+  }, [_vm._v("Mission")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/getting-started"
+    }
+  }, [_vm._v("Getting Started")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/history"
+    }
+  }, [_vm._v("History")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/cultural-competency"
+    }
+  }, [_vm._v("Cultural Competency")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/privacy-policy"
+    }
+  }, [_vm._v("Privacy Policy")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Services")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/services/housing"
+    }
+  }, [_vm._v("Housing")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/services/hiv"
+    }
+  }, [_vm._v("HIV Services")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Support")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/donate"
+    }
+  }, [_vm._v("Donate")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/volunteer"
+    }
+  }, [_vm._v("Volunteer")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/resources"
+    }
+  }, [_vm._v("Resources")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Blog")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/blog"
+    }
+  }, [_vm._v("Blog")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Store")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "https://store.shantiaz.org",
+      "target": "_blank"
+    }
+  }, [_vm._v("2nd Chances Store")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Contact")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/contact/office"
+    }
+  }, [_vm._v("Contact")])], 1)])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2df06786", module.exports)
+  }
+}
+
+/***/ }),
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -20179,7 +20409,7 @@ if (false) {
 }
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -20204,7 +20434,7 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -20229,7 +20459,7 @@ if (false) {
 }
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -20450,7 +20680,6 @@ if (false) {
 }
 
 /***/ }),
-/* 106 */,
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20466,7 +20695,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.posts), function(post, index) {
     return _c('div', {
       key: "index"
-    }, [_vm._v("\n            test\n            "), (post.image) ? _c('div', [_c('div', {
+    }, [(post.image) ? _c('div', [_c('div', {
       staticClass: "row"
     }, [_c('div', {
       staticClass: "col-md-4"
@@ -21069,7 +21298,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main-block"
   }, [_c('div', {
     staticClass: "container"
-  }, [_c('carousel', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "divider-1"
+  }), _vm._v(" "), _c('carousel', {
     attrs: {
       "loop": true,
       "autoplay": true,
@@ -21132,9 +21363,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("Read More...")])], 1) : _vm._e()])
-  })), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _c('psg-info-boxes'), _vm._v(" "), _c('div', {
+  })), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-info-boxes'), _vm._v(" "), _c('div', {
     staticClass: "divider-1"
   }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(3)], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
@@ -31905,50 +32134,31 @@ module.exports = __webpack_require__(12);
 /* 129 */,
 /* 130 */,
 /* 131 */,
-/* 132 */
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -31968,31 +32178,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             article: {
-                headline: 'Site Map',
-                subhead: 'Available Pages',
-                callout: 'Below is a list of available page. Please refer to one of them to find your resource.'
-            }
+                headline: 'Search Results',
+                subhead: 'Keywords: "' + this.$route.query.keywords + '"',
+                callout: 'Below are the results of your search.',
+                body: ''
+            },
+            articles: []
         };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/search/?keywords=' + this.$route.query.keywords).then(function (response) {
+            var articles = response.data.articles;
+            var reformatted = [];
+            articles.forEach(function (article) {
+                reformatted.push({
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    link: article.link
+                });
+            });
+
+            _this.articles = reformatted;
+        }).catch(function (error) {
+            console.error(error);
+        });
     }
 });
 
 /***/ }),
-/* 133 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(132),
+  __webpack_require__(152),
   /* template */
-  __webpack_require__(134),
+  __webpack_require__(154),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Sitemap.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/SearchResults.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Sitemap.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] SearchResults.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -32001,9 +32233,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2df06786", Component.options)
+    hotAPI.createRecord("data-v-029068bf", Component.options)
   } else {
-    hotAPI.reload("data-v-2df06786", Component.options)
+    hotAPI.reload("data-v-029068bf", Component.options)
   }
 })()}
 
@@ -32011,7 +32243,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 134 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -32021,77 +32253,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     slot: "copy"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-6"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('h3', [_vm._v("Home")]), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/",
-      "exact": ""
-    }
-  }, [_vm._v("Home")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("About")]), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/about/mission"
-    }
-  }, [_vm._v("Mission")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/about/getting-started"
-    }
-  }, [_vm._v("Getting Started")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/about/history"
-    }
-  }, [_vm._v("History")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/about/cultural-competency"
-    }
-  }, [_vm._v("Cultural Competency")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/about/privacy-policy"
-    }
-  }, [_vm._v("Privacy Policy")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Services")]), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/services/housing"
-    }
-  }, [_vm._v("Housing")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/services/hiv"
-    }
-  }, [_vm._v("HIV Services")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Support")]), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/support/donate"
-    }
-  }, [_vm._v("Donate")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/support/volunteer"
-    }
-  }, [_vm._v("Volunteer")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/support/resources"
-    }
-  }, [_vm._v("Resources")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Blog")]), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/blog"
-    }
-  }, [_vm._v("Blog")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Store")]), _vm._v(" "), _c('p', [_c('a', {
-    attrs: {
-      "href": "https://store.shantiaz.org",
-      "target": "_blank"
-    }
-  }, [_vm._v("2nd Chances Store")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Contact")]), _vm._v(" "), _c('p', [_c('router-link', {
-    attrs: {
-      "to": "/contact/office"
-    }
-  }, [_vm._v("Contact")])], 1)])])])])
+  }, _vm._l((_vm.articles), function(article, index) {
+    return _c('div', {
+      key: "index"
+    }, [_c('h3', [_vm._v(_vm._s(article.headline))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(article.subhead))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(article.callout))]), _vm._v(" "), _c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": article.link
+      }
+    }, [_vm._v("Read More...")])], 1)
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2df06786", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-029068bf", module.exports)
   }
 }
 

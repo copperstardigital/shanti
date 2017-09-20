@@ -28,18 +28,16 @@
 
                 <!-- Search section for responsive design -->
                 <div class="tb-search pull-left">
+                    <form role="form">
+                        <!-- Input Group -->
+                        <div class="input-group">
+                            <input type="text" v-model="keywords" class="form-control" placeholder="Type Something">
+                            <span class="input-group-btn">
+                                <button class="btn btn-color" type="button">Search</button>
+                            </span>
+                        </div>
+                    </form>
                     <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
-                    <div class="b-dropdown-block">
-                        <form role="form">
-                            <!-- Input Group -->
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Type Something">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-color" type="button">Search</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
                 </div>
                 <!-- Search section ends -->
 
@@ -73,26 +71,24 @@
                             <router-link to="/" exact><img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group"></router-link>
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <psg-nav></psg-nav>
                     </div>
 
-                    <div class="col-md-1">
+                    <div class="col-md-2">
 
                         <!-- Search section -->
                         <div class="head-search pull-right">
-                            <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
-                            <div class="b-dropdown-block">
-                                <form role="form">
-                                    <!-- Input Group -->
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Type Something">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-color" type="button">Search</button>
+                            <form>
+                                <div class="input-group">
+                                    <input class="form-control" maxlength="100" name="keywords" placeholder="Enter keywords" type="search" v-model="keywords"/>
+                                    <span class="input-group-btn" style="font-size: 15px;">
+                                        <a href="#" @click.prevent="search">
+                                            <i class="fa fa-search square-2 rounded-1 bg-color white" style="display:block; height:36px; padding-top: 4px;"></i>
+                                        </a>
                                     </span>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                         <!-- Search section ends -->
                         <div class="clearfix"></div>
@@ -111,6 +107,16 @@
     import Nav from './Nav';
 
     export default {
+        data() {
+            return {
+                keywords: ''
+            }
+        },
+        methods: {
+            search() {
+                this.$router.push({ path: 'search-results', query: { keywords : this.keywords }});
+            }
+        },
         components: {
             'psg-nav': Nav
         }

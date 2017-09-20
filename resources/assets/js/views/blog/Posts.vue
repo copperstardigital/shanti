@@ -2,7 +2,6 @@
     <psg-page title="Blog" subtitle="What's Happening at Shanti" hero="Follow what's happening at the Phoenix Shanti Group on this page. You'll find news about what's happening at Shanti, as well as postings of Shanti events.">
         <div slot="posts">
             <div v-for="(post, index) in posts" key="index">
-                test
                 <div v-if="post.image">
                     <div class="row">
                         <div class="col-md-4">

@@ -15,7 +15,7 @@
                     subhead: '404 Error',
                     callout: 'We\'re sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.',
                     body: ''
-                }
+                },
             }
         }
     }

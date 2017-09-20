@@ -1,6 +1,12 @@
 <template>
     <div class="main-block">
         <div class="container">
+            <div class="text-center">
+                <h3><span class="color">Phoenix Shanti Group</span>. Most Amazing HIV Agency in the Valley. <span class="color">Literally</span>.</h3>
+                <p>Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.</p>
+            </div>
+
+            <div class="divider-1"></div>
             <carousel :loop="true" :autoplay="true" :autoplayTimeout="7000" :perPage="1" :navigationEnabled="true">
                 <slide v-for="(event, index) in events" key="index">
                     <div v-if="event.image">
@@ -44,13 +50,6 @@
             </carousel>
 
             <br />
-            <div class="text-center">
-                <h3><span class="color">Phoenix Shanti Group</span>. Most Amazing HIV Agency in the Valley. <span class="color">Literally</span>.</h3>
-                <p>Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.</p>
-            </div>
-
-            <div class="divider-1"></div>
-
 
             <!-- Icon Box #8 Starts -->
 
