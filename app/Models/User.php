@@ -28,4 +28,8 @@ class User extends Authenticatable
     public function staff() {
         return $this->hasOne(Staff::class);
     }
+
+    public function rsvps() {
+        return $this->hasMany(Rsvp::class, 'user_id', 'id');
+    }
 }

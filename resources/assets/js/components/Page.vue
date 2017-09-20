@@ -13,7 +13,7 @@
         <div class="container">
 
             <div class="text-center">
-                <i v-show="loading" class="fa fa-refresh fa-spin fa-5x"></i>
+                <i v-show="loading" class="fa fa-refresh fa-spin fa-4x"></i>
             </div>
 
             <div class="about-us-three">

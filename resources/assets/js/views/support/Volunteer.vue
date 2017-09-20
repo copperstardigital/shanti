@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="button" class="btn btn-color pull-right" @click.prevent="volunteer">Volunteer</button>
+                                <button type="button" class="btn btn-color pull-right" @click.prevent="volunteer" :disabled="sending">Volunteer <i v-show="sending" class="fa fa-refresh fa-spin"></i></button>
                             </div>
                         </form>
 
@@ -75,6 +75,7 @@
     import { alert } from 'vue-strap';
 
     export default {
+        props: ['loading'],
         data() {
             return {
                 firstName: '',
@@ -84,6 +85,7 @@
                 position: 'None',
                 comments: '',
                 showTop: false,
+                sending: false,
                 type: 'success',
                 flash: '',
                 article: {}
@@ -91,6 +93,8 @@
         },
         methods: {
             volunteer() {
+                this.sending = true;
+
                 axios.post('/volunteer/form', {
                     name: this.firstName + ' ' + this.lastName,
                     email: this.emailAddress,
@@ -106,6 +110,8 @@
                     this.phone = '';
                     this.position = 'None';
                     this.comments = '';
+
+                    this.sending = false;
                 }).catch(error => {
                     this.showTop = true;
                     this.type = 'danger';

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * SPA
+ */
+
 Route::get('/', 'Home\HomeController@main');
 
 //Route::get('/', 'Home\HomeController@index');
@@ -24,10 +28,17 @@ Route::get('/', 'Home\HomeController@main');
 Route::get('posts/footer', 'Vue\PostController@index');
 Route::resource('posts', 'Vue\PostController');
 Route::get('carousel', 'Vue\PostController@carousel');
-Route::post('mailchimp', 'Vue\MailChimpController@store');
-Route::post('contact', 'Vue\EmailController@contact');
 Route::resource('staff', 'Vue\StaffController');
 Route::resource('volunteer', 'Vue\VolunteerController');
 Route::resource('articles', 'Vue\ArticleController');
-Route::post('volunteer/form', 'Vue\EmailController@volunteer');
+Route::resource('events', 'Vue\EventController');
 Route::any('search', 'Vue\SearchController@search');
+
+/**
+ * Email
+ */
+
+Route::post('mailchimp', 'Vue\MailChimpController@store');
+Route::post('contact', 'Vue\EmailController@contact');
+Route::post('volunteer/form', 'Vue\EmailController@volunteer');
+Route::post('30th-anniversary', 'Vue\EmailController@thirtiethAnniversary');

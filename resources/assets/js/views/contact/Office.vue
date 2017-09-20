@@ -1,30 +1,18 @@
 <template>
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
-            <div v-html="article.body"></div>
-        </div>
-    </psg-page>
-</template>
-<template>
-    <psg-page title="Contact Us" subtitle="Main Office" hero="">
-        <div slot="copy">
             <div class="row">
                 <div class="col-sm-6">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
                 <div class="col-sm-6">
                     <div class="about-us-three">
-                        <!-- About section hero -->
-                        <div class="about-hero">
-                            In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.
-                        </div>
-
                         <alert :show.sync="showTop" placement="top-right" :duration="10000" :type="type" width="500px" dismissable>
                             <span class="icon-ok-circled alert-icon-float-left"></span>
                             <p>{{ flash }}</p>
                         </alert>
 
-                        <div class="divider-2"></div>
+                        <h1>Contact Us</h1>
 
                         <form>
                             <div class="form-group">
@@ -73,6 +61,7 @@
     export default {
         data() {
             return {
+                article: {},
                 name: '',
                 emailAddress : '',
                 phone: '',
@@ -100,6 +89,27 @@
                     this.flash = error.message;
                 });
             }
+        },
+        created() {
+            this.loading = true;
+
+            http
+                .get('/articles/12')
+                //.use(saCache)
+                .then(response => {
+                    let article = response.body.article;
+
+                    this.article = {
+                        headline: article.en_headline,
+                        subhead: article.en_subhead,
+                        callout: article.en_callout,
+                        body: article.en_body
+                    };
+
+                    this.loading = false;
+                }).catch(error => {
+                console.error(error);
+            });
         },
         components: {
             alert: alert

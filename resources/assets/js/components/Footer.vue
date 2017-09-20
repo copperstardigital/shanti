@@ -74,6 +74,24 @@
                                 <p>There are no current posts.</p>
                             </div>
                         </div>
+
+                        <hr />
+
+                        <!-- Foot Item -->
+                        <div class="foot-item">
+                            <!-- Heading -->
+                            <h5 class="bold"><i class="fa fa-calendar"></i>&nbsp;Upcoming Events</h5>
+                            <!-- Foot Item Content -->
+                            <div class="foot-item-content" v-if="events">
+                                <ul class="list-unstyled">
+                                    <!-- Link -->
+                                    <router-link v-for="(event, index) in events" :to="{ name: 'event/view', params: { slug : event.slug }}" tag="li" key="index"><a>{{ event.event_name }}</a></router-link>
+                                </ul>
+                            </div>
+                            <div v-if="!posts">
+                                <p>There are no current posts.</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <!-- Foot Item -->
@@ -135,7 +153,7 @@
 
                                 <h6 class="bold"><i class="fa fa-home"></i>&nbsp;2nd Chances Store</h6>
                                 <p class="add">
-                                    4015 N 16th Street Suite E-F,<br />
+                                    4015 N 16th Street, Suites E-F,<br />
                                     Phoenix AZ, 85016
                                 </p>
                                 <p class="tel">
@@ -206,6 +224,7 @@
         data() {
             return {
                 posts: [],
+                events: [],
                 email: '',
                 subscriptionResult: '',
                 subscriptionSuccess: false
@@ -215,9 +234,17 @@
             getPosts() {
                 http
                     .get('/posts/footer')
-                    //.use(saCache)
                     .then(response => {
                         this.posts = response.body.posts;
+                    }).catch(error => {
+                        console.error(error);
+                    });
+            },
+            getEvents() {
+                http
+                    .get('/events')
+                    .then(response => {
+                        this.events = response.body.events;
                     }).catch(error => {
                         console.error(error);
                     });
@@ -241,6 +268,7 @@
         },
         beforeMount() {
             this.getPosts();
+            this.getEvents();
         }
     }
 </script>

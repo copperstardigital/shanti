@@ -17,10 +17,13 @@ let router = new VueRouter({
         { path: '/support/volunteer', component: require('./views/support/Volunteer'), meta: { title: 'Volunteer'}},
         // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
         { path: '/blog', component: require('./views/blog/Posts'), meta: { title: 'Blog'}},
+        { path: '/blog/30', redirect: '/30'},
         { path: '/blog/:slug', name: 'blog/view', component: require('./views/blog/Post'), meta: { title: ''}},
+        { path: '/events/:slug', name: 'event/view', component: require('./views/events/Event'), meta: { title: ''}},
         { path: '/getting-started', component: require('./views/about/GettingStarted'), meta: { title: 'Getting Started'}},
         { path: '/site-map', component: require('./views/Sitemap'), meta: { title: 'Site Map'}},
         { path: '/search-results', component: require('./views/SearchResults'), meta: { title: 'Search Results'}},
+        { path: '/30', component: require('./views/ThirtiethAnniversary'), meta: { title: '30th Anniversary'}},
         { path : '*',  component: require('./views/NotFound'), meta: { title: 'Page Not Found'}},
     ]
 });
@@ -33,7 +36,14 @@ router.beforeEach((to, from, next) => {
                 document.title = response.data.post.headline + ' | Phoenix Shanti Group';
             })
             .catch(error => console.log(error));
-    } else {
+    } else if (to.name === 'event/view') {
+        let slug = to.params.slug;
+        axios.get('/events/' + slug)
+            .then(response => {
+                document.title = response.data.event.event_name + ' | Phoenix Shanti Group';
+            })
+            .catch(error => console.log(error));
+    }  else {
         document.title = to.meta.title + ' | Phoenix Shanti Group';
     }
     next()

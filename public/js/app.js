@@ -13984,11 +13984,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             posts: [],
+            events: [],
             email: '',
             subscriptionResult: '',
             subscriptionSuccess: false
@@ -13999,23 +14018,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getPosts: function getPosts() {
             var _this = this;
 
-            http.get('/posts/footer')
-            //.use(saCache)
-            .then(function (response) {
+            http.get('/posts/footer').then(function (response) {
                 _this.posts = response.body.posts;
             }).catch(function (error) {
                 console.error(error);
             });
         },
-        subscribe: function subscribe() {
+        getEvents: function getEvents() {
             var _this2 = this;
 
-            axios.post('/mailchimp', { email: this.email }).then(function (response) {
-                _this2.subscriptionResult = response.data.message;
-                _this2.subscriptionSuccess = response.data.success;
+            http.get('/events').then(function (response) {
+                _this2.events = response.body.events;
             }).catch(function (error) {
-                _this2.subscriptionResult = error.data.message;
-                _this2.subscriptionSuccess = false;
+                console.error(error);
+            });
+        },
+        subscribe: function subscribe() {
+            var _this3 = this;
+
+            axios.post('/mailchimp', { email: this.email }).then(function (response) {
+                _this3.subscriptionResult = response.data.message;
+                _this3.subscriptionSuccess = response.data.success;
+            }).catch(function (error) {
+                _this3.subscriptionResult = error.data.message;
+                _this3.subscriptionSuccess = false;
             });
         }
     },
@@ -14026,6 +14052,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     beforeMount: function beforeMount() {
         this.getPosts();
+        this.getEvents();
     }
 });
 
@@ -15422,10 +15449,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            article: {},
             posts: []
         };
     },
@@ -15445,6 +15481,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     beforeMount: function beforeMount() {
         this.getPosts();
+    },
+    created: function created() {
+        var _this2 = this;
+
+        this.loading = true;
+
+        http.get('/articles/11')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+
+            _this2.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
+
+            _this2.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
     }
 });
 
@@ -15535,24 +15593,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            article: {},
             name: '',
             emailAddress: '',
             phone: '',
@@ -15584,6 +15631,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     },
+    created: function created() {
+        var _this2 = this;
+
+        this.loading = true;
+
+        http.get('/articles/12')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+
+            _this2.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
+
+            _this2.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
+    },
+
     components: {
         alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
     }
@@ -15897,6 +15967,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['loading'],
     data: function data() {
         return {
             firstName: '',
@@ -15906,6 +15977,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             position: 'None',
             comments: '',
             showTop: false,
+            sending: false,
             type: 'success',
             flash: '',
             article: {}
@@ -15915,6 +15987,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         volunteer: function volunteer() {
             var _this = this;
+
+            this.sending = true;
 
             axios.post('/volunteer/form', {
                 name: this.firstName + ' ' + this.lastName,
@@ -15931,6 +16005,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.phone = '';
                 _this.position = 'None';
                 _this.comments = '';
+
+                _this.sending = false;
             }).catch(function (error) {
                 _this.showTop = true;
                 _this.type = 'danger';
@@ -16009,7 +16085,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{ path: '/', component: __webpack_require__(78), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(82), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(84), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(85), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(86), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(89), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(90), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(91), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(92), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(93), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(94), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(95), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(96), meta: { title: 'Volunteer' } },
     // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
-    { path: '/blog', component: __webpack_require__(88), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(87), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(83), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(81), meta: { title: 'Site Map' } }, { path: '/search-results', component: __webpack_require__(80), meta: { title: 'Search Results' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
+    { path: '/blog', component: __webpack_require__(88), meta: { title: 'Blog' } }, { path: '/blog/30', redirect: '/30' }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(87), meta: { title: '' } }, { path: '/events/:slug', name: 'event/view', component: __webpack_require__(158), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(83), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(81), meta: { title: 'Site Map' } }, { path: '/search-results', component: __webpack_require__(80), meta: { title: 'Search Results' } }, { path: '/30', component: __webpack_require__(155), meta: { title: '30th Anniversary' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
 });
 
 router.beforeEach(function (to, from, next) {
@@ -16017,6 +16093,13 @@ router.beforeEach(function (to, from, next) {
         var slug = to.params.slug;
         axios.get('/posts/' + slug).then(function (response) {
             document.title = response.data.post.headline + ' | Phoenix Shanti Group';
+        }).catch(function (error) {
+            return console.log(error);
+        });
+    } else if (to.name === 'event/view') {
+        var _slug = to.params.slug;
+        axios.get('/events/' + _slug).then(function (response) {
+            document.title = response.data.event.event_name + ' | Phoenix Shanti Group';
         }).catch(function (error) {
             return console.log(error);
         });
@@ -20030,7 +20113,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.loading),
       expression: "loading"
     }],
-    staticClass: "fa fa-refresh fa-spin fa-5x"
+    staticClass: "fa fa-refresh fa-spin fa-4x"
   })]), _vm._v(" "), _c('div', {
     staticClass: "about-us-three"
   }, [_c('div', {
@@ -20303,7 +20386,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('button', {
     staticClass: "btn btn-color pull-right",
     attrs: {
-      "type": "button"
+      "type": "button",
+      "disabled": _vm.sending
     },
     on: {
       "click": function($event) {
@@ -20311,7 +20395,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.volunteer($event)
       }
     }
-  }, [_vm._v("Volunteer")])])]), _vm._v(" "), _c('br', {
+  }, [_vm._v("Volunteer "), _c('i', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.sending),
+      expression: "sending"
+    }],
+    staticClass: "fa fa-refresh fa-spin"
+  })])])]), _vm._v(" "), _c('br', {
     staticStyle: {
       "clear": "both"
     }
@@ -20737,9 +20829,8 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
-      "title": "Contact Us",
-      "subtitle": "Main Office",
-      "hero": ""
+      "article": _vm.article,
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "copy"
@@ -20762,9 +20853,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-sm-6"
   }, [_c('div', {
     staticClass: "about-us-three"
-  }, [_c('div', {
-    staticClass: "about-hero"
-  }, [_vm._v("\n                        In this area, you can contact us to inquire about any of the programs or services that we provide. Your information will be kept strictly confidential.\n                    ")]), _vm._v(" "), _c('alert', {
+  }, [_c('alert', {
     attrs: {
       "show": _vm.showTop,
       "placement": "top-right",
@@ -20780,9 +20869,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "icon-ok-circled alert-icon-float-left"
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('div', {
-    staticClass: "divider-2"
-  }), _vm._v(" "), _c('form', [_c('div', {
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('h1', [_vm._v("Contact Us")]), _vm._v(" "), _c('form', [_c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
@@ -20958,9 +21045,8 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
-      "title": "Blog",
-      "subtitle": "What's Happening at Shanti",
-      "hero": "Follow what's happening at the Phoenix Shanti Group on this page. You'll find news about what's happening at Shanti, as well as postings of Shanti events."
+      "article": _vm.article,
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "posts"
@@ -20994,21 +21080,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       domProps: {
         "innerHTML": _vm._s(post.body)
       }
-    }), _vm._v(" "), (post.link) ? _c('div', [_c('a', {
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
       staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v("Read Post")]), _vm._v(" "), _c('a', {
+      staticClass: "btn btn-default pull-right",
       attrs: {
         "href": post.link
       }
-    }, [_vm._v("More Information")])]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('div', {
+    }, [_vm._v("More Information")])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v("Read Post")])], 1) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('div', {
       domProps: {
         "innerHTML": _vm._s(post.body)
       }
-    }), _vm._v(" "), (post.link) ? _c('div', [_c('a', {
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
       staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v("Read Post")]), _vm._v(" "), _c('a', {
+      staticClass: "btn btn-default pull-right",
       attrs: {
         "href": post.link
       }
-    }, [_vm._v("More Information")])]) : _vm._e()]) : _vm._e()])
+    }, [_vm._v("More Information")])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v("Read Post")])], 1) : _vm._e()]) : _vm._e()])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -21153,7 +21259,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "tag": "li"
       }
     }, [_c('a', [_vm._v(_vm._s(post.headline))])])
-  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()])]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)])])]), _vm._v(" "), _c('footer', [_c('div', {
+  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "foot-item"
+  }, [_vm._m(3), _vm._v(" "), (_vm.events) ? _c('div', {
+    staticClass: "foot-item-content"
+  }, [_c('ul', {
+    staticClass: "list-unstyled"
+  }, _vm._l((_vm.events), function(event, index) {
+    return _c('router-link', {
+      key: "index",
+      attrs: {
+        "to": {
+          name: 'event/view',
+          params: {
+            slug: event.slug
+          }
+        },
+        "tag": "li"
+      }
+    }, [_c('a', [_vm._v(_vm._s(event.event_name))])])
+  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])]), _vm._v(" "), _c('footer', [_c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -21166,7 +21291,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/",
       "exact": ""
     }
-  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('div', {
+  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('ul', {
     staticClass: "list-inline pull-right"
@@ -21248,6 +21373,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('i', {
     staticClass: "fa fa-comments"
   }), _vm._v("  Recent Posts")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-calendar"
+  }), _vm._v(" Upcoming Events")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-3 col-sm-6"
@@ -21410,7 +21541,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fa fa-home"
   }), _vm._v(" 2nd Chances Store")]), _vm._v(" "), _c('p', {
     staticClass: "add"
-  }, [_vm._v("\n                                4015 N 16th Street Suite E-F,"), _c('br'), _vm._v("\n                                Phoenix AZ, 85016\n                            ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("\n                                4015 N 16th Street, Suites E-F,"), _c('br'), _vm._v("\n                                Phoenix AZ, 85016\n                            ")]), _vm._v(" "), _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-phone"
@@ -32422,6 +32553,538 @@ module.exports = g;
 __webpack_require__(11);
 module.exports = __webpack_require__(12);
 
+
+/***/ }),
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(156),
+  /* template */
+  __webpack_require__(157),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/ThirtiethAnniversary.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ThirtiethAnniversary.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e05b2f0", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e05b2f0", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 156 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            firstName: '',
+            lastName: '',
+            emailAddress: '',
+            phone: '',
+            comments: '',
+            showTop: false,
+            type: 'success',
+            flash: '',
+            loading: false,
+            article: {
+                headline: 'Thirtieth Anniversary Gala',
+                subhead: 'Dec. 9 at Encanto Park Clubhouse',
+                callout: 'The Phoenix Shanti Group is celebrating 30 years of serving the HIV/AIDS community <br />in the Valley of the Sun with a special anniversary event on Dec. 9 at Encanto Park. You can RSVP below. <strong>RSVP now</strong>, as space is limited.',
+                body: ''
+            }
+        };
+    },
+
+    methods: {
+        rsvp: function rsvp() {
+            var _this = this;
+
+            this.loading = true;
+            axios.post('/30th-anniversary', {
+                first_name: this.firstName,
+                last_name: this.lastName,
+                email: this.emailAddress,
+                phone: this.phone,
+                position: this.position,
+                comments: this.comments
+            }).then(function (response) {
+                _this.showTop = true;
+                _this.flash = 'Thank you for RSVPing for our Thirtieth Anniversary Gala. You will receive a confirmation email shortly.';
+                _this.firstName = '';
+                _this.lastName = '';
+                _this.emailAddress = '';
+                _this.phone = '';
+                _this.position = 'None';
+                _this.comments = '';
+
+                _this.loading = false;
+            }).catch(function (error) {
+                _this.showTop = true;
+                _this.type = 'danger';
+                _this.flash = error.message;
+            });
+        }
+    },
+    components: {
+        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+    }
+});
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article,
+      "loading": _vm.loading
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('iframe', {
+    staticStyle: {
+      "border": "0"
+    },
+    attrs: {
+      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3041.158503327335!2d-112.09135435000675!3d33.47740223550215!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b1253c82c4907%3A0xc29f66f2ac0ff98c!2sEncanto+Park!5e0!3m2!1sen!2sus!4v1505936613455",
+      "width": "100%",
+      "height": "600",
+      "frameborder": "0",
+      "allowfullscreen": ""
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h1', [_vm._v("RSVP for 30th Anniversary Gala")]), _vm._v(" "), _c('h3', [_vm._v("Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("Fill out the form below to RSVP for the 30th Anniversary Gala.")]), _vm._v(" "), _c('alert', {
+    attrs: {
+      "show": _vm.showTop,
+      "placement": "top-right",
+      "duration": 10000,
+      "type": _vm.type,
+      "width": "500px",
+      "dismissable": ""
+    },
+    on: {
+      "update:show": function($event) {
+        _vm.showTop = $event
+      }
+    }
+  }, [_c('span', {
+    staticClass: "icon-ok-circled alert-icon-float-left"
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('form', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "first_name"
+    }
+  }, [_vm._v("First Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.firstName),
+      expression: "firstName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "first_name"
+    },
+    domProps: {
+      "value": (_vm.firstName)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.firstName = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "last_name"
+    }
+  }, [_vm._v("Last Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.lastName),
+      expression: "lastName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "last_name"
+    },
+    domProps: {
+      "value": (_vm.lastName)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.lastName = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "email"
+    }
+  }, [_vm._v("Email Address")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.emailAddress),
+      expression: "emailAddress"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "email"
+    },
+    domProps: {
+      "value": (_vm.emailAddress)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.emailAddress = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "phone"
+    }
+  }, [_vm._v("Phone")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.phone),
+      expression: "phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "id": "phone"
+    },
+    domProps: {
+      "value": (_vm.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.phone = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', {
+    attrs: {
+      "for": "comments"
+    }
+  }, [_vm._v("Comments")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.comments),
+      expression: "comments"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "id": "comments",
+      "rows": "7"
+    },
+    domProps: {
+      "value": (_vm.comments)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.comments = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('button', {
+    staticClass: "btn btn-color pull-right",
+    attrs: {
+      "type": "button",
+      "disabled": _vm.loading
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.rsvp($event)
+      }
+    }
+  }, [_vm._v("RSVP "), _c('i', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.loading),
+      expression: "loading"
+    }],
+    staticClass: "fa fa-refresh fa-spin"
+  })])])])], 1)])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-3e05b2f0", module.exports)
+  }
+}
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(159),
+  /* template */
+  __webpack_require__(160),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/events/Event.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Event.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-03c55f63", Component.options)
+  } else {
+    hotAPI.reload("data-v-03c55f63", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 159 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {},
+            loading: false
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        this.loading = true;
+
+        http.get('/events/' + this.$route.params.slug)
+        //.use(saCache)
+        .then(function (response) {
+            var event = response.body.event;
+            _this.article = {
+                headline: event.event_name,
+                subhead: new Date(event.event_start).toLocaleDateString(),
+                body: event.event_description,
+                map_link: event.map_link,
+                image: event.image
+            };
+
+            _this.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }
+});
+
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article,
+      "loading": _vm.loading
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [(_vm.article.image) ? _c('div', [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": '/uploads/events/' + _vm.article.image,
+      "alt": "article.headline"
+    }
+  })]) : _vm._e(), _vm._v(" "), (_vm.article.map_link) ? _c('div', [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.map_link)
+    }
+  })]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h1', [_vm._v(_vm._s(_vm.article.headline))]), _vm._v(" "), _c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  })])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-03c55f63", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
