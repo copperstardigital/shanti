@@ -1,7 +1,7 @@
 <template>
     <psg-page :article="article">
         <div slot="copy">
-            <div v-html="article.body"></div>
+            Please refer to our site map for a list of available pages: <router-link to="/site-map">Site Map</router-link>
         </div>
     </psg-page>
 </template>

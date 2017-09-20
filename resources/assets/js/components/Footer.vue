@@ -180,8 +180,9 @@
                             <router-link to="/" exact>Home</router-link>
                             <router-link to="/about/mission">Mission</router-link>
                             <router-link to="/services/housing">Housing</router-link>
-                            <router-link to="/services/hiv">HIV+ Services</router-link>
+                            <router-link to="/services/hiv">HIV Services</router-link>
                             <router-link to="/contact/office">Contact</router-link>
+                            <router-link to="/site-map">Site Map</router-link>
                         </ul>
                     </div>
                 </div>

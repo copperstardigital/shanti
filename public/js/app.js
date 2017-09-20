@@ -13983,6 +13983,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15770,7 +15771,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: [{ path: '/', component: __webpack_require__(78), meta: { title: 'Home' } }, { path: '/about/cultural-competency', component: __webpack_require__(80), meta: { title: 'Cultural Compentency' } }, { path: '/about/history', component: __webpack_require__(82), meta: { title: 'History' } }, { path: '/about/mission', component: __webpack_require__(83), meta: { title: 'Mission' } }, { path: '/about/privacy-policy', component: __webpack_require__(84), meta: { title: 'Privacy Policy' } }, { path: '/contact/board', component: __webpack_require__(87), meta: { title: 'Board of Directors' } }, { path: '/contact/office', component: __webpack_require__(88), meta: { title: 'Main Office' } }, { path: '/contact/staff', component: __webpack_require__(89), meta: { title: 'Staff' } }, { path: '/services/housing', component: __webpack_require__(90), meta: { title: 'HIV+ Housing' } }, { path: '/services/hiv', component: __webpack_require__(91), meta: { title: 'HIV Services' } }, { path: '/support/donate', component: __webpack_require__(92), meta: { title: 'Donate' } }, { path: '/support/resources', component: __webpack_require__(93), meta: { title: 'Resources' } }, { path: '/support/volunteer', component: __webpack_require__(94), meta: { title: 'Volunteer' } },
     // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
-    { path: '/blog', component: __webpack_require__(86), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(85), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(81), meta: { title: 'Getting Started' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
+    { path: '/blog', component: __webpack_require__(86), meta: { title: 'Blog' } }, { path: '/blog/:slug', name: 'blog/view', component: __webpack_require__(85), meta: { title: '' } }, { path: '/getting-started', component: __webpack_require__(81), meta: { title: 'Getting Started' } }, { path: '/site-map', component: __webpack_require__(133), meta: { title: 'Site Map' } }, { path: '*', component: __webpack_require__(79), meta: { title: 'Page Not Found' } }]
 });
 
 router.beforeEach(function (to, from, next) {
@@ -20188,11 +20189,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     slot: "copy"
-  }, [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.article.body)
+  }, [_vm._v("\n        Please refer to our site map for a list of available pages: "), _c('router-link', {
+    attrs: {
+      "to": "/site-map"
     }
-  })])])
+  }, [_vm._v("Site Map")])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20684,11 +20685,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/services/hiv"
     }
-  }, [_vm._v("HIV+ Services")]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v("HIV Services")]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/contact/office"
     }
-  }, [_vm._v("Contact")])], 1)])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Contact")]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/site-map"
+    }
+  }, [_vm._v("Site Map")])], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "clearfix"
   })])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -31890,6 +31895,205 @@ module.exports = g;
 __webpack_require__(11);
 module.exports = __webpack_require__(12);
 
+
+/***/ }),
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {
+                headline: 'Site Map',
+                subhead: 'Available Pages',
+                callout: 'Below is a list of available page. Please refer to one of them to find your resource.'
+            }
+        };
+    }
+});
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(132),
+  /* template */
+  __webpack_require__(134),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Sitemap.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Sitemap.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2df06786", Component.options)
+  } else {
+    hotAPI.reload("data-v-2df06786", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h3', [_vm._v("Home")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "exact": ""
+    }
+  }, [_vm._v("Home")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("About")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/mission"
+    }
+  }, [_vm._v("Mission")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/getting-started"
+    }
+  }, [_vm._v("Getting Started")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/history"
+    }
+  }, [_vm._v("History")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/cultural-competency"
+    }
+  }, [_vm._v("Cultural Competency")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/privacy-policy"
+    }
+  }, [_vm._v("Privacy Policy")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Services")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/services/housing"
+    }
+  }, [_vm._v("Housing")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/services/hiv"
+    }
+  }, [_vm._v("HIV Services")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Support")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/donate"
+    }
+  }, [_vm._v("Donate")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/volunteer"
+    }
+  }, [_vm._v("Volunteer")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/resources"
+    }
+  }, [_vm._v("Resources")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Blog")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/blog"
+    }
+  }, [_vm._v("Blog")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Store")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "https://store.shantiaz.org",
+      "target": "_blank"
+    }
+  }, [_vm._v("2nd Chances Store")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Contact")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/contact/office"
+    }
+  }, [_vm._v("Contact")])], 1)])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2df06786", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
