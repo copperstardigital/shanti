@@ -3,9 +3,6 @@
         <div slot="copy">
             <div class="row">
                 <div class="col-md-6">
-
-                </div>
-                <div class="col-md-6">
                     <h3>Home</h3>
                     <p><router-link to="/" exact>Home</router-link></p>
 
@@ -30,11 +27,21 @@
                     <p><router-link to="/support/donate">Donate</router-link></p>
                     <p><router-link to="/support/volunteer">Volunteer</router-link></p>
                     <p><router-link to="/support/resources">Resources</router-link></p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Blog</h3>
+                    <p><router-link to="/blog">Blog</router-link></p>
+                    <div v-for="(post, index) in posts" key="index">
+                        <p><router-link :to="{ name: 'blog/view', params: { slug : post.slug }}">{{ post.headline }}</router-link></p>
+                    </div>
 
                     <hr />
 
-                    <h3>Blog</h3>
-                    <p><router-link to="/blog">Blog</router-link></p>
+                    <h3>Events</h3>
+                    <p><router-link to="/events">Events</router-link></p>
+                    <div v-for="(event, index) in events" key="index">
+                        <p><router-link :to="{ name: 'event/view', params: { slug : event.slug }}">{{ event.event_name }}</router-link></p>
+                    </div>
 
                     <hr />
 
@@ -58,9 +65,35 @@
                 article: {
                     headline: 'Site Map',
                     subhead: 'Available Pages',
-                    callout: 'Below is a list of available page. Please refer to one of them to find your resource.'
-                }
+                    callout: 'Below is a list of available pages. Please refer to one of them to find your resource. You may also use the search function at the top of the page, if your resource is not listed.'
+                },
+                posts: [],
+                events: []
             }
+        },
+        methods: {
+            getEvents() {
+                http
+                    .get('/events')
+                    .then(response => {
+                        this.events = response.body.events;
+                    }).catch(error => {
+                    console.error(error);
+                });
+            },
+            getPosts() {
+                http
+                    .get('/posts')
+                    .then(response => {
+                        this.posts = response.body.posts;
+                    }).catch(error => {
+                    console.error(error);
+                });
+            },
+        },
+        mounted() {
+            this.getPosts();
+            this.getEvents();
         }
     }
 </script>

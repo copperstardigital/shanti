@@ -24,7 +24,7 @@
                             <div v-if="!post.link">
                                 <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
                             </div>
-                            <psg-speak v-show="!loading" :text="copy(post.headline, post.body)"></psg-speak>
+                            <psg-speak v-show="!loading" :text="copy(post.headline, post.body)" primary="true"></psg-speak>
                         </div>
                     </div>
                 </div>

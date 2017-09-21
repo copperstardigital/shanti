@@ -28,7 +28,7 @@
 
                             <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
 
-                            <psg-speak :text="copy(event.headline, event.hero_text)"></psg-speak>
+                            <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
 
                     <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
 
-                    <psg-speak :text="copy(event.headline, event.hero_text)"></psg-speak>
+                    <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
                 </div>
 
             </slide>

@@ -19,7 +19,7 @@
                         <div v-if="post.link">
                             <a :href="post.link" class="btn btn-color pull-right">More Information</a>
                         </div>
-                        <psg-speak v-show="!loading" :text="copy(post.headline, post.body)"></psg-speak>
+                        <psg-speak v-show="!loading" :text="copy(post.headline, post.body)" primary="true"></psg-speak>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div v-if="post.link">
                     <a :href="post.link" class="btn btn-color pull-right">More Information</a>
                 </div>
-                <psg-speak v-show="!loading" :text="copy(post.headline, post.body)"></psg-speak>
+                <psg-speak v-show="!loading" :text="copy(post.headline, post.body)" primary="true"></psg-speak>
             </div>
         </div>
     </psg-page>

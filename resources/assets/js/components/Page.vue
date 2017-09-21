@@ -21,7 +21,7 @@
                 <div class="about-hero">
                     <div v-html="article.callout"></div>
                     <div v-if="article.callout">
-                        <psg-speak v-show="!loading" :text="article.callout"></psg-speak>
+                        <psg-speak v-show="!loading" :text="article.callout" primary="true"></psg-speak>
                     </div>
                 </div>
 

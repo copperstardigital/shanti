@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <psg-speak v-show="!loading" :text="contact(member.first_name, member.last_name, member.staff.title, member.email, member.phone_number)"></psg-speak>
+                        <psg-speak v-show="!loading" :text="contact(member.first_name, member.last_name, member.staff.title, member.email, member.phone_number)" primary="true"></psg-speak>
 
                         <hr />
 
@@ -34,7 +34,7 @@
                         </div>
                         <div v-if="!member.staff.bio">
                             <p>Profile information is unavailable.</p>
-                            <psg-speak v-show="!loading" text="Profile information is unavailable."></psg-speak>
+                            <psg-speak v-show="!loading" text="Profile information is unavailable." primary="true"></psg-speak>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@
 
                             <div v-html="member.staff.bio"></div>
 
-                            <psg-speak v-show="!loading" :text="member.staff.bio"></psg-speak>
+                            <psg-speak v-show="!loading" :text="member.staff.bio" primary="true"></psg-speak>
                         </div>
                     </div>
                 </div>

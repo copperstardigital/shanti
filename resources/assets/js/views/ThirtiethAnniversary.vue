@@ -9,7 +9,7 @@
                      <h1>RSVP for 30th Anniversary Gala</h1>
                      <h3>Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm</h3>
 
-                     <psg-speak v-show="!loading" text="RSVP for 30th Anniversary Gala, Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm. Fill out the form below to RSVP for the 30th Anniversary Gala."></psg-speak>
+                     <psg-speak v-show="!loading" text="RSVP for 30th Anniversary Gala, Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm. Fill out the form below to RSVP for the 30th Anniversary Gala." primary="true"></psg-speak>
 
                      <hr />
 

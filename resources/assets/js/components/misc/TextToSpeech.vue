@@ -1,10 +1,15 @@
 <template>
-    <button type="button" class="btn btn-default btn-xs" :text="text" @click="speak"><i class="fa fa-deaf"></i> Speak</button>
+    <button type="button" class="btn btn-xs" :class="styling" :primary="primary" :text="text" @click="speak"><i class="fa fa-deaf"></i> Speak</button>
 </template>
 
 <script>
     export default {
-        props: ['text'],
+        data() {
+            return {
+                styling: (this.primary) ? 'btn-lpurple' : 'btn-default'
+            }
+        },
+        props: ['text', 'primary'],
         methods: {
             speak() {
                 if ('speechSynthesis' in window) {

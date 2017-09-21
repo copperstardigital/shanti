@@ -13,7 +13,7 @@
                         <div v-html="event.event_callout"></div>
 
                         <router-link :to="{ name: 'event/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
-                        <psg-speak v-show="!loading" :text="copy(event.event_name, event.event_callout)"></psg-speak>
+                        <psg-speak v-show="!loading" :text="copy(event.event_name, event.event_callout)" primary="true"></psg-speak>
                     </div>
                 </div>
 

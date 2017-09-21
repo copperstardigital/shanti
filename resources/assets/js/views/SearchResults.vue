@@ -9,7 +9,7 @@
                         <div v-for="(article, index) in articles" key="index">
                             <h3>{{ article.headline }}</h3>
                             <h5>{{ article.subhead }}</h5>
-                            <p>{{ article.callout }}</p>
+                            <div v-html="article.callout"></div>
 
                             <router-link :to="article.link" class="btn btn-color pull-right">Read More...</router-link>
                             <br style="clear:both;" />

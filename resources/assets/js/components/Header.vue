@@ -81,7 +81,7 @@
                         <div class="head-search pull-right">
                             <form>
                                 <div class="input-group">
-                                    <input class="form-control" maxlength="100" name="keywords" placeholder="Enter keywords" type="search" v-model="keywords"/>
+                                    <input class="form-control" maxlength="100" name="keywords" placeholder="Enter keywords" type="search" v-model="keywords" @keypress="disableEnter"/>
                                     <span class="input-group-btn" style="font-size: 15px;">
                                         <a href="#" @click.prevent="search">
                                             <i class="fa fa-search square-2 rounded-1 bg-color white" style="display:block; height:36px; padding-top: 4px;"></i>
@@ -115,6 +115,11 @@
         methods: {
             search() {
                 this.$router.push({ path: 'search-results', query: { keywords : this.keywords }});
+            },
+            disableEnter() {
+                let evt = (evt) ? evt : ((window.event) ? window.event : null);
+                let node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+                if ((evt.keyCode === 13) && (node.type === "search")) { return false; }
             }
         },
         components: {

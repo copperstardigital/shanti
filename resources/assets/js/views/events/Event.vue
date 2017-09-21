@@ -17,7 +17,7 @@
                        <div v-if="article.event_url">
                            <a :href="article.event_url" class="btn btn-color pull-right" target="_blank">Read More...</a>
                        </div>
-                       <psg-speak v-show="!loading" :text="copy(article.headline, article.body)"></psg-speak>
+                       <psg-speak v-show="!loading" :text="copy(article.headline, article.body)" primary="true"></psg-speak>
                    </div>
                 </div>
             </div>

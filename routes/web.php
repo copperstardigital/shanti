@@ -43,3 +43,9 @@ Route::post('mailchimp', 'Vue\MailChimpController@store');
 Route::post('contact', 'Vue\EmailController@contact');
 Route::post('volunteer/form', 'Vue\EmailController@volunteer');
 Route::post('30th-anniversary', 'Vue\EmailController@thirtiethAnniversary');
+
+/**
+ * Cron
+ */
+
+Route::get('cron/news', 'Admin\CronController@news');

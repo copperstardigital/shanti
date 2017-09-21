@@ -2,7 +2,7 @@
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-html="article.body"></div>
-            <psg-speak :text="article.body" :loading="loading"></psg-speak>
+            <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
         </div>
     </psg-page>
 </template>

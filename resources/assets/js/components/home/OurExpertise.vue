@@ -18,7 +18,7 @@
                 </ul>
                 <br />
 
-                <psg-speak text="Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence."></psg-speak>
+                <psg-speak text="Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence." primary="true"></psg-speak>
             </div>
 
             <div class="col-md-4 col-sm-6">
