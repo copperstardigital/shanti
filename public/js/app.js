@@ -15366,14 +15366,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            post: {
+            article: {
                 headline: '',
                 category: {
                     category_name: ''
                 },
                 hero_text: '',
                 body: ''
-            }
+            },
+            post: {},
+            loading: false
         };
     },
 
@@ -15381,14 +15383,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getPost: function getPost(slug) {
             var _this = this;
 
+            this.loading = true;
+
             axios.get('/posts/' + slug).then(function (response) {
-                _this.post = response.data.post;
+                var post = response.data.post;
+
+                if (post !== null) {
+                    _this.article = {
+                        headline: post.headline,
+                        subhead: post.category.category_name,
+                        callout: post.hero_text,
+                        body: ''
+                    };
+
+                    _this.post = post;
+                } else {
+                    _this.article = {
+                        headline: 'Post Not Found',
+                        subhead: '404 Error',
+                        callout: 'We\'re sorry, but we could not find the post for which you are looking. Perhaps you are following an outdated link, or the post has been deleted or inactivated.',
+                        body: ''
+                    };
+                }
+
+                _this.loading = false;
             }).catch(function (error) {
                 return console.log(error);
             });
-        },
-        pageLoaded: function pageLoaded() {
-            return false;
         }
     },
     watch: {
@@ -15396,15 +15417,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.getPost(to.params.slug);
         }
     },
-    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-        http.get('/posts/' + to.params.slug).use(saCache).then(function (response) {
-            var post = response.body.post;
-            next(function (vm) {
-                vm.post = post;
-            });
-        }).catch(function (error) {
-            console.error(error);
-        });
+    mounted: function mounted() {
+        this.getPost(this.$route.params.slug);
     }
 });
 
@@ -20043,9 +20057,8 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
-      "title": _vm.post.headline,
-      "subtitle": _vm.post.category.category_name,
-      "hero": _vm.post.hero_text
+      "article": _vm.article,
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "copy"
@@ -33024,6 +33037,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -33041,15 +33056,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //.use(saCache)
         .then(function (response) {
             var event = response.body.event;
-            _this.article = {
-                headline: event.event_name,
-                subhead: new Date(event.event_start).toLocaleDateString(),
-                callout: event.event_callout,
-                body: event.event_description,
-                map_link: event.map_link,
-                image: event.image,
-                event_url: event.event_url
-            };
+            if (event !== null) {
+                _this.article = {
+                    headline: event.event_name,
+                    subhead: new Date(event.event_start).toLocaleDateString(),
+                    callout: event.event_callout,
+                    body: event.event_description,
+                    map_link: event.map_link,
+                    image: event.image,
+                    event_url: event.event_url
+                };
+            } else {
+                _this.article = {
+                    headline: 'Event Not Found',
+                    subhead: '404 Error',
+                    callout: 'We\'re sorry, but we could not locate this event. Perhaps it has already passed or you are following a mistyped link.',
+                    not_found: true
+                };
+            }
 
             _this.loading = false;
         }).catch(function (error) {
@@ -33086,7 +33110,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [_c('h1', [_vm._v(_vm._s(_vm.article.headline))]), _vm._v(" "), _c('div', {
+  }, [(!_vm.article.not_found) ? _c('div', [_c('h1', [_vm._v(_vm._s(_vm.article.headline))]), _vm._v(" "), _c('div', {
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
@@ -33096,7 +33120,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": _vm.article.event_url,
       "target": "_blank"
     }
-  }, [_vm._v("Read More...")])]) : _vm._e()])])])])
+  }, [_vm._v("Read More...")])]) : _vm._e()]) : _vm._e()])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

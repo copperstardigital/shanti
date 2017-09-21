@@ -1,5 +1,5 @@
 <template>
-    <psg-page :title="post.headline" :subtitle="post.category.category_name" :hero="post.hero_text">
+    <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-if="post.image">
                 <div class="row">
@@ -35,7 +35,7 @@
     export default {
         data() {
             return {
-                post: {
+                article: {
                     headline: '',
                     category : {
                         category_name: ''
@@ -43,18 +43,39 @@
                     hero_text: '',
                     body: ''
                 },
+                post: {},
+                loading: false
             }
         },
         methods: {
             getPost(slug) {
+                this.loading = true;
+
                 axios.get('/posts/' + slug)
                     .then(response => {
-                        this.post = response.data.post;
+                        let post = response.data.post;
+
+                        if (post !== null) {
+                            this.article = {
+                                headline: post.headline,
+                                subhead: post.category.category_name,
+                                callout: post.hero_text,
+                                body: ''
+                            };
+
+                            this.post = post;
+                        } else {
+                            this.article = {
+                                headline: 'Post Not Found',
+                                subhead: '404 Error',
+                                callout: 'We\'re sorry, but we could not find the post for which you are looking. Perhaps you are following an outdated link, or the post has been deleted or inactivated.',
+                                body: ''
+                            };
+                        }
+
+                        this.loading = false;
                     })
                     .catch(error => console.log(error));
-            },
-            pageLoaded() {
-                return false;
             }
         },
         watch: {
@@ -62,18 +83,8 @@
                 this.getPost(to.params.slug);
             }
         },
-        beforeRouteEnter(to, from, next) {
-            http
-                .get('/posts/' + to.params.slug)
-                .use(saCache)
-                .then(response => {
-                    let post = response.body.post;
-                    next(vm => {
-                        vm.post = post;
-                    });
-                }).catch(error => {
-                    console.error(error);
-                });
+        mounted() {
+            this.getPost(this.$route.params.slug);
         }
     }
 </script>

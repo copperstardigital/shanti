@@ -62,7 +62,7 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::with('category')->findOrFail($slug);
+        $post = Post::with('category')->find($slug);
         return response()->json(['post' => $post]);
     }
 
