@@ -1,15 +1,9 @@
 <template>
     <div class="icon-box-8 text-center">
         <div class="row">
-            <psg-info-box
-                v-for="(box, index) in boxes"
-                :color="box.color"
-                :icon="box.icon"
-                :headline="box.title"
-                :link="box.link"
-                :copy="box.copy"
-                key="index">
-            </psg-info-box>
+            <div v-for="(box, index) in infoBoxes" key="index">
+                <psg-info-box :box="box"></psg-info-box>
+            </div>
         </div>
         <br />
     </div>
@@ -21,37 +15,23 @@
     export default {
         data() {
             return {
-                boxes: [
-                    {
-                        color: 'bg-red',
-                        icon: 'icon icon-awareness-ribbon',
-                        title: 'HIV Services',
-                        copy: 'Personalized support services for people infected with and affected by HIV/AIDS.',
-                        link: '/services/hiv'
-                    },
-                    {
-                        color: 'bg-lblue',
-                        icon: 'fa fa-truck',
-                        title: '2nd Chances Store',
-                        copy: 'PSG operates a 7,000-square-foot retail thrift store to help fund patient services.',
-                        link: 'http://store.shantiaz.org'
-                    },
-                    {
-                        color: 'bg-green',
-                        icon: 'fa fa-user',
-                        title: 'Treatment',
-                        copy: 'Individualized treatment plans are tailored to clients to help rebuild lives.',
-                        link: '/services/hiv'
-                    },
-                    {
-                        color: 'bg-purple',
-                        icon: 'fa fa-home',
-                        title: 'Housing',
-                        copy: 'Shanti offers transitional and permanent housing to homeless individuals.',
-                        link: '/services/housing'
-                    },
-                ]
+                infoBoxes: []
             }
+        },
+        methods: {
+            getInfoBoxes() {
+                http
+                    .get('/info-boxes')
+                    //.use(saCache)
+                    .then(response => {
+                        this.infoBoxes = response.body.info_boxes;
+                    }).catch(error => {
+                    console.error(error);
+                });
+            }
+        },
+        created() {
+            this.getInfoBoxes();
         },
         components: {
             'psg-info-box' : InfoBox

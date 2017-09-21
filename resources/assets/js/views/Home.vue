@@ -83,18 +83,6 @@
 
                 <div class="col-md-4 col-sm-6">
 
-                    <!-- Carousel -->
-
-                    <!-- Bootstrap carousel usage
-                        Bootstrap carousel should have id. Below i am using "bs-carousel-X". Where "X" denotes number". If a page has more than 1 carousel, then add the new carousel with the id "bs-carousel-1", "bs-carousel-2". You also need to update the id in, "carousel indicators" section and "carousel control" section.
-
-                        Carousel comes with 3 main data attributes which you can customize. They are...
-                        data-interval - Time delay between item cycle. Default value "5000".
-                        data-pause - Pause on hover. Default value "pause".
-                        data-wrap - Continues cycle or stop at the end. Default value "true".
-                    -->
-
-                    <!-- Outer layer -->
                     <div id="bs-carousel-1" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover" data-wrap="true">
                         <!-- Bootstrap indicators. If you don't need indicators, remove the below section -->
                         <ol class="carousel-indicators">
@@ -128,27 +116,29 @@
                 </div>
 
                 <div class="col-md-4 col-sm-6">
-                    <h4>Our Expertise</h4>
-                    <p>Lorem ipsum dolor consectetursit amet, consectetur adipiscing elit consectetur euismod ed  euismod  adipiscing elit sapien. Donec eu feugiat enim,  tempus arcu. </p>
-                    <h6>Web Designing</h6>
-                    <div class="progress pb-sm">
-                        <!-- White color (progress-bar-white) -->
-                        <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                            <span class="sr-only">40% Complete (success)</span>
-                        </div>
-                    </div>
-                    <h6>Doing Party</h6>
-                    <div class="progress pb-sm">
-                        <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                            <span class="sr-only">40% Complete (success)</span>
-                        </div>
-                    </div>
-                    <h6>Money Making</h6>
-                    <div class="progress pb-sm">
-                        <div class="progress-bar progress-bar-lblue" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                            <span class="sr-only">40% Complete (success)</span>
-                        </div>
-                    </div>
+                    <h4>Our Fundraising</h4>
+                    <p>Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.</p>
+
+                    <h6>General Funds</h6>
+                    <psg-progress-bar
+                        bar="progress-bar progress-bar-red"
+                        now="30"
+                        goal="1000"
+                    ></psg-progress-bar>
+
+                    <h6>AIDS Walk Arizona</h6>
+                    <psg-progress-bar
+                        bar="progress-bar progress-bar-green"
+                        now="500"
+                        goal="1500"
+                    ></psg-progress-bar>
+
+                    <h6>Event Dollars Raised</h6>
+                    <psg-progress-bar
+                        bar="progress-bar progress-bar-lblue"
+                        now="50"
+                        goal="1000"
+                    ></psg-progress-bar>
                 </div>
 
             </div>
@@ -161,61 +151,63 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <!-- Counter content item -->
-                            <div class="counter-item">
-                                <!-- Icon -->
-                                <i class="fa fa-paper-plane red"></i>
-                                <!-- Number -->
-                                <span class="number-count" data-from="0" data-to="290" data-speed="2000" data-refresh-interval="100"></span>
-                                <!-- Border -->
-                                <hr class="br-red" />
-                                <!-- Heading -->
-                                <h5>Equine Dolores</h5>
-                            </div>
+                            <psg-counter
+                                    icon="fa fa-home red"
+                                    rule="br-red"
+                                    text="Housed"
+                                    max="10"
+                                    interval="500"
+                            ></psg-counter>
                         </div>
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <!-- Counter content item -->
-                            <div class="counter-item">
-                                <i class="fa fa-trophy green"></i>
-                                <span class="number-count" data-from="0" data-to="150" data-speed="2000" data-refresh-interval="100"></span>
-                                <hr class="br-green" />
-                                <h5>Equine Dolores</h5>
-                            </div>
+                            <psg-counter
+                                    icon="fa fa-briefcase green"
+                                    rule="br-green"
+                                    text="Voc Rehab"
+                                    max="10"
+                                    interval="500"
+                            ></psg-counter>
                         </div>
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <!-- Counter content item -->
-                            <div class="counter-item">
-                                <i class="fa fa-taxi lblue"></i>
-                                <span class="number-count" data-from="0" data-to="300" data-speed="2000" data-refresh-interval="100"></span>
-                                <hr class="br-lblue" />
-                                <h5>Equine Dolores</h5>
-                            </div>
+                            <psg-counter
+                                    icon="fa fa-ambulance lblue"
+                                    rule="br-lblue"
+                                    text="Outpatients"
+                                    max="10"
+                                    interval="500"
+                            ></psg-counter>
                         </div>
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <!-- Counter content item -->
-                            <div class="counter-item">
-                                <i class="fa fa-database yellow"></i>
-                                <span class="number-count" data-from="0" data-to="250" data-speed="2000" data-refresh-interval="100"></span>
-                                <hr class="br-yellow" />
-                                <h5>Equine Dolores</h5>
-                            </div>
+                            <psg-counter
+                                    icon="fa fa-heart yellow"
+                                    rule="br-yellow"
+                                    text="Counseled"
+                                    max="10"
+                                    interval="500"
+                            ></psg-counter>
                         </div>
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <!-- Counter content item -->
-                            <div class="counter-item">
-                                <i class="fa fa-cube purple"></i>
-                                <span class="number-count" data-from="0" data-to="120" data-speed="2000" data-refresh-interval="100"></span>
-                                <hr class="br-purple" />
-                                <h5>Equine Dolores</h5>
-                            </div>
+                            <psg-counter
+                                    icon="fa fa-book purple"
+                                    rule="br-purple"
+                                    text="Educated"
+                                    max="10"
+                                    interval="500"
+                            ></psg-counter>
                         </div>
                         <div class="col-md-2 col-sm-4 col-xs-6">
                             <!-- Counter content item -->
-                            <div class="counter-item">
-                                <i class="fa fa-fax brown"></i>
-                                <span class="number-count" data-from="0" data-to="350" data-speed="2000" data-refresh-interval="100"></span>
-                                <hr class="br-brown" />
-                                <h5>Equine Dolores</h5>
-                            </div>
+                            <psg-counter
+                                    icon="fa fa-clock-o brown"
+                                    rule="br-brown"
+                                    text="Volunteer Hours"
+                                    max="10"
+                                    interval="500"
+                            ></psg-counter>
                         </div>
                     </div>
                 </div>
@@ -396,6 +388,8 @@
 <script>
     import { Carousel, Slide } from 'vue-carousel';
     import InfoBoxes from '../components/home/InfoBoxes';
+    import Counter from '../components/home/Counter';
+    import ProgressBar from '../components/home/ProgressBar';
 
     export default {
         data() {
@@ -418,7 +412,9 @@
         components: {
             Carousel,
             Slide,
-            'psg-info-boxes' : InfoBoxes
+            'psg-info-boxes' : InfoBoxes,
+            'psg-counter' : Counter,
+            'psg-progress-bar' : ProgressBar
         },
         created() {
             this.loading = true;

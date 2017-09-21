@@ -32,6 +32,7 @@ Route::resource('staff', 'Vue\StaffController');
 Route::resource('volunteer', 'Vue\VolunteerController');
 Route::resource('articles', 'Vue\ArticleController');
 Route::resource('events', 'Vue\EventController');
+Route::resource('info-boxes', 'Vue\InfoBoxController');
 Route::any('search', 'Vue\SearchController@search');
 
 /**
