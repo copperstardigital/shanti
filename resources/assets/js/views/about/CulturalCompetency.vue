@@ -2,11 +2,14 @@
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-html="article.body"></div>
+            <psg-speak :text="article.body" :loading="loading"></psg-speak>
         </div>
     </psg-page>
 </template>
 
 <script>
+    import TextToSpeech from '../../components/misc/TextToSpeech';
+
     export default {
         data() {
             return {
@@ -34,5 +37,8 @@
                 console.error(error);
             });
         },
+        components: {
+            'psg-speak': TextToSpeech
+        }
     }
 </script>

@@ -20,6 +20,9 @@
                 <!-- About section hero -->
                 <div class="about-hero">
                     <div v-html="article.callout"></div>
+                    <div v-if="article.callout">
+                        <psg-speak v-show="!loading" :text="article.callout"></psg-speak>
+                    </div>
                 </div>
 
                 <hr />
@@ -32,7 +35,12 @@
 </template>
 
 <script>
+    import TextToSpeech from '../components/misc/TextToSpeech';
+
     export default {
-        props: ['article', 'loading']
+        props: ['article', 'loading'],
+        components: {
+            'psg-speak': TextToSpeech
+        }
     }
 </script>

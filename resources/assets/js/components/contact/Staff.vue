@@ -19,6 +19,8 @@
         },
         methods: {
             getStaff() {
+                this.loading = true;
+
                 http
                     .get('/staff')
                     //.use(saCache)

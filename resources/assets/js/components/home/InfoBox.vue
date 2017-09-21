@@ -15,12 +15,24 @@
             </div>
             <!-- Paragraph -->
             <p>{{ box.en_copy }}</p>
+
+            <psg-speak :text="copy"></psg-speak>
         </div>
     </div>
 </template>
 
 <script>
+    import TextToSpeech from '../misc/TextToSpeech';
+
     export default {
-        props: ['box']
+        props: ['box'],
+        components: {
+            'psg-speak': TextToSpeech
+        },
+        computed: {
+            copy() {
+                return this.box.en_title + ' ' + this.box.en_copy;
+            }
+        }
     }
 </script>

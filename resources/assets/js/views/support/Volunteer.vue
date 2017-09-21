@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div v-html="article.body"></div>
+                    <psg-speak v-show="!loading" :text="article.body"></psg-speak>
                 </div>
                 <div class="col-md-6">
                     <div v-show="!loading" class="well">
@@ -73,9 +74,9 @@
 
 <script>
     import { alert } from 'vue-strap';
+    import TextToSpeech from '../../components/misc/TextToSpeech';
 
     export default {
-        props: ['loading'],
         data() {
             return {
                 firstName: '',
@@ -103,7 +104,7 @@
                     comments: this.comments
                 }).then(response => {
                     this.showTop = true;
-                    this.flash = 'Thank you for contacting Shanti about our volunteer opportunities. We will be in touch shortly.'
+                    this.flash = 'Thank you for contacting Shanti about our volunteer opportunities. We will be in touch shortly.';
                     this.firstName = '';
                     this.lastName = '';
                     this.emailAddress = '';
@@ -120,7 +121,8 @@
             }
         },
         components: {
-            alert: alert
+            alert: alert,
+            'psg-speak': TextToSpeech
         },
         created() {
             this.loading = true;

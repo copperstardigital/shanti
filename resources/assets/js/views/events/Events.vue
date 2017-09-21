@@ -13,6 +13,7 @@
                         <div v-html="event.event_callout"></div>
 
                         <router-link :to="{ name: 'event/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
+                        <psg-speak v-show="!loading" :text="copy(event.event_name, event.event_callout)"></psg-speak>
                     </div>
                 </div>
 
@@ -23,6 +24,8 @@
 </template>
 
 <script>
+    import TextToSpeech from '../../components/misc/TextToSpeech';
+
     export default {
         data() {
             return {
@@ -49,9 +52,15 @@
                     console.error(error);
                 });
             },
+            copy(event, callout) {
+                return event + ' ' + callout;
+            }
         },
         mounted() {
             this.getEvents();
+        },
+        components: {
+            'psg-speak': TextToSpeech
         }
     }
 </script>

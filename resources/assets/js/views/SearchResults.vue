@@ -3,7 +3,7 @@
         <div slot="copy">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>Articles</h1>
+                    <h1 v-if="!loading">Articles</h1>
 
                     <div v-if="articles">
                         <div v-for="(article, index) in articles" key="index">
@@ -17,12 +17,12 @@
                             <hr />
                         </div>
                     </div>
-                    <div v-if="!articles">
+                    <div v-if="!articles.length && !loading">
                         <p>Your search returned no articles.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h1>Blog</h1>
+                    <h1 v-if="!loading">Blog</h1>
 
                     <div v-if="posts">
                         <div v-for="(post, index) in posts" key="index">
@@ -36,8 +36,28 @@
                             <hr />
                         </div>
                     </div>
-                    <div v-if="!posts">
+                    <div v-if="!posts.length && !loading">
                         <p>Your search returned no blog posts.</p>
+                    </div>
+
+                    <hr v-if="!loading"/>
+
+                    <h1 v-if="!loading">Events</h1>
+
+                    <div v-if="events">
+                        <div v-for="(event, index) in events" key="index">
+                            <h3>{{ event.event_name }}</h3>
+                            <div v-html="event.event_callout"></div>
+
+                            <router-link :to="'/events/' + event.slug" class="btn btn-color pull-right">Read More...</router-link>
+
+                            <br style="clear:both;" />
+
+                            <hr />
+                        </div>
+                    </div>
+                    <div v-if="!posts.length && !loading">
+                        <p>Your search returned no events.</p>
                     </div>
                 </div>
             </div>
@@ -52,11 +72,12 @@
                 article: {
                     headline: 'Search Results',
                     subhead: 'Keywords: "' + this.$route.query.keywords + '"',
-                    callout: 'Below are the results of your search.',
+                    callout: 'Below are the results of your search. If your expected information did not appear below, please try consulting our <a href="/#/site-map">site map</a>.',
                     body: ''
                 },
                 articles: [],
-                posts: []
+                posts: [],
+                events: []
             }
         },
         created() {
@@ -77,6 +98,7 @@
 
                     this.articles = reformatted;
                     this.posts = response.data.posts;
+                    this.events = response.data.events;
 
                     this.loading = false;
                 })

@@ -27,6 +27,8 @@
                             <br />
 
                             <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
+
+                            <psg-speak :text="copy(event.headline, event.hero_text)"></psg-speak>
                         </div>
                     </div>
                 </div>
@@ -40,6 +42,8 @@
                     <br />
 
                     <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
+
+                    <psg-speak :text="copy(event.headline, event.hero_text)"></psg-speak>
                 </div>
 
             </slide>
@@ -50,6 +54,7 @@
 
 <script>
     import { Carousel, Slide } from 'vue-carousel';
+    import TextToSpeech from '../misc/TextToSpeech';
 
     export default {
         data() {
@@ -70,9 +75,15 @@
                 console.error(error);
             });
         },
+        methods: {
+            copy(headline, heroText) {
+                return headline + ' ' + heroText;
+            }
+        },
         components: {
             Carousel,
-            Slide
+            Slide,
+            'psg-speak': TextToSpeech
         }
     }
 </script>

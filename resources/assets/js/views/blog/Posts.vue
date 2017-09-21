@@ -15,6 +15,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
+                            <h1>{{ post.headline }}</h1>
                             <div v-html="post.body"></div>
                             <div v-if="post.link">
                                 <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
@@ -23,10 +24,12 @@
                             <div v-if="!post.link">
                                 <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
                             </div>
+                            <psg-speak v-show="!loading" :text="copy(post.headline, post.body)"></psg-speak>
                         </div>
                     </div>
                 </div>
                 <div v-if="!post.image">
+                    <h1>{{ post.headline }}</h1>
                     <div v-html="post.body"></div>
                     <div v-if="post.link">
                         <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
@@ -42,6 +45,8 @@
 </template>
 
 <script>
+    import TextToSpeech from '../../components/misc/TextToSpeech';
+
     export default {
         data() {
             return {
@@ -59,31 +64,39 @@
                     }).catch(error => {
                     console.error(error);
                 });
+            },
+            getArticle() {
+                http
+                    .get('/articles/11')
+                    //.use(saCache)
+                    .then(response => {
+                        let article = response.body.article;
+
+                        this.article = {
+                            headline: article.en_headline,
+                            subhead: article.en_subhead,
+                            callout: article.en_callout,
+                            body: article.en_body
+                        };
+
+                        this.loading = false;
+                    }).catch(error => {
+                    console.error(error);
+                });
+            },
+            copy(headline, copy) {
+                return headline + ' ' + copy;
             }
         },
         beforeMount() {
+            this.getArticle();
             this.getPosts();
         },
         created() {
             this.loading = true;
-
-            http
-                .get('/articles/11')
-                //.use(saCache)
-                .then(response => {
-                    let article = response.body.article;
-
-                    this.article = {
-                        headline: article.en_headline,
-                        subhead: article.en_subhead,
-                        callout: article.en_callout,
-                        body: article.en_body
-                    };
-
-                    this.loading = false;
-                }).catch(error => {
-                console.error(error);
-            });
+        },
+        components: {
+            'psg-speak': TextToSpeech
         }
     }
 </script>

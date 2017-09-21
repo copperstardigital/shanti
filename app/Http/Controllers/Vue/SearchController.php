@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Vue;
 
 use App\Models\Article;
+use App\Models\Event;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,9 +28,15 @@ class SearchController extends Controller
             ->orWhere('body', 'LIKE', '%' . $keywords . '%')
             ->get();
 
+        $events = Event::where('event_name', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('event_callout', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('event_description', 'LIKE', '%' . $keywords . '%')
+            ->get();
+
         return response()->json([
             'articles' => $articles,
-            'posts' => $posts
+            'posts' => $posts,
+            'events' => $events
         ]);
     }
 }

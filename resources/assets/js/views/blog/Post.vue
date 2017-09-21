@@ -14,24 +14,30 @@
                         </div>
                     </div>
                     <div class="col-md-8">
+                        <h1>{{ post.headline }}</h1>
                         <div v-html="post.body"></div>
                         <div v-if="post.link">
                             <a :href="post.link" class="btn btn-color pull-right">More Information</a>
                         </div>
+                        <psg-speak v-show="!loading" :text="copy(post.headline, post.body)"></psg-speak>
                     </div>
                 </div>
             </div>
             <div v-if="!post.image">
+                <h1>{{ post.headline }}</h1>
                 <div v-html="post.body"></div>
                 <div v-if="post.link">
                     <a :href="post.link" class="btn btn-color pull-right">More Information</a>
                 </div>
+                <psg-speak v-show="!loading" :text="copy(post.headline, post.body)"></psg-speak>
             </div>
         </div>
     </psg-page>
 </template>
 
 <script>
+    import TextToSpeech from '../../components/misc/TextToSpeech';
+
     export default {
         data() {
             return {
@@ -76,6 +82,9 @@
                         this.loading = false;
                     })
                     .catch(error => console.log(error));
+            },
+            copy(headline, copy) {
+                return headline + ' ' + copy;
             }
         },
         watch: {
@@ -85,6 +94,9 @@
         },
         mounted() {
             this.getPost(this.$route.params.slug);
+        },
+        components: {
+            'psg-speak': TextToSpeech
         }
     }
 </script>

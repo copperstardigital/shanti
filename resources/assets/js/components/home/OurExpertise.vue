@@ -17,6 +17,8 @@
                     <li>That rhoncus cannot rhoncus rhoncus pain trouble</li>
                 </ul>
                 <br />
+
+                <psg-speak text="Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence."></psg-speak>
             </div>
 
             <div class="col-md-4 col-sm-6">
@@ -61,10 +63,12 @@
 
 <script>
     import ProgressBars from './ProgressBars';
+    import TextToSpeak from '../misc/TextToSpeech';
 
     export default {
         components: {
-            'psg-progress-bars': ProgressBars
+            'psg-progress-bars': ProgressBars,
+            'psg-speak': TextToSpeak
         }
     }
 </script>

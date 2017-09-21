@@ -1,12 +1,5 @@
 <template>
-    <psg-page :article="article">
-        <div slot="copy">
-            <div v-html="article.body"></div>
-        </div>
-    </psg-page>
-</template>
-<template>
-    <psg-page :article="article">
+    <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <psg-staff></psg-staff>
         </div>
@@ -24,7 +17,8 @@
                     subhead: 'Our Team',
                     callout: 'Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients.'
                 },
-                staff: []
+                staff: [],
+                loading: false
             }
         },
         components: {

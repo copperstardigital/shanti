@@ -3,6 +3,8 @@
         <h4>Our Fundraising</h4>
         <p>Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.</p>
 
+        <psg-speak text="Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year."></psg-speak>
+
         <h6>General Funds</h6>
         <psg-progress-bar
                 bar="progress-bar progress-bar-red"
@@ -28,10 +30,12 @@
 
 <script>
     import ProgressBar from './ProgressBar';
+    import TextToSpeech from '../misc/TextToSpeech';
 
     export default {
         components: {
-            'psg-progress-bar': ProgressBar
+            'psg-progress-bar': ProgressBar,
+            'psg-speak': TextToSpeech
         }
     }
 </script>

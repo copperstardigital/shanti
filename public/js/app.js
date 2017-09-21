@@ -13781,6 +13781,8 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -14002,6 +14004,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14053,6 +14061,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     beforeMount: function beforeMount() {
         this.getPosts();
         this.getEvents();
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -14195,6 +14207,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
+//
+//
+//
 //
 //
 //
@@ -14229,8 +14246,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['article', 'loading']
+    props: ['article', 'loading'],
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
+    }
 });
 
 /***/ }),
@@ -14265,6 +14287,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getStaff: function getStaff() {
             var _this = this;
 
+            this.loading = true;
+
             http.get('/staff')
             //.use(saCache)
             .then(function (response) {
@@ -14291,6 +14315,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14360,8 +14392,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['member']
+    data: function data() {
+        return {
+            loading: false
+        };
+    },
+
+    props: ['member'],
+    methods: {
+        contact: function contact(firstName, lastName, title, email, phone) {
+            return firstName + ' ' + lastName + ' ' + title + ' ' + email + ' ' + phone;
+        }
+    },
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
+    }
 });
 
 /***/ }),
@@ -14412,6 +14460,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech__);
+//
+//
 //
 //
 //
@@ -14434,8 +14486,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['box']
+    props: ['box'],
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech___default.a
+    },
+    computed: {
+        copy: function copy() {
+            return this.box.en_title + ' ' + this.box.en_copy;
+        }
+    }
 });
 
 /***/ }),
@@ -14708,6 +14770,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14715,11 +14797,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             article: {
                 headline: 'Search Results',
                 subhead: 'Keywords: "' + this.$route.query.keywords + '"',
-                callout: 'Below are the results of your search.',
+                callout: 'Below are the results of your search. If your expected information did not appear below, please try consulting our <a href="/#/site-map">site map</a>.',
                 body: ''
             },
             articles: [],
-            posts: []
+            posts: [],
+            events: []
         };
     },
     created: function created() {
@@ -14741,6 +14824,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             _this.articles = reformatted;
             _this.posts = response.data.posts;
+            _this.events = response.data.events;
 
             _this.loading = false;
         }).catch(function (error) {
@@ -14829,6 +14913,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech__);
 //
 //
 //
@@ -14885,6 +14971,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
@@ -14940,7 +15029,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"],
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -14950,6 +15040,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -14958,6 +15050,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -14986,6 +15081,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -14995,6 +15094,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15003,6 +15104,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15029,6 +15133,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15046,26 +15154,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: {}
+            article: {},
+            loading: false
         };
     },
-    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    mounted: function mounted() {
+        var _this = this;
+
+        this.loading = true;
+
         http.get('/articles/3')
         //.use(saCache)
         .then(function (response) {
             var article = response.body.article;
-            next(function (vm) {
-                vm.article = {
-                    headline: article.en_headline,
-                    subhead: article.en_subhead,
-                    callout: article.en_callout,
-                    body: article.en_body
-                };
-            });
+            _this.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
+
+            _this.loading = false;
         }).catch(function (error) {
             console.error(error);
         });
@@ -15078,6 +15192,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -15129,6 +15244,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15137,6 +15254,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15165,6 +15285,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15174,6 +15298,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15207,6 +15333,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15255,6 +15387,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 return console.log(error);
             });
+        },
+        copy: function copy(headline, _copy) {
+            return headline + ' ' + _copy;
         }
     },
     watch: {
@@ -15264,6 +15399,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.getPost(this.$route.params.slug);
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15273,6 +15412,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15316,6 +15457,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15336,32 +15482,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 console.error(error);
             });
+        },
+        getArticle: function getArticle() {
+            var _this2 = this;
+
+            http.get('/articles/11')
+            //.use(saCache)
+            .then(function (response) {
+                var article = response.body.article;
+
+                _this2.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+
+                _this2.loading = false;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        },
+        copy: function copy(headline, _copy) {
+            return headline + ' ' + _copy;
         }
     },
     beforeMount: function beforeMount() {
+        this.getArticle();
         this.getPosts();
     },
     created: function created() {
-        var _this2 = this;
-
         this.loading = true;
+    },
 
-        http.get('/articles/11')
-        //.use(saCache)
-        .then(function (response) {
-            var article = response.body.article;
-
-            _this2.article = {
-                headline: article.en_headline,
-                subhead: article.en_subhead,
-                callout: article.en_callout,
-                body: article.en_body
-            };
-
-            _this2.loading = false;
-        }).catch(function (error) {
-            console.error(error);
-        });
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15371,10 +15526,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15385,7 +15538,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.loading = true;
+
+        http.get('/articles/13')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+
+            _this.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
+
+            _this.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
+    }
+});
 
 /***/ }),
 /* 53 */
@@ -15534,13 +15721,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -15552,7 +15732,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 subhead: 'Our Team',
                 callout: 'Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients.'
             },
-            staff: []
+            staff: [],
+            loading: false
         };
     },
 
@@ -15567,6 +15748,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
+//
 //
 //
 //
@@ -15594,12 +15778,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             article: {},
             loading: false
         };
+    },
+
+    methods: {
+        copy: function copy(headline, _copy) {
+            return headline + ' ' + _copy;
+        }
     },
     mounted: function mounted() {
         var _this = this;
@@ -15633,6 +15825,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15642,6 +15838,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15666,6 +15864,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15693,10 +15894,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 console.error(error);
             });
+        },
+        copy: function copy(event, callout) {
+            return event + ' ' + callout;
         }
     },
     mounted: function mounted() {
         this.getEvents();
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15706,6 +15914,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15714,6 +15924,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15742,6 +15955,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15751,6 +15968,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15759,6 +15978,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -15787,6 +16009,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
+    },
+
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
@@ -15888,6 +16114,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech__);
 //
 //
 //
@@ -15961,11 +16189,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['loading'],
     data: function data() {
         return {
             firstName: '',
@@ -16013,7 +16242,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"],
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech___default.a
     },
     created: function created() {
         var _this2 = this;
@@ -20042,7 +20272,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_c('h1', [_vm._v("Articles")]), _vm._v(" "), (_vm.articles) ? _c('div', _vm._l((_vm.articles), function(article, index) {
+  }, [(!_vm.loading) ? _c('h1', [_vm._v("Articles")]) : _vm._e(), _vm._v(" "), (_vm.articles) ? _c('div', _vm._l((_vm.articles), function(article, index) {
     return _c('div', {
       key: "index"
     }, [_c('h3', [_vm._v(_vm._s(article.headline))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(article.subhead))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(article.callout))]), _vm._v(" "), _c('router-link', {
@@ -20055,9 +20285,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "clear": "both"
       }
     }), _vm._v(" "), _c('hr')], 1)
-  })) : _vm._e(), _vm._v(" "), (!_vm.articles) ? _c('div', [_c('p', [_vm._v("Your search returned no articles.")])]) : _vm._e()]), _vm._v(" "), _c('div', {
+  })) : _vm._e(), _vm._v(" "), (!_vm.articles.length && !_vm.loading) ? _c('div', [_c('p', [_vm._v("Your search returned no articles.")])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [_c('h1', [_vm._v("Blog")]), _vm._v(" "), (_vm.posts) ? _c('div', _vm._l((_vm.posts), function(post, index) {
+  }, [(!_vm.loading) ? _c('h1', [_vm._v("Blog")]) : _vm._e(), _vm._v(" "), (_vm.posts) ? _c('div', _vm._l((_vm.posts), function(post, index) {
     return _c('div', {
       key: "index"
     }, [_c('h3', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
@@ -20074,7 +20304,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "clear": "both"
       }
     }), _vm._v(" "), _c('hr')], 1)
-  })) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("Your search returned no blog posts.")])]) : _vm._e()])])])])
+  })) : _vm._e(), _vm._v(" "), (!_vm.posts.length && !_vm.loading) ? _c('div', [_c('p', [_vm._v("Your search returned no blog posts.")])]) : _vm._e(), _vm._v(" "), (!_vm.loading) ? _c('hr') : _vm._e(), _vm._v(" "), (!_vm.loading) ? _c('h1', [_vm._v("Events")]) : _vm._e(), _vm._v(" "), (_vm.events) ? _c('div', _vm._l((_vm.events), function(event, index) {
+    return _c('div', {
+      key: "index"
+    }, [_c('h3', [_vm._v(_vm._s(event.event_name))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.event_callout)
+      }
+    }), _vm._v(" "), _c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/events/' + event.slug
+      }
+    }, [_vm._v("Read More...")]), _vm._v(" "), _c('br', {
+      staticStyle: {
+        "clear": "both"
+      }
+    }), _vm._v(" "), _c('hr')], 1)
+  })) : _vm._e(), _vm._v(" "), (!_vm.posts.length && !_vm.loading) ? _c('div', [_c('p', [_vm._v("Your search returned no events.")])]) : _vm._e()])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20242,7 +20489,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": _vm.article.event_url,
       "target": "_blank"
     }
-  }, [_vm._v("Read More...")])]) : _vm._e()]) : _vm._e()])])])])
+  }, [_vm._v("Read More...")])]) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.copy(_vm.article.headline, _vm.article.body)
+    }
+  })], 1) : _vm._e()])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20287,7 +20544,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
-  }, [_c('div', {
+  }, [_c('h1', [_vm._v(_vm._s(_vm.post.headline))]), _vm._v(" "), _c('div', {
     domProps: {
       "innerHTML": _vm._s(_vm.post.body)
     }
@@ -20296,7 +20553,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": _vm.post.link
     }
-  }, [_vm._v("More Information")])]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!_vm.post.image) ? _c('div', [_c('div', {
+  }, [_vm._v("More Information")])]) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.copy(_vm.post.headline, _vm.post.body)
+    }
+  })], 1)])]) : _vm._e(), _vm._v(" "), (!_vm.post.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(_vm.post.headline))]), _vm._v(" "), _c('div', {
     domProps: {
       "innerHTML": _vm._s(_vm.post.body)
     }
@@ -20305,7 +20572,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": _vm.post.link
     }
-  }, [_vm._v("More Information")])]) : _vm._e()]) : _vm._e()])])
+  }, [_vm._v("More Information")])]) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.copy(_vm.post.headline, _vm.post.body)
+    }
+  })], 1) : _vm._e()])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20346,7 +20623,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.callout)
     }
-  })]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._t("copy"), _vm._v(" "), _vm._t("posts")], 2)])])
+  }), _vm._v(" "), (_vm.article.callout) ? _c('div', [_c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.callout
+    }
+  })], 1) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._t("copy"), _vm._v(" "), _vm._t("posts")], 2)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20376,7 +20663,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body
+    }
+  })], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     directives: [{
@@ -20657,7 +20954,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -20674,7 +20981,8 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
-      "article": _vm.article
+      "article": _vm.article,
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "copy"
@@ -20985,7 +21293,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": _vm.article.body,
+      "loading": _vm.loading
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -21075,7 +21388,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [_c('h1', [_vm._v("RSVP for 30th Anniversary Gala")]), _vm._v(" "), _c('h3', [_vm._v("Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("Fill out the form below to RSVP for the 30th Anniversary Gala.")]), _vm._v(" "), _c('alert', {
+  }, [_c('h1', [_vm._v("RSVP for 30th Anniversary Gala")]), _vm._v(" "), _c('h3', [_vm._v("Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm")]), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": "RSVP for 30th Anniversary Gala, Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm. Fill out the form below to RSVP for the 30th Anniversary Gala."
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("Fill out the form below to RSVP for the 30th Anniversary Gala.")]), _vm._v(" "), _c('alert', {
     attrs: {
       "show": _vm.showTop,
       "placement": "top-right",
@@ -21512,7 +21835,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "col-md-8"
-    }, [_c('div', {
+    }, [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(post.body)
       }
@@ -21531,7 +21854,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "to": '/blog/' + post.slug
       }
-    }, [_vm._v("Read Post")])], 1) : _vm._e()])])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('div', {
+    }, [_vm._v("Read Post")])], 1) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.loading),
+        expression: "!loading"
+      }],
+      attrs: {
+        "text": _vm.copy(post.headline, post.body)
+      }
+    })], 1)])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(post.body)
       }
@@ -21568,13 +21901,21 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
-      "title": "Board of Directors",
-      "subtitle": "Our Management",
-      "hero": ""
+      "article": _vm.article,
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "copy"
-  })])
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  }), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": _vm.article.body,
+      "loading": _vm.loading
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -21600,7 +21941,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -21625,7 +21976,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"
-  }, [_vm._m(0), _vm._v(" "), _c('p', [_vm._v("\"Shanti\" is a Sanskrit word meaning \"Inner Peace\" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity")]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('p', [_vm._v("\"Shanti\" is a Sanskrit word meaning \"Inner Peace\" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity.")]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": "Shanti is a Sanskrit word meaning Inner Peace and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity."
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "subscribe-box"
   }, [_c('h5', {
     staticClass: "bold"
@@ -21674,7 +22029,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "alert alert-success"
   }, [_vm._v("\n                                    " + _vm._s(_vm.subscriptionResult) + "\n                                ")]) : _vm._e(), _vm._v(" "), (!_vm.subscriptionSuccess && _vm.subscriptionResult) ? _c('div', {
     staticClass: "alert alert-danger"
-  }, [_vm._v("\n                                    " + _vm._s(_vm.subscriptionResult) + "\n                                ")]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                                    " + _vm._s(_vm.subscriptionResult) + "\n                                ")]) : _vm._e()])])], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"
@@ -21714,7 +22069,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "tag": "li"
       }
     }, [_c('a', [_vm._v(_vm._s(event.event_name))])])
-  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)])])]), _vm._v(" "), _c('footer', [_c('div', {
+  }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3 col-sm-6"
+  }, [_c('div', {
+    staticClass: "foot-item"
+  }, [_vm._m(5), _vm._v(" "), _c('div', {
+    staticClass: "foot-item-content address"
+  }, [_vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                                Monday through Friday\n                            ")]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": "Phoenix Shanti Group 2345 West Glendale Avenue,Phoenix, Arizona 85021. Main Office : (602) 279-0008. Secure Fax : (602) 279-2004. Email : info@shantiaz.org. Hours : 8 am to 4 pm, Monday through Friday"
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(12), _vm._v(" "), _vm._m(13), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15), _vm._v(" "), _vm._m(16), _vm._v(" "), _c('p', {
+    staticClass: "add"
+  }, [_vm._v("\n                                 through Friday; 9 am - 5 pm, Saturday\n                            ")]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": "Second Chances Store, 4015 N 16th Street, Suites E-F, Phoenix AZ, 85016. Store : (602) 283-0100. Store Fax : (602) 283-0101.  Store Hours : 9 am to 6 pm, Monday through Friday; 9 am to 5 pm, Saturday"
+    }
+  })], 1)])])])])]), _vm._v(" "), _c('footer', [_c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -21727,7 +22100,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/",
       "exact": ""
     }
-  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('div', {
+  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _vm._m(17), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('ul', {
     staticClass: "list-inline pull-right"
@@ -21933,31 +22306,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-3 col-sm-6"
-  }, [_c('div', {
-    staticClass: "foot-item"
-  }, [_c('h5', {
+  return _c('h5', {
     staticClass: "bold"
   }, [_c('i', {
     staticClass: "fa fa-building-o"
-  }), _vm._v("  Contact Us")]), _vm._v(" "), _c('div', {
-    staticClass: "foot-item-content address"
-  }, [_c('h6', {
+  }), _vm._v("  Contact Us")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h6', {
     staticClass: "bold"
   }, [_c('i', {
     staticClass: "fa fa-home"
-  }), _vm._v("  Phoenix Shanti Group")]), _vm._v(" "), _c('p', {
+  }), _vm._v("  Phoenix Shanti Group")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "add"
-  }, [_vm._v("\n                                2345 West Glendale Avenue,"), _c('br'), _vm._v("\n                                Phoenix, Arizona 85021\n                            ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("\n                                2345 West Glendale Avenue,"), _c('br'), _vm._v("\n                                Phoenix, Arizona 85021\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-phone"
-  }), _vm._v(" Main Office : (602) 279-0008\n                            ")]), _vm._v(" "), _c('p', {
+  }), _vm._v(" Main Office : (602) 279-0008\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-fax"
-  }), _vm._v(" Secure Fax : (602) 279-2004\n                            ")]), _vm._v(" "), _c('p', {
+  }), _vm._v(" Secure Fax : (602) 279-2004\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-envelope"
@@ -21965,33 +22342,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "mailto:info@shantiaz.org"
     }
-  }, [_vm._v("info@shantiaz.org")])]), _vm._v(" "), _c('p', {
+  }, [_vm._v("info@shantiaz.org")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-calendar"
-  }), _vm._v(" Hours : 8 am - 4 pm\n                            ")]), _vm._v(" "), _c('p', {
-    staticClass: "add"
-  }, [_vm._v("\n                                Monday through Friday\n                            ")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h6', {
+  }), _vm._v(" Hours : 8 am - 4 pm\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h6', {
     staticClass: "bold"
   }, [_c('i', {
     staticClass: "fa fa-home"
-  }), _vm._v(" 2nd Chances Store")]), _vm._v(" "), _c('p', {
+  }), _vm._v(" 2nd Chances Store")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "add"
-  }, [_vm._v("\n                                4015 N 16th Street, Suites E-F,"), _c('br'), _vm._v("\n                                Phoenix AZ, 85016\n                            ")]), _vm._v(" "), _c('p', {
+  }, [_vm._v("\n                                4015 N 16th Street, Suites E-F,"), _c('br'), _vm._v("\n                                Phoenix AZ, 85016\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-phone"
-  }), _vm._v(" Store : (602) 283-0100\n                            ")]), _vm._v(" "), _c('p', {
+  }), _vm._v(" Store : (602) 283-0100\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-fax"
-  }), _vm._v(" Store Fax : (602) 283-0101\n                            ")]), _vm._v(" "), _c('p', {
+  }), _vm._v(" Store Fax : (602) 283-0101\n                            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-calendar"
-  }), _vm._v(" Store Hours : 9 am - 6 pm, Monday\n                            ")]), _vm._v(" "), _c('p', {
-    staticClass: "add"
-  }, [_vm._v("\n                                 through Friday; 9 am - 5 pm, Saturday\n                            ")]), _vm._v(" "), _c('p')])])])
+  }), _vm._v(" Store Hours : 9 am - 6 pm, Monday\n                            ")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4"
@@ -22070,7 +22455,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -22096,7 +22491,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -22212,7 +22617,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v("Read More...")])], 1)]), _vm._v(" "), _c('hr')])
+    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.loading),
+        expression: "!loading"
+      }],
+      attrs: {
+        "text": _vm.copy(event.event_name, event.event_callout)
+      }
+    })], 1)]), _vm._v(" "), _c('hr')])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -22266,7 +22681,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": _vm.article.body,
+      "loading": _vm.loading
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -22334,7 +22754,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": _vm.box.link
     }
-  }, [_vm._v(_vm._s(_vm.box.en_title))])], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.box.en_copy))])])])
+  }, [_vm._v(_vm._s(_vm.box.en_title))])], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.box.en_copy))]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": _vm.copy
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -22353,6 +22777,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row",
     staticStyle: {
       "margin-bottom": "20px"
+    },
+    attrs: {
+      "loading": _vm.loading
     }
   }, [(_vm.member.staff) ? _c('div', [(_vm.member.staff.image) ? _c('div', [_c('div', {
     staticClass: "col-md-4"
@@ -22380,17 +22807,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-phone"
-  }), _vm._v(" 602.279.0008 x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number) + " x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
     attrs: {
       "href": 'tel:' + _vm.member.phone_number
     }
   }, [_c('i', {
     staticClass: "fa fa-phone"
-  }), _vm._v(" 602.283-0100")])]) : _vm._e()])]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.member.staff.bio) ? _c('div', [_c('div', {
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number))])]) : _vm._e()])]), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.contact(_vm.member.first_name, _vm.member.last_name, _vm.member.staff.title, _vm.member.email, _vm.member.phone_number)
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.member.staff.bio) ? _c('div', [_c('div', {
     domProps: {
       "innerHTML": _vm._s(_vm.member.staff.bio)
     }
-  })]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.bio) ? _c('div', [_c('p', [_vm._v("Profile information is unavailable.")])]) : _vm._e()])]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.image) ? _c('div', [(_vm.member.staff.bio) ? _c('div', [_c('div', {
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.member.staff.bio
+    }
+  })], 1) : _vm._e(), _vm._v(" "), (!_vm.member.staff.bio) ? _c('div', [_c('p', [_vm._v("Profile information is unavailable.")]), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": "Profile information is unavailable."
+    }
+  })], 1) : _vm._e()], 1)]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.image) ? _c('div', [(_vm.member.staff.bio) ? _c('div', [_c('div', {
     staticClass: "col-md-12"
   }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
     staticClass: "team-links"
@@ -22406,17 +22863,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-phone"
-  }), _vm._v(" 602.279.0008 x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number) + " x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
     attrs: {
       "href": 'tel:' + _vm.member.phone_number
     }
   }, [_c('i', {
     staticClass: "fa fa-phone"
-  }), _vm._v(" 602.283-0100")])]) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number))])]) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     domProps: {
       "innerHTML": _vm._s(_vm.member.staff.bio)
     }
-  })])]) : _vm._e()]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('hr')])
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.member.staff.bio
+    }
+  })], 1)]) : _vm._e()]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('hr')])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -22442,7 +22909,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  })])])
+  }), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": _vm.article.body,
+      "loading": _vm.loading
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -32642,7 +33114,7 @@ module.exports = __webpack_require__(12);
 
 var Component = __webpack_require__(0)(
   /* script */
-  null,
+  __webpack_require__(192),
   /* template */
   __webpack_require__(171),
   /* scopeId */
@@ -32675,15 +33147,19 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "text-center"
-  }, [_c('h3', [_c('span', {
+  }, [_vm._m(0), _vm._v(" "), _c('p', [_vm._v("Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.")]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": "Phoenix Shanti Group. Most Amazing HIV Agency in the Valley. Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society."
+    }
+  })], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h3', [_c('span', {
     staticClass: "color"
   }, [_vm._v("Phoenix Shanti Group")]), _vm._v(". Most Amazing HIV Agency in the Valley. "), _c('span', {
     staticClass: "color"
-  }, [_vm._v("Literally")]), _vm._v(".")]), _vm._v(" "), _c('p', [_vm._v("Although we keep a low profile, we're helping men and women with substance abuse problems turn their lives around every day. Many of our clients go on to be successful, productive members of society.")])])
+  }, [_vm._v("Literally")]), _vm._v(".")])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -32735,6 +33211,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
 //
 //
 //
@@ -32763,12 +33241,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        'psg-progress-bar': __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default.a
+        'psg-progress-bar': __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default.a,
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
     }
 });
 
@@ -32779,7 +33261,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4 col-sm-6"
-  }, [_c('h4', [_vm._v("Our Fundraising")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.")]), _vm._v(" "), _c('h6', [_vm._v("General Funds")]), _vm._v(" "), _c('psg-progress-bar', {
+  }, [_c('h4', [_vm._v("Our Fundraising")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.")]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": "Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year."
+    }
+  }), _vm._v(" "), _c('h6', [_vm._v("General Funds")]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-red",
       "now": "30",
@@ -33433,17 +33919,21 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
     staticClass: "row"
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('psg-progress-bars')], 1)])
+  }, [_c('div', {
+    staticClass: "col-md-4 col-sm-6"
+  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": "Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence."
+    }
+  })], 1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('psg-progress-bars')], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "block-heading-two text-center"
   }, [_c('h3', [_c('span', [_vm._v("Our Agency")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-4 col-sm-6"
-  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.")]), _vm._v(" "), _c('ul', {
+  return _c('ul', {
     staticClass: "list-2"
-  }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])]), _vm._v(" "), _c('br')])
+  }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4 col-sm-6"
@@ -33533,6 +34023,8 @@ if (false) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBars__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
 //
 //
 //
@@ -33594,12 +34086,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        'psg-progress-bars': __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default.a
+        'psg-progress-bars': __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default.a,
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
     }
 });
 
@@ -33700,7 +34196,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v("Read More...")])], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
+      attrs: {
+        "text": _vm.copy(event.headline, event.hero_text)
+      }
+    })], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(event.hero_text)
       }
@@ -33714,7 +34214,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v("Read More...")])], 1) : _vm._e()])
+    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
+      attrs: {
+        "text": _vm.copy(event.headline, event.hero_text)
+      }
+    })], 1) : _vm._e()])
   }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -33733,6 +34237,8 @@ if (false) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
 //
 //
 //
@@ -33783,6 +34289,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -33807,9 +34318,136 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
     },
 
+    methods: {
+        copy: function copy(headline, heroText) {
+            return headline + ' ' + heroText;
+        }
+    },
     components: {
         Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
-        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"]
+        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"],
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
+    }
+});
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(191),
+  /* template */
+  __webpack_require__(190),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/misc/TextToSpeech.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] TextToSpeech.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-25888cdc", Component.options)
+  } else {
+    hotAPI.reload("data-v-25888cdc", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "btn btn-default btn-xs",
+    attrs: {
+      "type": "button",
+      "text": _vm.text
+    },
+    on: {
+      "click": _vm.speak
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-deaf"
+  }), _vm._v(" Speak")])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-25888cdc", module.exports)
+  }
+}
+
+/***/ }),
+/* 191 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['text'],
+    methods: {
+        speak: function speak() {
+            if ('speechSynthesis' in window) {
+                var msg = new SpeechSynthesisUtterance();
+                msg.rate = 0.8;
+                msg.pitch = 1.0;
+                msg.text = this.textOnly;
+
+                speechSynthesis.speak(msg);
+            } else {
+                alert('Speech synthesis not available in your browser. Please upgrade to a modern browser.');
+            }
+        }
+    },
+    computed: {
+        textOnly: function textOnly() {
+            var div = document.createElement('div');
+            div.innerHTML = this.text;
+            return div.textContent || div.innerText || '';
+        }
+    }
+});
+
+/***/ }),
+/* 192 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech___default.a
     }
 });
 

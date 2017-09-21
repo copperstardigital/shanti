@@ -10,7 +10,9 @@
                         <div class="foot-item">
                             <!-- Heading -->
                             <h5 class="bold"><i class="fa fa-user"></i>&nbsp;&nbsp;About</h5>
-                            <p>"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity</p>
+                            <p>"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity.</p>
+
+                            <psg-speak text="Shanti is a Sanskrit word meaning Inner Peace and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity."></psg-speak>
                             <hr />
                             <div class="brand-bg">
                                 <!-- Social Media Icons -->
@@ -149,6 +151,8 @@
                                     Monday through Friday
                                 </p>
 
+                                <psg-speak text="Phoenix Shanti Group 2345 West Glendale Avenue,Phoenix, Arizona 85021. Main Office : (602) 279-0008. Secure Fax : (602) 279-2004. Email : info@shantiaz.org. Hours : 8 am to 4 pm, Monday through Friday"></psg-speak>
+
                                 <hr />
 
                                 <h6 class="bold"><i class="fa fa-home"></i>&nbsp;2nd Chances Store</h6>
@@ -170,7 +174,7 @@
                                      through Friday; 9 am - 5 pm, Saturday
                                 </p>
 
-                                </p>
+                                <psg-speak text="Second Chances Store, 4015 N 16th Street, Suites E-F, Phoenix AZ, 85016. Store : (602) 283-0100. Store Fax : (602) 283-0101.  Store Hours : 9 am to 6 pm, Monday through Friday; 9 am to 5 pm, Saturday"></psg-speak>
                             </div>
                         </div>
                     </div>
@@ -220,6 +224,8 @@
 </template>
 
 <script>
+    import TextToSpeech from '../components/misc/TextToSpeech';
+
     export default {
         data() {
             return {
@@ -269,6 +275,9 @@
         beforeMount() {
             this.getPosts();
             this.getEvents();
+        },
+        components: {
+            'psg-speak': TextToSpeech
         }
     }
 </script>
