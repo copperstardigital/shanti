@@ -19,4 +19,7 @@ window.saCache = superagentCache;
 var http = require('superagent');
 window.http = http;
 
+import VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

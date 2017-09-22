@@ -1581,6 +1581,18 @@ a.brown:focus {
   background: #ff2edf;
   color: #ffffff;
 }
+.btn.btn-lpurple {
+  background: #b188ff;
+  color: #ffffff;
+  border: 1px solid #b188ff;
+}
+.btn.btn-lpurple:hover,
+.btn.btn-lpurple:focus,
+.btn.btn-lpurple.active,
+.btn.btn-lpurple:active {
+  background: #FFF;
+  color: #000;
+}
 .btn.btn-rose.btn-outline {
   background: transparent !important;
   border: 1px solid #ff2edf !important;

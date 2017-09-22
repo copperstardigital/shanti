@@ -1,8 +1,26 @@
 <template>
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
-            <div v-html="article.body"></div>
-            <psg-speak v-show="!loading" :text="article.body" primary="true"></psg-speak>
+            <div class="row">
+                <div class="col-md-4">
+                    <div v-show="!loading">
+                        <img src="/img/transitional.png" class="img-responsive" alt="Transitional Housing" />
+
+                        <hr />
+
+                        <img src="/img/triplex.png" class="img-responsive" alt="Triplex" />
+
+                        <hr />
+
+                        <img src="/img/permanent.jpg" class="img-responsive" alt="Permanent Housing" />
+
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div v-html="article.body"></div>
+                    <psg-speak v-show="!loading" :text="article.body" primary="true"></psg-speak>
+                </div>
+            </div>
         </div>
     </psg-page>
 </template>

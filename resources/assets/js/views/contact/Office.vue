@@ -14,17 +14,19 @@
 
                         <h1>Contact Us</h1>
 
-                        <form>
-                            <div class="form-group">
+                        <form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
+                            <div class="form-group" :class="{'has-error': errors.has('emailAddress') }">
                                 <label for="name">Name:</label>
-                                <input class="form-control" type="text" name="text" id="name" v-model="name" />
+                                <input class="form-control" type="text" name="text" id="name" v-model="name" v-validate.initial="name" data-vv-rules="required"/>
+                                <p class="text-danger" v-if="errors.has('name')">{{ errors.first('name') }}</p>
+
                                 <p class="help-block">Required</p>
                             </div>
 
-                            <div class="form-group">
-                                <label for="email_address">Email:</label>
-                                <input class="form-control" type="email" name="email_address" id="email_address" v-model="emailAddress"/>
-
+                            <div class="form-group" :class="{'has-error': errors.has('emailAddress') }">
+                                <label for="emailAddress">Email:</label>
+                                <input class="form-control" type="email" name="emailAddress" id="emailAddress" v-model="emailAddress" v-validate.initial="emailAddress" data-vv-rules="required|email"/>
+                                <p class="text-danger" v-if="errors.has('emailAddress')">A valid email address is required.</p>
                                 <p class="help-block">Required</p>
                             </div>
 
@@ -33,19 +35,23 @@
                                 <input class="form-control" type="email" name="phone" id="phone" v-model="phone" />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" :class="{'has-error': errors.has('subject') }">
                                 <label for="subject">Subject:</label>
-                                <input class="form-control" type="text" name="subject" id="subject" v-model="subject"/>
+                                <input class="form-control" type="text" name="subject" id="subject" v-model="subject" v-validate.initial="subject" data-vv-rules="required"/>
+                                <p class="text-danger" v-if="errors.has('subject')">{{ errors.first('subject') }}</p>
+
                                 <p class="help-block">Required</p>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" :class="{'has-error': errors.has('message') }">
                                 <label for="message">Message:</label>
-                                <textarea class="form-control" id="message" name="message" rows="10" v-model="message"></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="10" v-model="message" v-validate.initial="message" data-vv-rules="required"></textarea>
+                                <p class="text-danger" v-if="errors.has('message')">{{ errors.first('message') }}</p>
+
                                 <p class="help-block">Required</p>
                             </div>
 
-                            <button type="submit" class="btn btn-color pull-right" @click.prevent="sendMessage">Send Message</button>
+                            <button type="submit" class="btn btn-color pull-right">Send Message</button>
                         </form>
 
                     </div>
@@ -69,11 +75,20 @@
                 message: '',
                 showTop: false,
                 type: 'success',
-                flash: ''
+                flash: '',
+                formSubmitted: false
             }
         },
         methods: {
+            validateBeforeSubmit(e) {
+                this.$validator.validateAll();
+                if (!this.errors.any()) {
+                    this.sendMessage();
+                }
+            },
             sendMessage()  {
+                this.formSubmitted = true;
+
                 axios.post('/contact', {
                     name: this.name,
                     email: this.emailAddress,
