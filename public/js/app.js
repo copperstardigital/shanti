@@ -16810,6 +16810,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -16821,21 +16829,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             lastName: '',
             emailAddress: '',
             phone: '',
-            position: 'None',
+            position: '',
             comments: '',
             showTop: false,
             sending: false,
             type: 'success',
             flash: '',
-            article: {}
+            article: {},
+            formSubmitted: false
         };
     },
 
     methods: {
+        validateBeforeSubmit: function validateBeforeSubmit(e) {
+            this.$validator.validateAll();
+            if (!this.errors.any()) {
+                this.volunteer();
+            }
+        },
         volunteer: function volunteer() {
             var _this = this;
 
             this.sending = true;
+            this.formSubmitted = true;
 
             axios.post('/volunteer/form', {
                 name: this.firstName + ' ' + this.lastName,
@@ -25300,8 +25316,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "icon-ok-circled alert-icon-float-left"
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('form', [_c('div', {
-    staticClass: "form-group"
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), (!_vm.formSubmitted) ? _c('form', {
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.validateBeforeSubmit($event)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.has('firstName')
+    }
   }, [_c('label', {
     attrs: {
       "for": "first_name"
@@ -25312,11 +25338,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.firstName),
       expression: "firstName"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.firstName),
+      expression: "firstName",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "id": "first_name"
+      "id": "first_name",
+      "data-vv-rules": "required"
     },
     domProps: {
       "value": (_vm.firstName)
@@ -25327,8 +25362,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.firstName = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+  }), _vm._v(" "), (_vm.errors.has('firstName')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v("The first name is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.has('lastName')
+    }
   }, [_c('label', {
     attrs: {
       "for": "last_name"
@@ -25339,11 +25381,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.lastName),
       expression: "lastName"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.lastName),
+      expression: "lastName",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "id": "last_name"
+      "id": "last_name",
+      "data-vv-rules": "required"
     },
     domProps: {
       "value": (_vm.lastName)
@@ -25354,8 +25405,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.lastName = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+  }), _vm._v(" "), (_vm.errors.has('lastName')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v("The last name is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.has('emailAddress')
+    }
   }, [_c('label', {
     attrs: {
       "for": "email"
@@ -25366,11 +25424,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.emailAddress),
       expression: "emailAddress"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.emailAddress),
+      expression: "emailAddress",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "id": "email"
+      "id": "email",
+      "data-vv-rules": "required|email"
     },
     domProps: {
       "value": (_vm.emailAddress)
@@ -25381,7 +25448,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.emailAddress = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.has('emailAddress')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v("A valid email address is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
@@ -25409,7 +25480,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
+    staticClass: "form-group",
+    class: {
+      'has-error': _vm.errors.has('position')
+    }
   }, [_c('label', {
     attrs: {
       "for": "position"
@@ -25420,10 +25494,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.position),
       expression: "position"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.position),
+      expression: "position",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
-      "id": "position"
+      "id": "position",
+      "data-vv-rules": "required"
     },
     on: {
       "change": function($event) {
@@ -25438,7 +25521,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('option', {
     attrs: {
-      "value": "None"
+      "value": ""
     }
   }, [_vm._v("Select one...")]), _vm._v(" "), _c('option', {
     attrs: {
@@ -25476,7 +25559,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "Other"
     }
-  }, [_vm._v("Other")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Other")])]), _vm._v(" "), (_vm.errors.has('position')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v("The position is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
@@ -25508,14 +25595,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('button', {
     staticClass: "btn btn-color pull-right",
     attrs: {
-      "type": "button",
+      "type": "submit",
       "disabled": _vm.sending
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.volunteer($event)
-      }
     }
   }, [_vm._v("Volunteer "), _c('i', {
     directives: [{
@@ -25525,7 +25606,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "sending"
     }],
     staticClass: "fa fa-refresh fa-spin"
-  })])])]), _vm._v(" "), _c('br', {
+  })])])]) : _vm._e(), _vm._v(" "), _c('br', {
     staticStyle: {
       "clear": "both"
     }

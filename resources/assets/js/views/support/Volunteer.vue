@@ -17,20 +17,26 @@
                             <p>{{ flash }}</p>
                         </alert>
 
-                        <form>
-                            <div class="form-group">
+                        <form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
+                            <div class="form-group" :class="{'has-error': errors.has('firstName')}">
                                 <label for="first_name">First Name</label>
-                                <input type="text" id="first_name" v-model="firstName" class="form-control"/>
+                                <input type="text" id="first_name" v-model="firstName" class="form-control" v-validate.initial="firstName" data-vv-rules="required"/>
+                                <p class="text-danger" v-if="errors.has('firstName')">The first name is required.</p>
+                                <p class="help-block">Required</p>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" :class="{'has-error': errors.has('lastName') }">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" id="last_name" v-model="lastName" class="form-control"/>
+                                <input type="text" id="last_name" v-model="lastName" class="form-control" v-validate.initial="lastName" data-vv-rules="required"/>
+                                <p class="text-danger" v-if="errors.has('lastName')">The last name is required.</p>
+                                <p class="help-block">Required</p>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" :class="{'has-error': errors.has('emailAddress') }">
                                 <label for="email">Email Address</label>
-                                <input type="text" id="email" v-model="emailAddress" class="form-control"/>
+                                <input type="text" id="email" v-model="emailAddress" class="form-control" v-validate.initial="emailAddress" data-vv-rules="required|email"/>
+                                <p class="text-danger" v-if="errors.has('emailAddress')">A valid email address is required.</p>
+                                <p class="help-block">Required</p>
                             </div>
 
                             <div class="form-group">
@@ -38,10 +44,10 @@
                                 <input type="text" id="phone" v-model="phone" class="form-control"/>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" :class="{'has-error': errors.has('position') }">
                                 <label for="position">Position</label>
-                                <select v-model="position" class="form-control" id="position">
-                                    <option value="None">Select one...</option>
+                                <select v-model="position" class="form-control" id="position" v-validate.initial="position" data-vv-rules="required">
+                                    <option value="">Select one...</option>
                                     <option value="Food Pantry">Food Pantry</option>
                                     <option value="Personal Hygiene Pantry">Personal Hygiene Pantry</option>
                                     <option value="Shelter Construction/Repair">Shelter Construction/Repair</option>
@@ -52,6 +58,8 @@
                                     <option value="Corporate Incentives Coordinator">Corporate Incentives Coordinator</option>
                                     <option value="Other">Other</option>
                                 </select>
+                                <p class="text-danger" v-if="errors.has('position')">The position is required.</p>
+                                <p class="help-block">Required</p>
                             </div>
 
                             <div class="form-group">
@@ -60,7 +68,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="button" class="btn btn-color pull-right" @click.prevent="volunteer" :disabled="sending">Volunteer <i v-show="sending" class="fa fa-refresh fa-spin"></i></button>
+                                <button type="submit" class="btn btn-color pull-right" :disabled="sending">Volunteer <i v-show="sending" class="fa fa-refresh fa-spin"></i></button>
                             </div>
                         </form>
 
@@ -83,18 +91,26 @@
                 lastName: '',
                 emailAddress: '',
                 phone: '',
-                position: 'None',
+                position: '',
                 comments: '',
                 showTop: false,
                 sending: false,
                 type: 'success',
                 flash: '',
-                article: {}
+                article: {},
+                formSubmitted: false
             }
         },
         methods: {
+            validateBeforeSubmit(e) {
+                this.$validator.validateAll();
+                if (!this.errors.any()) {
+                    this.volunteer();
+                }
+            },
             volunteer() {
                 this.sending = true;
+                this.formSubmitted = true;
 
                 axios.post('/volunteer/form', {
                     name: this.firstName + ' ' + this.lastName,
