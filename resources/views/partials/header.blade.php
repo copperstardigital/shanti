@@ -61,5 +61,66 @@
 <body>
 
 <div id="app">
-    <psg-header></psg-header>
+    @if (!app()->isDownForMaintenance())
+        <psg-header></psg-header>
+    @else
+        <div class="outer">
+
+            <!-- Top bar starts -->
+            <div class="top-bar">
+                <div class="container">
+
+                    <!-- Contact starts -->
+                    <div class="tb-contact pull-left">
+                        <!-- Email -->
+                        <i class="fa fa-envelope color"></i> &nbsp; <a href="mailto:info@shantiaz.org">info@shantiaz.org</a>
+                        &nbsp;&nbsp;
+                        <!-- Phone -->
+                        <i class="fa fa-phone color"></i> &nbsp;(602) 279-0008
+                    </div>
+                    <!-- Contact ends -->
+
+                    <!-- Social media starts -->
+                    <div class="tb-social pull-right">
+                        <div class="brand-bg text-right">
+                            <!-- Brand Icons -->
+                            <a target="_blank" href="http://www.facebook.com/phoenixshantigroup" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+                            <a target="_blank" href="http://www.facebook.com/shanti2ndchances" class="facebook"><i class="fa fa-facebook square-2 rounded-1"></i></a>
+                            <a target="_blank" href="https://twitter.com/PhoenixShanti" class="twitter"><i class="fa fa-twitter square-2 rounded-1"></i></a>
+                            <a target="_blank" href="https://www.youtube.com/user/PhoenixShantiGroup" class="youtube"><i class="fa fa-youtube square-2 rounded-1"></i></a>
+                        </div>
+                    </div>
+                    <!-- Social media ends -->
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <!-- Top bar ends -->
+
+            <!-- Header two Starts -->
+            <div class="header-2">
+
+                <!-- Container -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!-- Logo section -->
+                            <div class="logo">
+                                <img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+
+                        </div>
+
+                        <div class="col-md-2">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
