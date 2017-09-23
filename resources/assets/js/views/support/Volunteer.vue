@@ -8,6 +8,10 @@
                 </div>
                 <div class="col-md-6">
                     <div v-show="!loading" class="well">
+                        <img src="/img/volunteer.jpg" class="img-responsive" alt="Volunteer" />
+
+                        <hr />
+
                         <h3>Become a Volunteer</h3>
 
                         <p>Fill out the form below to inquire about volunteer opportunities.</p>

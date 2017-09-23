@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    import TextToSpeech from '../../components/misc/TextToSpeech';
+
     export default {
         data() {
             return {
@@ -33,6 +35,9 @@
                 }).catch(error => {
                 console.error(error);
             });
+        },
+        components: {
+            'psg-speak': TextToSpeech
         }
     }
 </script>

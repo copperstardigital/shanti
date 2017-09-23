@@ -1,8 +1,17 @@
 <template>
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
-            <div v-html="article.body"></div>
-            <psg-speak v-show="!loading" :text="article.body" primary="true"></psg-speak>
+            <div class="row">
+                <div class="col-md-4">
+                    <div v-show="!loading">
+                        <img src="/img/first_step.jpg" alt="First Step" class="img-responsive" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div v-html="article.body"></div>
+                    <psg-speak v-show="!loading" :text="article.body" primary="true"></psg-speak>
+                </div>
+            </div>
         </div>
     </psg-page>
 </template>
