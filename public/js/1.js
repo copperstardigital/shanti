@@ -190,7 +190,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "team-member"
   }, [_c('div', {
     staticClass: "team-links"
-  }, [(_vm.member.email) ? _c('div', [_c('a', {
+  }, [(_vm.member.email && !_vm.member.staff.hide_email) ? _c('div', [_c('a', {
     attrs: {
       "href": 'mailto:' + _vm.member.email
     }
@@ -248,7 +248,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
     staticClass: "team-links"
-  }, [(_vm.member.email) ? _c('div', [_c('a', {
+  }, [(_vm.member.email && !_vm.member.staff.hide_email) ? _c('div', [_c('a', {
     attrs: {
       "href": 'mailto:' + _vm.member.email
     }

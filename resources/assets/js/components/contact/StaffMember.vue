@@ -12,7 +12,7 @@
 
                         <div class="team-member">
                             <div class="team-links">
-                                <div v-if="member.email">
+                                <div v-if="member.email && !member.staff.hide_email">
                                     <a :href="'mailto:' + member.email"><i class="fa fa-envelope"></i> {{ member.email }}</a>
                                 </div>
                                 <div v-if="member.extension && member.phone_number">
@@ -46,7 +46,7 @@
                             <h5>{{ member.staff.title }}</h5>
 
                             <div class="team-links">
-                                <div v-if="member.email">
+                                <div v-if="member.email && !member.staff.hide_email">
                                     <a :href="'mailto:' + member.email"><i class="fa fa-envelope"></i> {{ member.email }}</a>
                                 </div>
                                 <div v-if="member.extension && member.phone_number">
