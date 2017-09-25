@@ -16,7 +16,7 @@ class MailChimpNotification implements NotificationInterface {
         $options = array(
             'list_id'    => env('MAILCHIMP_LIST_ID'),
             'subject'    => $title,
-            'from_name'  => 'Lambda Phoenix Center',
+            'from_name'  => 'Phoenix Shanti Group',
             'from_email' => 'info@shantiaz.org',
             'to_name'    => 'Phoenix Shanti Group Supporter'
         );

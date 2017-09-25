@@ -57,7 +57,7 @@ class CronController extends Controller
             'articles' => $articles,
             'headline' => 'News From the Phoenix Shanti Group'
         ])->render();
-        // echo $body; die();
+        //echo $body; die();
 
         $notifier->notify('Weekly News from the Phoenix Shanti Group', $body);
     }

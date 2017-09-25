@@ -102,23 +102,12 @@
                             <h5 class="bold"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Recent Images</h5>
                             <!-- Foot Item Content -->
                             <div class="foot-item-content">
-                                <!-- Foot Recent Image -->
-                                <div class="foot-recent-img">
-                                    <a href="img/gallery/small/1.jpg" class="lightbox"><img src="img/gallery/small/1.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                    <a href="img/gallery/small/2.jpg" class="lightbox"><img src="img/gallery/small/2.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                    <a href="img/gallery/small/3.jpg" class="lightbox"><img src="img/gallery/small/3.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                </div>
-                                <!-- Foot Recent Image -->
-                                <div class="foot-recent-img">
-                                    <a href="img/gallery/small/1.jpg" class="lightbox"><img src="img/gallery/small/1.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                    <a href="img/gallery/small/2.jpg" class="lightbox"><img src="img/gallery/small/2.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                    <a href="img/gallery/small/3.jpg" class="lightbox"><img src="img/gallery/small/3.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                </div>
-                                <div class="foot-recent-img">
-                                    <a href="img/gallery/small/1.jpg" class="lightbox"><img src="img/gallery/small/1.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                    <a href="img/gallery/small/2.jpg" class="lightbox"><img src="img/gallery/small/2.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                    <a href="img/gallery/small/3.jpg" class="lightbox"><img src="img/gallery/small/3.jpg" alt="" class="img-responsive img-thumbnail" /></a>
-                                </div>
+                                <lightbox
+                                        id="shantiLightbox"
+                                        :images="images"
+                                        :image_class=" 'img-responsive img-rounded' "
+                                        :album_class=" 'my-album-class' ">
+                                </lightbox>
                             </div>
                         </div>
                     </div>
@@ -225,6 +214,7 @@
 
 <script>
     import TextToSpeech from '../components/misc/TextToSpeech';
+    import Lightbox from 'vue-simple-lightbox';
 
     export default {
         data() {
@@ -233,7 +223,25 @@
                 events: [],
                 email: '',
                 subscriptionResult: '',
-                subscriptionSuccess: false
+                subscriptionSuccess: false,
+                images : [
+                    {
+                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img1.jpg',
+                        title : 'Image 2'
+                    },
+                    {
+                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img2.jpg',
+                        title : 'Image 3'
+                    },
+                    {
+                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img3.jpg',
+                        title : ''
+                    },
+                    {
+                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img4.jpg',
+                        title : ''
+                    },
+                ]
             }
         },
         methods: {
@@ -277,7 +285,8 @@
             this.getEvents();
         },
         components: {
-            'psg-speak': TextToSpeech
+            'psg-speak': TextToSpeech,
+            Lightbox
         }
     }
 </script>
