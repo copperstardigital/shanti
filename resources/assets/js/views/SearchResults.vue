@@ -87,14 +87,26 @@
                 .then(response => {
                     let articles = response.data.articles;
                     let reformatted = [];
-                    articles.forEach(article => {
-                        reformatted.push({
-                            headline: article.en_headline,
-                            subhead: article.en_subhead,
-                            callout: article.en_callout,
-                            link: article.link
+
+                    if (this.$cookie.get('lang') === 'es') {
+                        articles.forEach(article => {
+                            reformatted.push({
+                                headline: article.es_headline,
+                                subhead: article.es_subhead,
+                                callout: article.es_callout,
+                                link: article.link
+                            });
                         });
-                    });
+                    } else {
+                        articles.forEach(article => {
+                            reformatted.push({
+                                headline: article.en_headline,
+                                subhead: article.en_subhead,
+                                callout: article.en_callout,
+                                link: article.link
+                            });
+                        });
+                    }
 
                     this.articles = reformatted;
                     this.posts = response.data.posts;
