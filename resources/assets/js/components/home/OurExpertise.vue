@@ -1,15 +1,15 @@
 <template>
     <div>
         <div class="block-heading-two text-center">
-            <h3><span>Our Agency</span></h3>
+            <h3 class="color"><span>{{ ourAgency }}</span></h3>
         </div>
 
         <br />
 
         <div class="row">
             <div class="col-md-4 col-sm-6">
-                <h4>Our Expertise</h4>
-                <p>Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.</p>
+                <h4 class="color">{{ ourExpertise }}</h4>
+                <p>{{ ourExpertiseText }}</p>
                 <ul class="list-2">
                     <li>Denounce 1with rhoncus  rhoncus indignation</li>
                     <li>Dislike rhoncus so rhoncus et  rhoncus demoralized</li>
@@ -69,6 +69,29 @@
         components: {
             'psg-progress-bars': ProgressBars,
             'psg-speak': TextToSpeak
+        },
+        computed: {
+            ourAgency() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Nuestra Agencia';
+                } else {
+                    return 'Our Agency';
+                }
+            },
+            ourExpertise() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Nuestra Experiencia';
+                } else {
+                    return 'Our Expertise';
+                }
+            },
+            ourExpertiseText() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Desde el comienzo de la pandemia del VIH / SIDA, el Grupo Phoenix Shanti ha estado proporcionando un salvavidas a hombres y mujeres en el Valle del Sol, proporcionando servicios de hospicio a la vivienda durante sus décadas de existencia.';
+                } else {
+                    return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
+                }
+            }
         }
     }
 </script>

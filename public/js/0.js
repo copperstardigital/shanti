@@ -1,13 +1,115 @@
 webpackJsonp([0],{
 
-/***/ 123:
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_home_Counters__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        //            getCarousel() {
+        //                http
+        //                    .get('/carousel')
+        //                    .use(saCache)
+        //                    .then(response => {
+        //                        this.events = response.body.events;
+        //                    }).catch(error => {
+        //                        console.error(error);
+        //                    });
+        //            }
+    },
+    components: {
+        Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
+        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"],
+        'psg-event-carousel': __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel___default.a,
+        'psg-info-boxes': __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes___default.a,
+        'psg-counters': __WEBPACK_IMPORTED_MODULE_3__components_home_Counters___default.a,
+        'psg-intro-text': __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText___default.a,
+        'psg-our-expertise': __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise___default.a,
+        'psg-logo-carousel': __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel___default.a,
+        'psg-our-team': __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam___default.a
+    }
+});
+
+/***/ }),
+
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(89),
+  __webpack_require__(90),
   /* template */
-  __webpack_require__(161),
+  __webpack_require__(162),
   /* scopeId */
   null,
   /* cssModules */
@@ -35,14 +137,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 124:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(90),
+  __webpack_require__(91),
   /* template */
-  __webpack_require__(166),
+  __webpack_require__(167),
   /* scopeId */
   null,
   /* cssModules */
@@ -70,14 +172,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 125:
+/***/ 126:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(91),
+  __webpack_require__(92),
   /* template */
-  __webpack_require__(137),
+  __webpack_require__(138),
   /* scopeId */
   null,
   /* cssModules */
@@ -105,14 +207,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 126:
+/***/ 127:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(92),
+  __webpack_require__(93),
   /* template */
-  __webpack_require__(162),
+  __webpack_require__(163),
   /* scopeId */
   null,
   /* cssModules */
@@ -140,14 +242,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 127:
+/***/ 128:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(93),
+  __webpack_require__(94),
   /* template */
-  __webpack_require__(153),
+  __webpack_require__(154),
   /* scopeId */
   null,
   /* cssModules */
@@ -175,14 +277,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 128:
+/***/ 129:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(94),
+  __webpack_require__(95),
   /* template */
-  __webpack_require__(163),
+  __webpack_require__(164),
   /* scopeId */
   null,
   /* cssModules */
@@ -210,14 +312,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 129:
+/***/ 130:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(95),
+  __webpack_require__(96),
   /* template */
-  __webpack_require__(152),
+  __webpack_require__(153),
   /* scopeId */
   null,
   /* cssModules */
@@ -245,14 +347,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 130:
+/***/ 131:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(96),
+  __webpack_require__(97),
   /* template */
-  __webpack_require__(138),
+  __webpack_require__(139),
   /* scopeId */
   null,
   /* cssModules */
@@ -280,14 +382,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 131:
+/***/ 132:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(136),
+  __webpack_require__(137),
   /* scopeId */
   null,
   /* cssModules */
@@ -315,14 +417,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 132:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(97),
+  __webpack_require__(98),
   /* template */
-  __webpack_require__(157),
+  __webpack_require__(158),
   /* scopeId */
   null,
   /* cssModules */
@@ -350,14 +452,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 133:
+/***/ 134:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(98),
+  __webpack_require__(99),
   /* template */
-  __webpack_require__(147),
+  __webpack_require__(148),
   /* scopeId */
   null,
   /* cssModules */
@@ -385,7 +487,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 136:
+/***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -403,7 +505,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 137:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -416,7 +518,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.loading),
       expression: "loading"
     }],
-    staticClass: "fa fa-refresh fa-spin fa-5x"
+    staticClass: "fa fa-refresh fa-spin fa-5x color"
   })]), _vm._v(" "), _c('carousel', {
     attrs: {
       "loop": true,
@@ -427,7 +529,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.events), function(event, index) {
     return _c('slide', {
-      key: "index"
+      key: "index",
+      staticClass: "pale-purple"
     }, [(event.image) ? _c('div', [_c('div', {
       staticClass: "row"
     }, [_c('div', {
@@ -451,7 +554,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "col-md-7"
-    }, [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    }, [_c('h1', {
+      staticClass: "color"
+    }, [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(event.hero_text)
       }
@@ -470,7 +575,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "text": _vm.copy(event.headline, event.hero_text),
         "primary": "true"
       }
-    })], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    })], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', {
+      staticClass: "color"
+    }, [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(event.hero_text)
       }
@@ -502,25 +609,27 @@ if (false) {
 
 /***/ }),
 
-/***/ 138:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+  return _c('div', [_c('div', {
+    staticClass: "block-heading-two text-center"
+  }, [_c('h3', {
+    staticClass: "color"
+  }, [_c('span', [_vm._v(_vm._s(_vm.ourAgency))])])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4 col-sm-6"
-  }, [_c('h4', [_vm._v("Our Expertise")]), _vm._v(" "), _c('p', [_vm._v("Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
+  }, [_c('h4', {
+    staticClass: "color"
+  }, [_vm._v(_vm._s(_vm.ourExpertise))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ourExpertiseText))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": "Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.",
       "primary": "true"
     }
-  })], 1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('psg-progress-bars')], 1)])
+  })], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('psg-progress-bars')], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "block-heading-two text-center"
-  }, [_c('h3', [_c('span', [_vm._v("Our Agency")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
     staticClass: "list-2"
   }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])])
@@ -612,9 +721,9 @@ if (false) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(99),
+  __webpack_require__(100),
   /* template */
-  __webpack_require__(159),
+  __webpack_require__(160),
   /* scopeId */
   null,
   /* cssModules */
@@ -642,30 +751,32 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 147:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4 col-sm-6"
-  }, [_c('h4', [_vm._v("Our Fundraising")]), _vm._v(" "), _c('p', [_vm._v("Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.")]), _vm._v(" "), _c('psg-speak', {
+  }, [_c('h4', {
+    staticClass: "color"
+  }, [_vm._v(_vm._s(_vm.ourFundraising))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ourFundraisingText))]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": "Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.",
       "primary": "true"
     }
-  }), _vm._v(" "), _c('h6', [_vm._v("General Funds")]), _vm._v(" "), _c('psg-progress-bar', {
+  }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.generalFunds))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-red",
       "now": "30",
       "goal": "1000"
     }
-  }), _vm._v(" "), _c('h6', [_vm._v("AIDS Walk Arizona")]), _vm._v(" "), _c('psg-progress-bar', {
+  }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.aidsWalkArizona))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-green",
       "now": "500",
       "goal": "1500"
     }
-  }), _vm._v(" "), _c('h6', [_vm._v("Event Dollars Raised")]), _vm._v(" "), _c('psg-progress-bar', {
+  }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.eventDollarsRaised))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-lblue",
       "now": "50",
@@ -683,11 +794,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 152:
+/***/ 153:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._m(0), _vm._v(" "), _c('div', {
+  return _c('div', [_c('div', {
+    staticClass: "block-heading-six"
+  }, [_c('h4', {
+    staticClass: "bg-color"
+  }, [_vm._v(_vm._s(_vm.ourSupporters))])]), _vm._v(" "), _c('div', {
     staticClass: "client-three"
   }, [_c('carousel', {
     attrs: {
@@ -697,7 +812,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "perPage": 1,
       "navigationEnabled": true
     }
-  }, [_c('slide', [_c('div', {
+  }, [_c('slide', {
+    staticClass: "pale-purple"
+  }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
     staticClass: "col-md-3"
@@ -751,7 +868,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/uploads/sponsors/broadway_cares.jpeg",
       "alt": "Broadway Cares"
     }
-  })])])])]), _vm._v(" "), _c('slide', [_c('div', {
+  })])])])]), _vm._v(" "), _c('slide', {
+    staticClass: "pale-purple"
+  }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
     staticClass: "col-md-3"
@@ -805,7 +924,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/uploads/sponsors/triyoung.png",
       "alt": "TriYoung Business Solutions"
     }
-  })])])])]), _vm._v(" "), _c('slide', [_c('div', {
+  })])])])]), _vm._v(" "), _c('slide', {
+    staticClass: "pale-purple"
+  }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
     staticClass: "col-md-3"
@@ -860,13 +981,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "alt": "Trash City Beads"
     }
   })])])])])], 1)], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "block-heading-six"
-  }, [_c('h4', {
-    staticClass: "bg-color"
-  }, [_vm._v("Our Supporters")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -877,7 +992,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 153:
+/***/ 154:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -905,7 +1020,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 157:
+/***/ 158:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -938,7 +1053,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 159:
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -946,9 +1061,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main-block"
   }, [_c('div', {
     staticClass: "container"
-  }, [_c('psg-intro-text'), _vm._v(" "), _c('div', {
-    staticClass: "divider-1"
-  }), _vm._v(" "), _c('psg-event-carousel'), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-info-boxes'), _vm._v(" "), _c('div', {
+  }, [_c('psg-event-carousel', {
+    attrs: {
+      "color": "pale-purple"
+    }
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-info-boxes'), _vm._v(" "), _c('div', {
     staticClass: "divider-1"
   }), _vm._v(" "), _c('psg-our-expertise'), _vm._v(" "), _c('hr'), _vm._v(" "), _c('psg-counters')], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
@@ -966,7 +1083,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 161:
+/***/ 162:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -990,7 +1107,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 162:
+/***/ 163:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1020,11 +1137,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": _vm.box.link,
       "target": "_blank"
     }
-  }, [_vm._v(_vm._s(_vm.box.en_title))])])]) : _c('div', [_c('h4', [_c('router-link', {
+  }, [_vm._v(_vm._s(_vm.title))])])]) : _c('div', [_c('h4', [_c('router-link', {
     attrs: {
       "to": _vm.box.link
     }
-  }, [_vm._v(_vm._s(_vm.box.en_title))])], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.box.en_copy))]), _vm._v(" "), _c('psg-speak', {
+  }, [_vm._v(_vm._s(_vm.title))])], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.copy))]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": _vm.copy
     }
@@ -1040,7 +1157,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 163:
+/***/ 164:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1069,7 +1186,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 166:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1085,7 +1202,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "icon": "fa fa-home red",
       "rule": "br-red",
-      "text": "Housed",
+      "text": _vm.housed,
       "max": "10",
       "interval": "500"
     }
@@ -1095,7 +1212,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "icon": "fa fa-briefcase green",
       "rule": "br-green",
-      "text": "Voc Rehab",
+      "text": _vm.vocRehab,
       "max": "10",
       "interval": "500"
     }
@@ -1105,7 +1222,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "icon": "fa fa-ambulance lblue",
       "rule": "br-lblue",
-      "text": "Outpatients",
+      "text": _vm.outpatients,
       "max": "10",
       "interval": "500"
     }
@@ -1115,7 +1232,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "icon": "fa fa-heart yellow",
       "rule": "br-yellow",
-      "text": "Counseled",
+      "text": _vm.counseled,
       "max": "10",
       "interval": "500"
     }
@@ -1125,7 +1242,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "icon": "fa fa-book purple",
       "rule": "br-purple",
-      "text": "Educated",
+      "text": _vm.educated,
       "max": "10",
       "interval": "500"
     }
@@ -1135,7 +1252,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "icon": "fa fa-clock-o brown",
       "rule": "br-brown",
-      "text": "Volunteer Hours",
+      "text": _vm.volunteerHours,
       "max": "10",
       "interval": "500"
     }
@@ -1151,7 +1268,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -1163,7 +1280,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 90:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1206,12 +1323,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Counter__);
 //
 //
@@ -1290,17 +1407,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         'psg-counter': __WEBPACK_IMPORTED_MODULE_0__Counter___default.a
+    },
+    computed: {
+        housed: function housed() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Alojado';
+            } else {
+                return 'Housed';
+            }
+        },
+        vocRehab: function vocRehab() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Rehabilitación Vocacional';
+            } else {
+                return 'Voc Rehab';
+            }
+        },
+        outpatients: function outpatients() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Pacientes ambulatorios';
+            } else {
+                return 'Outpatients';
+            }
+        },
+        counseled: function counseled() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Aconsejado';
+            } else {
+                return 'Counseled';
+            }
+        },
+        educated: function educated() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Educado';
+            } else {
+                return 'Educated';
+            }
+        },
+        volunteerHours: function volunteerHours() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Horas de Voluntariado';
+            } else {
+                return 'Volunteer Hours';
+            }
+        }
     }
 });
 
 /***/ }),
 
-/***/ 91:
+/***/ 92:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
@@ -1397,7 +1558,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 92:
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1436,20 +1597,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'psg-speak': __WEBPACK_IMPORTED_MODULE_0__misc_TextToSpeech___default.a
     },
     computed: {
+        title: function title() {
+            if (this.$cookie.get('lang') === 'es') {
+                return this.box.es_title;
+            } else {
+                return this.box.en_title;
+            }
+        },
         copy: function copy() {
-            return this.box.en_title + ' ' + this.box.en_copy;
+            if (this.$cookie.get('lang') === 'es') {
+                return this.box.es_copy;
+            } else {
+                return this.box.en_copy;
+            }
         }
     }
 });
 
 /***/ }),
 
-/***/ 93:
+/***/ 94:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__InfoBox__);
 //
 //
@@ -1496,7 +1668,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 94:
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1522,12 +1694,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 95:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 //
 //
@@ -1622,17 +1794,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
         Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"]
+    },
+    computed: {
+        ourSupporters: function ourSupporters() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Nuestros partidarios';
+            } else {
+                return 'Our Supporters';
+            }
+        }
     }
 });
 
 /***/ }),
 
-/***/ 96:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBars__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
@@ -1707,12 +1888,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         'psg-progress-bars': __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default.a,
         'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
+    },
+    computed: {
+        ourAgency: function ourAgency() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Nuestra Agencia';
+            } else {
+                return 'Our Agency';
+            }
+        },
+        ourExpertise: function ourExpertise() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Nuestra Experiencia';
+            } else {
+                return 'Our Expertise';
+            }
+        },
+        ourExpertiseText: function ourExpertiseText() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Desde el comienzo de la pandemia del VIH / SIDA, el Grupo Phoenix Shanti ha estado proporcionando un salvavidas a hombres y mujeres en el Valle del Sol, proporcionando servicios de hospicio a la vivienda durante sus décadas de existencia.';
+            } else {
+                return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
+            }
+        }
     }
 });
 
 /***/ }),
 
-/***/ 97:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1750,12 +1954,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 98:
+/***/ 99:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
@@ -1797,108 +2001,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         'psg-progress-bar': __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default.a,
         'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
-    }
-});
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__ = __webpack_require__(125);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_home_Counters__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    methods: {
-        //            getCarousel() {
-        //                http
-        //                    .get('/carousel')
-        //                    .use(saCache)
-        //                    .then(response => {
-        //                        this.events = response.body.events;
-        //                    }).catch(error => {
-        //                        console.error(error);
-        //                    });
-        //            }
     },
-    components: {
-        Carousel: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Carousel"],
-        Slide: __WEBPACK_IMPORTED_MODULE_0_vue_carousel__["Slide"],
-        'psg-event-carousel': __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel___default.a,
-        'psg-info-boxes': __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes___default.a,
-        'psg-counters': __WEBPACK_IMPORTED_MODULE_3__components_home_Counters___default.a,
-        'psg-intro-text': __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText___default.a,
-        'psg-our-expertise': __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise___default.a,
-        'psg-logo-carousel': __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel___default.a,
-        'psg-our-team': __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam___default.a
+    computed: {
+        ourFundraising: function ourFundraising() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Nuestra recaudación de fondos';
+            } else {
+                return 'Our Fundraising';
+            }
+        },
+        ourFundraisingText: function ourFundraisingText() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Phoenix Shanti Group tiene una historia de recaudar fondos para la comunidad de VIH / SIDA. He aquí un desglose de algunos de sus esfuerzos este año.';
+            } else {
+                return 'Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.';
+            }
+        },
+        generalFunds: function generalFunds() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Fondos Generales';
+            } else {
+                return 'General Funds';
+            }
+        },
+        aidsWalkArizona: function aidsWalkArizona() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Caminata del SIDA Arizona';
+            } else {
+                return 'AIDS Walk Arizona';
+            }
+        },
+        eventDollarsRaised: function eventDollarsRaised() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Evento Dólares Recaudados';
+            } else {
+                return 'Event Dollars Raised';
+            }
+        }
     }
 });
 

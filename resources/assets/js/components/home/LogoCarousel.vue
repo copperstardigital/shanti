@@ -1,12 +1,12 @@
 <template>
     <div>
         <div class="block-heading-six">
-            <h4 class="bg-color">Our Supporters</h4>
+            <h4 class="bg-color">{{ ourSupporters }}</h4>
         </div>
 
         <div class="client-three">
             <carousel :loop="true" :autoplay="true" :autoplayTimeout="7000" :perPage="1" :navigationEnabled="true">
-                <slide>
+                <slide class="pale-purple">
                     <div class="row frame">
                         <div class="col-md-3">
                             <a href="http://www.auntritas.org/" target="_blank">
@@ -31,7 +31,7 @@
 
                     </div>
                 </slide>
-                <slide>
+                <slide class="pale-purple">
                     <div class="row frame">
                         <div class="col-md-3">
                             <a href="http://www.macys.com" target="_blank">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </slide>
-                <slide>
+                <slide class="pale-purple">
                     <div class="row frame">
                         <div class="col-md-3">
                             <a href="https://www.copperstardigital.com" target="_blank">
@@ -91,6 +91,15 @@
         components: {
             Carousel,
             Slide
+        },
+        computed: {
+            ourSupporters() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Nuestros partidarios'
+                } else {
+                    return 'Our Supporters'
+                }
+            }
         }
     }
 </script>

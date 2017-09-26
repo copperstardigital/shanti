@@ -36,14 +36,14 @@
                             </div>
                             <hr />
                             <div class="subscribe-box">
-                                <h5 class="bold">Subscribe :</h5>
+                                <h5 class="bold">{{ subscribeTo }}:</h5>
                                 <!-- Form -->
                                 <form role="form" method="POST">
                                     <!-- Input Group -->
                                     <div class="input-group">
-                                        <input type="text" v-model="email" class="form-control" placeholder="Enter Email Address">
+                                        <input type="text" v-model="email" class="form-control" :placeholder="enterEmailAddress">
                                         <span class="input-group-btn">
-                                        <button class="btn btn-color" type="button" @click.prevent="subscribe">Subscribe</button>
+                                        <button class="btn btn-color" type="button" @click.prevent="subscribe">{{ subscribeTo }}</button>
                                     </span>
                                     </div>
 
@@ -64,7 +64,7 @@
                         <!-- Foot Item -->
                         <div class="foot-item">
                             <!-- Heading -->
-                            <h5 class="bold"><i class="fa fa-comments"></i>&nbsp;&nbsp;Recent Posts</h5>
+                            <h5 class="bold"><i class="fa fa-comments"></i>&nbsp;&nbsp;{{ recentPosts }}</h5>
                             <!-- Foot Item Content -->
                             <div class="foot-item-content" v-if="posts">
                                 <ul class="list-unstyled">
@@ -82,7 +82,7 @@
                         <!-- Foot Item -->
                         <div class="foot-item">
                             <!-- Heading -->
-                            <h5 class="bold"><i class="fa fa-calendar"></i>&nbsp;Upcoming Events</h5>
+                            <h5 class="bold"><i class="fa fa-calendar"></i>&nbsp;{{ upcomingEvents }}</h5>
                             <!-- Foot Item Content -->
                             <div class="foot-item-content" v-if="events">
                                 <ul class="list-unstyled">
@@ -99,7 +99,7 @@
                         <!-- Foot Item -->
                         <div class="foot-item">
                             <!-- Heading -->
-                            <h5 class="bold"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Recent Images</h5>
+                            <h5 class="bold"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;{{ recentImages }}</h5>
                             <!-- Foot Item Content -->
                             <div class="foot-item-content">
                                 <lightbox
@@ -115,7 +115,7 @@
                         <!-- Foot Item -->
                         <div class="foot-item">
                             <!-- Heading -->
-                            <h5 class="bold"><i class="fa fa-building-o"></i>&nbsp;&nbsp;Contact Us</h5>
+                            <h5 class="bold"><i class="fa fa-building-o"></i>&nbsp;&nbsp;{{ contactUs }}</h5>
                             <!-- Foot Item Content -->
                             <div class="foot-item-content address">
                                 <!-- Heading -->
@@ -126,18 +126,18 @@
                                     Phoenix, Arizona 85021
                                 </p>
                                 <p class="tel">
-                                    <i class="fa fa-phone"></i> Main Office : (602) 279-0008
+                                    <i class="fa fa-phone"></i> {{ mainOffice}} : (602) 279-0008
                                 </p>
                                 <p class="tel">
-                                    <i class="fa fa-fax"></i> Secure Fax : (602) 279-2004
+                                    <i class="fa fa-fax"></i> {{ secureFax }} : (602) 279-2004
                                 </p>
                                 <p class="tel">
                                     <i class="fa fa-envelope"></i>  Email : <a href="mailto:info@shantiaz.org">info@shantiaz.org</a></p>
                                 <p class="tel">
-                                    <i class="fa fa-calendar"></i> Hours : 8 am - 4 pm
+                                    <i class="fa fa-calendar"></i> {{ hours }} : 8 am - 4 pm
                                 </p>
                                 <p class="add">
-                                    Monday through Friday
+                                    {{ mondayFriday }}
                                 </p>
 
                                 <psg-speak text="Phoenix Shanti Group 2345 West Glendale Avenue,Phoenix, Arizona 85021. Main Office : (602) 279-0008. Secure Fax : (602) 279-2004. Email : info@shantiaz.org. Hours : 8 am to 4 pm, Monday through Friday"></psg-speak>
@@ -146,21 +146,18 @@
 
                                 <h6 class="bold"><i class="fa fa-home"></i>&nbsp;2nd Chances Store</h6>
                                 <p class="add">
-                                    4015 N 16th Street, Suites E-F,<br />
-                                    Phoenix AZ, 85016
+                                    4015 North 16th Street, Suites E-F,<br />
+                                    Phoenix, Arizona 85016
                                 </p>
                                 <p class="tel">
-                                    <i class="fa fa-phone"></i> Store : (602) 283-0100
+                                    <i class="fa fa-phone"></i> {{ store }} : (602) 283-0100
                                 </p>
                                 <p class="tel">
-                                    <i class="fa fa-fax"></i> Store Fax : (602) 283-0101
+                                    <i class="fa fa-fax"></i> {{ storeFax }} : (602) 283-0101
                                 </p>
 
                                 <p class="tel">
-                                    <i class="fa fa-calendar"></i> Store Hours : 9 am - 6 pm, Monday
-                                </p>
-                                <p class="add">
-                                     through Friday; 9 am - 5 pm, Saturday
+                                    <i class="fa fa-calendar"></i> {{ hours }} : 9 am - 6 pm, {{ mondayFriday }}; 9 am - 5 pm, {{ saturday }}
                                 </p>
 
                                 <psg-speak text="Second Chances Store, 4015 N 16th Street, Suites E-F, Phoenix AZ, 85016. Store : (602) 283-0100. Store Fax : (602) 283-0101.  Store Hours : 9 am to 6 pm, Monday through Friday; 9 am to 5 pm, Saturday"></psg-speak>
@@ -226,20 +223,52 @@
                 subscriptionSuccess: false,
                 images : [
                     {
-                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img1.jpg',
-                        title : 'Image 2'
+                        src : '/uploads/gallery/l4l2_1.jpg',
+                        title : 'Laughs for Life II'
                     },
                     {
-                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img2.jpg',
-                        title : 'Image 3'
+                        src : '/uploads/gallery/l4l2_2.jpg',
+                        title : 'Laughs for Life II'
                     },
                     {
-                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img3.jpg',
-                        title : ''
+                        src : '/uploads/gallery/l4l2_3.jpg',
+                        title : 'Laughs for Life II'
                     },
                     {
-                        src : 'https://cdn.rawgit.com/vrajroham/vrajroham.github.io/85d64ac5/imgs/img4.jpg',
-                        title : ''
+                        src : '/uploads/gallery/l4l2_4.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_5.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_7.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_8.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_9.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_10.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_11.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_12.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/l4l2_13.jpg',
+                        title : 'Laughs for Life II'
                     },
                 ]
             }
@@ -297,56 +326,147 @@
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Casa';
                 } else {
-                    return 'Home'
+                    return 'Home';
                 }
             },
             mission() {
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Misión';
                 } else {
-                    return 'Mission'
+                    return 'Mission';
                 }
             },
             housing() {
                 if (this.$cookie.get('lang') === 'es') {
                     return '+ Vivienda VIH';
                 } else {
-                    return 'HIV+ Housing'
+                    return 'HIV+ Housing';
                 }
             },
             services() {
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Servicios de VIH+';
                 } else {
-                    return 'HIV+ Services'
+                    return 'HIV+ Services';
                 }
             },
             contact() {
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Contacto';
                 } else {
-                    return 'Contact'
+                    return 'Contact';
                 }
             },
             siteMap() {
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Mapa de Sitio';
                 } else {
-                    return 'Site Map'
+                    return 'Site Map';
                 }
             },
             copperStar() {
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Diseño, desarrollo y alojamiento por';
                 } else {
-                    return 'Design, development and hosting by'
+                    return 'Design, development and hosting by';
                 }
             },
             copyright() {
                 if (this.$cookie.get('lang') === 'es') {
                     return 'Derechos de autor';
                 } else {
-                    return 'Copyright'
+                    return 'Copyright';
+                }
+            },
+            recentPosts() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Mensajes recientes';
+                } else {
+                    return 'Recent Posts';
+                }
+            },
+            upcomingEvents() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Próximos Eventos';
+                } else {
+                    return 'Upcoming Events';
+                }
+            },
+            recentImages() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Imágenes recientes';
+                } else {
+                    return 'Recent Images';
+                }
+            },
+            contactUs() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Contáctenos';
+                } else {
+                    return 'Contact Us';
+                }
+            },
+            mainOffice() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Oficina principal';
+                } else {
+                    return 'Main Office';
+                }
+            },
+            secureFax() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Fax seguro';
+                } else {
+                    return 'Secure Fax';
+                }
+            },
+            hours() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Horas de trabajo';
+                } else {
+                    return 'Hours';
+                }
+            },
+            store() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Tienda';
+                } else {
+                    return 'Store';
+                }
+            },
+            storeFax() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Fax de la tienda';
+                } else {
+                    return 'Store Fax';
+                }
+            },
+            mondayFriday() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'de lunes a viernes';
+                } else {
+                    return 'Monday through Friday';
+                }
+            },
+            saturday() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'sábado';
+                } else {
+                    return 'Saturday';
+                }
+            },
+            enterEmailAddress() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Dirección de correo electrónico';
+                } else {
+                    return 'Enter email address';
+                }
+            },
+            subscribeTo() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Suscribir';
+                } else {
+                    return 'Subscribe';
                 }
             }
         },

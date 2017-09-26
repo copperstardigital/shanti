@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 120:
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -158,6 +158,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"],
         'psg-speak': __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech___default.a
     },
+    computed: {
+        becomeAVolunteer: function becomeAVolunteer() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Conviértase en voluntario';
+            } else {
+                return 'Become a Volunteer';
+            }
+        },
+        formInstructions: function formInstructions() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Fill out the form below to inquire about volunteer opportunities.';
+            } else {
+                return 'Fill out the form below to inquire about volunteer opportunities.';
+            }
+        }
+    },
     created: function created() {
         var _this2 = this;
 
@@ -175,6 +191,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 body: article.en_body
             };
 
+            if (_this2.$cookie.get('lang') === 'es') {
+                _this2.article = {
+                    headline: article.es_headline,
+                    subhead: article.es_subhead,
+                    callout: article.es_callout,
+                    body: article.es_body
+                };
+            }
+
             _this2.loading = false;
         }).catch(function (error) {
             console.error(error);
@@ -184,7 +209,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 140:
+/***/ 141:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -229,7 +254,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/img/volunteer.jpg",
       "alt": "Volunteer"
     }
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Become a Volunteer")]), _vm._v(" "), _c('p', [_vm._v("Fill out the form below to inquire about volunteer opportunities.")]), _vm._v(" "), _c('alert', {
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.becomeAVolunteer))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.formInstructions))]), _vm._v(" "), _c('alert', {
     attrs: {
       "placement": "top-right",
       "duration": "10000",
@@ -557,9 +582,9 @@ if (false) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(120),
+  __webpack_require__(121),
   /* template */
-  __webpack_require__(140),
+  __webpack_require__(141),
   /* scopeId */
   null,
   /* cssModules */

@@ -12,9 +12,9 @@
 
                         <hr />
 
-                        <h3>Become a Volunteer</h3>
+                        <h3>{{ becomeAVolunteer}}</h3>
 
-                        <p>Fill out the form below to inquire about volunteer opportunities.</p>
+                        <p>{{ formInstructions }}</p>
 
                         <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
                             <span class="icon-ok-circled alert-icon-float-left"></span>
@@ -144,6 +144,22 @@
             alert: alert,
             'psg-speak': TextToSpeech
         },
+        computed: {
+            becomeAVolunteer() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Conviértase en voluntario';
+                } else {
+                    return 'Become a Volunteer'
+                }
+            },
+            formInstructions() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Fill out the form below to inquire about volunteer opportunities.';
+                } else {
+                    return 'Fill out the form below to inquire about volunteer opportunities.'
+                }
+            }
+        },
         created() {
             this.loading = true;
 
@@ -159,6 +175,15 @@
                         callout: article.en_callout,
                         body: article.en_body
                     };
+
+                    if (this.$cookie.get('lang') === 'es') {
+                        this.article = {
+                            headline: article.es_headline,
+                            subhead: article.es_subhead,
+                            callout: article.es_callout,
+                            body: article.es_body
+                        };
+                    }
 
                     this.loading = false;
                 }).catch(error => {

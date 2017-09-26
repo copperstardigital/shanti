@@ -8,13 +8,13 @@
                 <a href="#" class="icon-box-8-icon-bottom"><i :class="box.icon"></i></a>
             </div>
             <div v-if="box.link.match('http')">
-                <h4><a :href="box.link" target="_blank">{{ box.en_title }}</a></h4>
+                <h4><a :href="box.link" target="_blank">{{ title }}</a></h4>
             </div>
             <div v-else="!box.link.match('http')">
-                <h4><router-link :to="box.link">{{ box.en_title }}</router-link></h4>
+                <h4><router-link :to="box.link">{{ title }}</router-link></h4>
             </div>
             <!-- Paragraph -->
-            <p>{{ box.en_copy }}</p>
+            <p>{{ copy }}</p>
 
             <psg-speak :text="copy"></psg-speak>
         </div>
@@ -30,8 +30,19 @@
             'psg-speak': TextToSpeech
         },
         computed: {
+            title() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return this.box.es_title;
+                } else {
+                    return this.box.en_title;
+                }
+            },
             copy() {
-                return this.box.en_title + ' ' + this.box.en_copy;
+                if (this.$cookie.get('lang') === 'es') {
+                    return this.box.es_copy;
+                } else {
+                    return this.box.en_copy;
+                }
             }
         }
     }

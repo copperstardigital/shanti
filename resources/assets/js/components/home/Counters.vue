@@ -8,7 +8,7 @@
                     <psg-counter
                             icon="fa fa-home red"
                             rule="br-red"
-                            text="Housed"
+                            :text="housed"
                             max="10"
                             interval="500"
                     ></psg-counter>
@@ -18,7 +18,7 @@
                     <psg-counter
                             icon="fa fa-briefcase green"
                             rule="br-green"
-                            text="Voc Rehab"
+                            :text="vocRehab"
                             max="10"
                             interval="500"
                     ></psg-counter>
@@ -28,7 +28,7 @@
                     <psg-counter
                             icon="fa fa-ambulance lblue"
                             rule="br-lblue"
-                            text="Outpatients"
+                            :text="outpatients"
                             max="10"
                             interval="500"
                     ></psg-counter>
@@ -38,7 +38,7 @@
                     <psg-counter
                             icon="fa fa-heart yellow"
                             rule="br-yellow"
-                            text="Counseled"
+                            :text="counseled"
                             max="10"
                             interval="500"
                     ></psg-counter>
@@ -48,7 +48,7 @@
                     <psg-counter
                             icon="fa fa-book purple"
                             rule="br-purple"
-                            text="Educated"
+                            :text="educated"
                             max="10"
                             interval="500"
                     ></psg-counter>
@@ -58,7 +58,7 @@
                     <psg-counter
                             icon="fa fa-clock-o brown"
                             rule="br-brown"
-                            text="Volunteer Hours"
+                            :text="volunteerHours"
                             max="10"
                             interval="500"
                     ></psg-counter>
@@ -75,6 +75,50 @@
     export default {
         components: {
             'psg-counter': Counter
+        },
+        computed: {
+            housed() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Alojado';
+                } else {
+                    return 'Housed';
+                }
+            },
+            vocRehab() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Rehabilitación Vocacional';
+                } else {
+                    return 'Voc Rehab';
+                }
+            },
+            outpatients() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Pacientes ambulatorios';
+                } else {
+                    return 'Outpatients';
+                }
+            },
+            counseled() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Aconsejado';
+                } else {
+                    return 'Counseled';
+                }
+            },
+            educated() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Educado';
+                } else {
+                    return 'Educated';
+                }
+            },
+            volunteerHours() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Horas de Voluntariado';
+                } else {
+                    return 'Volunteer Hours';
+                }
+            }
         }
     }
 </script>

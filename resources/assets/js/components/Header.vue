@@ -9,20 +9,26 @@
                 <!-- Contact starts -->
                 <div class="tb-contact pull-left">
                     <!-- Email -->
-                    <i class="fa fa-envelope color"></i> &nbsp; <a href="mailto:info@shantiaz.org">info@shantiaz.org</a>
+                    <i class="fa fa-envelope"></i> &nbsp; <a href="mailto:info@shantiaz.org">info@shantiaz.org</a>
                     &nbsp;&nbsp;
                     <!-- Phone -->
-                    <i class="fa fa-phone color"></i> &nbsp;(602) 279-0008
+                    <i class="fa fa-phone"></i> &nbsp;(602) 279-0008
                 </div>
                 <!-- Contact ends -->
 
                 <div class="tb-language dropdown pull-right">
-                    <p><i class="fa fa-globe color"></i> Language/Lengua</p>
-                    <v-select v-model="language" @change="setLanguage">
-                        <v-option value="">Choose / Escoge</v-option>
-                        <v-option value="en">English</v-option>
-                        <v-option value="es">Espa&ntilde;ol</v-option>
-                    </v-select>
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <p class="pull-right"><i class="fa fa-globe"></i> Language/Lengua</p>
+                        </div>
+                        <div class="col-sm-5">
+                            <v-select v-model="language" @change="setLanguage">
+                                <v-option value="">Choose / Escoge</v-option>
+                                <v-option value="en">English</v-option>
+                                <v-option value="es">Espa&ntilde;ol</v-option>
+                            </v-select>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Search section for responsive design -->
@@ -64,17 +70,7 @@
             <!-- Container -->
             <div class="container">
                 <div class="row">
-                    <div class="col-md-2">
-                        <!-- Logo section -->
-                        <div class="logo">
-                            <router-link to="/" exact><img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group"></router-link>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <psg-nav></psg-nav>
-                    </div>
-
-                    <div class="col-md-2">
+                    <div class="col-sm-3 col-sm-offset-9">
 
                         <!-- Search section -->
                         <div class="head-search pull-right">
@@ -93,7 +89,17 @@
                         <div class="clearfix"></div>
 
                     </div>
-
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-md-2">
+                        <!-- Logo section -->
+                        <div class="logo">
+                            <router-link to="/" exact><img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group"></router-link>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <psg-nav></psg-nav>
+                    </div>
                 </div>
             </div>
         </div>

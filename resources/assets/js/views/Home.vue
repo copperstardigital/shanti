@@ -3,11 +3,11 @@
 
         <div class="container">
 
-            <psg-intro-text></psg-intro-text>
+            <!--<psg-intro-text></psg-intro-text>
 
-            <div class="divider-1"></div>
+            <div class="divider-1"></div>-->
 
-            <psg-event-carousel></psg-event-carousel>
+            <psg-event-carousel color="pale-purple"></psg-event-carousel>
 
             <br />
 

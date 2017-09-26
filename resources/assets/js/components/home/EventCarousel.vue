@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="text-center">
-            <i v-show="loading" class="fa fa-refresh fa-spin fa-5x"></i>
+            <i v-show="loading" class="fa fa-refresh fa-spin fa-5x color"></i>
         </div>
         <carousel :loop="true" :autoplay="true" :autoplayTimeout="7000" :perPage="1" :navigationEnabled="true">
-            <slide v-for="(event, index) in events" key="index">
+            <slide v-for="(event, index) in events" key="index" class="pale-purple">
                 <div v-if="event.image">
                     <div class="row">
                         <div class="col-md-5">
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h1>{{ event.headline }}</h1>
+                            <h1 class="color">{{ event.headline }}</h1>
 
                             <hr />
 
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div v-if="!event.image">
-                    <h1>{{ event.headline }}</h1>
+                    <h1 class="color">{{ event.headline }}</h1>
 
                     <hr />
 
