@@ -16,15 +16,14 @@
                 </div>
                 <!-- Contact ends -->
 
-                <!-- Langauge starts -->
-                <!--{{&#45;&#45;<div class="tb-language dropdown pull-right">&#45;&#45;}}-->
-                <!--{{&#45;&#45;<a href="#" data-target="#" data-toggle="dropdown"><i class="fa fa-globe"></i> English <i class="fa fa-angle-down color"></i></a>&#45;&#45;}}-->
-                <!--{{&#45;&#45;&lt;!&ndash; Dropdown menu with languages &ndash;&gt;&#45;&#45;}}-->
-                <!--{{&#45;&#45;<ul class="dropdown-menu dropdown-mini" role="menu">&#45;&#45;}}-->
-                    <!--{{&#45;&#45;<li><a href="#">Spanish</a></li>&#45;&#45;}}-->
-                    <!--{{&#45;&#45;</ul>&#45;&#45;}}-->
-                <!--{{&#45;&#45;</div>&#45;&#45;}}-->
-                <!-- Language ends -->
+                <div class="tb-language dropdown pull-right">
+                    <p><i class="fa fa-globe color"></i> Language/Lengua</p>
+                    <v-select v-model="language" @change="setLanguage">
+                        <v-option value="">Choose / Escoge</v-option>
+                        <v-option value="en">English</v-option>
+                        <v-option value="es">Espa&ntilde;ol</v-option>
+                    </v-select>
+                </div>
 
                 <!-- Search section for responsive design -->
                 <div class="tb-search pull-left">
@@ -105,11 +104,14 @@
 
 <script>
     import Nav from './Nav';
+    import { select } from 'vue-strap';
+    import { option } from 'vue-strap';
 
     export default {
         data() {
             return {
-                keywords: ''
+                keywords: '',
+                language: this.$cookie.get('lang')
             }
         },
         methods: {
@@ -120,10 +122,18 @@
                 let evt = (evt) ? evt : ((window.event) ? window.event : null);
                 let node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
                 if ((evt.keyCode === 13) && (node.type === "search")) { return false; }
+            },
+            setLanguage(language) {
+                if (language !== '' && language !== this.$cookie.get('lang')) {
+                    this.$cookie.set('lang', language, 1);
+                    window.location.reload();
+                }
             }
         },
         components: {
-            'psg-nav': Nav
+            'psg-nav': Nav,
+            'v-select': select,
+            'v-option': option
         }
     }
 </script>

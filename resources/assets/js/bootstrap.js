@@ -22,4 +22,7 @@ window.http = http;
 import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
 
+import VueCookie from 'vue-cookie';
+Vue.use(VueCookie);
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

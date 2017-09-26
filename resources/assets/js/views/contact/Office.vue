@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="about-us-three">
-                        <alert :show.sync="showTop" placement="top-right" :duration="10000" :type="type" width="500px" dismissable>
+                        <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
                             <span class="icon-ok-circled alert-icon-float-left"></span>
                             <p>{{ flash }}</p>
                         </alert>

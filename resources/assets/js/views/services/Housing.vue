@@ -50,10 +50,22 @@
                         body: article.en_body
                     };
 
+                    if (this.$cookie.get('lang') === 'es') {
+                        this.article = {
+                            headline: article.es_headline,
+                            subhead: article.es_subhead,
+                            callout: article.es_callout,
+                            body: article.es_body
+                        };
+                    }
+
                     this.loading = false;
                 }).catch(error => {
                 console.error(error);
             });
+
+            this.$cookie.get('lang');
+
         },
         components: {
             'psg-speak': TextToSpeech
