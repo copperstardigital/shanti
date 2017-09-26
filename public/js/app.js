@@ -14573,6 +14573,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         currentYear: function currentYear() {
             return new Date().getFullYear();
+        },
+        about: function about() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Acerca de';
+            } else {
+                return 'About';
+            }
+        },
+        shantiText: function shantiText() {
+            if (this.$cookie.get('lang') === 'es') {
+                return '"Shanti" es una palabra sánscrita que significa "paz interna" y es un reflejo de enfoque de promover la capacitación personal y el mantenimiento de la independencia y la dignidad de Phoenix Shanti Grupos.';
+            } else {
+                return '"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group\'s approach of promoting personal empowerment and maintaining independence and dignity.';
+            }
+        },
+        home: function home() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Casa';
+            } else {
+                return 'Home';
+            }
+        },
+        mission: function mission() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Misión';
+            } else {
+                return 'Mission';
+            }
+        },
+        housing: function housing() {
+            if (this.$cookie.get('lang') === 'es') {
+                return '+ Vivienda VIH';
+            } else {
+                return 'HIV+ Housing';
+            }
+        },
+        services: function services() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Servicios de VIH+';
+            } else {
+                return 'HIV+ Services';
+            }
+        },
+        contact: function contact() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Contacto';
+            } else {
+                return 'Contact';
+            }
+        },
+        siteMap: function siteMap() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Mapa de Sitio';
+            } else {
+                return 'Site Map';
+            }
+        },
+        copperStar: function copperStar() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Diseño, desarrollo y alojamiento por';
+            } else {
+                return 'Design, development and hosting by';
+            }
+        },
+        copyright: function copyright() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Derechos de autor';
+            } else {
+                return 'Copyright';
+            }
         }
     },
     beforeMount: function beforeMount() {
@@ -14731,6 +14801,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         }
     },
+    computed: {
+        typeKeywords: function typeKeywords() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Palabras clave';
+            } else {
+                return 'Enter keywords';
+            }
+        }
+    },
     components: {
         'psg-nav': __WEBPACK_IMPORTED_MODULE_0__Nav___default.a,
         'v-select': __WEBPACK_IMPORTED_MODULE_1_vue_strap__["select"],
@@ -14817,7 +14896,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var msg = new SpeechSynthesisUtterance();
                 msg.rate = 0.8;
                 msg.pitch = 1.0;
-                msg.text = this.textOnly;
+
+                if (this.$cookie.get('lang') !== 'es') {
+                    msg.text = this.textOnly;
+                } else {
+                    msg.text = 'This feature currently does not work in Spanish. Lo siento.';
+                }
 
                 speechSynthesis.speak(msg);
             } else {
@@ -14826,6 +14910,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     computed: {
+        speakText: function speakText() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Habla';
+            } else {
+                return 'Speak';
+            }
+        },
         textOnly: function textOnly() {
             var div = document.createElement('div');
             div.innerHTML = this.text;
@@ -21673,7 +21764,7 @@ module.exports = Component.exports
 
 var Component = __webpack_require__(1)(
   /* script */
-  null,
+  __webpack_require__(197),
   /* template */
   __webpack_require__(77),
   /* scopeId */
@@ -21748,65 +21839,65 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "tag": "li",
       "exact": ""
     }
-  }, [_c('a', [_vm._v("Home")])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.home))])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("About")]), _vm._v(" "), _c('ul', [_c('router-link', {
+  }, [_vm._v(_vm._s(_vm.about))]), _vm._v(" "), _c('ul', [_c('router-link', {
     attrs: {
       "to": "/getting-started",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Getting Started")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.gettingStarted))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/about/mission",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Mission")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.mission))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/about/history",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("History")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.history))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/about/cultural-competency",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Cultural Competency")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.culturalCompetency))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/about/privacy-policy",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Privacy Policy")])])], 1)]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.privacyPolicy))])])], 1)]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/services/housing",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("HIV+ Housing")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.housing))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/services/hiv",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("HIV+ Services")])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.services))])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Support")]), _vm._v(" "), _c('ul', [_c('router-link', {
+  }, [_vm._v(_vm._s(_vm.support))]), _vm._v(" "), _c('ul', [_c('router-link', {
     attrs: {
       "to": "/support/donate",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Donate")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.donate))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/support/volunteer",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Volunteer")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.volunteer))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/support/resources",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Resources")])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.resources))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
@@ -21820,33 +21911,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/events",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Events")])])], 1)]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.events))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://store.shantiaz.org"
+    }
+  }, [_vm._v(_vm._s(_vm.store))])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Contact")]), _vm._v(" "), _c('ul', [_c('router-link', {
+  }, [_vm._v(_vm._s(_vm.contact))]), _vm._v(" "), _c('ul', [_c('router-link', {
     attrs: {
       "to": "/contact/office",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Office")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.office))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/contact/staff",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Staff")])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.staff))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/contact/board",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v("Board")])])], 1)])], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
-    attrs: {
-      "href": "http://store.shantiaz.org"
-    }
-  }, [_vm._v("Store")])])
-}]}
+  }, [_c('a', [_vm._v(_vm._s(_vm.board))])])], 1)])], 1)])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -21945,11 +22034,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Español")])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "tb-search pull-left"
-  }, [_c('form', {
-    attrs: {
-      "role": "form"
-    }
-  }, [_c('div', {
+  }, [_c('form', [_c('div', {
     staticClass: "input-group"
   }, [_c('input', {
     directives: [{
@@ -21960,19 +22045,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "type": "text",
-      "placeholder": "Type Something"
+      "maxlength": "100",
+      "name": "keywords",
+      "placeholder": _vm.typeKeywords,
+      "type": "search"
     },
     domProps: {
       "value": (_vm.keywords)
     },
     on: {
+      "keypress": _vm.disableEnter,
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.keywords = $event.target.value
       }
     }
-  }), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn",
+    staticStyle: {
+      "font-size": "15px"
+    }
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.search($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-search square-2 rounded-1 bg-color white",
+    staticStyle: {
+      "display": "block",
+      "height": "36px",
+      "padding-top": "4px"
+    }
+  })])])])])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
     staticClass: "clearfix"
   })])]), _vm._v(" "), _c('div', {
     staticClass: "header-2"
@@ -22014,7 +22124,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "maxlength": "100",
       "name": "keywords",
-      "placeholder": "Enter keywords",
+      "placeholder": _vm.typeKeywords,
       "type": "search"
     },
     domProps: {
@@ -22068,24 +22178,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('p', [_c('i', {
     staticClass: "fa fa-globe color"
   }), _vm._v(" Language/Lengua")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "input-group-btn"
-  }, [_c('button', {
-    staticClass: "btn btn-color",
-    attrs: {
-      "type": "button"
-    }
-  }, [_vm._v("Search")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    staticClass: "b-dropdown",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-search square-2 rounded-1 bg-color white"
-  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "tb-social pull-right"
@@ -22151,7 +22243,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-deaf"
-  }), _vm._v(" Speak")])
+  }), _vm._v(" " + _vm._s(_vm.speakText))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -22176,11 +22268,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"
-  }, [_vm._m(0), _vm._v(" "), _c('p', [_vm._v("\"Shanti\" is a Sanskrit word meaning \"Inner Peace\" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity.")]), _vm._v(" "), _c('psg-speak', {
+  }, [_c('h5', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-user"
+  }), _vm._v("  " + _vm._s(_vm.about))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.shantiText))]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": "Shanti is a Sanskrit word meaning Inner Peace and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity."
     }
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "subscribe-box"
   }, [_c('h5', {
     staticClass: "bold"
@@ -22233,7 +22329,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"
-  }, [_vm._m(2), _vm._v(" "), (_vm.posts) ? _c('div', {
+  }, [_vm._m(1), _vm._v(" "), (_vm.posts) ? _c('div', {
     staticClass: "foot-item-content"
   }, [_c('ul', {
     staticClass: "list-unstyled"
@@ -22252,7 +22348,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('a', [_vm._v(_vm._s(post.headline))])])
   }))]) : _vm._e(), _vm._v(" "), (!_vm.posts) ? _c('div', [_c('p', [_vm._v("There are no current posts.")])]) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "foot-item"
-  }, [_vm._m(3), _vm._v(" "), (_vm.events) ? _c('div', {
+  }, [_vm._m(2), _vm._v(" "), (_vm.events) ? _c('div', {
     staticClass: "foot-item-content"
   }, [_c('ul', {
     staticClass: "list-unstyled"
@@ -22273,7 +22369,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"
-  }, [_vm._m(4), _vm._v(" "), _c('div', {
+  }, [_vm._m(3), _vm._v(" "), _c('div', {
     staticClass: "foot-item-content"
   }, [_c('lightbox', {
     attrs: {
@@ -22286,15 +22382,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"
-  }, [_vm._m(5), _vm._v(" "), _c('div', {
+  }, [_vm._m(4), _vm._v(" "), _c('div', {
     staticClass: "foot-item-content address"
-  }, [_vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', {
+  }, [_vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _c('p', {
     staticClass: "add"
   }, [_vm._v("\n                                Monday through Friday\n                            ")]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": "Phoenix Shanti Group 2345 West Glendale Avenue,Phoenix, Arizona 85021. Main Office : (602) 279-0008. Secure Fax : (602) 279-2004. Email : info@shantiaz.org. Hours : 8 am to 4 pm, Monday through Friday"
     }
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(12), _vm._v(" "), _vm._m(13), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15), _vm._v(" "), _vm._m(16), _vm._v(" "), _c('p', {
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(11), _vm._v(" "), _vm._m(12), _vm._v(" "), _vm._m(13), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15), _vm._v(" "), _c('p', {
     staticClass: "add"
   }, [_vm._v("\n                                 through Friday; 9 am - 5 pm, Saturday\n                            ")]), _vm._v(" "), _c('psg-speak', {
     attrs: {
@@ -22308,12 +22404,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('p', {
     staticClass: "pull-left"
-  }, [_vm._v("Copyright © " + _vm._s(_vm.currentYear) + " - "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.copyright) + " © " + _vm._s(_vm.currentYear) + " - "), _c('router-link', {
     attrs: {
       "to": "/",
       "exact": ""
     }
-  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _vm._m(17), _vm._v(" "), _c('div', {
+  }, [_vm._v("Phoenix Shanti Group")])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('p', {
+    staticClass: "text-center"
+  }, [_vm._v(_vm._s(_vm.copperStar) + " "), _c('a', {
+    attrs: {
+      "href": "https://www.copperstardigital.com"
+    }
+  }, [_vm._v("Copper Star Digital")])]), _vm._v(" "), _vm._m(16)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('ul', {
     staticClass: "list-inline pull-right"
@@ -22322,36 +22426,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/",
       "exact": ""
     }
-  }, [_vm._v("Home")]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.home))]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/about/mission"
     }
-  }, [_vm._v("Mission")]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.mission))]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/services/housing"
     }
-  }, [_vm._v("Housing")]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.housing))]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/services/hiv"
     }
-  }, [_vm._v("HIV Services")]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.services))]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/contact/office"
     }
-  }, [_vm._v("Contact")]), _vm._v(" "), _c('router-link', {
+  }, [_vm._v(_vm._s(_vm.contact))]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/site-map"
     }
-  }, [_vm._v("Site Map")])], 1)])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.siteMap))])], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "clearfix"
   })])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h5', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-user"
-  }), _vm._v("  About")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "brand-bg"
   }, [_c('p', [_c('a', {
@@ -22480,15 +22578,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fa fa-calendar"
   }), _vm._v(" Store Hours : 9 am - 6 pm, Monday\n                            ")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('p', {
-    staticClass: "text-center"
-  }, [_vm._v("Design, Development and Hosting by "), _c('a', {
-    attrs: {
-      "href": "https://www.copperstardigital.com"
-    }
-  }, [_vm._v("Copper Star Digital")])]), _vm._v(" "), _c('p', {
+  return _c('p', {
     staticClass: "text-center"
   }, [_c('a', {
     attrs: {
@@ -22504,7 +22594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/img/csd-wht-30.png",
       "alt": "Copper Star Digital"
     }
-  })])])])
+  })])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -32674,6 +32764,300 @@ module.exports = g;
 __webpack_require__(12);
 module.exports = __webpack_require__(13);
 
+
+/***/ }),
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _computed;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: (_computed = {
+        home: function home() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Casa';
+            } else {
+                return 'Home';
+            }
+        },
+        about: function about() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Acerca de';
+            } else {
+                return 'About';
+            }
+        },
+        gettingStarted: function gettingStarted() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Empezando';
+            } else {
+                return 'Getting Started';
+            }
+        },
+        mission: function mission() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Misión';
+            } else {
+                return 'Mission';
+            }
+        },
+        history: function history() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Historia';
+            } else {
+                return 'History';
+            }
+        },
+        culturalCompetency: function culturalCompetency() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Competencia Cultural';
+            } else {
+                return 'Cultural Competency';
+            }
+        },
+        privacyPolicy: function privacyPolicy() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Política de privacidad';
+            } else {
+                return 'Privacy Policy';
+            }
+        },
+        housing: function housing() {
+            if (this.$cookie.get('lang') === 'es') {
+                return '+ Vivienda VIH';
+            } else {
+                return 'HIV+ Housing';
+            }
+        },
+        services: function services() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Servicios de VIH+';
+            } else {
+                return 'HIV+ Services';
+            }
+        },
+        support: function support() {
+            if (this.$cookie.get('lang') === 'es') {
+                return 'Apoyo';
+            } else {
+                return 'Support';
+            }
+        }
+    }, _defineProperty(_computed, 'support', function support() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Apoyo';
+        } else {
+            return 'Support';
+        }
+    }), _defineProperty(_computed, 'donate', function donate() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Donar';
+        } else {
+            return 'Donate';
+        }
+    }), _defineProperty(_computed, 'volunteer', function volunteer() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Voluntario';
+        } else {
+            return 'Volunteer';
+        }
+    }), _defineProperty(_computed, 'resources', function resources() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Recursos';
+        } else {
+            return 'Resources';
+        }
+    }), _defineProperty(_computed, 'office', function office() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Oficina';
+        } else {
+            return 'Office';
+        }
+    }), _defineProperty(_computed, 'staff', function staff() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Personal';
+        } else {
+            return 'Staff';
+        }
+    }), _defineProperty(_computed, 'board', function board() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Junta Directiva';
+        } else {
+            return 'Board of Directors';
+        }
+    }), _defineProperty(_computed, 'events', function events() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Eventos';
+        } else {
+            return 'Events';
+        }
+    }), _defineProperty(_computed, 'store', function store() {
+        if (this.$cookie.get('lang') === 'es') {
+            return 'Tienda';
+        } else {
+            return 'Store';
+        }
+    }), _computed)
+});
 
 /***/ })
 /******/ ]);

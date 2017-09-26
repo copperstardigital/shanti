@@ -95,14 +95,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.get('/search/?keywords=' + this.$route.query.keywords).then(function (response) {
             var articles = response.data.articles;
             var reformatted = [];
-            articles.forEach(function (article) {
-                reformatted.push({
-                    headline: article.en_headline,
-                    subhead: article.en_subhead,
-                    callout: article.en_callout,
-                    link: article.link
+
+            if (_this.$cookie.get('lang') === 'es') {
+                articles.forEach(function (article) {
+                    reformatted.push({
+                        headline: article.es_headline,
+                        subhead: article.es_subhead,
+                        callout: article.es_callout,
+                        link: article.link
+                    });
                 });
-            });
+            } else {
+                articles.forEach(function (article) {
+                    reformatted.push({
+                        headline: article.en_headline,
+                        subhead: article.en_subhead,
+                        callout: article.en_callout,
+                        link: article.link
+                    });
+                });
+            }
 
             _this.articles = reformatted;
             _this.posts = response.data.posts;

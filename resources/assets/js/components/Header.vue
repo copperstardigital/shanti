@@ -27,16 +27,16 @@
 
                 <!-- Search section for responsive design -->
                 <div class="tb-search pull-left">
-                    <form role="form">
-                        <!-- Input Group -->
+                    <form>
                         <div class="input-group">
-                            <input type="text" v-model="keywords" class="form-control" placeholder="Type Something">
-                            <span class="input-group-btn">
-                                <button class="btn btn-color" type="button">Search</button>
+                            <input class="form-control" maxlength="100" name="keywords" :placeholder="typeKeywords" type="search" v-model="keywords" @keypress="disableEnter"/>
+                            <span class="input-group-btn" style="font-size: 15px;">
+                                <a href="#" @click.prevent="search">
+                                    <i class="fa fa-search square-2 rounded-1 bg-color white" style="display:block; height:36px; padding-top: 4px;"></i>
+                                </a>
                             </span>
                         </div>
                     </form>
-                    <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
                 </div>
                 <!-- Search section ends -->
 
@@ -80,7 +80,7 @@
                         <div class="head-search pull-right">
                             <form>
                                 <div class="input-group">
-                                    <input class="form-control" maxlength="100" name="keywords" placeholder="Enter keywords" type="search" v-model="keywords" @keypress="disableEnter"/>
+                                    <input class="form-control" maxlength="100" name="keywords" :placeholder="typeKeywords" type="search" v-model="keywords" @keypress="disableEnter"/>
                                     <span class="input-group-btn" style="font-size: 15px;">
                                         <a href="#" @click.prevent="search">
                                             <i class="fa fa-search square-2 rounded-1 bg-color white" style="display:block; height:36px; padding-top: 4px;"></i>
@@ -127,6 +127,15 @@
                 if (language !== '' && language !== this.$cookie.get('lang')) {
                     this.$cookie.set('lang', language, 1);
                     window.location.reload();
+                }
+            }
+        },
+        computed: {
+            typeKeywords() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Palabras clave';
+                } else {
+                    return 'Enter keywords';
                 }
             }
         },

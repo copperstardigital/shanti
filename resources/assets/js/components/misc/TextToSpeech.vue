@@ -1,12 +1,12 @@
 <template>
-    <button type="button" class="btn btn-xs" :class="styling" :primary="primary" :text="text" @click="speak"><i class="fa fa-deaf"></i> Speak</button>
+    <button type="button" class="btn btn-xs" :class="styling" :primary="primary" :text="text" @click="speak"><i class="fa fa-deaf"></i> {{ speakText }}</button>
 </template>
 
 <script>
     export default {
         data() {
             return {
-                styling: (this.primary) ? 'btn-lpurple' : 'btn-default'
+                styling: (this.primary) ? 'btn-lpurple' : 'btn-default',
             }
         },
         props: ['text', 'primary'],
@@ -16,7 +16,12 @@
                     let msg = new SpeechSynthesisUtterance();
                     msg.rate = 0.8;
                     msg.pitch = 1.0;
-                    msg.text = this.textOnly;
+
+                    if (this.$cookie.get('lang') !== 'es') {
+                        msg.text = this.textOnly;
+                    } else {
+                        msg.text = 'This feature currently does not work in Spanish. Lo siento.';
+                    }
 
                     speechSynthesis.speak(msg);
                 } else {
@@ -25,6 +30,13 @@
             }
         },
         computed: {
+            speakText() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Habla';
+                } else {
+                    return 'Speak'
+                }
+            },
             textOnly() {
                 let div = document.createElement('div');
                 div.innerHTML = this.text;

@@ -3,40 +3,181 @@
     <div class="navy">
         <ul>
             <!-- Main menu -->
-            <router-link to="/" tag="li" exact><a>Home</a></router-link>
-            <li><a href="#">About</a>
+            <router-link to="/" tag="li" exact><a>{{ home }}</a></router-link>
+            <li><a href="#">{{ about }}</a>
                 <ul>
-                    <router-link to="/getting-started" tag="li"><a>Getting Started</a></router-link>
-                    <router-link to="/about/mission" tag="li"><a>Mission</a></router-link>
-                    <router-link to="/about/history" tag="li"><a>History</a></router-link>
-                    <router-link to="/about/cultural-competency" tag="li"><a>Cultural Competency</a></router-link>
-                    <router-link to="/about/privacy-policy" tag="li"><a>Privacy Policy</a></router-link>
+                    <router-link to="/getting-started" tag="li"><a>{{ gettingStarted }}</a></router-link>
+                    <router-link to="/about/mission" tag="li"><a>{{ mission }}</a></router-link>
+                    <router-link to="/about/history" tag="li"><a>{{ history }}</a></router-link>
+                    <router-link to="/about/cultural-competency" tag="li"><a>{{ culturalCompetency }}</a></router-link>
+                    <router-link to="/about/privacy-policy" tag="li"><a>{{ privacyPolicy }}</a></router-link>
                 </ul>
             </li>
-            <router-link to="/services/housing" tag="li"><a>HIV+ Housing</a></router-link>
-            <router-link to="/services/hiv" tag="li"><a>HIV+ Services</a></router-link>
-            <li><a href="#">Support</a>
+            <router-link to="/services/housing" tag="li"><a>{{ housing }}</a></router-link>
+            <router-link to="/services/hiv" tag="li"><a>{{ services }}</a></router-link>
+            <li><a href="#">{{ support }}</a>
                 <ul>
-                    <router-link to="/support/donate" tag="li"><a>Donate</a></router-link>
-                    <router-link to="/support/volunteer" tag="li"><a>Volunteer</a></router-link>
-                    <router-link to="/support/resources" tag="li"><a>Resources</a></router-link>
+                    <router-link to="/support/donate" tag="li"><a>{{ donate }}</a></router-link>
+                    <router-link to="/support/volunteer" tag="li"><a>{{ volunteer }}</a></router-link>
+                    <router-link to="/support/resources" tag="li"><a>{{ resources }}</a></router-link>
                 </ul>
             </li>
             <li><a href="#">@shanti</a>
                 <ul>
                     <router-link to="/blog" tag="li"><a>Blog</a></router-link>
-                    <router-link to="/events" tag="li"><a>Events</a></router-link>
+                    <router-link to="/events" tag="li"><a>{{ events }}</a></router-link>
                 </ul>
             </li>
-            <li><a href="http://store.shantiaz.org">Store</a></li>
-            <li><a href="#">Contact</a>
+            <li><a href="http://store.shantiaz.org">{{ store }}</a></li>
+            <li><a href="#">{{ contact }}</a>
                 <ul>
-                    <router-link to="/contact/office" tag="li"><a>Office</a></router-link>
-                    <router-link to="/contact/staff" tag="li"><a>Staff</a></router-link>
-                    <router-link to="/contact/board" tag="li"><a>Board</a></router-link>
+                    <router-link to="/contact/office" tag="li"><a>{{ office }}</a></router-link>
+                    <router-link to="/contact/staff" tag="li"><a>{{ staff }}</a></router-link>
+                    <router-link to="/contact/board" tag="li"><a>{{ board }}</a></router-link>
                 </ul>
             </li>
         </ul>
     </div>
 <!-- Navigation ends -->
 </template>
+
+<script>
+    export default {
+        computed: {
+            home() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Casa';
+                } else {
+                    return 'Home'
+                }
+            },
+            about() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Acerca de';
+                } else {
+                    return 'About'
+                }
+            },
+            gettingStarted() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Empezando';
+                } else {
+                    return 'Getting Started'
+                }
+            },
+            mission() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Misión';
+                } else {
+                    return 'Mission'
+                }
+            },
+            history() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Historia';
+                } else {
+                    return 'History'
+                }
+            },
+            culturalCompetency() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Competencia Cultural';
+                } else {
+                    return 'Cultural Competency'
+                }
+            },
+            privacyPolicy() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Política de privacidad';
+                } else {
+                    return 'Privacy Policy'
+                }
+            },
+            housing() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return '+ Vivienda VIH';
+                } else {
+                    return 'HIV+ Housing'
+                }
+            },
+            services() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Servicios de VIH+';
+                } else {
+                    return 'HIV+ Services'
+                }
+            },
+            support() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Apoyo';
+                } else {
+                    return 'Support'
+                }
+            },
+            support() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Apoyo';
+                } else {
+                    return 'Support'
+                }
+            },
+            donate() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Donar';
+                } else {
+                    return 'Donate'
+                }
+            },
+            volunteer() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Voluntario';
+                } else {
+                    return 'Volunteer'
+                }
+            },
+            resources() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Recursos';
+                } else {
+                    return 'Resources'
+                }
+            },
+            office() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Oficina';
+                } else {
+                    return 'Office'
+                }
+            },
+            staff() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Personal';
+                } else {
+                    return 'Staff'
+                }
+            },
+            board() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Junta Directiva';
+                } else {
+                    return 'Board of Directors'
+                }
+            },
+            events() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Eventos';
+                } else {
+                    return 'Events'
+                }
+            },
+            store() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Tienda';
+                } else {
+                    return 'Store'
+                }
+            }
+
+        }
+    }
+</script>

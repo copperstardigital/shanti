@@ -9,8 +9,8 @@
                         <!-- Foot Item -->
                         <div class="foot-item">
                             <!-- Heading -->
-                            <h5 class="bold"><i class="fa fa-user"></i>&nbsp;&nbsp;About</h5>
-                            <p>"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity.</p>
+                            <h5 class="bold"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ about }}</h5>
+                            <p>{{ shantiText }}</p>
 
                             <psg-speak text="Shanti is a Sanskrit word meaning Inner Peace and is reflective of Phoenix Shanti Group's approach of promoting personal empowerment and maintaining independence and dignity."></psg-speak>
                             <hr />
@@ -178,22 +178,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <p class="pull-left">Copyright &copy; {{ currentYear }} - <router-link to="/" exact>Phoenix Shanti Group</router-link>
+                        <p class="pull-left">{{ copyright }} &copy; {{ currentYear }} - <router-link to="/" exact>Phoenix Shanti Group</router-link>
                         </p>
                     </div>
                     <div class="col-md-4">
-                        <p class="text-center">Design, Development and Hosting by <a href="https://www.copperstardigital.com">Copper Star Digital</a></p>
+                        <p class="text-center">{{ copperStar }} <a href="https://www.copperstardigital.com">Copper Star Digital</a></p>
                         <p class="text-center"><a target="_blank" href="https://www.copperstardigital.com"><img style="width:70%; margin:0 auto;" src="/img/csd-wht-30.png" alt="Copper Star Digital" /></a></p>
                     </div>
                     <div class="col-md-4">
                         <ul class="list-inline pull-right">
                             <!-- List -->
-                            <router-link to="/" exact>Home</router-link>
-                            <router-link to="/about/mission">Mission</router-link>
-                            <router-link to="/services/housing">Housing</router-link>
-                            <router-link to="/services/hiv">HIV Services</router-link>
-                            <router-link to="/contact/office">Contact</router-link>
-                            <router-link to="/site-map">Site Map</router-link>
+                            <router-link to="/" exact>{{ home }}</router-link>
+                            <router-link to="/about/mission">{{ mission }}</router-link>
+                            <router-link to="/services/housing">{{ housing }}</router-link>
+                            <router-link to="/services/hiv">{{ services }}</router-link>
+                            <router-link to="/contact/office">{{ contact }}</router-link>
+                            <router-link to="/site-map">{{ siteMap }}</router-link>
                         </ul>
                     </div>
                 </div>
@@ -278,6 +278,76 @@
         computed: {
             currentYear() {
                 return new Date().getFullYear();
+            },
+            about() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Acerca de';
+                } else {
+                    return 'About'
+                }
+            },
+            shantiText() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return '"Shanti" es una palabra sánscrita que significa "paz interna" y es un reflejo de enfoque de promover la capacitación personal y el mantenimiento de la independencia y la dignidad de Phoenix Shanti Grupos.';
+                } else {
+                    return '"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group\'s approach of promoting personal empowerment and maintaining independence and dignity.'
+                }
+            },
+            home() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Casa';
+                } else {
+                    return 'Home'
+                }
+            },
+            mission() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Misión';
+                } else {
+                    return 'Mission'
+                }
+            },
+            housing() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return '+ Vivienda VIH';
+                } else {
+                    return 'HIV+ Housing'
+                }
+            },
+            services() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Servicios de VIH+';
+                } else {
+                    return 'HIV+ Services'
+                }
+            },
+            contact() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Contacto';
+                } else {
+                    return 'Contact'
+                }
+            },
+            siteMap() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Mapa de Sitio';
+                } else {
+                    return 'Site Map'
+                }
+            },
+            copperStar() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Diseño, desarrollo y alojamiento por';
+                } else {
+                    return 'Design, development and hosting by'
+                }
+            },
+            copyright() {
+                if (this.$cookie.get('lang') === 'es') {
+                    return 'Derechos de autor';
+                } else {
+                    return 'Copyright'
+                }
             }
         },
         beforeMount() {

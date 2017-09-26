@@ -134,6 +134,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 body: article.en_body
             };
 
+            if (_this2.$cookie.get('lang') === 'es') {
+                _this2.article = {
+                    headline: article.es_headline,
+                    subhead: article.es_subhead,
+                    callout: article.es_callout,
+                    body: article.es_body
+                };
+            }
+
             _this2.loading = false;
         }).catch(function (error) {
             console.error(error);
