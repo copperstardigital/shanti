@@ -8141,7 +8141,7 @@ footer a:hover {
   padding: 10px 20px;
 }
 
-.event-header h3 {
+.event-header h4 {
   color: #FFF;
 }
 
@@ -8151,5 +8151,36 @@ footer a:hover {
 
 .carousel-container.less-padding {
   padding: 15px 20px;
+}
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.form-row {
+  margin-bottom: 20px;
+}
+
+.StripeElement {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccd0d2;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  margin-bottom: 20px;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }
 

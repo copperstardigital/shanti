@@ -4,6 +4,7 @@ namespace App\Biling\Billing;
 
 use Carbon\Carbon;
 use Stripe\Charge;
+use Stripe\Customer;
 use Stripe\Error\ApiConnection;
 use Stripe\Error\Authentication;
 use Stripe\Error\Base;
@@ -12,11 +13,30 @@ use Stripe\Error\RateLimit;
 use Stripe\Refund;
 use Stripe\Stripe;
 use Stripe\Error\Card;
+use Stripe\Subscription;
 
 class Billing {
 
     public function __construct() {
         Stripe::setApiKey(config('services.stripe.secret'));
+    }
+
+    public function createCustomer($description, $token) {
+        return Customer::create([
+            'description' => $description,
+            'source' => $token
+        ]);
+    }
+
+    public function subscribe($customer, $planId) {
+        Subscription::create([
+            'customer' => $customer->id,
+            'items' =>  [
+                [
+                    'plan' => $planId
+                ]
+            ]
+        ]);
     }
 
     public function charge($request, $shipping, $tax)

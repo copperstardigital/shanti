@@ -533,7 +533,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "pale-purple"
     }, [_c('div', {
       staticClass: "event-header"
-    }, [_c('h3', [_vm._v(_vm._s(event.category.category_name))])]), _vm._v(" "), _c('div', {
+    }, [_c('h4', [_vm._v(_vm._s(event.category.category_name))])]), _vm._v(" "), _c('div', {
       staticClass: "carousel-container"
     }, [(event.image) ? _c('div', [_c('div', {
       staticClass: "row"

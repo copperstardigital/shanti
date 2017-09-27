@@ -34,6 +34,7 @@ Route::resource('articles', 'Vue\ArticleController');
 Route::resource('events', 'Vue\EventController');
 Route::resource('info-boxes', 'Vue\InfoBoxController');
 Route::any('search', 'Vue\SearchController@search');
+Route::post('support/donate', 'Vue\DonationController@store');
 
 /**
  * Email

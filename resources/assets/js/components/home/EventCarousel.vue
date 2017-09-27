@@ -6,7 +6,7 @@
         <carousel :loop="true" :autoplay="true" :autoplayTimeout="7000" :perPage="1" :navigationEnabled="true">
             <slide v-for="(event, index) in events" key="index" class="pale-purple">
                 <div class="event-header">
-                    <h3>{{ event.category.category_name }}</h3>
+                    <h4>{{ event.category.category_name }}</h4>
                 </div>
                 <div class="carousel-container">
                     <div v-if="event.image">
