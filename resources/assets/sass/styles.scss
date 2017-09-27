@@ -2821,7 +2821,8 @@ body.boxed.img-5 {
   margin-right: 10px;
 }
 .top-bar .tb-social a {
-  border: 1px dotted #FFF;
+  border: 1px dotted #e3e3ff;
+  margin-right: 4px;
   display: inline-block;
 }
 .top-bar .tb-social i {
@@ -3176,12 +3177,12 @@ body.boxed.img-5 {
   padding: 20px 9px;
   font-size: 16px;
   line-height:28px;
-  color: #666;
+  color: #5F1CBA;
   font-weight: 600;
 }
 .header-2 .navy > ul > li:hover > a,
 .header-2 .navy > ul > li > a:hover {
-  color: #777;
+  color: #b188ff;
 }
 .header-2 .navy ul > li.has-sub > a:after {
   content: "\f107";
@@ -8083,7 +8084,7 @@ footer a:hover {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   text-align: left;
-  padding: 20px 10px;
+  padding: 0;
 }
 
 .VueCarousel-inner a img {
@@ -8128,5 +8129,27 @@ footer a:hover {
   background-color: #f8f1ff;
   border: 1px solid #c5b7ff;
   border-radius: 10px;
+}
+
+.event-header {
+  background-color: #5F1CBA;
+  color: #FFF;
+  margin-top: -2px;
+  border-radius: 10px 10px 0 0;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  padding: 10px 20px;
+}
+
+.event-header h3 {
+  color: #FFF;
+}
+
+.carousel-container {
+  padding: 30px;
+}
+
+.carousel-container.less-padding {
+  padding: 15px 20px;
 }
 

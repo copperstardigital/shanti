@@ -22,8 +22,7 @@
                             <p class="pull-right"><i class="fa fa-globe"></i> Language/Lengua</p>
                         </div>
                         <div class="col-sm-5">
-                            <v-select v-model="language" @change="setLanguage">
-                                <v-option value="">Choose / Escoge</v-option>
+                            <v-select v-model="language" @change="setLanguage" placeholder="Choose / Escoge" justified clear-button close-on-select>
                                 <v-option value="en">English</v-option>
                                 <v-option value="es">Espa&ntilde;ol</v-option>
                             </v-select>
@@ -117,7 +116,7 @@
         data() {
             return {
                 keywords: '',
-                language: this.$cookie.get('lang')
+                language: ''
             }
         },
         methods: {
@@ -130,7 +129,7 @@
                 if ((evt.keyCode === 13) && (node.type === "search")) { return false; }
             },
             setLanguage(language) {
-                if (language !== '' && language !== this.$cookie.get('lang')) {
+                if (language !== '' && language !== this.$cookie.get('lang') && language !== null) {
                     this.$cookie.set('lang', language, 1);
                     window.location.reload();
                 }

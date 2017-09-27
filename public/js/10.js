@@ -16,6 +16,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -79,7 +98,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  }), _vm._v(" "), _c('psg-speak', {
+  }), _vm._v(" "), _c('h3', [_vm._v("Chairman")]), _vm._v(" "), _c('p', [_vm._v("Rudy Navarro")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: ASU, Phoenix College")]), _vm._v(" "), _c('h3', [_vm._v("Secretary")]), _vm._v(" "), _c('h3', [_vm._v("Trent Tripp")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: Rehab Specialists")]), _vm._v(" "), _c('h3', [_vm._v("Treasurer")]), _vm._v(" "), _c('p', [_vm._v("Shirley McLauglin")]), _vm._v(" "), _c('h3', [_vm._v("Director")]), _vm._v(" "), _c('p', [_vm._v("Dr. Charles Boag")]), _vm._v(" "), _c('h3', [_vm._v("Member")]), _vm._v(" "), _c('p', [_vm._v("Sue Tormala")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: Owner, Chiropractic Physicians Group, Inc.")]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": _vm.article.body,
       "loading": _vm.loading,

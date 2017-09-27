@@ -14887,7 +14887,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -14897,7 +14896,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             keywords: '',
-            language: this.$cookie.get('lang')
+            language: ''
         };
     },
 
@@ -14913,7 +14912,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         setLanguage: function setLanguage(language) {
-            if (language !== '' && language !== this.$cookie.get('lang')) {
+            if (language !== '' && language !== this.$cookie.get('lang') && language !== null) {
                 this.$cookie.set('lang', language, 1);
                 window.location.reload();
             }
@@ -22147,10 +22146,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "tag": "li",
       "exact": ""
     }
-  }, [_c('a', {
-    staticClass: "color"
-  }, [_vm._v(_vm._s(_vm.home))])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "color",
+  }, [_c('a', [_vm._v(_vm._s(_vm.home))])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
@@ -22184,17 +22180,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/services/housing",
       "tag": "li"
     }
-  }, [_c('a', {
-    staticClass: "color"
-  }, [_vm._v(_vm._s(_vm.housing))])]), _vm._v(" "), _c('router-link', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.housing))])]), _vm._v(" "), _c('router-link', {
     attrs: {
       "to": "/services/hiv",
       "tag": "li"
     }
-  }, [_c('a', {
-    staticClass: "color"
-  }, [_vm._v(_vm._s(_vm.services))])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "color",
+  }, [_c('a', [_vm._v(_vm._s(_vm.services))])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
@@ -22214,7 +22205,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "tag": "li"
     }
   }, [_c('a', [_vm._v(_vm._s(_vm.resources))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "color",
     attrs: {
       "href": "#"
     }
@@ -22229,12 +22219,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "tag": "li"
     }
   }, [_c('a', [_vm._v(_vm._s(_vm.events))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "color",
     attrs: {
       "href": "http://store.shantiaz.org"
     }
   }, [_vm._v(_vm._s(_vm.store))])]), _vm._v(" "), _c('li', [_c('a', {
-    staticClass: "color",
     attrs: {
       "href": "#"
     }
@@ -22333,6 +22321,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "col-sm-5"
   }, [_c('v-select', {
+    attrs: {
+      "placeholder": "Choose / Escoge",
+      "justified": "",
+      "clear-button": "",
+      "close-on-select": ""
+    },
     on: {
       "change": _vm.setLanguage
     },
@@ -22344,10 +22338,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "language"
     }
   }, [_c('v-option', {
-    attrs: {
-      "value": ""
-    }
-  }, [_vm._v("Choose / Escoge")]), _vm._v(" "), _c('v-option', {
     attrs: {
       "value": "en"
     }

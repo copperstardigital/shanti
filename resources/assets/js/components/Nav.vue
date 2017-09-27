@@ -3,8 +3,8 @@
     <div class="navy">
         <ul>
             <!-- Main menu -->
-            <router-link to="/" tag="li" exact><a class="color">{{ home }}</a></router-link>
-            <li><a href="#" class="color">{{ about }}</a>
+            <router-link to="/" tag="li" exact><a>{{ home }}</a></router-link>
+            <li><a href="#">{{ about }}</a>
                 <ul>
                     <router-link to="/getting-started" tag="li"><a>{{ gettingStarted }}</a></router-link>
                     <router-link to="/about/mission" tag="li"><a>{{ mission }}</a></router-link>
@@ -13,23 +13,23 @@
                     <router-link to="/about/privacy-policy" tag="li"><a>{{ privacyPolicy }}</a></router-link>
                 </ul>
             </li>
-            <router-link to="/services/housing" tag="li"><a class="color">{{ housing }}</a></router-link>
-            <router-link to="/services/hiv" tag="li"><a class="color">{{ services }}</a></router-link>
-            <li><a href="#" class="color">{{ support }}</a>
+            <router-link to="/services/housing" tag="li"><a>{{ housing }}</a></router-link>
+            <router-link to="/services/hiv" tag="li"><a>{{ services }}</a></router-link>
+            <li><a href="#">{{ support }}</a>
                 <ul>
                     <router-link to="/support/donate" tag="li"><a>{{ donate }}</a></router-link>
                     <router-link to="/support/volunteer" tag="li"><a>{{ volunteer }}</a></router-link>
                     <router-link to="/support/resources" tag="li"><a>{{ resources }}</a></router-link>
                 </ul>
             </li>
-            <li><a href="#" class="color">@shanti</a>
+            <li><a href="#">@shanti</a>
                 <ul>
                     <router-link to="/blog" tag="li"><a>Blog</a></router-link>
                     <router-link to="/events" tag="li"><a>{{ events }}</a></router-link>
                 </ul>
             </li>
-            <li><a href="http://store.shantiaz.org" class="color">{{ store }}</a></li>
-            <li><a href="#" class="color">{{ contact }}</a>
+            <li><a href="http://store.shantiaz.org">{{ store }}</a></li>
+            <li><a href="#">{{ contact }}</a>
                 <ul>
                     <router-link to="/contact/office" tag="li"><a>{{ office }}</a></router-link>
                     <router-link to="/contact/staff" tag="li"><a>{{ staff }}</a></router-link>

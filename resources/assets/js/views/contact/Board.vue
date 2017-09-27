@@ -2,6 +2,25 @@
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-html="article.body"></div>
+
+            <h3>Chairman</h3>
+            <p>Rudy Navarro</p>
+            <p>Affiliation: ASU, Phoenix College</p>
+
+            <h3>Secretary</h3>
+            <h3>Trent Tripp</h3>
+            <p>Affiliation: Rehab Specialists</p>
+
+            <h3>Treasurer</h3>
+            <p>Shirley McLauglin</p>
+
+            <h3>Director</h3>
+            <p>Dr. Charles Boag</p>
+
+            <h3>Member</h3>
+            <p>Sue Tormala</p>
+            <p>Affiliation: Owner, Chiropractic Physicians Group, Inc.</p>
+
             <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
         </div>
     </psg-page>

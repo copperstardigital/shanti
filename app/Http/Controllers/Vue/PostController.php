@@ -18,9 +18,9 @@ class PostController extends Controller
     public function index($footer = null)
     {
         if (!empty($footer)) {
-            $posts = Post::where('expires_at', '>', Carbon::now())->latest()->take(10)->get();
+            $posts = Post::where('expires_at', '>', Carbon::now())->latest()->take(5)->get();
         } else {
-            $posts = Post::where('expires_at', '>', Carbon::now())->latest()->get();
+            $posts = Post::with('category')->where('expires_at', '>', Carbon::now())->latest()->get();
         }
 
         return response()->json(['posts' => $posts]);
@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function carousel()
     {
-        $events = Post::where('category_id', 2)->latest()->take(5)->get();
+        $events = Post::with('category')->where('category_id', 2)->latest()->take(5)->get();
         return response()->json(['events' => $events]);
     }
 

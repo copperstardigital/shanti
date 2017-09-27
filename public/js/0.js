@@ -531,6 +531,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('slide', {
       key: "index",
       staticClass: "pale-purple"
+    }, [_c('div', {
+      staticClass: "event-header"
+    }, [_c('h3', [_vm._v(_vm._s(event.category.category_name))])]), _vm._v(" "), _c('div', {
+      staticClass: "carousel-container"
     }, [(event.image) ? _c('div', [_c('div', {
       staticClass: "row"
     }, [_c('div', {
@@ -596,7 +600,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "text": _vm.copy(event.headline, event.hero_text),
         "primary": "true"
       }
-    })], 1) : _vm._e()])
+    })], 1) : _vm._e()])])
   }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -799,11 +803,21 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
-    staticClass: "block-heading-six"
+    staticClass: "block-heading-six",
+    staticStyle: {
+      "margin-bottom": "0"
+    }
   }, [_c('h4', {
-    staticClass: "bg-color"
+    staticClass: "bg-color",
+    staticStyle: {
+      "margin-bottom": "0",
+      "width": "98%"
+    }
   }, [_vm._v(_vm._s(_vm.ourSupporters))])]), _vm._v(" "), _c('div', {
-    staticClass: "client-three"
+    staticClass: "client-three",
+    staticStyle: {
+      "margin-top": "0"
+    }
   }, [_c('carousel', {
     attrs: {
       "loop": true,
@@ -814,6 +828,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('slide', {
     staticClass: "pale-purple"
+  }, [_c('div', {
+    staticClass: "carousel-container less-padding"
   }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
@@ -868,8 +884,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/uploads/sponsors/broadway_cares.jpeg",
       "alt": "Broadway Cares"
     }
-  })])])])]), _vm._v(" "), _c('slide', {
+  })])])])])]), _vm._v(" "), _c('slide', {
     staticClass: "pale-purple"
+  }, [_c('div', {
+    staticClass: "carousel-container less-padding"
   }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
@@ -924,8 +942,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/uploads/sponsors/triyoung.png",
       "alt": "TriYoung Business Solutions"
     }
-  })])])])]), _vm._v(" "), _c('slide', {
+  })])])])])]), _vm._v(" "), _c('slide', {
     staticClass: "pale-purple"
+  }, [_c('div', {
+    staticClass: "carousel-container less-padding"
   }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
@@ -980,7 +1000,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "/uploads/sponsors/trash_city.jpg",
       "alt": "Trash City Beads"
     }
-  })])])])])], 1)], 1)])
+  })])])])])])], 1)], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1519,6 +1539,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1701,6 +1725,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
