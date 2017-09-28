@@ -796,80 +796,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "text": "Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.",
       "primary": "true"
     }
-  })], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('psg-progress-bars')], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  })], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-4 col-sm-6"
-  }, [_c('div', {
-    staticClass: "carousel slide",
+  }, [_c('h4', {
+    staticClass: "color"
+  }, [_vm._v(_vm._s(_vm.treeOfLife))]), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive",
     attrs: {
-      "id": "bs-carousel-1",
-      "data-ride": "carousel",
-      "data-interval": "5000",
-      "data-pause": "hover",
-      "data-wrap": "true"
+      "src": "/img/tree.jpg",
+      "alt": "Tree of Life"
     }
-  }, [_c('ol', {
-    staticClass: "carousel-indicators"
-  }, [_c('li', {
-    staticClass: "active",
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.treeOfLifeText))]), _vm._v(" "), _c('psg-speak', {
     attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "0"
+      "text": _vm.treeOfLifeText,
+      "primary": "true"
     }
-  }), _vm._v(" "), _c('li', {
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "1"
-    }
-  }), _vm._v(" "), _c('li', {
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "2"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "carousel-inner"
-  }, [_c('div', {
-    staticClass: "item active"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-1.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-2.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-3.jpg",
-      "alt": ""
-    }
-  })])]), _vm._v(" "), _c('a', {
-    staticClass: "left carousel-control",
-    attrs: {
-      "href": "#bs-carousel-1",
-      "role": "button",
-      "data-slide": "prev"
-    }
-  }, [_c('span', {
-    staticClass: "fa fa-chevron-left"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "right carousel-control",
-    attrs: {
-      "href": "#bs-carousel-1",
-      "role": "button",
-      "data-slide": "next"
-    }
-  }, [_c('span', {
-    staticClass: "fa fa-chevron-right"
-  })])])])
-}]}
+  })], 1), _vm._v(" "), _c('psg-progress-bars')], 1)])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -2048,28 +1991,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2092,6 +2013,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return 'Nuestra Experiencia';
             } else {
                 return 'Our Expertise';
+            }
+        },
+        treeOfLife: function treeOfLife() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Shanti Árbol de la vida';
+            } else {
+                return 'Shanti Tree of Life';
+            }
+        },
+        treeOfLifeText: function treeOfLifeText() {
+            if (this.$cookie.get('language') === 'es') {
+                return '\n' + 'El Shanti Tree of Life, que predomina en la sala de terapia de grupo de Shanti, simboliza a muchos hombres y mujeres que hemos perdido ante la enfermedad del VIH / SIDA.';
+            } else {
+                return 'The Shanti Tree of Life, which predominates the group therapy room at Shanti, symbolizes the many men and women we have lost to the disease of HIV/AIDS.';
             }
         },
         ourExpertiseText: function ourExpertiseText() {

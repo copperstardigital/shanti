@@ -23,35 +23,13 @@
 
             <div class="col-md-4 col-sm-6">
 
-                <div id="bs-carousel-1" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover" data-wrap="true">
-                    <!-- Bootstrap indicators. If you don't need indicators, remove the below section -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#bs-carousel-1" data-slide-to="0" class="active"></li>
-                        <li data-target="#bs-carousel-1" data-slide-to="1"></li>
-                        <li data-target="#bs-carousel-1" data-slide-to="2"></li>
-                    </ol>
-                    <!-- Slides. You can also add captions -->
-                    <div class="carousel-inner">
-                        <!-- Item, First item should have extra class "active" -->
-                        <div class="item active">
-                            <!-- Image -->
-                            <img src="img/aboutus/about-office-1.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="img/aboutus/about-office-2.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="img/aboutus/about-office-3.jpg" alt="">
-                        </div>
-                    </div>
-                    <!-- Carousel controls (arrows). If you don't need controls, remove the below section -->
-                    <a class="left carousel-control" href="#bs-carousel-1" role="button" data-slide="prev">
-                        <span class="fa fa-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#bs-carousel-1" role="button" data-slide="next">
-                        <span class="fa fa-chevron-right"></span>
-                    </a>
-                </div>
+                <h4 class="color">{{ treeOfLife }}</h4>
+
+                <img src="/img/tree.jpg" class="img-responsive" alt="Tree of Life" />
+
+                <p>{{ treeOfLifeText }}</p>
+
+                <psg-speak :text="treeOfLifeText" primary="true"></psg-speak>
 
             </div>
 
@@ -83,6 +61,21 @@
                     return 'Nuestra Experiencia';
                 } else {
                     return 'Our Expertise';
+                }
+            },
+            treeOfLife() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Shanti Árbol de la vida';
+                } else {
+                    return 'Shanti Tree of Life';
+                }
+            },
+            treeOfLifeText() {
+                if (this.$cookie.get('language') === 'es') {
+                    return '\n' +
+                        'El Shanti Tree of Life, que predomina en la sala de terapia de grupo de Shanti, simboliza a muchos hombres y mujeres que hemos perdido ante la enfermedad del VIH / SIDA.';
+                } else {
+                    return 'The Shanti Tree of Life, which predominates the group therapy room at Shanti, symbolizes the many men and women we have lost to the disease of HIV/AIDS.';
                 }
             },
             ourExpertiseText() {

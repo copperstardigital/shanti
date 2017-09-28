@@ -7,11 +7,16 @@
                       :lang="lang"
                       :autoplay="autoplay"
                       :contextmenu="contextmenu"
+                      :logo="logo"
                       :screenshot="true">
 
             </d-player>
 
-            <button @click="switchVideo(videos.client.clip)">Show {{ videos.client.name}}</button>
+            <br />
+
+            <span v-for="(client, index) in testimonials" key="index">
+                <button style="margin-right: 10px;" class="btn btn-color" @click="switchVideo(client.clip)">Watch {{ client.name}}</button>
+            </span>
         </div>
     </psg-page>
 </template>
@@ -24,18 +29,36 @@
             return {
                 article: {},
                 video: {
-                    url: '/uploads/video/a.mp4'
+                    url: '/uploads/video/michael.mp4'
                 },
                 lang: 'en',
                 autoplay: false,
                 player: null,
                 contextmenu: [],
-                videos:  {
-                    client: {
-                        name: 'Jose',
+                logo: '/img/shanti_logo_white.png',
+                testimonials:  [
+                    {
+                        name: 'Jose A.',
                         clip: '/uploads/video/jose.mp4'
+                    },
+                    {
+                        name: 'Jesse A.',
+                        clip: '/uploads/video/jesse.mp4'
+                    },
+                    {
+                        name: 'Marlon G.',
+                        clip: '/uploads/video/marlon.mp4'
+                    },
+                    {
+                        name: 'Scott H.',
+                        clip: '/uploads/video/scott.mp4'
+                    },
+                    {
+                        name: 'Michael S.',
+                        clip: '/uploads/video/michael.mp4'
                     }
-                }
+
+                ]
             }
         },
         components: {

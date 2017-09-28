@@ -25,6 +25,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -33,18 +38,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             article: {},
             video: {
-                url: '/uploads/video/a.mp4'
+                url: '/uploads/video/michael.mp4'
             },
             lang: 'en',
             autoplay: false,
             player: null,
             contextmenu: [],
-            videos: {
-                client: {
-                    name: 'Jose',
-                    clip: '/uploads/video/jose.mp4'
-                }
-            }
+            logo: '/img/shanti_logo_white.png',
+            testimonials: [{
+                name: 'Jose A.',
+                clip: '/uploads/video/jose.mp4'
+            }, {
+                name: 'Jesse A.',
+                clip: '/uploads/video/jesse.mp4'
+            }, {
+                name: 'Marlon G.',
+                clip: '/uploads/video/marlon.mp4'
+            }, {
+                name: 'Scott H.',
+                clip: '/uploads/video/scott.mp4'
+            }, {
+                name: 'Michael S.',
+                clip: '/uploads/video/michael.mp4'
+            }]
         };
     },
 
@@ -817,18 +833,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "lang": _vm.lang,
       "autoplay": _vm.autoplay,
       "contextmenu": _vm.contextmenu,
+      "logo": _vm.logo,
       "screenshot": true
     },
     on: {
       "play": _vm.play
     }
-  }), _vm._v(" "), _c('button', {
-    on: {
-      "click": function($event) {
-        _vm.switchVideo(_vm.videos.client.clip)
+  }), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((_vm.testimonials), function(client, index) {
+    return _c('span', {
+      key: "index"
+    }, [_c('button', {
+      staticClass: "btn btn-color",
+      staticStyle: {
+        "margin-right": "10px"
+      },
+      on: {
+        "click": function($event) {
+          _vm.switchVideo(client.clip)
+        }
       }
-    }
-  }, [_vm._v("Show " + _vm._s(_vm.videos.client.name))])], 1)])
+    }, [_vm._v("Watch " + _vm._s(client.name))])])
+  })], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
