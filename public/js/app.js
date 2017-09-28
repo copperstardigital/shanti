@@ -15095,6 +15095,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: (_computed = {
@@ -15193,6 +15194,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             return 'Donar';
         } else {
             return 'Donate';
+        }
+    }), _defineProperty(_computed, 'contribute', function contribute() {
+        if (this.$cookie.get('language') === 'es') {
+            return 'Contribuir';
+        } else {
+            return 'Contribute';
         }
     }), _defineProperty(_computed, 'volunteer', function volunteer() {
         if (this.$cookie.get('language') === 'es') {
@@ -15408,145 +15415,151 @@ window.bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 
 
 var Home = function Home(resolve) {
-    __webpack_require__.e/* require.ensure */(0).then((function () {
+    __webpack_require__.e/* require.ensure */(24).then((function () {
         resolve(__webpack_require__(14));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var CulturalCompetency = function CulturalCompetency(resolve) {
-    __webpack_require__.e/* require.ensure */(18).then((function () {
+    __webpack_require__.e/* require.ensure */(43).then((function () {
         resolve(__webpack_require__(19));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var History = function History(resolve) {
-    __webpack_require__.e/* require.ensure */(16).then((function () {
+    __webpack_require__.e/* require.ensure */(41).then((function () {
         resolve(__webpack_require__(21));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Mission = function Mission(resolve) {
-    __webpack_require__.e/* require.ensure */(15).then((function () {
+    __webpack_require__.e/* require.ensure */(40).then((function () {
         resolve(__webpack_require__(22));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var PrivacyPolicy = function PrivacyPolicy(resolve) {
-    __webpack_require__.e/* require.ensure */(14).then((function () {
+    __webpack_require__.e/* require.ensure */(39).then((function () {
         resolve(__webpack_require__(23));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Testimonials = function Testimonials(resolve) {
-    __webpack_require__.e/* require.ensure */(3).then((function () {
+    __webpack_require__.e/* require.ensure */(27).then((function () {
         resolve(__webpack_require__(24));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Board = function Board(resolve) {
-    __webpack_require__.e/* require.ensure */(11).then((function () {
+    __webpack_require__.e/* require.ensure */(36).then((function () {
         resolve(__webpack_require__(27));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Office = function Office(resolve) {
-    __webpack_require__.e/* require.ensure */(10).then((function () {
+    __webpack_require__.e/* require.ensure */(35).then((function () {
         resolve(__webpack_require__(28));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Staff = function Staff(resolve) {
-    __webpack_require__.e/* require.ensure */(2).then((function () {
+    __webpack_require__.e/* require.ensure */(26).then((function () {
         resolve(__webpack_require__(29));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Housing = function Housing(resolve) {
-    __webpack_require__.e/* require.ensure */(7).then((function () {
+    __webpack_require__.e/* require.ensure */(32).then((function () {
         resolve(__webpack_require__(32));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Services = function Services(resolve) {
-    __webpack_require__.e/* require.ensure */(6).then((function () {
+    __webpack_require__.e/* require.ensure */(31).then((function () {
         resolve(__webpack_require__(33));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Donate = function Donate(resolve) {
-    __webpack_require__.e/* require.ensure */(1).then((function () {
+    __webpack_require__.e/* require.ensure */(25).then((function () {
         resolve(__webpack_require__(34));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Resources = function Resources(resolve) {
-    __webpack_require__.e/* require.ensure */(5).then((function () {
+    __webpack_require__.e/* require.ensure */(29).then((function () {
         resolve(__webpack_require__(35));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Volunteer = function Volunteer(resolve) {
-    __webpack_require__.e/* require.ensure */(4).then((function () {
+    __webpack_require__.e/* require.ensure */(28).then((function () {
         resolve(__webpack_require__(36));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
+var Contribute = function Contribute(resolve) {
+    __webpack_require__.e/* require.ensure */(30).then((function () {
+        resolve(__webpack_require__(210));
+    }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+
 var Posts = function Posts(resolve) {
-    __webpack_require__.e/* require.ensure */(12).then((function () {
+    __webpack_require__.e/* require.ensure */(37).then((function () {
         resolve(__webpack_require__(26));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Post = function Post(resolve) {
-    __webpack_require__.e/* require.ensure */(13).then((function () {
+    __webpack_require__.e/* require.ensure */(38).then((function () {
         resolve(__webpack_require__(25));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Events = function Events(resolve) {
-    __webpack_require__.e/* require.ensure */(8).then((function () {
+    __webpack_require__.e/* require.ensure */(33).then((function () {
         resolve(__webpack_require__(31));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var Event = function Event(resolve) {
-    __webpack_require__.e/* require.ensure */(9).then((function () {
+    __webpack_require__.e/* require.ensure */(34).then((function () {
         resolve(__webpack_require__(30));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var GettingStarted = function GettingStarted(resolve) {
-    __webpack_require__.e/* require.ensure */(17).then((function () {
+    __webpack_require__.e/* require.ensure */(42).then((function () {
         resolve(__webpack_require__(20));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var SiteMap = function SiteMap(resolve) {
-    __webpack_require__.e/* require.ensure */(20).then((function () {
+    __webpack_require__.e/* require.ensure */(45).then((function () {
         resolve(__webpack_require__(17));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var SearchResults = function SearchResults(resolve) {
-    __webpack_require__.e/* require.ensure */(21).then((function () {
+    __webpack_require__.e/* require.ensure */(46).then((function () {
         resolve(__webpack_require__(16));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var ThirtiethAnniversary = function ThirtiethAnniversary(resolve) {
-    __webpack_require__.e/* require.ensure */(19).then((function () {
+    __webpack_require__.e/* require.ensure */(44).then((function () {
         resolve(__webpack_require__(18));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var NotFound = function NotFound(resolve) {
-    __webpack_require__.e/* require.ensure */(22).then((function () {
+    __webpack_require__.e/* require.ensure */(47).then((function () {
         resolve(__webpack_require__(15));
     }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: [{ path: '/', component: Home, meta: { title: { en: 'Home', es: 'Casa' } } }, { path: '/about/cultural-competency', component: CulturalCompetency, meta: { title: { en: 'Cultural Competency', es: 'Competencia cultural' } } }, { path: '/about/history', component: History, meta: { title: { en: 'History', es: 'Historia' } } }, { path: '/about/mission', component: Mission, meta: { title: { en: 'Mission', es: 'Nuestra misión' } } }, { path: '/about/privacy-policy', component: PrivacyPolicy, meta: { title: { en: 'Privacy Policy', es: 'Política de privacidad' } } }, { path: '/about/testimonials', component: Testimonials, meta: { title: { en: 'Testimonials', es: 'Testimonios' } } }, { path: '/contact/board', component: Board, meta: { title: { en: 'Board of Directors', es: 'Junta Directiva' } } }, { path: '/contact/office', component: Office, meta: { title: { en: 'Main Office', es: 'Oficina principal' } } }, { path: '/contact/staff', component: Staff, meta: { title: { en: 'Staff', es: 'Personal' } } }, { path: '/services/housing', component: Housing, meta: { title: { en: 'Housing', es: 'Alojamiento' } } }, { path: '/services/hiv', component: Services, meta: { title: { en: 'HIV Services', es: 'Servicios de VIH / SIDA' } } }, { path: '/support/donate', component: Donate, meta: { title: { en: 'Donate', es: 'Donar' } } }, { path: '/support/resources', component: Resources, meta: { title: { en: 'Resources', es: 'Recusos' } } }, { path: '/support/volunteer', component: Volunteer, meta: { title: { en: 'Volunteer', es: 'Voluntario' } } },
+    routes: [{ path: '/', component: Home, meta: { title: { en: 'Home', es: 'Casa' } } }, { path: '/about/cultural-competency', component: CulturalCompetency, meta: { title: { en: 'Cultural Competency', es: 'Competencia cultural' } } }, { path: '/about/history', component: History, meta: { title: { en: 'History', es: 'Historia' } } }, { path: '/about/mission', component: Mission, meta: { title: { en: 'Mission', es: 'Nuestra misión' } } }, { path: '/about/privacy-policy', component: PrivacyPolicy, meta: { title: { en: 'Privacy Policy', es: 'Política de privacidad' } } }, { path: '/about/testimonials', component: Testimonials, meta: { title: { en: 'Testimonials', es: 'Testimonios' } } }, { path: '/contact/board', component: Board, meta: { title: { en: 'Board of Directors', es: 'Junta Directiva' } } }, { path: '/contact/office', component: Office, meta: { title: { en: 'Main Office', es: 'Oficina principal' } } }, { path: '/contact/staff', component: Staff, meta: { title: { en: 'Staff', es: 'Personal' } } }, { path: '/services/housing', component: Housing, meta: { title: { en: 'Housing', es: 'Alojamiento' } } }, { path: '/services/hiv', component: Services, meta: { title: { en: 'HIV Services', es: 'Servicios de VIH / SIDA' } } }, { path: '/support/donate', component: Donate, meta: { title: { en: 'Donate', es: 'Donar' } } }, { path: '/support/resources', component: Resources, meta: { title: { en: 'Resources', es: 'Recusos' } } }, { path: '/support/contribute', component: Contribute, meta: { title: { en: 'Contribute', es: 'Contribuir' } } }, { path: '/support/volunteer', component: Volunteer, meta: { title: { en: 'Volunteer', es: 'Voluntario' } } },
     // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
     { path: '/blog', component: Posts, meta: { title: { en: 'Blog', es: 'Blog' } } }, { path: '/blog/30', redirect: '/30' }, { path: '/blog/:slug', name: 'blog/view', component: Post, meta: { title: { en: 'Blog', es: 'Blog' } } }, { path: '/events', component: Events, meta: { title: { en: 'Events', es: 'Eventos' } } }, { path: '/events/:slug', name: 'event/view', component: Event, meta: { title: { en: '', es: '' } } }, { path: '/getting-started', component: GettingStarted, meta: { title: { en: 'Getting Started', es: 'Emezpando' } } }, { path: '/site-map', component: SiteMap, meta: { title: { en: 'Site Map', es: 'Mapa de Sitio' } } }, { path: '/search-results', component: SearchResults, meta: { title: { en: 'Search Results', es: 'Resultados de la búsqueda' } } }, { path: '/30', component: ThirtiethAnniversary, meta: { title: { en: '30th Anniversary', es: 'Trigésimo aniversario' } } }, { path: '*', component: NotFound, meta: { title: { en: 'Page Not Found', es: 'Página no encontrada' } } }]
 });
@@ -22345,7 +22358,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/support/resources",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v(_vm._s(_vm.resources))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.resources))])]), _vm._v(" "), _c('router-link', {
+    attrs: {
+      "to": "/support/contribute",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v(_vm._s(_vm.contribute))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }

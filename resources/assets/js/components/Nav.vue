@@ -21,6 +21,7 @@
                     <router-link to="/support/donate" tag="li"><a>{{ donate }}</a></router-link>
                     <router-link to="/support/volunteer" tag="li"><a>{{ volunteer }}</a></router-link>
                     <router-link to="/support/resources" tag="li"><a>{{ resources }}</a></router-link>
+                    <router-link to="/support/contribute" tag="li"><a>{{ contribute }}</a></router-link>
                 </ul>
             </li>
             <li><a href="#">@shanti</a>
@@ -141,6 +142,13 @@
                     return 'Donar';
                 } else {
                     return 'Donate'
+                }
+            },
+            contribute() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Contribuir';
+                } else {
+                    return 'Contribute'
                 }
             },
             volunteer() {

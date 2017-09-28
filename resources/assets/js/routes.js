@@ -84,6 +84,12 @@ const Volunteer = resolve => {
     })
 };
 
+const Contribute = resolve => {
+    require.ensure(['./views/support/Contribute'], () => {
+        resolve(require('./views/support/Contribute'));
+    })
+};
+
 const Posts = resolve => {
     require.ensure(['./views/blog/Posts'], () => {
         resolve(require('./views/blog/Posts'));
@@ -153,6 +159,7 @@ let router = new VueRouter({
         { path: '/services/hiv', component: Services, meta: { title:{ en: 'HIV Services', es: 'Servicios de VIH / SIDA'}}},
         { path: '/support/donate', component: Donate, meta: { title: { en: 'Donate', es: 'Donar'}}},
         { path: '/support/resources', component: Resources, meta: { title: { en: 'Resources', es: 'Recusos'}}},
+        { path: '/support/contribute', component: Contribute, meta: { title: { en: 'Contribute', es: 'Contribuir'}}},
         { path: '/support/volunteer', component: Volunteer, meta: { title: { en: 'Volunteer', es: 'Voluntario'}}},
         // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
         { path: '/blog', component:Posts, meta: { title: { en: 'Blog', es: 'Blog'}}},
