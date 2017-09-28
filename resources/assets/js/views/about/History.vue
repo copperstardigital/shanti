@@ -4,8 +4,8 @@
             <div v-html="article.body"></div>
             <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
 
-            <carousel-3d :width="600" :height="600">
-                <slide v-for="(slide, i) in slides" :index="i">
+            <carousel-3d :width="600" :height="700">
+                <slide v-for="(slide, i) in slides" :index="i" key="i">
                     <img :src="slide.image" class="img-responsive">
                 </slide>
             </carousel-3d>

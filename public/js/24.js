@@ -707,15 +707,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "target": "_blank"
       }
     }, [_c('img', {
-      staticClass: "img-responsive",
+      staticClass: "thumbnail img-responsive",
       attrs: {
-        "src": '/uploads/' + event.image,
+        "src": '/uploads/events/' + event.image,
         "alt": event.headline
       }
     })])]) : _vm._e(), _vm._v(" "), (event.image) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
+      staticClass: "thumbnail img-responsive",
       attrs: {
-        "src": '/uploads/' + event.image,
+        "src": '/uploads/events/' + event.image,
         "alt": event.headline
       }
     })]) : _vm._e()]), _vm._v(" "), _c('div', {
@@ -736,7 +736,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
       attrs: {
         "text": _vm.copy(event.headline, event.hero_text),
         "primary": "true"
@@ -789,17 +789,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4 col-sm-6"
   }, [_c('h4', {
     staticClass: "color"
-  }, [_vm._v(_vm._s(_vm.ourExpertise))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ourExpertiseText))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
+  }, [_vm._v(_vm._s(_vm.ourExpertise))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ourExpertiseText))]), _vm._v(" "), _c('ul', {
+    staticClass: "list-2"
+  }, [_c('li', [_vm._v(_vm._s(_vm.bullet1))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(_vm.bullet2))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(_vm.bullet3))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(_vm.bullet4))])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": "Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.",
       "primary": "true"
     }
-  })], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('psg-progress-bars')], 1)])
+  })], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('psg-progress-bars')], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "list-2"
-  }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4 col-sm-6"
   }, [_c('div', {
@@ -904,7 +902,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.aidsWalkArizona))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-green",
-      "now": "500",
+      "now": "885",
       "goal": "1500"
     }
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.eventDollarsRaised))]), _vm._v(" "), _c('psg-progress-bar', {
@@ -1680,6 +1678,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             events: []
         };
     },
+
+    computed: {
+        readMore: function readMore() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Lee mas...';
+            } else {
+                return 'Read More...';
+            }
+        }
+    },
     created: function created() {
         var _this = this;
 
@@ -1688,7 +1696,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         http.get('/carousel')
         //.use(saCache)
         .then(function (response) {
-            _this.events = response.body.events;
+            var events = response.body.events;
+            var reformatted = [];
+
+            if (_this.$cookie.get('language') === 'es') {
+                events.forEach(function (event) {
+                    reformatted.push({
+                        headline: event.es_headline,
+                        hero_text: event.es_hero_text,
+                        category: event.category,
+                        slug: event.slug,
+                        image: event.image
+                    });
+                });
+            } else {
+                events.forEach(function (event) {
+                    reformatted.push({
+                        headline: event.en_headline,
+                        hero_text: event.en_hero_text,
+                        category: event.category,
+                        slug: event.slug,
+                        image: event.image
+                    });
+                });
+            }
+
+            _this.events = reformatted;
             _this.loading = false;
         }).catch(function (error) {
             console.error(error);
@@ -2066,6 +2099,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return 'Desde el comienzo de la pandemia del VIH / SIDA, el Grupo Phoenix Shanti ha estado proporcionando un salvavidas a hombres y mujeres en el Valle del Sol, proporcionando servicios de hospicio a la vivienda durante sus décadas de existencia.';
             } else {
                 return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
+            }
+        },
+        bullet1: function bullet1() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ayudamos a hombres y mujeres VIH + a morir con dignidad';
+            } else {
+                return 'We helped HIV+ men and women die with dignity';
+            }
+        },
+        bullet2: function bullet2() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ayudamos a las enfermeras a cuidarlas';
+            } else {
+                return 'We trained nurse assists to care for them';
+            }
+        },
+        bullet3: function bullet3() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ayudamos a los adictos a recuperar sus vidas';
+            } else {
+                return 'We helped addicts recover their lives';
+            }
+        },
+        bullet4: function bullet4() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Albergamos a los desamparados cuando nadie más';
+            } else {
+                return 'We housed the homeless when no one else would';
             }
         }
     }

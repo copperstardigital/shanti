@@ -11,10 +11,10 @@
                 <h4 class="color">{{ ourExpertise }}</h4>
                 <p>{{ ourExpertiseText }}</p>
                 <ul class="list-2">
-                    <li>Denounce 1with rhoncus  rhoncus indignation</li>
-                    <li>Dislike rhoncus so rhoncus et  rhoncus demoralized</li>
-                    <li>The charms rhoncus et rhoncus of the moment</li>
-                    <li>That rhoncus cannot rhoncus rhoncus pain trouble</li>
+                    <li>{{ bullet1 }}</li>
+                    <li>{{ bullet2 }}</li>
+                    <li>{{ bullet3 }}</li>
+                    <li>{{ bullet4 }}</li>
                 </ul>
                 <br />
 
@@ -91,7 +91,35 @@
                 } else {
                     return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
                 }
-            }
+            },
+            bullet1() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Ayudamos a hombres y mujeres VIH + a morir con dignidad';
+                } else {
+                    return 'We helped HIV+ men and women die with dignity';
+                }
+            },
+            bullet2() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Ayudamos a las enfermeras a cuidarlas';
+                } else {
+                    return 'We trained nurse assists to care for them';
+                }
+            },
+            bullet3() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Ayudamos a los adictos a recuperar sus vidas';
+                } else {
+                    return 'We helped addicts recover their lives';
+                }
+            },
+            bullet4() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Albergamos a los desamparados cuando nadie más';
+                } else {
+                    return 'We housed the homeless when no one else would';
+                }
+            },
         }
     }
 </script>

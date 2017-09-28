@@ -14,11 +14,11 @@
                             <div class="col-md-5">
                                 <div v-if="event.link">
                                     <a :href="event.link" target="_blank">
-                                        <img :src="'/uploads/' + event.image" class="img-responsive" :alt="event.headline" />
+                                        <img :src="'/uploads/events/' + event.image" class="thumbnail img-responsive" :alt="event.headline" />
                                     </a>
                                 </div>
                                 <div v-if="event.image">
-                                    <img :src="'/uploads/' + event.image" class="img-responsive" :alt="event.headline" />
+                                    <img :src="'/uploads/events/' + event.image" class="thumbnail img-responsive" :alt="event.headline" />
                                 </div>
                             </div>
                             <div class="col-md-7">
@@ -30,7 +30,7 @@
 
                                 <br />
 
-                                <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
+                                <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore}}</router-link>
 
                                 <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
                             </div>
@@ -66,6 +66,15 @@
                 events: []
             }
         },
+        computed: {
+            readMore() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Lee mas...';
+                } else {
+                    return 'Read More...';
+                }
+            }
+        },
         created() {
             this.loading = true;
 
@@ -73,7 +82,32 @@
                 .get('/carousel')
                 //.use(saCache)
                 .then(response => {
-                    this.events = response.body.events;
+                    let events = response.body.events;
+                    let reformatted = [];
+
+                    if (this.$cookie.get('language') === 'es') {
+                        events.forEach(event => {
+                            reformatted.push({
+                                headline: event.es_headline,
+                                hero_text: event.es_hero_text,
+                                category: event.category,
+                                slug: event.slug,
+                                image: event.image
+                            });
+                        });
+                    } else {
+                        events.forEach(event => {
+                            reformatted.push({
+                                headline: event.en_headline,
+                                hero_text: event.en_hero_text,
+                                category: event.category,
+                                slug: event.slug,
+                                image: event.image
+                            });
+                        });
+                    }
+
+                    this.events = reformatted;
                     this.loading = false;
                 }).catch(error => {
                 console.error(error);

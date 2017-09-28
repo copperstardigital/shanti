@@ -100,10 +100,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('carousel-3d', {
     attrs: {
       "width": 600,
-      "height": 600
+      "height": 700
     }
   }, _vm._l((_vm.slides), function(slide, i) {
     return _c('slide', {
+      key: "i",
       attrs: {
         "index": i
       }
