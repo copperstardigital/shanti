@@ -31,7 +31,7 @@
         },
         computed: {
             speakText() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Habla';
                 } else {
                     return 'Speak'

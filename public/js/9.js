@@ -1,48 +1,12 @@
 webpackJsonp([9],{
 
-/***/ 113:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -77,86 +41,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             article: {},
-            name: '',
-            emailAddress: '',
-            phone: '',
-            subject: '',
-            message: '',
-            showTop: false,
-            type: 'success',
-            flash: '',
-            formSubmitted: false
+            loading: false
         };
     },
 
     methods: {
-        validateBeforeSubmit: function validateBeforeSubmit(e) {
-            this.$validator.validateAll();
-            if (!this.errors.any()) {
-                this.sendMessage();
-            }
-        },
-        sendMessage: function sendMessage() {
-            var _this = this;
-
-            this.formSubmitted = true;
-
-            axios.post('/contact', {
-                name: this.name,
-                email: this.emailAddress,
-                phone: this.phone,
-                subject: this.subject,
-                message: this.message
-            }).then(function (response) {
-                _this.showTop = true;
-                _this.flash = 'Thank you for contacting Shanti. We will be in touch shortly.';
-            }).catch(function (error) {
-                _this.showTop = true;
-                _this.type = 'danger';
-                _this.flash = error.message;
-            });
+        copy: function copy(headline, _copy) {
+            return headline + ' ' + _copy;
         }
     },
-    created: function created() {
-        var _this2 = this;
+    mounted: function mounted() {
+        var _this = this;
 
         this.loading = true;
 
-        http.get('/articles/12')
+        http.get('/events/' + this.$route.params.slug)
         //.use(saCache)
         .then(function (response) {
-            var article = response.body.article;
-
-            _this2.article = {
-                headline: article.en_headline,
-                subhead: article.en_subhead,
-                callout: article.en_callout,
-                body: article.en_body
-            };
-
-            if (_this2.$cookie.get('lang') === 'es') {
-                _this2.article = {
-                    headline: article.es_headline,
-                    subhead: article.es_subhead,
-                    callout: article.es_callout,
-                    body: article.es_body
+            var event = response.body.event;
+            if (event !== null) {
+                _this.article = {
+                    headline: event.event_name,
+                    subhead: new Date(event.event_start).toLocaleDateString(),
+                    callout: event.event_callout,
+                    body: event.event_description,
+                    map_link: event.map_link,
+                    image: event.image,
+                    event_url: event.event_url
+                };
+            } else {
+                _this.article = {
+                    headline: 'Event Not Found',
+                    subhead: '404 Error',
+                    callout: 'We\'re sorry, but we could not locate this event. Perhaps it has already passed or you are following a mistyped link.',
+                    not_found: true
                 };
             }
 
-            _this2.loading = false;
+            _this.loading = false;
         }).catch(function (error) {
             console.error(error);
         });
     },
 
     components: {
-        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
     }
 });
 
 /***/ }),
 
-/***/ 149:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -170,283 +105,68 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('iframe', {
-    staticStyle: {
-      "border": "0"
-    },
+    staticClass: "col-md-6"
+  }, [(_vm.article.image) ? _c('div', [_c('img', {
+    staticClass: "img-responsive",
     attrs: {
-      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942",
-      "width": "100%",
-      "height": "450",
-      "frameborder": "0",
-      "allowfullscreen": ""
+      "src": '/uploads/events/' + _vm.article.image,
+      "alt": "article.headline"
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('alert', {
-    attrs: {
-      "placement": "top-right",
-      "duration": "10000",
-      "type": _vm.type,
-      "width": "500px",
-      "dismissable": ""
-    },
-    model: {
-      value: (_vm.showTop),
-      callback: function($$v) {
-        _vm.showTop = $$v
-      },
-      expression: "showTop"
-    }
-  }, [_c('span', {
-    staticClass: "icon-ok-circled alert-icon-float-left"
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('h1', [_vm._v("Contact Us")]), _vm._v(" "), (!_vm.formSubmitted) ? _c('form', {
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.validateBeforeSubmit($event)
-      }
-    }
-  }, [_c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('emailAddress')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "name"
-    }
-  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.name),
-      expression: "name"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.name),
-      expression: "name",
-      modifiers: {
-        "initial": true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "text",
-      "id": "name",
-      "data-vv-rules": "required"
-    },
+  })]) : _vm._e(), _vm._v(" "), (_vm.article.map_link) ? _c('div', [_c('div', {
     domProps: {
-      "value": (_vm.name)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.name = $event.target.value
-      }
+      "innerHTML": _vm._s(_vm.article.map_link)
     }
-  }), _vm._v(" "), (_vm.errors.has('name')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.errors.first('name')))]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('emailAddress')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "emailAddress"
-    }
-  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.emailAddress),
-      expression: "emailAddress"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.emailAddress),
-      expression: "emailAddress",
-      modifiers: {
-        "initial": true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "emailAddress",
-      "id": "emailAddress",
-      "data-vv-rules": "required|email"
-    },
+  })]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [(!_vm.article.not_found) ? _c('div', [_c('h1', [_vm._v(_vm._s(_vm.article.headline))]), _vm._v(" "), _c('div', {
     domProps: {
-      "value": (_vm.emailAddress)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.emailAddress = $event.target.value
-      }
+      "innerHTML": _vm._s(_vm.article.body)
     }
-  }), _vm._v(" "), (_vm.errors.has('emailAddress')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v("A valid email address is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "phone"
-    }
-  }, [_vm._v("Phone:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.phone),
-      expression: "phone"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "phone",
-      "id": "phone"
-    },
-    domProps: {
-      "value": (_vm.phone)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.phone = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('subject')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "subject"
-    }
-  }, [_vm._v("Subject:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.subject),
-      expression: "subject"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.subject),
-      expression: "subject",
-      modifiers: {
-        "initial": true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "subject",
-      "id": "subject",
-      "data-vv-rules": "required"
-    },
-    domProps: {
-      "value": (_vm.subject)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.subject = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.errors.has('subject')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.errors.first('subject')))]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('message')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "message"
-    }
-  }, [_vm._v("Message:")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.message),
-      expression: "message"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.message),
-      expression: "message",
-      modifiers: {
-        "initial": true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "id": "message",
-      "name": "message",
-      "rows": "10",
-      "data-vv-rules": "required"
-    },
-    domProps: {
-      "value": (_vm.message)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.message = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.errors.has('message')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.errors.first('message')))]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), (_vm.article.event_url) ? _c('div', [_c('a', {
     staticClass: "btn btn-color pull-right",
     attrs: {
-      "type": "submit"
+      "href": _vm.article.event_url,
+      "target": "_blank"
     }
-  }, [_vm._v("Send Message")])]) : _vm._e()], 1)])])])])
+  }, [_vm._v("Read More...")])]) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.copy(_vm.article.headline, _vm.article.body),
+      "primary": "true"
+    }
+  })], 1) : _vm._e()])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-03c55f63", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 27:
+/***/ 30:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(113),
+  __webpack_require__(119),
   /* template */
-  __webpack_require__(149),
+  __webpack_require__(143),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Office.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/events/Event.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Office.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Event.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -455,9 +175,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4082efca", Component.options)
+    hotAPI.createRecord("data-v-03c55f63", Component.options)
   } else {
-    hotAPI.reload("data-v-4082efca", Component.options)
+    hotAPI.reload("data-v-03c55f63", Component.options)
   }
 })()}
 

@@ -1,26 +1,52 @@
 <template>
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
-            <div v-html="article.body"></div>
-            <psg-speak v-show="!loading" :text="article.body" primary="true"></psg-speak>
+            <d-player ref="player"
+                      @play="play"
+                      :video="video"
+                      :lang="lang"
+                      :autoplay="autoplay"
+                      :contextmenu="contextmenu"
+                      :screenshot="true">
+
+            </d-player>
         </div>
     </psg-page>
 </template>
 
 <script>
-    import TextToSpeech from '../../components/misc/TextToSpeech';
+    import VueDPlayer from 'vue-dplayer'
 
     export default {
         data() {
             return {
-                article: {}
+                article: {},
+                video: {
+                    url: '/uploads/video/a.mp4',
+                    pic: '/uploads/gallery/l4l2_1.jpg'
+                },
+                lang: 'en',
+                autoplay: false,
+                player: null,
+                contextmenu: [
+                    {
+                        text: 'GitHub',
+                        link: 'https://github.com/MoePlayer/vue-dplayer'
+                    }
+                ]
             }
+        },
+        components: {
+            'd-player': VueDPlayer
+        },
+        mounted() {
+            this.player = this.$refs.player.dp;
         },
         created() {
             this.loading = true;
 
             http
-                .get('/articles/5')
+                .get('/articles/4')
                 //.use(saCache)
                 .then(response => {
                     let article = response.body.article;
@@ -32,7 +58,7 @@
                         body: article.en_body
                     };
 
-                    if (this.$cookie.get('language') === 'es') {
+                    if (this.$cookie.get('lang') === 'es') {
                         this.article = {
                             headline: article.es_headline,
                             subhead: article.es_subhead,
@@ -46,8 +72,10 @@
                     console.error(error);
                 });
         },
-        components: {
-            'psg-speak': TextToSpeech
+        methods: {
+            play() {
+                console.log('play callback')
+            }
         }
     }
 </script>

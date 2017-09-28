@@ -6,7 +6,7 @@
               :stripe="stripe"
               @change="complete = $event.complete"
         />
-        <button class="pay-with-stripe btn btn-color pull-right" @click="pay" :disabled="!complete">Donate</button>
+        <button class="pay-with-stripe btn btn-color pull-right" @click="pay" :disabled="paying || !complete">Donate <i v-show="paying" class="fa fa-refresh fa-spin"></i></button>
     </div>
 </template>
 
@@ -25,6 +25,8 @@
         },
 
         components: { Card },
+
+        props: ['paying'],
 
         methods: {
             pay () {

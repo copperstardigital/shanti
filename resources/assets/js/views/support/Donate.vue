@@ -3,7 +3,12 @@
         <div slot="copy">
             <div v-html="article.body" style="margin-bottom: 40px;"></div>
 
-            <form action="/support/donate" id="payment-form" method="POST" @submit.prevent="pay">
+            <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
+                <span class="icon-ok-circled alert-icon-float-left"></span>
+                <p>{{ flash }}</p>
+            </alert>
+
+            <form action="/support/donate" id="payment-form" method="POST" @submit.prevent="donate">
                 <div class="row">
                     <div class="col-sm-6">
                         <fieldset>
@@ -13,13 +18,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="first_name">First Name</label>
-                                        <input type="text" class="form-control" id="first_name" />
+                                        <input type="text" class="form-control" id="first_name" v-model="donation.first_name" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="last_name">Last Name</label>
-                                        <input type="text" class="form-control" id="last_name" />
+                                        <input type="text" class="form-control" id="last_name" v-model="donation.last_name" />
                                     </div>
                                 </div>
                             </div>
@@ -28,13 +33,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email Address</label>
-                                        <input type="email" class="form-control" id="email" />
+                                        <input type="email" class="form-control" id="email" v-model="donation.email" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="phone_number">Phone Number</label>
-                                        <input type="text" class="form-control" id="phone_number" />
+                                        <input type="text" class="form-control" id="phone_number" v-model="donation.phone_number" />
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +48,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input type="email" class="form-control" id="address" />
+                                        <input type="text" class="form-control" id="address" v-model="donation.address" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="city">City</label>
-                                        <input type="text" class="form-control" id="city" />
+                                        <input type="text" class="form-control" id="city" v-model="donation.city" />
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +63,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="state">State</label>
-                                        <select name="state" class="form-control" id="state">
+                                        <select name="state" class="form-control" id="state" v-model="donation.state">
                                             <option value="">Select one...</option>
                                             <option value="AL">Alabama</option>
                                             <option value="AK">Alaska</option>
@@ -118,7 +123,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="zip_code">Zip Code</label>
-                                        <input type="text" class="form-control" id="zip_code" />
+                                        <input type="text" class="form-control" id="zip_code" v-model="donation.zip_code" />
                                     </div>
                                 </div>
                             </div>
@@ -127,23 +132,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="email" class="form-control" id="password" />
+                                        <input type="password" class="form-control" id="password" v-model="donation.password" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password_confirmation">Password Confirmation</label>
-                                        <input type="text" class="form-control" id="password_confirmation" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" name="newsletter" value="1" checked="checked"/> Opt into weekly newsletter?</label>
-                                        </div>
+                                        <input type="password" class="form-control" id="password_confirmation" v-model="donation.password_confirmation" />
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +152,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="donation_id">Recurring Donation</label>
-                                        <select name="donation_id" id="donation_id" class="form-control">
+                                        <select name="donation_id" id="donation_id" class="form-control" v-model="donation.donation_id">
                                             <option value="">Select one...</option>
                                             <optgroup label="Business Donations">
                                                 <option value="1">Gold ($500 per month)</option>
@@ -177,14 +172,28 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="other_business">Recurring Business Donation</label>
-                                        <input type="text" class="form-control" id="other_business" />
+                                        <input type="text" class="form-control" id="other_business"  v-model="donation.other_business"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label for="other_individual">Recurring Individual Donation</label>
-                                            <input type="text" class="form-control" id="other_individual" />
+                                            <input type="text" class="form-control" id="other_individual" v-model="donation.other_individual" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset style="margin-bottom: 20px;">
+                            <legend>Weekly Newsletter</legend>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="newsletter" value="1" checked="checked"  v-model="donation.newsletter"/> Opt into weekly newsletter?</label>
                                         </div>
                                     </div>
                                 </div>
@@ -259,19 +268,7 @@
 
                                 </div>
                             </div>-->
-
-                            <!--<div class="form-row">
-                                <label for="card-element">Credit or Debit Card </label>
-                                <div id="card-element">
-                                    <!-- a Stripe Element will be inserted here.
-                                </div>-->
-
-                                <!-- Used to display Element errors -->
-                                <!--<div id="card-errors" role="alert"></div>
-                            </div>
-
-                            <button type="submit" class="btn btn-color pull-right">Donate</button>-->
-                            <psg-stripe></psg-stripe>
+                            <psg-stripe :paying="donating"></psg-stripe>
                         </fieldset>
                     </div>
                 </div>
@@ -282,42 +279,26 @@
 
 <script>
     import Stripe from '../../components/misc/Stripe';
+    import { alert } from 'vue-strap';
 
     export default {
         data() {
             return {
-                article: {}
+                article: {},
+                donation: {
+                    state: '',
+                    donation_id: '',
+                    newsletter: 1
+                },
+                type: 'success',
+                showTop: false,
+                flash: '',
+                donating: false
             }
         },
         components: {
-            'psg-stripe': Stripe
-        },
-        mounted() {
-//            const stripe = Stripe(process.env.MIX_STRIPE_KEY);
-//            const elements = stripe.elements();
-//
-//            const style = {
-//                base: {
-//                    color: '#32325d',
-//                    lineHeight: '24px',
-//                    fontFamily: '"Open Sans", sans-serif',
-//                    fontSmoothing: 'antialiased',
-//                    fontSize: '16px',
-//                    '::placeholder': {
-//                        color: '#aab7c4'
-//                    }
-//                },
-//                invalid: {
-//                    color: '#fa755a',
-//                    iconColor: '#fa755a'
-//                }
-//            };
-//
-//            // Create an instance of the card Element
-//            const card = this.card = elements.create('card', {style});
-//
-//            // Add an instance of the card Element into the `card-element` <div>
-//            card.mount('#card-element');
+            'psg-stripe': Stripe,
+            alert
         },
         created() {
             this.loading = true;
@@ -335,7 +316,7 @@
                         body: article.en_body
                     };
 
-                    if (this.$cookie.get('lang') === 'es') {
+                    if (this.$cookie.get('language') === 'es') {
                         this.article = {
                             headline: article.es_headline,
                             subhead: article.es_subhead,
@@ -350,29 +331,41 @@
                 });
         },
         methods: {
-            pay() {
-                let form = document.querySelector('#payment-form');
-
-                let token = document.head.querySelector('meta[name="csrf-token"]');
-                let input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = '_token';
-                input.value = token.content;
-
-                form.append(input);
+            donate() {
+                let vm = this;
+                this.donating = true;
 
                 window.bus.$on('stripe-token', function(token) {
-                    let tokenInput = document.createElement('input');
-                    tokenInput.type = 'hidden';
-                    tokenInput.name = 'stripe_token';
-                    tokenInput.value = token;
+                    axios.post('/support/donate', {
+                        stripe_token: token,
+                        first_name: vm.donation.first_name,
+                        last_name: vm.donation.last_name,
+                        email: vm.donation.email,
+                        address: vm.donation.address,
+                        city: vm.donation.city,
+                        state: vm.donation.state,
+                        zip_code: vm.donation.zip_code,
+                        password: vm.donation.password,
+                        newsletter: vm.donation.newsletter,
+                        donation_id: vm.donation.donation_id,
+                        other_business: vm.donation.other_business,
+                        other_individual: vm.donation.other_individual
+                    }).then(response => {
+                        if (!response.data.success) {
+                            vm.type = 'danger';
+                        }
 
-                    form.append(tokenInput);
+                        vm.showTop = true;
+                        vm.flash = response.data.message;
 
-                    form.submit();
+                        vm.donating = false;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        vm.showTop = true;
+                       // vm.flash = error.data.error;
+                    });
                 })
-
-
             }
         }
     }

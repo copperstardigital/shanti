@@ -45,126 +45,126 @@
     export default {
         computed: {
             home() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Casa';
                 } else {
                     return 'Home'
                 }
             },
             about() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Acerca de';
                 } else {
                     return 'About'
                 }
             },
             contact() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Contacto';
                 } else {
                     return 'Contact'
                 }
             },
             gettingStarted() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Empezando';
                 } else {
                     return 'Getting Started'
                 }
             },
             mission() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Misión';
                 } else {
                     return 'Mission'
                 }
             },
             history() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Historia';
                 } else {
                     return 'History'
                 }
             },
             culturalCompetency() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Competencia Cultural';
                 } else {
                     return 'Cultural Competency'
                 }
             },
             privacyPolicy() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Política de privacidad';
                 } else {
                     return 'Privacy Policy'
                 }
             },
             housing() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return '+ Vivienda VIH';
                 } else {
                     return 'HIV+ Housing'
                 }
             },
             services() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Servicios de VIH+';
                 } else {
                     return 'HIV+ Services'
                 }
             },
             support() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Apoyo';
                 } else {
                     return 'Support'
                 }
             },
             support() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Apoyo';
                 } else {
                     return 'Support'
                 }
             },
             donate() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Donar';
                 } else {
                     return 'Donate'
                 }
             },
             volunteer() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Voluntario';
                 } else {
                     return 'Volunteer'
                 }
             },
             resources() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Recursos';
                 } else {
                     return 'Resources'
                 }
             },
             office() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Oficina';
                 } else {
                     return 'Office'
                 }
             },
             staff() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Personal';
                 } else {
                     return 'Staff'
                 }
             },
             board() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Junta Directiva';
                 } else {
                     return 'Board of Directors'
@@ -178,7 +178,7 @@
                 }
             },
             store() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Tienda';
                 } else {
                     return 'Store'

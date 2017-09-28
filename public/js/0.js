@@ -5,21 +5,148 @@ webpackJsonp([0],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['bar', 'now', 'goal'],
+    data: function data() {
+        return {
+            width: 0
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        window.setInterval(function () {
+            if (_this.width < _this.now / _this.goal * 100) {
+                _this.width++;
+            } else {
+                _this.width = 0;
+            }
+        }, 100);
+    }
+});
+
+/***/ }),
+
+/***/ 101:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'psg-progress-bar': __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default.a,
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
+    },
+    computed: {
+        ourFundraising: function ourFundraising() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Nuestra recaudación de fondos';
+            } else {
+                return 'Our Fundraising';
+            }
+        },
+        ourFundraisingText: function ourFundraisingText() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Phoenix Shanti Group tiene una historia de recaudar fondos para la comunidad de VIH / SIDA. He aquí un desglose de algunos de sus esfuerzos este año.';
+            } else {
+                return 'Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.';
+            }
+        },
+        generalFunds: function generalFunds() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Fondos Generales';
+            } else {
+                return 'General Funds';
+            }
+        },
+        aidsWalkArizona: function aidsWalkArizona() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Caminata del SIDA Arizona';
+            } else {
+                return 'AIDS Walk Arizona';
+            }
+        },
+        eventDollarsRaised: function eventDollarsRaised() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Evento Dólares Recaudados';
+            } else {
+                return 'Event Dollars Raised';
+            }
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 103:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_home_Counters__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__);
 //
 //
@@ -102,14 +229,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 124:
+/***/ 130:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(90),
+  __webpack_require__(92),
   /* template */
-  __webpack_require__(162),
+  __webpack_require__(170),
   /* scopeId */
   null,
   /* cssModules */
@@ -137,14 +264,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 125:
+/***/ 131:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(91),
+  __webpack_require__(93),
   /* template */
-  __webpack_require__(167),
+  __webpack_require__(175),
   /* scopeId */
   null,
   /* cssModules */
@@ -172,14 +299,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 126:
+/***/ 132:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(92),
+  __webpack_require__(94),
   /* template */
-  __webpack_require__(138),
+  __webpack_require__(145),
   /* scopeId */
   null,
   /* cssModules */
@@ -207,14 +334,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 127:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(93),
+  __webpack_require__(95),
   /* template */
-  __webpack_require__(163),
+  __webpack_require__(171),
   /* scopeId */
   null,
   /* cssModules */
@@ -242,14 +369,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 128:
+/***/ 134:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(94),
+  __webpack_require__(96),
   /* template */
-  __webpack_require__(154),
+  __webpack_require__(161),
   /* scopeId */
   null,
   /* cssModules */
@@ -277,14 +404,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 129:
+/***/ 135:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(95),
+  __webpack_require__(97),
   /* template */
-  __webpack_require__(164),
+  __webpack_require__(172),
   /* scopeId */
   null,
   /* cssModules */
@@ -312,14 +439,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 130:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(96),
+  __webpack_require__(98),
   /* template */
-  __webpack_require__(153),
+  __webpack_require__(160),
   /* scopeId */
   null,
   /* cssModules */
@@ -347,14 +474,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 131:
+/***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(97),
+  __webpack_require__(99),
   /* template */
-  __webpack_require__(139),
+  __webpack_require__(146),
   /* scopeId */
   null,
   /* cssModules */
@@ -382,14 +509,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 132:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   null,
   /* template */
-  __webpack_require__(137),
+  __webpack_require__(144),
   /* scopeId */
   null,
   /* cssModules */
@@ -417,14 +544,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 133:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(98),
+  __webpack_require__(100),
   /* template */
-  __webpack_require__(158),
+  __webpack_require__(166),
   /* scopeId */
   null,
   /* cssModules */
@@ -452,14 +579,49 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 134:
+/***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(99),
+  __webpack_require__(103),
   /* template */
-  __webpack_require__(148),
+  __webpack_require__(168),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Home.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-831f5044", Component.options)
+  } else {
+    hotAPI.reload("data-v-831f5044", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 140:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(101),
+  /* template */
+  __webpack_require__(155),
   /* scopeId */
   null,
   /* cssModules */
@@ -487,7 +649,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 137:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -505,7 +667,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 138:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -613,7 +775,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 139:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -720,42 +882,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 14:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(100),
-  /* template */
-  __webpack_require__(160),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/Home.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Home.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-831f5044", Component.options)
-  } else {
-    hotAPI.reload("data-v-831f5044", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 148:
+/***/ 155:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -798,7 +925,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 153:
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1012,7 +1139,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 154:
+/***/ 161:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1040,7 +1167,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 158:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1073,7 +1200,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 160:
+/***/ 168:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1103,7 +1230,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 162:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1127,7 +1254,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 163:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1177,7 +1304,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 164:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1206,7 +1333,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 167:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1288,7 +1415,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 87:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -1300,7 +1427,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 92:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1343,12 +1470,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 91:
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Counter__);
 //
 //
@@ -1430,42 +1557,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         housed: function housed() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Alojado';
             } else {
                 return 'Housed';
             }
         },
         vocRehab: function vocRehab() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Rehabilitación Vocacional';
             } else {
                 return 'Voc Rehab';
             }
         },
         outpatients: function outpatients() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Pacientes ambulatorios';
             } else {
                 return 'Outpatients';
             }
         },
         counseled: function counseled() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Aconsejado';
             } else {
                 return 'Counseled';
             }
         },
         educated: function educated() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Educado';
             } else {
                 return 'Educated';
             }
         },
         volunteerHours: function volunteerHours() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Horas de Voluntariado';
             } else {
                 return 'Volunteer Hours';
@@ -1476,12 +1603,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 92:
+/***/ 94:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
@@ -1582,7 +1709,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 93:
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1622,14 +1749,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         title: function title() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return this.box.es_title;
             } else {
                 return this.box.en_title;
             }
         },
         copy: function copy() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return this.box.es_copy;
             } else {
                 return this.box.en_copy;
@@ -1640,12 +1767,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 94:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__InfoBox__);
 //
 //
@@ -1692,7 +1819,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 95:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1718,12 +1845,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 96:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 //
 //
@@ -1827,7 +1954,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         ourSupporters: function ourSupporters() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Nuestros partidarios';
             } else {
                 return 'Our Supporters';
@@ -1838,12 +1965,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 97:
+/***/ 99:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBars__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
@@ -1921,151 +2048,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         ourAgency: function ourAgency() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Nuestra Agencia';
             } else {
                 return 'Our Agency';
             }
         },
         ourExpertise: function ourExpertise() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Nuestra Experiencia';
             } else {
                 return 'Our Expertise';
             }
         },
         ourExpertiseText: function ourExpertiseText() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Desde el comienzo de la pandemia del VIH / SIDA, el Grupo Phoenix Shanti ha estado proporcionando un salvavidas a hombres y mujeres en el Valle del Sol, proporcionando servicios de hospicio a la vivienda durante sus décadas de existencia.';
             } else {
                 return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
-            }
-        }
-    }
-});
-
-/***/ }),
-
-/***/ 98:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['bar', 'now', 'goal'],
-    data: function data() {
-        return {
-            width: 0
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
-        window.setInterval(function () {
-            if (_this.width < _this.now / _this.goal * 100) {
-                _this.width++;
-            } else {
-                _this.width = 0;
-            }
-        }, 100);
-    }
-});
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        'psg-progress-bar': __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default.a,
-        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
-    },
-    computed: {
-        ourFundraising: function ourFundraising() {
-            if (this.$cookie.get('lang') === 'es') {
-                return 'Nuestra recaudación de fondos';
-            } else {
-                return 'Our Fundraising';
-            }
-        },
-        ourFundraisingText: function ourFundraisingText() {
-            if (this.$cookie.get('lang') === 'es') {
-                return 'Phoenix Shanti Group tiene una historia de recaudar fondos para la comunidad de VIH / SIDA. He aquí un desglose de algunos de sus esfuerzos este año.';
-            } else {
-                return 'Phoenix Shanti Group has a history of raising money for the HIV/AIDS community. Here is a breakdown of some of their efforts this year.';
-            }
-        },
-        generalFunds: function generalFunds() {
-            if (this.$cookie.get('lang') === 'es') {
-                return 'Fondos Generales';
-            } else {
-                return 'General Funds';
-            }
-        },
-        aidsWalkArizona: function aidsWalkArizona() {
-            if (this.$cookie.get('lang') === 'es') {
-                return 'Caminata del SIDA Arizona';
-            } else {
-                return 'AIDS Walk Arizona';
-            }
-        },
-        eventDollarsRaised: function eventDollarsRaised() {
-            if (this.$cookie.get('lang') === 'es') {
-                return 'Evento Dólares Recaudados';
-            } else {
-                return 'Event Dollars Raised';
             }
         }
     }

@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Biling\Billing;
+namespace App\Shanti\Billing;
 
-use Carbon\Carbon;
-use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Error\ApiConnection;
 use Stripe\Error\Authentication;
 use Stripe\Error\Base;
+use Stripe\Error\Card;
 use Stripe\Error\InvalidRequest;
 use Stripe\Error\RateLimit;
-use Stripe\Refund;
 use Stripe\Stripe;
-use Stripe\Error\Card;
 use Stripe\Subscription;
 
 class Billing {
@@ -29,14 +26,28 @@ class Billing {
     }
 
     public function subscribe($customer, $planId) {
-        Subscription::create([
-            'customer' => $customer->id,
-            'items' =>  [
-                [
-                    'plan' => $planId
+        try {
+            return Subscription::create([
+                'customer' => $customer->id,
+                'items' =>  [
+                    [
+                        'plan' => $planId
+                    ]
                 ]
-            ]
-        ]);
+            ]);
+        } catch (\Stripe\Error\RateLimit $e) {
+            return $e->getMessage();
+        } catch (\Stripe\Error\InvalidRequest $e) {
+            return $e->getMessage();
+        } catch (\Stripe\Error\Authentication $e) {
+            return $e->getMessage();
+        } catch (\Stripe\Error\ApiConnection $e) {
+            return $e->getMessage();
+        } catch (\Stripe\Error\Base $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     public function charge($request, $shipping, $tax)

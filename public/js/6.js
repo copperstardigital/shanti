@@ -1,17 +1,12 @@
 webpackJsonp([6],{
 
-/***/ 117:
+/***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -48,7 +43,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.loading = true;
 
-        http.get('/articles/6')
+        http.get('/articles/7')
         //.use(saCache)
         .then(function (response) {
             var article = response.body.article;
@@ -60,7 +55,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 body: article.en_body
             };
 
-            if (_this.$cookie.get('lang') === 'es') {
+            if (_this.$cookie.get('language') === 'es') {
                 _this.article = {
                     headline: article.es_headline,
                     subhead: article.es_subhead,
@@ -73,8 +68,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
-
-        this.$cookie.get('lang');
     },
 
     components: {
@@ -84,7 +77,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 152:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -109,20 +102,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('img', {
     staticClass: "img-responsive",
     attrs: {
-      "src": "/img/transitional.png",
-      "alt": "Transitional Housing"
+      "src": "/img/individual_counseling.jpg",
+      "alt": "Individual Counseling"
     }
   }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('img', {
     staticClass: "img-responsive",
     attrs: {
-      "src": "/img/triplex.png",
-      "alt": "Triplex"
-    }
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": "/img/permanent.jpg",
-      "alt": "Permanent Housing"
+      "src": "/img/group_counseling.jpg",
+      "alt": "Group Counseling"
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
@@ -147,28 +134,28 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-18d3a9c0", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 31:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(117),
+  __webpack_require__(122),
   /* template */
-  __webpack_require__(152),
+  __webpack_require__(149),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Services.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Services.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -177,9 +164,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
+    hotAPI.createRecord("data-v-18d3a9c0", Component.options)
   } else {
-    hotAPI.reload("data-v-5aabf0eb", Component.options)
+    hotAPI.reload("data-v-18d3a9c0", Component.options)
   }
 })()}
 

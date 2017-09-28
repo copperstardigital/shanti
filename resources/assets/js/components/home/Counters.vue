@@ -78,42 +78,42 @@
         },
         computed: {
             housed() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Alojado';
                 } else {
                     return 'Housed';
                 }
             },
             vocRehab() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Rehabilitación Vocacional';
                 } else {
                     return 'Voc Rehab';
                 }
             },
             outpatients() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Pacientes ambulatorios';
                 } else {
                     return 'Outpatients';
                 }
             },
             counseled() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Aconsejado';
                 } else {
                     return 'Counseled';
                 }
             },
             educated() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Educado';
                 } else {
                     return 'Educated';
                 }
             },
             volunteerHours() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Horas de Voluntariado';
                 } else {
                     return 'Volunteer Hours';

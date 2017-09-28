@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 111:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35,77 +35,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: {},
-            posts: []
+            article: {}
         };
     },
-
-    methods: {
-        getPosts: function getPosts() {
-            var _this = this;
-
-            http.get('/posts')
-            //.use(saCache)
-            .then(function (response) {
-                _this.posts = response.body.posts;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        },
-        getArticle: function getArticle() {
-            var _this2 = this;
-
-            http.get('/articles/11')
-            //.use(saCache)
-            .then(function (response) {
-                var article = response.body.article;
-
-                _this2.article = {
-                    headline: article.en_headline,
-                    subhead: article.en_subhead,
-                    callout: article.en_callout,
-                    body: article.en_body
-                };
-
-                _this2.loading = false;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        },
-        copy: function copy(headline, _copy) {
-            return headline + ' ' + _copy;
-        }
-    },
-    beforeMount: function beforeMount() {
-        this.getArticle();
-        this.getPosts();
-    },
     created: function created() {
+        var _this = this;
+
         this.loading = true;
+
+        http.get('/articles/13')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+
+            _this.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
+
+            if (_this.$cookie.get('language') === 'es') {
+                _this.article = {
+                    headline: article.es_headline,
+                    subhead: article.es_subhead,
+                    callout: article.es_callout,
+                    body: article.es_body
+                };
+            }
+
+            _this.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
     },
 
     components: {
@@ -115,7 +83,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 150:
+/***/ 158:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -125,111 +93,45 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
-    slot: "posts"
-  }, _vm._l((_vm.posts), function(post, index) {
-    return _c('div', {
-      key: "index"
-    }, [(post.image) ? _c('div', [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "col-md-4"
-    }, [(post.link) ? _c('div', [_c('a', {
-      attrs: {
-        "href": post.link,
-        "target": "_blank"
-      }
-    }, [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/' + post.image,
-        "alt": post.headline
-      }
-    })])]) : _vm._e(), _vm._v(" "), (post.image && !post.link) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/' + post.image,
-        "alt": post.headline
-      }
-    })]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-8"
-    }, [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(post.body)
-      }
-    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": '/blog/' + post.slug
-      }
-    }, [_vm._v("Read Post")]), _vm._v(" "), _c('a', {
-      staticClass: "btn btn-default pull-right",
-      attrs: {
-        "href": post.link
-      }
-    }, [_vm._v("More Information")])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": '/blog/' + post.slug
-      }
-    }, [_vm._v("Read Post")])], 1) : _vm._e(), _vm._v(" "), _c('psg-speak', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!_vm.loading),
-        expression: "!loading"
-      }],
-      attrs: {
-        "text": _vm.copy(post.headline, post.body),
-        "primary": "true"
-      }
-    })], 1)])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(post.body)
-      }
-    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": '/blog/' + post.slug
-      }
-    }, [_vm._v("Read Post")]), _vm._v(" "), _c('a', {
-      staticClass: "btn btn-default pull-right",
-      attrs: {
-        "href": post.link
-      }
-    }, [_vm._v("More Information")])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": '/blog/' + post.slug
-      }
-    }, [_vm._v("Read Post")])], 1) : _vm._e()]) : _vm._e()])
-  }))])
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  }), _vm._v(" "), _c('h3', [_vm._v("Chairman")]), _vm._v(" "), _c('p', [_vm._v("Rudy Navarro")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: ASU, Phoenix College")]), _vm._v(" "), _c('h3', [_vm._v("Secretary")]), _vm._v(" "), _c('h3', [_vm._v("Trent Tripp")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: Rehab Specialists")]), _vm._v(" "), _c('h3', [_vm._v("Treasurer")]), _vm._v(" "), _c('p', [_vm._v("Shirley McLauglin")]), _vm._v(" "), _c('h3', [_vm._v("Director")]), _vm._v(" "), _c('p', [_vm._v("Dr. Charles Boag")]), _vm._v(" "), _c('h3', [_vm._v("Member")]), _vm._v(" "), _c('p', [_vm._v("Sue Tormala")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: Owner, Chiropractic Physicians Group, Inc.")]), _vm._v(" "), _c('psg-speak', {
+    attrs: {
+      "text": _vm.article.body,
+      "loading": _vm.loading,
+      "primary": "true"
+    }
+  })], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4b99bdb6", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-51a29b48", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 25:
+/***/ 27:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(111),
+  __webpack_require__(116),
   /* template */
-  __webpack_require__(150),
+  __webpack_require__(158),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Posts.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Board.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Posts.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Board.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -238,9 +140,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b99bdb6", Component.options)
+    hotAPI.createRecord("data-v-51a29b48", Component.options)
   } else {
-    hotAPI.reload("data-v-4b99bdb6", Component.options)
+    hotAPI.reload("data-v-51a29b48", Component.options)
   }
 })()}
 

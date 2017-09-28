@@ -30,6 +30,12 @@ const PrivacyPolicy = resolve => {
     })
 };
 
+const Testimonials = resolve => {
+    require.ensure(['./views/about/Testimonials'], () => {
+        resolve(require('./views/about/Testimonials'));
+    })
+};
+
 const Board = resolve => {
     require.ensure(['./views/contact/Board'], () => {
         resolve(require('./views/contact/Board'));
@@ -134,34 +140,37 @@ const NotFound = resolve => {
 
 let router = new VueRouter({
     routes : [
-        { path : '/',  component: Home, meta: { title: 'Home'}},
-        { path: '/about/cultural-competency', component: CulturalCompetency, meta: { title: 'Cultural Compentency'}},
-        { path: '/about/history', component: History, meta: { title: 'History'}},
-        { path: '/about/mission', component: Mission, meta: { title: 'Mission'}},
-        { path: '/about/privacy-policy', component: PrivacyPolicy, meta: { title: 'Privacy Policy'}},
-        { path: '/contact/board', component: Board, meta: { title: 'Board of Directors'}},
-        { path: '/contact/office', component: Office, meta: { title: 'Main Office'}},
-        { path: '/contact/staff', component: Staff, meta: { title: 'Staff'}},
-        { path: '/services/housing', component: Housing, meta: { title: 'HIV+ Housing'}},
-        { path: '/services/hiv', component: Services, meta: { title: 'HIV Services'}},
-        { path: '/support/donate', component: Donate, meta: { title: 'Donate'}},
-        { path: '/support/resources', component: Resources, meta: { title: 'Resources'}},
-        { path: '/support/volunteer', component: Volunteer, meta: { title: 'Volunteer'}},
+        { path : '/',  component: Home, meta: { title: { en: 'Home', es : 'Casa'}}},
+        { path: '/about/cultural-competency', component: CulturalCompetency, meta: { title: { en: 'Cultural Competency', es : 'Competencia cultural'}}},
+        { path: '/about/history', component: History, meta: { title: { en: 'History', es: 'Historia'}}},
+        { path: '/about/mission', component: Mission, meta: { title: { en: 'Mission', es: 'Nuestra misión' }}},
+        { path: '/about/privacy-policy', component: PrivacyPolicy, meta: { title: { en: 'Privacy Policy', es: 'Política de privacidad'}}},
+        { path: '/about/testimonials', component: Testimonials, meta: { title: { en: 'Testimonials', es: 'Testimonios'}}},
+        { path: '/contact/board', component: Board, meta: { title: { en: 'Board of Directors', es: 'Junta Directiva'}}},
+        { path: '/contact/office', component: Office, meta: { title: { en: 'Main Office', es: 'Oficina principal'}}},
+        { path: '/contact/staff', component: Staff, meta: { title: { en: 'Staff', es: 'Personal'}}},
+        { path: '/services/housing', component: Housing, meta: { title: { en: 'Housing', es: 'Alojamiento'}}},
+        { path: '/services/hiv', component: Services, meta: { title:{ en: 'HIV Services', es: 'Servicios de VIH / SIDA'}}},
+        { path: '/support/donate', component: Donate, meta: { title: { en: 'Donate', es: 'Donar'}}},
+        { path: '/support/resources', component: Resources, meta: { title: { en: 'Resources', es: 'Recusos'}}},
+        { path: '/support/volunteer', component: Volunteer, meta: { title: { en: 'Volunteer', es: 'Voluntario'}}},
         // { path: '/about', component: require('./views/About'), meta: { title: 'About'}},
-        { path: '/blog', component:Posts, meta: { title: 'Blog'}},
+        { path: '/blog', component:Posts, meta: { title: { en: 'Blog', es: 'Blog'}}},
         { path: '/blog/30', redirect: '/30'},
-        { path: '/blog/:slug', name: 'blog/view', component: Post, meta: { title: ''}},
-        { path: '/events', component: Events, meta: { title: 'Events'}},
-        { path: '/events/:slug', name: 'event/view', component: Event, meta: { title: ''}},
-        { path: '/getting-started', component: GettingStarted, meta: { title: 'Getting Started'}},
-        { path: '/site-map', component: SiteMap, meta: { title: 'Site Map'}},
-        { path: '/search-results', component: SearchResults, meta: { title: 'Search Results'}},
-        { path: '/30', component: ThirtiethAnniversary, meta: { title: '30th Anniversary'}},
-        { path : '*',  component: NotFound, meta: { title: 'Page Not Found'}},
+        { path: '/blog/:slug', name: 'blog/view', component: Post, meta: { title: { en: 'Blog', es: 'Blog'}}},
+        { path: '/events', component: Events, meta: { title: { en: 'Events', es: 'Eventos'}}},
+        { path: '/events/:slug', name: 'event/view', component: Event, meta: { title: { en: '', es: ''}}},
+        { path: '/getting-started', component: GettingStarted, meta: { title: { en: 'Getting Started', es: 'Emezpando'}}},
+        { path: '/site-map', component: SiteMap, meta: { title: { en: 'Site Map', es: 'Mapa de Sitio'}}},
+        { path: '/search-results', component: SearchResults, meta: { title: { en: 'Search Results', es: 'Resultados de la búsqueda'}}},
+        { path: '/30', component: ThirtiethAnniversary, meta: { title:{ en: '30th Anniversary', es: 'Trigésimo aniversario'}}},
+        { path : '*',  component: NotFound, meta: { title: { en: 'Page Not Found', es: 'Página no encontrada'}}}
     ]
 });
 
 router.beforeEach((to, from, next) => {
+    let matches = document.cookie.match(new RegExp('language' + '=([^;]+)'));
+
     if (to.name === 'blog/view') {
         let slug = to.params.slug;
         axios.get('/posts/' + slug)
@@ -176,10 +185,14 @@ router.beforeEach((to, from, next) => {
                 document.title = response.data.event.event_name + ' | Phoenix Shanti Group';
             })
             .catch(error => console.log(error));
-    }  else {
-        document.title = to.meta.title + ' | Phoenix Shanti Group';
+    } else {
+        if (matches !== null && matches[1] === 'es') {
+            document.title = to.meta.title.es + ' | Grupo Phoenix Shanti';
+        } else {
+            document.title = to.meta.title.en + ' | Phoenix Shanti Group';
+        }
     }
-    next()
+    next();
 });
 
 export default router;

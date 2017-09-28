@@ -31,14 +31,14 @@
         },
         computed: {
             title() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return this.box.es_title;
                 } else {
                     return this.box.en_title;
                 }
             },
             copy() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return this.box.es_copy;
                 } else {
                     return this.box.en_copy;

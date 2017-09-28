@@ -309,49 +309,49 @@
                 return new Date().getFullYear();
             },
             about() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Acerca de';
                 } else {
                     return 'About'
                 }
             },
             shantiText() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return '"Shanti" es una palabra sánscrita que significa "paz interna" y es un reflejo de enfoque de promover la capacitación personal y el mantenimiento de la independencia y la dignidad de Phoenix Shanti Grupos.';
                 } else {
                     return '"Shanti" is a Sanskrit word meaning "Inner Peace" and is reflective of Phoenix Shanti Group\'s approach of promoting personal empowerment and maintaining independence and dignity.'
                 }
             },
             home() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Casa';
                 } else {
                     return 'Home';
                 }
             },
             mission() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Misión';
                 } else {
                     return 'Mission';
                 }
             },
             housing() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return '+ Vivienda VIH';
                 } else {
                     return 'HIV+ Housing';
                 }
             },
             services() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Servicios de VIH+';
                 } else {
                     return 'HIV+ Services';
                 }
             },
             contact() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Contacto';
                 } else {
                     return 'Contact';
@@ -365,7 +365,7 @@
                 }
             },
             copperStar() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Diseño, desarrollo y alojamiento por';
                 } else {
                     return 'Design, development and hosting by';
@@ -379,91 +379,91 @@
                 }
             },
             recentPosts() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Mensajes recientes';
                 } else {
                     return 'Recent Posts';
                 }
             },
             upcomingEvents() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Próximos Eventos';
                 } else {
                     return 'Upcoming Events';
                 }
             },
             recentImages() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Imágenes recientes';
                 } else {
                     return 'Recent Images';
                 }
             },
             contactUs() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Contáctenos';
                 } else {
                     return 'Contact Us';
                 }
             },
             mainOffice() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Oficina principal';
                 } else {
                     return 'Main Office';
                 }
             },
             secureFax() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Fax seguro';
                 } else {
                     return 'Secure Fax';
                 }
             },
             hours() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Horas de trabajo';
                 } else {
                     return 'Hours';
                 }
             },
             store() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Tienda';
                 } else {
                     return 'Store';
                 }
             },
             storeFax() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Fax de la tienda';
                 } else {
                     return 'Store Fax';
                 }
             },
             mondayFriday() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'de lunes a viernes';
                 } else {
                     return 'Monday through Friday';
                 }
             },
             saturday() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'sábado';
                 } else {
                     return 'Saturday';
                 }
             },
             enterEmailAddress() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Dirección de correo electrónico';
                 } else {
                     return 'Enter email address';
                 }
             },
             subscribeTo() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Suscribir';
                 } else {
                     return 'Subscribe';

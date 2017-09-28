@@ -116,7 +116,7 @@
         data() {
             return {
                 keywords: '',
-                language: ''
+                language: this.$cookie.get('language')
             }
         },
         methods: {
@@ -129,8 +129,8 @@
                 if ((evt.keyCode === 13) && (node.type === "search")) { return false; }
             },
             setLanguage(language) {
-                if (language !== '' && language !== this.$cookie.get('lang') && language !== null) {
-                    this.$cookie.set('lang', language, 1);
+                if (language !== '' && language !== this.$cookie.get('language') && language !== null) {
+                    this.$cookie.set('language', language, 1);
                     window.location.reload();
                 }
             }

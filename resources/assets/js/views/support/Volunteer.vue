@@ -146,14 +146,14 @@
         },
         computed: {
             becomeAVolunteer() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Conviértase en voluntario';
                 } else {
                     return 'Become a Volunteer'
                 }
             },
             formInstructions() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Fill out the form below to inquire about volunteer opportunities.';
                 } else {
                     return 'Fill out the form below to inquire about volunteer opportunities.'
@@ -176,7 +176,7 @@
                         body: article.en_body
                     };
 
-                    if (this.$cookie.get('lang') === 'es') {
+                    if (this.$cookie.get('language') === 'es') {
                         this.article = {
                             headline: article.es_headline,
                             subhead: article.es_subhead,

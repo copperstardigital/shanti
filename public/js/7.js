@@ -1,6 +1,6 @@
 webpackJsonp([7],{
 
-/***/ 116:
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32,42 +32,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: {
-                headline: 'Events',
-                subhead: 'Shanti in the Community',
-                callout: 'Shanti frequently puts on or participates in events in the local community. You will find more information about them here.'
-            },
-            loading: false,
-            events: []
+            article: {}
         };
     },
+    created: function created() {
+        var _this = this;
 
-    methods: {
-        getEvents: function getEvents() {
-            var _this = this;
+        this.loading = true;
 
-            this.loading = true;
+        http.get('/articles/6')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
 
-            http.get('/events').then(function (response) {
-                _this.events = response.body.events;
+            _this.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
 
-                _this.loading = false;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        },
-        copy: function copy(event, callout) {
-            return event + ' ' + callout;
-        }
-    },
-    mounted: function mounted() {
-        this.getEvents();
+            if (_this.$cookie.get('language') === 'es') {
+                _this.article = {
+                    headline: article.es_headline,
+                    subhead: article.es_subhead,
+                    callout: article.es_callout,
+                    body: article.es_body
+                };
+            }
+
+            _this.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
+
+        this.$cookie.get('lang');
     },
 
     components: {
@@ -84,70 +91,74 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('psg-page', {
     attrs: {
       "article": _vm.article,
-      "loading": _vm.loading,
-      "events": _vm.events
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "copy"
-  }, _vm._l((_vm.events), function(event, index) {
-    return _c('div', {
-      key: "index"
-    }, [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "col-md-6"
-    }, [(event.image) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/events/' + event.image,
-        "alt": "event.event_name"
-      }
-    })]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-6"
-    }, [_c('h1', [_vm._v(_vm._s(event.event_name))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(event.event_callout)
-      }
-    }), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": {
-          name: 'event/view',
-          params: {
-            slug: event.slug
-          }
-        }
-      }
-    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!_vm.loading),
-        expression: "!loading"
-      }],
-      attrs: {
-        "text": _vm.copy(event.event_name, event.event_callout),
-        "primary": "true"
-      }
-    })], 1)]), _vm._v(" "), _c('hr')])
-  }))])
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }]
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/transitional.png",
+      "alt": "Transitional Housing"
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/triplex.png",
+      "alt": "Triplex"
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/permanent.jpg",
+      "alt": "Permanent Housing"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body,
+      "primary": "true"
+    }
+  })], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-78922e20", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 30:
+/***/ 32:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(116),
+  __webpack_require__(121),
   /* template */
   __webpack_require__(159),
   /* scopeId */
@@ -155,9 +166,9 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/events/Events.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Events.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -166,9 +177,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-78922e20", Component.options)
+    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
   } else {
-    hotAPI.reload("data-v-78922e20", Component.options)
+    hotAPI.reload("data-v-5aabf0eb", Component.options)
   }
 })()}
 

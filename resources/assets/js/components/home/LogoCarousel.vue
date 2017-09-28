@@ -100,7 +100,7 @@
         },
         computed: {
             ourSupporters() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Nuestros partidarios'
                 } else {
                     return 'Our Supporters'

@@ -40,7 +40,7 @@
                         body: article.en_body
                     };
 
-                    if (this.$cookie.get('lang') === 'es') {
+                    if (this.$cookie.get('language') === 'es') {
                         this.article = {
                             headline: article.es_headline,
                             subhead: article.es_subhead,

@@ -32,4 +32,8 @@ class User extends Authenticatable
     public function rsvps() {
         return $this->hasMany(Rsvp::class, 'user_id', 'id');
     }
+
+    public function donations() {
+        return $this->hasMany(Donation::class);
+    }
 }
