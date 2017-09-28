@@ -7,6 +7,7 @@
             <li><a href="#">{{ about }}</a>
                 <ul>
                     <router-link to="/getting-started" tag="li"><a>{{ gettingStarted }}</a></router-link>
+                    <router-link to="/about/testimonials" tag="li"><a>{{ testimonials }}</a></router-link>
                     <router-link to="/about/mission" tag="li"><a>{{ mission }}</a></router-link>
                     <router-link to="/about/history" tag="li"><a>{{ history }}</a></router-link>
                     <router-link to="/about/cultural-competency" tag="li"><a>{{ culturalCompetency }}</a></router-link>
@@ -70,6 +71,13 @@
                     return 'Empezando';
                 } else {
                     return 'Getting Started'
+                }
+            },
+            testimonials() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Testimonios';
+                } else {
+                    return 'Testimonials'
                 }
             },
             mission() {
@@ -171,7 +179,7 @@
                 }
             },
             events() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Eventos';
                 } else {
                     return 'Events'

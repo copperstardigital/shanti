@@ -119,14 +119,14 @@
                             <!-- Foot Item Content -->
                             <div class="foot-item-content address">
                                 <!-- Heading -->
-                                <h6 class="bold"><i class="fa fa-home"></i>&nbsp;&nbsp;Phoenix Shanti Group</h6>
+                                <h6 class="bold"><i class="fa fa-home"></i>&nbsp;&nbsp;{{ phoenixShanti }}</h6>
                                 <!-- Paragraph -->
                                 <p class="add">
                                     2345 West Glendale Avenue,<br />
                                     Phoenix, Arizona 85021
                                 </p>
                                 <p class="tel">
-                                    <i class="fa fa-phone"></i> {{ mainOffice}} : (602) 279-0008
+                                    <i class="fa fa-phone"></i> {{ mainOffice }} : (602) 279-0008
                                 </p>
                                 <p class="tel">
                                     <i class="fa fa-fax"></i> {{ secureFax }} : (602) 279-2004
@@ -144,7 +144,7 @@
 
                                 <hr />
 
-                                <h6 class="bold"><i class="fa fa-home"></i>&nbsp;2nd Chances Store</h6>
+                                <h6 class="bold"><i class="fa fa-home"></i>&nbsp;{{ secondChances }}</h6>
                                 <p class="add">
                                     4015 North 16th Street, Suites E-F,<br />
                                     Phoenix, Arizona 85016
@@ -270,6 +270,54 @@
                         src : '/uploads/gallery/l4l2_13.jpg',
                         title : 'Laughs for Life II'
                     },
+                    {
+                        src : '/uploads/gallery/1.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/2.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/37.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/38.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/39.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/40.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/41.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/42.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/43.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/44.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/45.jpg',
+                        title : 'Laughs for Life II'
+                    },
+                    {
+                        src : '/uploads/gallery/46.jpg',
+                        title : 'Laughs for Life II'
+                    },
                 ]
             }
         },
@@ -358,7 +406,7 @@
                 }
             },
             siteMap() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Mapa de Sitio';
                 } else {
                     return 'Site Map';
@@ -372,7 +420,7 @@
                 }
             },
             copyright() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Derechos de autor';
                 } else {
                     return 'Copyright';
@@ -467,6 +515,20 @@
                     return 'Suscribir';
                 } else {
                     return 'Subscribe';
+                }
+            },
+            phoenixShanti() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Grupo Phoenix Shanti';
+                } else {
+                    return 'Phoenix Shanti Group';
+                }
+            },
+            secondChances() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Tienda 2nd Chances';
+                } else {
+                    return '2nd Chances Store';
                 }
             }
         },

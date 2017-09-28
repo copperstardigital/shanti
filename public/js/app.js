@@ -14573,6 +14573,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, {
                 src: '/uploads/gallery/l4l2_13.jpg',
                 title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/1.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/2.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/37.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/38.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/39.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/40.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/41.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/42.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/43.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/44.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/45.jpg',
+                title: 'Laughs for Life II'
+            }, {
+                src: '/uploads/gallery/46.jpg',
+                title: 'Laughs for Life II'
             }]
         };
     },
@@ -14662,7 +14698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         siteMap: function siteMap() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Mapa de Sitio';
             } else {
                 return 'Site Map';
@@ -14676,7 +14712,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         copyright: function copyright() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Derechos de autor';
             } else {
                 return 'Copyright';
@@ -14771,6 +14807,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return 'Suscribir';
             } else {
                 return 'Subscribe';
+            }
+        },
+        phoenixShanti: function phoenixShanti() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Grupo Phoenix Shanti';
+            } else {
+                return 'Phoenix Shanti Group';
+            }
+        },
+        secondChances: function secondChances() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Tienda 2nd Chances';
+            } else {
+                return '2nd Chances Store';
             }
         }
     },
@@ -14937,7 +14987,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         typeKeywords: function typeKeywords() {
-            if (this.$cookie.get('lang') === 'es') {
+            if (this.$cookie.get('language') === 'es') {
                 return 'Palabras clave';
             } else {
                 return 'Enter keywords';
@@ -14961,6 +15011,7 @@ var _computed;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -15033,6 +15084,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return 'Empezando';
             } else {
                 return 'Getting Started';
+            }
+        },
+        testimonials: function testimonials() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Testimonios';
+            } else {
+                return 'Testimonials';
             }
         },
         mission: function mission() {
@@ -15127,7 +15185,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             return 'Board of Directors';
         }
     }), _defineProperty(_computed, 'events', function events() {
-        if (this.$cookie.get('lang') === 'es') {
+        if (this.$cookie.get('language') === 'es') {
             return 'Eventos';
         } else {
             return 'Events';
@@ -15221,7 +15279,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 msg.rate = 0.8;
                 msg.pitch = 1.0;
 
-                if (this.$cookie.get('lang') !== 'es') {
+                if (this.$cookie.get('language') !== 'es') {
                     msg.text = this.textOnly;
                 } else {
                     msg.text = 'This feature currently does not work in Spanish. Lo siento.';
@@ -22195,6 +22253,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('a', [_vm._v(_vm._s(_vm.gettingStarted))])]), _vm._v(" "), _c('router-link', {
     attrs: {
+      "to": "/about/testimonials",
+      "tag": "li"
+    }
+  }, [_c('a', [_vm._v(_vm._s(_vm.testimonials))])]), _vm._v(" "), _c('router-link', {
+    attrs: {
       "to": "/about/mission",
       "tag": "li"
     }
@@ -22760,7 +22823,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fa fa-building-o"
   }), _vm._v("  " + _vm._s(_vm.contactUs))]), _vm._v(" "), _c('div', {
     staticClass: "foot-item-content address"
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('p', {
+  }, [_c('h6', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-home"
+  }), _vm._v("  " + _vm._s(_vm.phoenixShanti))]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-phone"
@@ -22768,7 +22835,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-fax"
-  }), _vm._v(" " + _vm._s(_vm.secureFax) + " : (602) 279-2004\n                            ")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('p', {
+  }), _vm._v(" " + _vm._s(_vm.secureFax) + " : (602) 279-2004\n                            ")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-calendar"
@@ -22778,7 +22845,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "text": "Phoenix Shanti Group 2345 West Glendale Avenue,Phoenix, Arizona 85021. Main Office : (602) 279-0008. Secure Fax : (602) 279-2004. Email : info@shantiaz.org. Hours : 8 am to 4 pm, Monday through Friday"
     }
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _c('p', {
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h6', {
+    staticClass: "bold"
+  }, [_c('i', {
+    staticClass: "fa fa-home"
+  }), _vm._v(" " + _vm._s(_vm.secondChances))]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('p', {
     staticClass: "tel"
   }, [_c('i', {
     staticClass: "fa fa-phone"
@@ -22815,7 +22886,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "https://www.copperstardigital.com"
     }
-  }, [_vm._v("Copper Star Digital")])]), _vm._v(" "), _vm._m(6)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Copper Star Digital")])]), _vm._v(" "), _vm._m(4)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('ul', {
     staticClass: "list-inline pull-right"
@@ -22886,12 +22957,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fa fa-youtube circle-3"
   }), _vm._v("\n                                Phoenix Shanti Group YouTube")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h6', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-home"
-  }), _vm._v("  Phoenix Shanti Group")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticClass: "add"
   }, [_vm._v("\n                                2345 West Glendale Avenue,"), _c('br'), _vm._v("\n                                Phoenix, Arizona 85021\n                            ")])
@@ -22905,12 +22970,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "mailto:info@shantiaz.org"
     }
   }, [_vm._v("info@shantiaz.org")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h6', {
-    staticClass: "bold"
-  }, [_c('i', {
-    staticClass: "fa fa-home"
-  }), _vm._v(" 2nd Chances Store")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', {
     staticClass: "add"

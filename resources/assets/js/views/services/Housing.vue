@@ -61,11 +61,8 @@
 
                     this.loading = false;
                 }).catch(error => {
-                console.error(error);
-            });
-
-            this.$cookie.get('lang');
-
+                    console.error(error);
+                });
         },
         components: {
             'psg-speak': TextToSpeech

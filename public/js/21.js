@@ -96,7 +96,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var articles = response.data.articles;
             var reformatted = [];
 
-            if (_this.$cookie.get('lang') === 'es') {
+            if (_this.$cookie.get('language') === 'es') {
                 articles.forEach(function (article) {
                     reformatted.push({
                         headline: article.es_headline,

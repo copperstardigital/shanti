@@ -23,6 +23,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -31,16 +33,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             article: {},
             video: {
-                url: '/uploads/video/a.mp4',
-                pic: '/uploads/gallery/l4l2_1.jpg'
+                url: '/uploads/video/a.mp4'
             },
             lang: 'en',
             autoplay: false,
             player: null,
-            contextmenu: [{
-                text: 'GitHub',
-                link: 'https://github.com/MoePlayer/vue-dplayer'
-            }]
+            contextmenu: [],
+            videos: {
+                client: {
+                    name: 'Jose',
+                    clip: '/uploads/video/jose.mp4'
+                }
+            }
         };
     },
 
@@ -55,7 +59,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.loading = true;
 
-        http.get('/articles/4')
+        http.get('/articles/14')
         //.use(saCache)
         .then(function (response) {
             var article = response.body.article;
@@ -67,7 +71,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 body: article.en_body
             };
 
-            if (_this.$cookie.get('lang') === 'es') {
+            if (_this.$cookie.get('language') === 'es') {
                 _this.article = {
                     headline: article.es_headline,
                     subhead: article.es_subhead,
@@ -84,7 +88,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         play: function play() {
-            console.log('play callback');
+            // console.log('play callback')
+        },
+        switchVideo: function switchVideo(newVideo) {
+            this.player.switchVideo({
+                url: newVideo
+            });
         }
     }
 });
@@ -813,7 +822,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "play": _vm.play
     }
-  })], 1)])
+  }), _vm._v(" "), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.switchVideo(_vm.videos.client.clip)
+      }
+    }
+  }, [_vm._v("Show " + _vm._s(_vm.videos.client.name))])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

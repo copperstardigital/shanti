@@ -88,7 +88,7 @@
                     let articles = response.data.articles;
                     let reformatted = [];
 
-                    if (this.$cookie.get('lang') === 'es') {
+                    if (this.$cookie.get('language') === 'es') {
                         articles.forEach(article => {
                             reformatted.push({
                                 headline: article.es_headline,

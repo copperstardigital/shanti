@@ -73,8 +73,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             console.error(error);
         });
-
-        this.$cookie.get('lang');
     },
 
     components: {

@@ -17,7 +17,7 @@
                     msg.rate = 0.8;
                     msg.pitch = 1.0;
 
-                    if (this.$cookie.get('lang') !== 'es') {
+                    if (this.$cookie.get('language') !== 'es') {
                         msg.text = this.textOnly;
                     } else {
                         msg.text = 'This feature currently does not work in Spanish. Lo siento.';

@@ -137,7 +137,7 @@
         },
         computed: {
             typeKeywords() {
-                if (this.$cookie.get('lang') === 'es') {
+                if (this.$cookie.get('language') === 'es') {
                     return 'Palabras clave';
                 } else {
                     return 'Enter keywords';

@@ -10,6 +10,8 @@
                       :screenshot="true">
 
             </d-player>
+
+            <button @click="switchVideo(videos.client.clip)">Show {{ videos.client.name}}</button>
         </div>
     </psg-page>
 </template>
@@ -22,18 +24,18 @@
             return {
                 article: {},
                 video: {
-                    url: '/uploads/video/a.mp4',
-                    pic: '/uploads/gallery/l4l2_1.jpg'
+                    url: '/uploads/video/a.mp4'
                 },
                 lang: 'en',
                 autoplay: false,
                 player: null,
-                contextmenu: [
-                    {
-                        text: 'GitHub',
-                        link: 'https://github.com/MoePlayer/vue-dplayer'
+                contextmenu: [],
+                videos:  {
+                    client: {
+                        name: 'Jose',
+                        clip: '/uploads/video/jose.mp4'
                     }
-                ]
+                }
             }
         },
         components: {
@@ -46,7 +48,7 @@
             this.loading = true;
 
             http
-                .get('/articles/4')
+                .get('/articles/14')
                 //.use(saCache)
                 .then(response => {
                     let article = response.body.article;
@@ -58,7 +60,7 @@
                         body: article.en_body
                     };
 
-                    if (this.$cookie.get('lang') === 'es') {
+                    if (this.$cookie.get('language') === 'es') {
                         this.article = {
                             headline: article.es_headline,
                             subhead: article.es_subhead,
@@ -74,7 +76,12 @@
         },
         methods: {
             play() {
-                console.log('play callback')
+                // console.log('play callback')
+            },
+            switchVideo(newVideo) {
+                this.player.switchVideo({
+                    url: newVideo
+                });
             }
         }
     }
