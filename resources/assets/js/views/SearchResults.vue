@@ -3,7 +3,7 @@
         <div slot="copy">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 v-if="!loading">Articles</h1>
+                    <h1 v-if="!loading">{{ pages }}</h1>
 
                     <div v-if="articles">
                         <div v-for="(article, index) in articles" key="index">
@@ -11,14 +11,14 @@
                             <h5>{{ article.subhead }}</h5>
                             <div v-html="article.callout"></div>
 
-                            <router-link :to="article.link" class="btn btn-color pull-right">Read More...</router-link>
+                            <router-link :to="article.link" class="btn btn-color pull-right">{{ readMore }}</router-link>
                             <br style="clear:both;" />
 
                             <hr />
                         </div>
                     </div>
                     <div v-if="!articles.length && !loading">
-                        <p>Your search returned no articles.</p>
+                        <p>{{ pagesResult}}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -29,7 +29,7 @@
                             <h3>{{ post.headline }}</h3>
                             <div v-html="post.hero_text"></div>
 
-                            <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read More...</router-link>
+                            <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">{{ readMore }}</router-link>
 
                             <br style="clear:both;" />
 
@@ -37,19 +37,19 @@
                         </div>
                     </div>
                     <div v-if="!posts.length && !loading">
-                        <p>Your search returned no blog posts.</p>
+                        <p>{{ blogResult }}</p>
                     </div>
 
                     <hr v-if="!loading"/>
 
-                    <h1 v-if="!loading">Events</h1>
+                    <h1 v-if="!loading">{{ eventsHeader }}</h1>
 
                     <div v-if="events">
                         <div v-for="(event, index) in events" key="index">
                             <h3>{{ event.event_name }}</h3>
                             <div v-html="event.event_callout"></div>
 
-                            <router-link :to="'/events/' + event.slug" class="btn btn-color pull-right">Read More...</router-link>
+                            <router-link :to="'/events/' + event.slug" class="btn btn-color pull-right">{{ readMore }}</router-link>
 
                             <br style="clear:both;" />
 
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div v-if="!posts.length && !loading">
-                        <p>Your search returned no events.</p>
+                        <p>{{ eventResult }}</p>
                     </div>
                 </div>
             </div>
@@ -70,14 +70,58 @@
         data() {
             return {
                 article: {
-                    headline: 'Search Results',
-                    subhead: 'Keywords: "' + this.$route.query.keywords + '"',
-                    callout: 'Below are the results of your search. If your expected information did not appear below, please try consulting our <a href="/#/site-map">site map</a>.',
+                    headline: (this.$cookie.get('language') === 'es') ? 'Resultados de la búsqueda' :'Search Results',
+                    subhead: (this.$cookie.get('language') === 'es') ? 'Palabras claves: ' + this.$route.query.keywords : 'Keywords: "' + this.$route.query.keywords + '"',
+                    callout:  (this.$cookie.get('language') === 'es') ? 'A continuación se muestran los resultados de su búsqueda. Si su información esperada no aparece a continuación, por favor, consulte nuestro <a href="/#/site-map"> mapa del sitio </a>.' : 'Below are the results of your search. If your expected information did not appear below, please try consulting our <a href="/#/site-map">site map</a>.',
                     body: ''
                 },
                 articles: [],
                 posts: [],
                 events: []
+            }
+        },
+        computed: {
+            pages() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Paginas';
+                } else {
+                    return 'Pages';
+                }
+            },
+            pagesResult() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Su búsqueda no devolvió ninguna página.';
+                } else {
+                    return 'Your search returned no pages.';
+                }
+            },
+            readMore() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Lee mas...';
+                } else {
+                    return 'Read More...';
+                }
+            },
+            blogResult() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Tu búsqueda no devolvió entradas de blog.';
+                } else {
+                    return 'Your search returned no blog posts.';
+                }
+            },
+            eventsHeader() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Eventos';
+                } else {
+                    return 'Events';
+                }
+            },
+            eventResult() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Su búsqueda no devolvió ningún evento.';
+                } else {
+                    return 'Your search returned no events.';
+                }
             }
         },
         created() {

@@ -84,9 +84,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             flash: '',
             loading: false,
             article: {
-                headline: 'Thirtieth Anniversary Gala',
-                subhead: 'Dec. 9 at Encanto Park Clubhouse',
-                callout: 'The Phoenix Shanti Group is celebrating 30 years of serving the HIV/AIDS community <br />in the Valley of the Sun with a special anniversary event on Dec. 9 at Encanto Park. You can RSVP below. <strong>RSVP now</strong>, as space is limited.',
+                headline: this.$cookie.get('language') === 'es' ? 'Gala del trigésimo aniversario' : 'Thirtieth Anniversary Gala',
+                subhead: this.$cookie.get('language') === 'es' ? '9 de diciembre en Encanto Park Clubhouse' : 'Dec. 9 at Encanto Park Clubhouse',
+                callout: this.$cookie.get('language') === 'es' ? 'El Grupo Phoenix Shanti está celebrando 30 años de servir a la comunidad de VIH / SIDA <br /> en el Valle del Sol con un evento aniversario especial el 9 de diciembre en el Parque Encanto. Usted puede confirmar más abajo. <strong> RSVP ahora </ strong>, ya que el espacio es limitado.' : 'The Phoenix Shanti Group is celebrating 30 years of serving the HIV/AIDS community <br />in the Valley of the Sun with a special anniversary event on Dec. 9 at Encanto Park. You can RSVP below. <strong>RSVP now</strong>, as space is limited.',
                 body: ''
             }
         };
@@ -125,6 +125,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"],
         'psg-speak': __WEBPACK_IMPORTED_MODULE_1__components_misc_TextToSpeech___default.a
+    },
+    computed: {
+        rsvpHeader: function rsvpHeader() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'RSVP para la Gala del 30º Aniversario';
+            } else {
+                return 'RSVP for 30th Anniversary Gala';
+            }
+        },
+        date: function date() {
+            if (this.$cookie.get('language') === 'es') {
+                return '9 de diciembre en Encanto Park Clubhouse, de 4 pm a 8 pm';
+            } else {
+                return 'Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm';
+            }
+        },
+        instructions: function instructions() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Llene el siguiente formulario para confirmar la fecha de la gala del 30 aniversario.';
+            } else {
+                return 'Fill out the form below to RSVP for the 30th Anniversary Gala.';
+            }
+        },
+        first: function first() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Nombre de pila';
+            } else {
+                return 'First Name';
+            }
+        },
+        last: function last() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Apellido';
+            } else {
+                return 'Last Name';
+            }
+        },
+        emailAddy: function emailAddy() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Dirección de correo electrónico';
+            } else {
+                return 'Email Address';
+            }
+        },
+        phoneNumber: function phoneNumber() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Número de teléfono';
+            } else {
+                return 'Phone Number';
+            }
+        },
+        message: function message() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Comentarios';
+            } else {
+                return 'Comments';
+            }
+        }
     }
 });
 
@@ -158,7 +216,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [_c('h1', [_vm._v("RSVP for 30th Anniversary Gala")]), _vm._v(" "), _c('h3', [_vm._v("Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm")]), _vm._v(" "), _c('psg-speak', {
+  }, [_c('h1', [_vm._v(_vm._s(_vm.rsvpHeader))]), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.date))]), _vm._v(" "), _c('psg-speak', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -169,7 +227,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "text": "RSVP for 30th Anniversary Gala, Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm. Fill out the form below to RSVP for the 30th Anniversary Gala.",
       "primary": "true"
     }
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v("Fill out the form below to RSVP for the 30th Anniversary Gala.")]), _vm._v(" "), _c('alert', {
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.instructions))]), _vm._v(" "), _c('alert', {
     attrs: {
       "placement": "top-right",
       "duration": "10000",
@@ -192,7 +250,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "first_name"
     }
-  }, [_vm._v("First Name")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.first))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -219,7 +277,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "last_name"
     }
-  }, [_vm._v("Last Name")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.last))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -246,7 +304,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("Email Address")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.emailAddy))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -273,7 +331,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "phone"
     }
-  }, [_vm._v("Phone")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.phoneNumber))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -300,7 +358,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "comments"
     }
-  }, [_vm._v("Comments")]), _vm._v(" "), _c('textarea', {
+  }, [_vm._v(_vm._s(_vm.message))]), _vm._v(" "), _c('textarea', {
     directives: [{
       name: "model",
       rawName: "v-model",

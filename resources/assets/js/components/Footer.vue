@@ -122,8 +122,8 @@
                                 <h6 class="bold"><i class="fa fa-home"></i>&nbsp;&nbsp;{{ phoenixShanti }}</h6>
                                 <!-- Paragraph -->
                                 <p class="add">
-                                    2345 West Glendale Avenue,<br />
-                                    Phoenix, Arizona 85021
+                                    <a href="https://www.google.com/maps/place/Shanti+Group+Inc/@33.538261,-112.1124087,17z/data=!4m13!1m7!3m6!1s0x872b6cc37ffef96b:0xf1cfbc15274e3eba!2s2345+W+Glendale+Ave,+Phoenix,+AZ+85021!3b1!8m2!3d33.538261!4d-112.11022!3m4!1s0x872b6cc381a410dd:0xfd063606639b3257!8m2!3d33.538261!4d-112.11022" target="_blank">2345 West Glendale Avenue,<br />
+                                        Phoenix, Arizona 85021</a>
                                 </p>
                                 <p class="tel">
                                     <i class="fa fa-phone"></i> {{ mainOffice }} : (602) 279-0008
@@ -146,8 +146,8 @@
 
                                 <h6 class="bold"><i class="fa fa-home"></i>&nbsp;{{ secondChances }}</h6>
                                 <p class="add">
-                                    4015 North 16th Street, Suites E-F,<br />
-                                    Phoenix, Arizona 85016
+                                    <a href="https://www.google.com/maps/place/Shanti's+2nd+Chances/@33.3971266,-112.0400743,10z/data=!4m8!1m2!2m1!1s2nd+chances++store!3m4!1s0x872b0d7fc9f202e9:0x9f0be06bb80d0a45!8m2!3d33.4938439!4d-112.0461918" target="_blank">4015 North 16th Street, Suites E-F,<br />
+                                        Phoenix, Arizona 85016</a>
                                 </p>
                                 <p class="tel">
                                     <i class="fa fa-phone"></i> {{ store }} : (602) 283-0100
@@ -326,7 +326,27 @@
                 http
                     .get('/posts/footer')
                     .then(response => {
-                        this.posts = response.body.posts;
+                        let posts = response.body.posts;
+
+                        let reformatted = [];
+
+                        if (this.$cookie.get('language') === 'es') {
+                            posts.forEach(post => {
+                                reformatted.push({
+                                    headline: post.es_headline,
+                                    slug: post.slug
+                                });
+                            });
+                        } else {
+                            posts.forEach(post => {
+                                reformatted.push({
+                                    headline: post.en_headline,
+                                    slug: post.slug
+                                });
+                            });
+                        }
+
+                        this.posts = reformatted;
                     }).catch(error => {
                         console.error(error);
                     });
@@ -335,7 +355,27 @@
                 http
                     .get('/events')
                     .then(response => {
-                        this.events = response.body.events;
+                        let events = response.body.events;
+
+                        let reformatted = [];
+
+                        if (this.$cookie.get('language') === 'es') {
+                            events.forEach(event => {
+                                reformatted.push({
+                                    event_name: event.es_event_name,
+                                    slug: event.slug
+                                });
+                            });
+                        } else {
+                            events.forEach(event => {
+                                reformatted.push({
+                                    event_name: event.en_event_name,
+                                    slug: event.slug
+                                });
+                            });
+                        }
+
+                        this.events = reformatted;
                     }).catch(error => {
                         console.error(error);
                     });

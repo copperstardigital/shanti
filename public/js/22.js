@@ -18,12 +18,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             article: {
-                headline: 'Page Not Found',
-                subhead: '404 Error',
-                callout: 'We\'re sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.',
-                body: ''
+                headline: this.$cookie.get('language') === 'es' ? 'Página no encontrada' : 'Page Not Found',
+                subhead: this.$cookie.get('language') === 'es' ? 'error 404' : '404 Error',
+                callout: this.$cookie.get('language') === 'es' ? 'Lo sentimos, pero no hemos podido encontrar la página para la que está buscando. Tal vez usted ha seguido un vínculo obsoleto, o tal vez la página se ha movido. Por favor, inténtelo de nuevo más tarde.' : 'We\'re sorry but we could not find the page for which you are looking. Perhaps you have followed an outdated link, or maybe the page has moved. Please try again later.',
+                body: this.$cookie.get('language') === 'es' ? '' : ''
             }
         };
+    },
+
+    computed: {
+        refer: function refer() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Por favor, consulte nuestro mapa del sitio para obtener una lista de las páginas disponibles:';
+            } else {
+                return 'Please refer to our site map for a list of available pages:';
+            }
+        },
+        siteMap: function siteMap() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Mapa de sitio';
+            } else {
+                return 'Site Map';
+            }
+        }
     }
 });
 
@@ -74,11 +91,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     slot: "copy"
-  }, [_vm._v("\n        Please refer to our site map for a list of available pages: "), _c('router-link', {
+  }, [_vm._v("\n        " + _vm._s(_vm.refer) + " "), _c('router-link', {
     attrs: {
       "to": "/site-map"
     }
-  }, [_vm._v("Site Map")])], 1)])
+  }, [_vm._v(_vm._s(_vm.siteMap) + ".")])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
