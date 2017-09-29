@@ -182,14 +182,22 @@ router.beforeEach((to, from, next) => {
         let slug = to.params.slug;
         axios.get('/posts/' + slug)
             .then(response => {
-                document.title = response.data.post.headline + ' | Phoenix Shanti Group';
+                if (matches !== null && matches[1] === 'es') {
+                    document.title = response.data.post.es_headline + ' | Phoenix Shanti Group';
+                } else {
+                    document.title = response.data.post.en_headline + ' | Phoenix Shanti Group';
+                }
             })
             .catch(error => console.log(error));
     } else if (to.name === 'event/view') {
         let slug = to.params.slug;
         axios.get('/events/' + slug)
             .then(response => {
-                document.title = response.data.event.event_name + ' | Phoenix Shanti Group';
+                if (matches !== null && matches[1] === 'es') {
+                    document.title = response.data.post.en_event_name + ' | Phoenix Shanti Group';
+                } else {
+                    document.title = response.data.event.en_event_name + ' | Phoenix Shanti Group';
+                }
             })
             .catch(error => console.log(error));
     } else {

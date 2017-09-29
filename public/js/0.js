@@ -5,6 +5,134 @@ webpackJsonp([0],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBars__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'psg-progress-bars': __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default.a,
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
+    },
+    computed: {
+        ourAgency: function ourAgency() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Nuestra Agencia';
+            } else {
+                return 'Our Agency';
+            }
+        },
+        ourExpertise: function ourExpertise() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Nuestra Experiencia';
+            } else {
+                return 'Our Expertise';
+            }
+        },
+        treeOfLife: function treeOfLife() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Shanti Árbol de la vida';
+            } else {
+                return 'Shanti Tree of Life';
+            }
+        },
+        treeOfLifeText: function treeOfLifeText() {
+            if (this.$cookie.get('language') === 'es') {
+                return '\n' + 'El Shanti Tree of Life, que predomina en la sala de terapia de grupo de Shanti, simboliza a muchos hombres y mujeres que hemos perdido ante la enfermedad del VIH / SIDA.';
+            } else {
+                return 'The Shanti Tree of Life, which predominates the group therapy room at Shanti, symbolizes the many men and women we have lost to the disease of HIV/AIDS.';
+            }
+        },
+        ourExpertiseText: function ourExpertiseText() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Desde el comienzo de la pandemia del VIH / SIDA, el Grupo Phoenix Shanti ha estado proporcionando un salvavidas a hombres y mujeres en el Valle del Sol, proporcionando servicios de hospicio a la vivienda durante sus décadas de existencia.';
+            } else {
+                return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
+            }
+        },
+        bullet1: function bullet1() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ayudamos a hombres y mujeres VIH + a morir con dignidad';
+            } else {
+                return 'We helped HIV+ men and women die with dignity';
+            }
+        },
+        bullet2: function bullet2() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ayudamos a las enfermeras a cuidarlas';
+            } else {
+                return 'We trained nurse assists to care for them';
+            }
+        },
+        bullet3: function bullet3() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ayudamos a los adictos a recuperar sus vidas';
+            } else {
+                return 'We helped addicts recover their lives';
+            }
+        },
+        bullet4: function bullet4() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Albergamos a los desamparados cuando nadie más';
+            } else {
+                return 'We housed the homeless when no one else would';
+            }
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 101:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -38,12 +166,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 101:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBar__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
@@ -127,26 +255,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 103:
+/***/ 104:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_home_EventCarousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_home_InfoBoxes__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_home_Counters___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_home_Counters__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_home_IntroText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_home_IntroText__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_home_LogoCarousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_home_OurTeam__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_home_OurExpertise__);
 //
 //
@@ -229,14 +357,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 130:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(92),
+  __webpack_require__(93),
   /* template */
-  __webpack_require__(170),
+  __webpack_require__(174),
   /* scopeId */
   null,
   /* cssModules */
@@ -264,14 +392,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 131:
+/***/ 134:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(93),
+  __webpack_require__(94),
   /* template */
-  __webpack_require__(175),
+  __webpack_require__(179),
   /* scopeId */
   null,
   /* cssModules */
@@ -299,14 +427,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 132:
+/***/ 135:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(94),
+  __webpack_require__(95),
   /* template */
-  __webpack_require__(145),
+  __webpack_require__(148),
   /* scopeId */
   null,
   /* cssModules */
@@ -334,14 +462,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 133:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(95),
+  __webpack_require__(96),
   /* template */
-  __webpack_require__(171),
+  __webpack_require__(175),
   /* scopeId */
   null,
   /* cssModules */
@@ -369,14 +497,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 134:
+/***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(96),
+  __webpack_require__(97),
   /* template */
-  __webpack_require__(161),
+  __webpack_require__(165),
   /* scopeId */
   null,
   /* cssModules */
@@ -404,14 +532,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 135:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(97),
+  __webpack_require__(98),
   /* template */
-  __webpack_require__(172),
+  __webpack_require__(176),
   /* scopeId */
   null,
   /* cssModules */
@@ -439,14 +567,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 136:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(98),
+  __webpack_require__(99),
   /* template */
-  __webpack_require__(160),
+  __webpack_require__(164),
   /* scopeId */
   null,
   /* cssModules */
@@ -474,119 +602,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 137:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(99),
-  /* template */
-  __webpack_require__(146),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/OurExpertise.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] OurExpertise.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0f672dcc", Component.options)
-  } else {
-    hotAPI.reload("data-v-0f672dcc", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 138:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  null,
-  /* template */
-  __webpack_require__(144),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/OurTeam.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] OurTeam.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-052746e4", Component.options)
-  } else {
-    hotAPI.reload("data-v-052746e4", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 139:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(100),
-  /* template */
-  __webpack_require__(166),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/ProgressBar.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] ProgressBar.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7580edc1", Component.options)
-  } else {
-    hotAPI.reload("data-v-7580edc1", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
 /***/ 14:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(103),
+  __webpack_require__(104),
   /* template */
-  __webpack_require__(168),
+  __webpack_require__(172),
   /* scopeId */
   null,
   /* cssModules */
@@ -619,9 +642,114 @@ module.exports = Component.exports
 
 var Component = __webpack_require__(1)(
   /* script */
+  __webpack_require__(100),
+  /* template */
+  __webpack_require__(149),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/OurExpertise.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] OurExpertise.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0f672dcc", Component.options)
+  } else {
+    hotAPI.reload("data-v-0f672dcc", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 141:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(147),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/OurTeam.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] OurTeam.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-052746e4", Component.options)
+  } else {
+    hotAPI.reload("data-v-052746e4", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 142:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
   __webpack_require__(101),
   /* template */
-  __webpack_require__(155),
+  __webpack_require__(170),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/home/ProgressBar.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ProgressBar.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7580edc1", Component.options)
+  } else {
+    hotAPI.reload("data-v-7580edc1", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 143:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(102),
+  /* template */
+  __webpack_require__(159),
   /* scopeId */
   null,
   /* cssModules */
@@ -649,7 +777,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 144:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -667,7 +795,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 145:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -701,24 +829,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "row"
     }, [_c('div', {
       staticClass: "col-md-5"
-    }, [(event.link) ? _c('div', [_c('a', {
+    }, [(event.image && event.link) ? _c('div', [_c('a', {
       attrs: {
         "href": event.link,
         "target": "_blank"
       }
     }, [_c('img', {
-      staticClass: "img-responsive",
+      staticClass: "thumbnail img-responsive",
       attrs: {
-        "src": '/uploads/' + event.image,
+        "src": '/uploads/events/' + event.image,
         "alt": event.headline
       }
-    })])]) : _vm._e(), _vm._v(" "), (event.image) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
+    })])]) : (event.image && !event.link) ? _c('div', [_c('a', {
       attrs: {
-        "src": '/uploads/' + event.image,
+        "href": event.link,
+        "target": "_blank"
+      }
+    }, [_c('router-link', {
+      attrs: {
+        "to": {
+          name: 'blog/view',
+          params: {
+            slug: event.slug
+          }
+        }
+      }
+    }, [_c('img', {
+      staticClass: "thumbnail img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + event.image,
         "alt": event.headline
       }
-    })]) : _vm._e()]), _vm._v(" "), _c('div', {
+    })])], 1)]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "col-md-7"
     }, [_c('h1', {
       staticClass: "color"
@@ -736,7 +878,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
       attrs: {
         "text": _vm.copy(event.headline, event.hero_text),
         "primary": "true"
@@ -757,7 +899,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           }
         }
       }
-    }, [_vm._v("Read More...")]), _vm._v(" "), _c('psg-speak', {
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
       attrs: {
         "text": _vm.copy(event.headline, event.hero_text),
         "primary": "true"
@@ -775,7 +917,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 146:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -789,89 +931,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4 col-sm-6"
   }, [_c('h4', {
     staticClass: "color"
-  }, [_vm._v(_vm._s(_vm.ourExpertise))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ourExpertiseText))]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
+  }, [_vm._v(_vm._s(_vm.ourExpertise))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ourExpertiseText))]), _vm._v(" "), _c('ul', {
+    staticClass: "list-2"
+  }, [_c('li', [_vm._v(_vm._s(_vm.bullet1))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(_vm.bullet2))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(_vm.bullet3))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(_vm.bullet4))])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": "Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.",
       "primary": "true"
     }
-  })], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('psg-progress-bars')], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "list-2"
-  }, [_c('li', [_vm._v("Denounce 1with rhoncus  rhoncus indignation")]), _vm._v(" "), _c('li', [_vm._v("Dislike rhoncus so rhoncus et  rhoncus demoralized")]), _vm._v(" "), _c('li', [_vm._v("The charms rhoncus et rhoncus of the moment")]), _vm._v(" "), _c('li', [_vm._v("That rhoncus cannot rhoncus rhoncus pain trouble")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  })], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-4 col-sm-6"
-  }, [_c('div', {
-    staticClass: "carousel slide",
+  }, [_c('h4', {
+    staticClass: "color"
+  }, [_vm._v(_vm._s(_vm.treeOfLife))]), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive",
     attrs: {
-      "id": "bs-carousel-1",
-      "data-ride": "carousel",
-      "data-interval": "5000",
-      "data-pause": "hover",
-      "data-wrap": "true"
+      "src": "/img/tree.jpg",
+      "alt": "Tree of Life"
     }
-  }, [_c('ol', {
-    staticClass: "carousel-indicators"
-  }, [_c('li', {
-    staticClass: "active",
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.treeOfLifeText))]), _vm._v(" "), _c('psg-speak', {
     attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "0"
+      "text": _vm.treeOfLifeText,
+      "primary": "true"
     }
-  }), _vm._v(" "), _c('li', {
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "1"
-    }
-  }), _vm._v(" "), _c('li', {
-    attrs: {
-      "data-target": "#bs-carousel-1",
-      "data-slide-to": "2"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "carousel-inner"
-  }, [_c('div', {
-    staticClass: "item active"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-1.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-2.jpg",
-      "alt": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "item"
-  }, [_c('img', {
-    attrs: {
-      "src": "img/aboutus/about-office-3.jpg",
-      "alt": ""
-    }
-  })])]), _vm._v(" "), _c('a', {
-    staticClass: "left carousel-control",
-    attrs: {
-      "href": "#bs-carousel-1",
-      "role": "button",
-      "data-slide": "prev"
-    }
-  }, [_c('span', {
-    staticClass: "fa fa-chevron-left"
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "right carousel-control",
-    attrs: {
-      "href": "#bs-carousel-1",
-      "role": "button",
-      "data-slide": "next"
-    }
-  }, [_c('span', {
-    staticClass: "fa fa-chevron-right"
-  })])])])
-}]}
+  })], 1), _vm._v(" "), _c('psg-progress-bars')], 1)])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -882,7 +965,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 155:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -904,7 +987,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.aidsWalkArizona))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-green",
-      "now": "500",
+      "now": "885",
       "goal": "1500"
     }
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.eventDollarsRaised))]), _vm._v(" "), _c('psg-progress-bar', {
@@ -925,7 +1008,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 160:
+/***/ 164:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1139,7 +1222,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 161:
+/***/ 165:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1167,7 +1250,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 166:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1200,7 +1283,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 168:
+/***/ 172:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1230,7 +1313,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 170:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1254,7 +1337,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 171:
+/***/ 175:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1304,7 +1387,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 172:
+/***/ 176:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1333,7 +1416,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 175:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1415,7 +1498,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -1427,7 +1510,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 92:
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1470,12 +1553,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 93:
+/***/ 94:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Counter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Counter__);
 //
 //
@@ -1603,15 +1686,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 94:
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
+//
+//
+//
+//
 //
 //
 //
@@ -1680,6 +1767,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             events: []
         };
     },
+
+    computed: {
+        readMore: function readMore() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Lee mas...';
+            } else {
+                return 'Read More...';
+            }
+        }
+    },
     created: function created() {
         var _this = this;
 
@@ -1688,7 +1785,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         http.get('/carousel')
         //.use(saCache)
         .then(function (response) {
-            _this.events = response.body.events;
+            var events = response.body.events;
+            var reformatted = [];
+
+            if (_this.$cookie.get('language') === 'es') {
+                events.forEach(function (event) {
+                    reformatted.push({
+                        headline: event.es_headline,
+                        hero_text: event.es_hero_text,
+                        category: event.category,
+                        slug: event.slug,
+                        image: event.image,
+                        link: event.link
+                    });
+                });
+            } else {
+                events.forEach(function (event) {
+                    reformatted.push({
+                        headline: event.en_headline,
+                        hero_text: event.en_hero_text,
+                        category: event.category,
+                        slug: event.slug,
+                        image: event.image,
+                        link: event.link
+                    });
+                });
+            }
+
+            _this.events = reformatted;
             _this.loading = false;
         }).catch(function (error) {
             console.error(error);
@@ -1709,7 +1833,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 95:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1767,12 +1891,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 96:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__InfoBox__);
 //
 //
@@ -1819,7 +1943,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 97:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1845,12 +1969,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 98:
+/***/ 99:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_carousel__);
 //
 //
@@ -1958,114 +2082,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return 'Nuestros partidarios';
             } else {
                 return 'Our Supporters';
-            }
-        }
-    }
-});
-
-/***/ }),
-
-/***/ 99:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ProgressBars__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        'psg-progress-bars': __WEBPACK_IMPORTED_MODULE_0__ProgressBars___default.a,
-        'psg-speak': __WEBPACK_IMPORTED_MODULE_1__misc_TextToSpeech___default.a
-    },
-    computed: {
-        ourAgency: function ourAgency() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Nuestra Agencia';
-            } else {
-                return 'Our Agency';
-            }
-        },
-        ourExpertise: function ourExpertise() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Nuestra Experiencia';
-            } else {
-                return 'Our Expertise';
-            }
-        },
-        ourExpertiseText: function ourExpertiseText() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Desde el comienzo de la pandemia del VIH / SIDA, el Grupo Phoenix Shanti ha estado proporcionando un salvavidas a hombres y mujeres en el Valle del Sol, proporcionando servicios de hospicio a la vivienda durante sus décadas de existencia.';
-            } else {
-                return 'Since the onset of the HIV/AIDS pandemic, Phoenix Shanti Group has been providing a lifeline to men and women in the Valley of the Sun, providing services from hospice to housing over its decades of existence.';
             }
         }
     }

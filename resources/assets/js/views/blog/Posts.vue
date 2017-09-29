@@ -7,22 +7,24 @@
                         <div class="col-md-4">
                             <div v-if="post.link">
                                 <a :href="post.link" target="_blank">
-                                    <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
+                                    <img :src="'/uploads/events/' + post.image" class="img-responsive" :alt="post.headline" />
                                 </a>
                             </div>
                             <div v-if="post.image && !post.link">
-                                <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
+                                <router-link :to="'/blog/' + post.slug">
+                                    <img :src="'/uploads/events/' + post.image" class="img-responsive" :alt="post.headline" />
+                                </router-link>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <h1>{{ post.headline }}</h1>
-                            <div v-html="post.body"></div>
+                            <div v-html="post.hero_text"></div>
                             <div v-if="post.link">
-                                <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
-                                <a :href="post.link" class="btn btn-default pull-right">More Information</a>
+                                <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">{{ readMore }}</router-link>
+                                <a :href="post.link" class="btn btn-default pull-right">{{ moreInfo }}</a>
                             </div>
                             <div v-if="!post.link">
-                                <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
+                                <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">{{ readMore }}</router-link>
                             </div>
                             <psg-speak v-show="!loading" :text="copy(post.headline, post.body)" primary="true"></psg-speak>
                         </div>
@@ -30,15 +32,17 @@
                 </div>
                 <div v-if="!post.image">
                     <h1>{{ post.headline }}</h1>
-                    <div v-html="post.body"></div>
+                    <div v-html="post.hero_text"></div>
                     <div v-if="post.link">
-                        <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
-                        <a :href="post.link" class="btn btn-default pull-right">More Information</a>
+                        <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">{{ readMore }}</router-link>
+                        <a :href="post.link" class="btn btn-default pull-right">{{ moreInfo }}</a>
                     </div>
                     <div v-if="!post.link">
-                        <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">Read Post</router-link>
+                        <router-link :to="'/blog/' + post.slug" class="btn btn-color pull-right">{{ readMore }}</router-link>
                     </div>
                 </div>
+                <br style="clear:both;" />
+                <hr />
             </div>
         </div>
     </psg-page>
@@ -60,7 +64,33 @@
                     .get('/posts')
                     //.use(saCache)
                     .then(response => {
-                        this.posts = response.body.posts;
+                        let posts = response.body.posts;
+
+                        let reformatted = [];
+
+                        if (this.$cookie.get('language') === 'es') {
+                            posts.forEach(post => {
+                                reformatted.push({
+                                    headline: post.es_headline,
+                                    hero_text: post.es_hero_text,
+                                    slug: post.slug,
+                                    image: post.image,
+                                    link: post.link
+                                });
+                            });
+                        } else {
+                            posts.forEach(post => {
+                                reformatted.push({
+                                    headline: post.en_headline,
+                                    hero_text: post.en_hero_text,
+                                    slug: post.slug,
+                                    image: post.image,
+                                    link: post.link
+                                });
+                            });
+                        }
+
+                        this.posts = reformatted;
                     }).catch(error => {
                     console.error(error);
                 });
@@ -97,6 +127,22 @@
         },
         components: {
             'psg-speak': TextToSpeech
+        },
+        computed: {
+            readMore() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Lee más...';
+                } else {
+                    return 'Read more...';
+                }
+            },
+            moreInfo() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Más información';
+                } else {
+                    return 'More Information';
+                }
+            }
         }
     }
 </script>

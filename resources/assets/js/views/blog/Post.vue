@@ -6,11 +6,11 @@
                     <div class="col-md-4">
                         <div v-if="post.link">
                             <a :href="post.link" target="_blank">
-                                <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
+                                <img :src="'/uploads/events/' + post.image" class="img-responsive" :alt="post.headline" />
                             </a>
                         </div>
                         <div v-if="post.image && !post.link">
-                            <img :src="'/uploads/' + post.image" class="img-responsive" :alt="post.headline" />
+                            <img :src="'/uploads/events/' + post.image" class="img-responsive" :alt="post.headline" />
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -60,23 +60,53 @@
                 axios.get('/posts/' + slug)
                     .then(response => {
                         let post = response.data.post;
+                        if (this.$cookie.get('language') === 'es') {
+                            if (post !== null) {
+                                this.article = {
+                                    headline: post.es_headline,
+                                    subhead: post.category.category_name,
+                                    callout: post.es_hero_text,
+                                    image: post.image,
+                                    link: post.link,
+                                    body: post.es_body
+                                };
 
-                        if (post !== null) {
-                            this.article = {
-                                headline: post.headline,
-                                subhead: post.category.category_name,
-                                callout: post.hero_text,
-                                body: ''
-                            };
-
-                            this.post = post;
+                                this.post = {
+                                    headline: post.es_headline,
+                                    image: post.image,
+                                    link: post.link,
+                                    body: post.es_body
+                                };
+                            } else {
+                                this.article = {
+                                    headline: 'Mensaje no encontrado',
+                                    subhead: 'Error 404',
+                                    callout: 'Lo sentimos, pero no hemos podido encontrar la publicación para la que estás buscando. Tal vez sigas un enlace obsoleto, o la entrada se ha eliminado o desactivado.',
+                                    body: ''
+                                };
+                            }
                         } else {
-                            this.article = {
-                                headline: 'Post Not Found',
-                                subhead: '404 Error',
-                                callout: 'We\'re sorry, but we could not find the post for which you are looking. Perhaps you are following an outdated link, or the post has been deleted or inactivated.',
-                                body: ''
-                            };
+                            if (post !== null) {
+                                this.article = {
+                                    headline: post.en_headline,
+                                    subhead: post.category.category_name,
+                                    callout: post.en_hero_text,
+                                };
+
+                                this.post = {
+                                    headline: post.en_headline,
+                                    image: post.image,
+                                    link: post.link,
+                                    body: post.en_body
+                                };
+                            } else {
+                                this.article = {
+                                    headline: 'Post Not Found',
+                                    subhead: '404 Error',
+                                    callout: 'We\'re sorry, but we could not find the post for which you are looking. Perhaps you are following an outdated link, or the post has been deleted or deactivated.',
+                                    body: ''
+                                };
+                            }
                         }
 
                         this.loading = false;

@@ -1,17 +1,10 @@
 webpackJsonp([21],{
 
-/***/ 105:
+/***/ 107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -77,199 +70,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             article: {
-                headline: this.$cookie.get('language') === 'es' ? 'Resultados de la búsqueda' : 'Search Results',
-                subhead: this.$cookie.get('language') === 'es' ? 'Palabras claves: ' + this.$route.query.keywords : 'Keywords: "' + this.$route.query.keywords + '"',
-                callout: this.$cookie.get('language') === 'es' ? 'A continuación se muestran los resultados de su búsqueda. Si su información esperada no aparece a continuación, por favor, consulte nuestro <a href="/#/site-map"> mapa del sitio </a>.' : 'Below are the results of your search. If your expected information did not appear below, please try consulting our <a href="/#/site-map">site map</a>.',
-                body: ''
+                headline: 'Site Map',
+                subhead: 'Available Pages',
+                callout: 'Below is a list of available pages. Please refer to one of them to find your resource. You may also use the search function at the top of the page, if your resource is not listed.'
             },
-            articles: [],
             posts: [],
             events: []
         };
     },
 
-    computed: {
-        pages: function pages() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Paginas';
-            } else {
-                return 'Pages';
-            }
+    methods: {
+        getEvents: function getEvents() {
+            var _this = this;
+
+            http.get('/events').then(function (response) {
+                _this.events = response.body.events;
+            }).catch(function (error) {
+                console.error(error);
+            });
         },
-        pagesResult: function pagesResult() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Su búsqueda no devolvió ninguna página.';
-            } else {
-                return 'Your search returned no pages.';
-            }
-        },
-        readMore: function readMore() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Lee mas...';
-            } else {
-                return 'Read More...';
-            }
-        },
-        blogResult: function blogResult() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Tu búsqueda no devolvió entradas de blog.';
-            } else {
-                return 'Your search returned no blog posts.';
-            }
-        },
-        eventsHeader: function eventsHeader() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Eventos';
-            } else {
-                return 'Events';
-            }
-        },
-        eventResult: function eventResult() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Su búsqueda no devolvió ningún evento.';
-            } else {
-                return 'Your search returned no events.';
-            }
+        getPosts: function getPosts() {
+            var _this2 = this;
+
+            http.get('/posts').then(function (response) {
+                _this2.posts = response.body.posts;
+            }).catch(function (error) {
+                console.error(error);
+            });
         }
     },
-    created: function created() {
-        var _this = this;
-
-        this.loading = true;
-
-        axios.get('/search/?keywords=' + this.$route.query.keywords).then(function (response) {
-            var articles = response.data.articles;
-            var reformatted = [];
-
-            if (_this.$cookie.get('language') === 'es') {
-                articles.forEach(function (article) {
-                    reformatted.push({
-                        headline: article.es_headline,
-                        subhead: article.es_subhead,
-                        callout: article.es_callout,
-                        link: article.link
-                    });
-                });
-            } else {
-                articles.forEach(function (article) {
-                    reformatted.push({
-                        headline: article.en_headline,
-                        subhead: article.en_subhead,
-                        callout: article.en_callout,
-                        link: article.link
-                    });
-                });
-            }
-
-            _this.articles = reformatted;
-            _this.posts = response.data.posts;
-            _this.events = response.data.events;
-
-            _this.loading = false;
-        }).catch(function (error) {
-            console.error(error);
-        });
+    mounted: function mounted() {
+        this.getPosts();
+        this.getEvents();
     }
 });
 
 /***/ }),
 
-/***/ 142:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('psg-page', {
-    attrs: {
-      "article": _vm.article,
-      "loading": _vm.loading
-    }
-  }, [_c('div', {
-    slot: "copy"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-6"
-  }, [(!_vm.loading) ? _c('h1', [_vm._v(_vm._s(_vm.pages))]) : _vm._e(), _vm._v(" "), (_vm.articles) ? _c('div', _vm._l((_vm.articles), function(article, index) {
-    return _c('div', {
-      key: "index"
-    }, [_c('h3', [_vm._v(_vm._s(article.headline))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(article.subhead))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(article.callout)
-      }
-    }), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": article.link
-      }
-    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('br', {
-      staticStyle: {
-        "clear": "both"
-      }
-    }), _vm._v(" "), _c('hr')], 1)
-  })) : _vm._e(), _vm._v(" "), (!_vm.articles.length && !_vm.loading) ? _c('div', [_c('p', [_vm._v(_vm._s(_vm.pagesResult))])]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
-  }, [(!_vm.loading) ? _c('h1', [_vm._v("Blog")]) : _vm._e(), _vm._v(" "), (_vm.posts) ? _c('div', _vm._l((_vm.posts), function(post, index) {
-    return _c('div', {
-      key: "index"
-    }, [_c('h3', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(post.hero_text)
-      }
-    }), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": '/blog/' + post.slug
-      }
-    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('br', {
-      staticStyle: {
-        "clear": "both"
-      }
-    }), _vm._v(" "), _c('hr')], 1)
-  })) : _vm._e(), _vm._v(" "), (!_vm.posts.length && !_vm.loading) ? _c('div', [_c('p', [_vm._v(_vm._s(_vm.blogResult))])]) : _vm._e(), _vm._v(" "), (!_vm.loading) ? _c('hr') : _vm._e(), _vm._v(" "), (!_vm.loading) ? _c('h1', [_vm._v(_vm._s(_vm.eventsHeader))]) : _vm._e(), _vm._v(" "), (_vm.events) ? _c('div', _vm._l((_vm.events), function(event, index) {
-    return _c('div', {
-      key: "index"
-    }, [_c('h3', [_vm._v(_vm._s(event.event_name))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(event.event_callout)
-      }
-    }), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": '/events/' + event.slug
-      }
-    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('br', {
-      staticStyle: {
-        "clear": "both"
-      }
-    }), _vm._v(" "), _c('hr')], 1)
-  })) : _vm._e(), _vm._v(" "), (!_vm.posts.length && !_vm.loading) ? _c('div', [_c('p', [_vm._v(_vm._s(_vm.eventResult))])]) : _vm._e()])])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-029068bf", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 16:
+/***/ 17:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(105),
+  __webpack_require__(107),
   /* template */
-  __webpack_require__(142),
+  __webpack_require__(181),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/SearchResults.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/SiteMap.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] SearchResults.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] SiteMap.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -278,14 +131,130 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-029068bf", Component.options)
+    hotAPI.createRecord("data-v-ddae0134", Component.options)
   } else {
-    hotAPI.reload("data-v-029068bf", Component.options)
+    hotAPI.reload("data-v-ddae0134", Component.options)
   }
 })()}
 
 module.exports = Component.exports
 
+
+/***/ }),
+
+/***/ 181:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h3', [_vm._v("Home")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/",
+      "exact": ""
+    }
+  }, [_vm._v("Home")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("About")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/mission"
+    }
+  }, [_vm._v("Mission")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/getting-started"
+    }
+  }, [_vm._v("Getting Started")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/history"
+    }
+  }, [_vm._v("History")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/cultural-competency"
+    }
+  }, [_vm._v("Cultural Competency")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/about/privacy-policy"
+    }
+  }, [_vm._v("Privacy Policy")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Services")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/services/housing"
+    }
+  }, [_vm._v("Housing")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/services/hiv"
+    }
+  }, [_vm._v("HIV Services")])], 1), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Support")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/donate"
+    }
+  }, [_vm._v("Donate")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/volunteer"
+    }
+  }, [_vm._v("Volunteer")])], 1), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/support/resources"
+    }
+  }, [_vm._v("Resources")])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h3', [_vm._v("Blog")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/blog"
+    }
+  }, [_vm._v("Blog")])], 1), _vm._v(" "), _vm._l((_vm.posts), function(post, index) {
+    return _c('div', {
+      key: "index"
+    }, [_c('p', [_c('router-link', {
+      attrs: {
+        "to": {
+          name: 'blog/view',
+          params: {
+            slug: post.slug
+          }
+        }
+      }
+    }, [_vm._v(_vm._s(post.headline))])], 1)])
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Events")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/events"
+    }
+  }, [_vm._v("Events")])], 1), _vm._v(" "), _vm._l((_vm.events), function(event, index) {
+    return _c('div', {
+      key: "index"
+    }, [_c('p', [_c('router-link', {
+      attrs: {
+        "to": {
+          name: 'event/view',
+          params: {
+            slug: event.slug
+          }
+        }
+      }
+    }, [_vm._v(_vm._s(event.event_name))])], 1)])
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Store")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "https://store.shantiaz.org",
+      "target": "_blank"
+    }
+  }, [_vm._v("2nd Chances Store")])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("Contact")]), _vm._v(" "), _c('p', [_c('router-link', {
+    attrs: {
+      "to": "/contact/office"
+    }
+  }, [_vm._v("Contact")])], 1)], 2)])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ddae0134", module.exports)
+  }
+}
 
 /***/ })
 

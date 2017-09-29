@@ -1,12 +1,18 @@
 webpackJsonp([2],{
 
-/***/ 118:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_contact_Staff___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_contact_Staff__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22,9 +28,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             article: {
-                headline: 'Staff',
-                subhead: 'Our Team',
-                callout: 'Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients.'
+                headline: this.$cookie.get('language') === 'es' ? 'Personal' : 'Staff',
+                subhead: this.$cookie.get('language') === 'es' ? 'Nuestro equipo' : 'Our Team',
+                callout: this.$cookie.get('language') === 'es' ? 'Nuestro talentoso y diverso equipo ha brindado apoyo a muchas personas infectadas o afectadas por el VIH / SIDA a lo largo de los años. A través de estos esfuerzos, muchas vidas se han transformado, personal y clientes.' : 'Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients.'
             },
             staff: [],
             loading: false
@@ -38,14 +44,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 128:
+/***/ 131:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(90),
+  __webpack_require__(91),
   /* template */
-  __webpack_require__(165),
+  __webpack_require__(169),
   /* scopeId */
   null,
   /* cssModules */
@@ -73,14 +79,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 129:
+/***/ 132:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(91),
+  __webpack_require__(92),
   /* template */
-  __webpack_require__(173),
+  __webpack_require__(177),
   /* scopeId */
   null,
   /* cssModules */
@@ -108,7 +114,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 150:
+/***/ 153:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -119,7 +125,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     slot: "copy"
-  }, [_c('psg-staff')], 1)])
+  }, [_c('psg-staff'), _vm._v(" "), _c('p', [_vm._v("Professional photography by "), _c('a', {
+    attrs: {
+      "href": "https://www.facebook.com/irisphotographyllc/",
+      "target": "blank"
+    }
+  }, [_vm._v("Iris Photography, LLC")]), _vm._v(". Other photos from archives.")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://www.facebook.com/irisphotographyllc/",
+      "target": "blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/iris.png",
+      "alt": "Iris Photography",
+      "width": "20%"
+    }
+  })])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -131,7 +154,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 165:
+/***/ 169:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -144,7 +167,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.loading),
       expression: "loading"
     }],
-    staticClass: "fa fa-refresh fa-spin fa-5x"
+    staticClass: "fa fa-refresh fa-spin fa-5x color"
   })]), _vm._v(" "), _vm._l((_vm.staff), function(member, index) {
     return _c('psg-staff-member', {
       key: "index",
@@ -164,7 +187,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 173:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -245,7 +268,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "primary": "true"
     }
   })], 1) : _vm._e()], 1)]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.image) ? _c('div', [(_vm.member.staff.bio) ? _c('div', [_c('div', {
-    staticClass: "col-md-12"
+    staticClass: "col-md-4"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/no-avatar.png",
+      "alt": _vm.member.first_name + ' ' + _vm.member.last_name
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
   }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
     staticClass: "team-links"
   }, [(_vm.member.email && !_vm.member.staff.hide_email) ? _c('div', [_c('a', {
@@ -298,9 +329,9 @@ if (false) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(118),
+  __webpack_require__(119),
   /* template */
-  __webpack_require__(150),
+  __webpack_require__(153),
   /* scopeId */
   null,
   /* cssModules */
@@ -328,12 +359,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__StaffMember___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__StaffMember__);
 //
 //
@@ -383,13 +414,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 91:
+/***/ 92:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
+//
+//
+//
 //
 //
 //

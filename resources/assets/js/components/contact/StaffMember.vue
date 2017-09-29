@@ -41,7 +41,10 @@
                 </div>
                 <div v-if="!member.staff.image">
                     <div v-if="member.staff.bio">
-                        <div class="col-md-12">
+                        <div class="col-md-4">
+                            <img src="/img/no-avatar.png" class="img-responsive" :alt=" member.first_name + ' ' + member.last_name"/>
+                        </div>
+                        <div class="col-md-8">
                             <h3>{{ member.first_name }} {{ member.last_name }}</h3>
                             <h5>{{ member.staff.title }}</h5>
 

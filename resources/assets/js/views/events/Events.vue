@@ -5,14 +5,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div v-if="event.image">
-                            <img :src="'/uploads/events/' + event.image" class="img-responsive" alt="event.event_name" />
+                            <img :src="'/uploads/events/' + event.image" class="img-responsive" :alt="event.event_name" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <h1>{{ event.event_name }}</h1>
                         <div v-html="event.event_callout"></div>
 
-                        <router-link :to="{ name: 'event/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
+                        <router-link :to="{ name: 'event/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore }}</router-link>
                         <psg-speak v-show="!loading" :text="copy(event.event_name, event.event_callout)" primary="true"></psg-speak>
                     </div>
                 </div>
@@ -30,9 +30,9 @@
         data() {
             return {
                 article: {
-                    headline: 'Events',
-                    subhead: 'Shanti in the Community',
-                    callout: 'Shanti frequently puts on or participates in events in the local community. You will find more information about them here.'
+                    headline: (this.$cookie.get('language') === 'es') ? 'Eventos' : 'Events',
+                    subhead: (this.$cookie.get('language') === 'es') ? 'Shanti en la Comunidad' : 'Shanti in the Community',
+                    callout: (this.$cookie.get('language') === 'es') ? 'Shanti frecuentemente participa o participa en eventos en la comunidad local. Encontrará más información sobre ellos aquí.' : 'Shanti frequently puts on or participates in events in the local community. You will find more information about them here.'
                 },
                 loading: false,
                 events: [],
@@ -45,7 +45,30 @@
                 http
                     .get('/events')
                     .then(response => {
-                        this.events = response.body.events;
+                        let events = response.body.events;
+                        let reformatted = [];
+
+                        if (this.$cookie.get('language') === 'es') {
+                            events.forEach(event => {
+                                reformatted.push({
+                                    event_name: event.es_event_name,
+                                    event_callout: event.es_event_callout,
+                                    slug: event.slug,
+                                    image: event.image,
+                                });
+                            });
+                        } else {
+                            events.forEach(event => {
+                                reformatted.push({
+                                    event_name: event.en_event_name,
+                                    event_callout: event.en_event_callout,
+                                    slug: event.slug,
+                                    image: event.image,
+                                });
+                            });
+                        }
+
+                        this.events = reformatted;
 
                         this.loading = false;
                     }).catch(error => {
@@ -61,6 +84,15 @@
         },
         components: {
             'psg-speak': TextToSpeech
+        },
+        computed: {
+            readMore() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Lee más...';
+                } else {
+                    return 'Read more...';
+                }
+            }
         }
     }
 </script>

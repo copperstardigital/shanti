@@ -1,50 +1,12 @@
 webpackJsonp([10],{
 
-/***/ 117:
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_strap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_strap__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech__);
 //
 //
 //
@@ -76,377 +38,158 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: {},
-            name: '',
-            emailAddress: '',
-            phone: '',
-            subject: '',
-            message: '',
-            showTop: false,
-            type: 'success',
-            flash: '',
-            formSubmitted: false
+            article: {
+                headline: this.$cookie.get('language') === 'es' ? 'Eventos' : 'Events',
+                subhead: this.$cookie.get('language') === 'es' ? 'Shanti en la Comunidad' : 'Shanti in the Community',
+                callout: this.$cookie.get('language') === 'es' ? 'Shanti frecuentemente participa o participa en eventos en la comunidad local. Encontrará más información sobre ellos aquí.' : 'Shanti frequently puts on or participates in events in the local community. You will find more information about them here.'
+            },
+            loading: false,
+            events: []
         };
     },
 
     methods: {
-        validateBeforeSubmit: function validateBeforeSubmit(e) {
-            this.$validator.validateAll();
-            if (!this.errors.any()) {
-                this.sendMessage();
-            }
-        },
-        sendMessage: function sendMessage() {
+        getEvents: function getEvents() {
             var _this = this;
 
-            this.formSubmitted = true;
+            this.loading = true;
 
-            axios.post('/contact', {
-                name: this.name,
-                email: this.emailAddress,
-                phone: this.phone,
-                subject: this.subject,
-                message: this.message
-            }).then(function (response) {
-                _this.showTop = true;
-                _this.flash = 'Thank you for contacting Shanti. We will be in touch shortly.';
+            http.get('/events').then(function (response) {
+                var events = response.body.events;
+                var reformatted = [];
+
+                if (_this.$cookie.get('language') === 'es') {
+                    events.forEach(function (event) {
+                        reformatted.push({
+                            event_name: event.es_event_name,
+                            event_callout: event.es_event_callout,
+                            slug: event.slug,
+                            image: event.image
+                        });
+                    });
+                } else {
+                    events.forEach(function (event) {
+                        reformatted.push({
+                            event_name: event.en_event_name,
+                            event_callout: event.en_event_callout,
+                            slug: event.slug,
+                            image: event.image
+                        });
+                    });
+                }
+
+                _this.events = reformatted;
+
+                _this.loading = false;
             }).catch(function (error) {
-                _this.showTop = true;
-                _this.type = 'danger';
-                _this.flash = error.message;
+                console.error(error);
             });
+        },
+        copy: function copy(event, callout) {
+            return event + ' ' + callout;
         }
     },
-    created: function created() {
-        var _this2 = this;
-
-        this.loading = true;
-
-        http.get('/articles/12')
-        //.use(saCache)
-        .then(function (response) {
-            var article = response.body.article;
-
-            _this2.article = {
-                headline: article.en_headline,
-                subhead: article.en_subhead,
-                callout: article.en_callout,
-                body: article.en_body
-            };
-
-            if (_this2.$cookie.get('language') === 'es') {
-                _this2.article = {
-                    headline: article.es_headline,
-                    subhead: article.es_subhead,
-                    callout: article.es_callout,
-                    body: article.es_body
-                };
-            }
-
-            _this2.loading = false;
-        }).catch(function (error) {
-            console.error(error);
-        });
+    mounted: function mounted() {
+        this.getEvents();
     },
 
     components: {
-        alert: __WEBPACK_IMPORTED_MODULE_0_vue_strap__["alert"]
+        'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
+    },
+    computed: {
+        readMore: function readMore() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Lee más...';
+            } else {
+                return 'Read more...';
+            }
+        }
     }
 });
 
 /***/ }),
 
-/***/ 156:
+/***/ 171:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
       "article": _vm.article,
-      "loading": _vm.loading
+      "loading": _vm.loading,
+      "events": _vm.events
     }
   }, [_c('div', {
     slot: "copy"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('iframe', {
-    staticStyle: {
-      "border": "0"
-    },
-    attrs: {
-      "src": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13302.326600321518!2d-112.11022!3d33.538261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfd063606639b3257!2sShanti+Group+Inc!5e0!3m2!1sen!2sus!4v1500435531942",
-      "width": "100%",
-      "height": "450",
-      "frameborder": "0",
-      "allowfullscreen": ""
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "col-sm-6"
-  }, [_c('div', {
-    staticClass: "about-us-three"
-  }, [_c('alert', {
-    attrs: {
-      "placement": "top-right",
-      "duration": "10000",
-      "type": _vm.type,
-      "width": "500px",
-      "dismissable": ""
-    },
-    model: {
-      value: (_vm.showTop),
-      callback: function($$v) {
-        _vm.showTop = $$v
-      },
-      expression: "showTop"
-    }
-  }, [_c('span', {
-    staticClass: "icon-ok-circled alert-icon-float-left"
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('h1', [_vm._v("Contact Us")]), _vm._v(" "), (!_vm.formSubmitted) ? _c('form', {
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.validateBeforeSubmit($event)
+  }, _vm._l((_vm.events), function(event, index) {
+    return _c('div', {
+      key: "index"
+    }, [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-6"
+    }, [(event.image) ? _c('div', [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + event.image,
+        "alt": event.event_name
       }
-    }
-  }, [_c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('emailAddress')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "name"
-    }
-  }, [_vm._v("Name:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.name),
-      expression: "name"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.name),
-      expression: "name",
-      modifiers: {
-        "initial": true
+    })]) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-6"
+    }, [_c('h1', [_vm._v(_vm._s(event.event_name))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.event_callout)
       }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "text",
-      "id": "name",
-      "data-vv-rules": "required"
-    },
-    domProps: {
-      "value": (_vm.name)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.name = $event.target.value
+    }), _vm._v(" "), _c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": {
+          name: 'event/view',
+          params: {
+            slug: event.slug
+          }
+        }
       }
-    }
-  }), _vm._v(" "), (_vm.errors.has('name')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.errors.first('name')))]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('emailAddress')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "emailAddress"
-    }
-  }, [_vm._v("Email:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.emailAddress),
-      expression: "emailAddress"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.emailAddress),
-      expression: "emailAddress",
-      modifiers: {
-        "initial": true
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.loading),
+        expression: "!loading"
+      }],
+      attrs: {
+        "text": _vm.copy(event.event_name, event.event_callout),
+        "primary": "true"
       }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "emailAddress",
-      "id": "emailAddress",
-      "data-vv-rules": "required|email"
-    },
-    domProps: {
-      "value": (_vm.emailAddress)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.emailAddress = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.errors.has('emailAddress')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v("A valid email address is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', {
-    attrs: {
-      "for": "phone"
-    }
-  }, [_vm._v("Phone:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.phone),
-      expression: "phone"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "email",
-      "name": "phone",
-      "id": "phone"
-    },
-    domProps: {
-      "value": (_vm.phone)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.phone = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('subject')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "subject"
-    }
-  }, [_vm._v("Subject:")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.subject),
-      expression: "subject"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.subject),
-      expression: "subject",
-      modifiers: {
-        "initial": true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "name": "subject",
-      "id": "subject",
-      "data-vv-rules": "required"
-    },
-    domProps: {
-      "value": (_vm.subject)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.subject = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.errors.has('subject')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.errors.first('subject')))]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
-    staticClass: "form-group",
-    class: {
-      'has-error': _vm.errors.has('message')
-    }
-  }, [_c('label', {
-    attrs: {
-      "for": "message"
-    }
-  }, [_vm._v("Message:")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.message),
-      expression: "message"
-    }, {
-      name: "validate",
-      rawName: "v-validate.initial",
-      value: (_vm.message),
-      expression: "message",
-      modifiers: {
-        "initial": true
-      }
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "id": "message",
-      "name": "message",
-      "rows": "10",
-      "data-vv-rules": "required"
-    },
-    domProps: {
-      "value": (_vm.message)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.message = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.errors.has('message')) ? _c('p', {
-    staticClass: "text-danger"
-  }, [_vm._v(_vm._s(_vm.errors.first('message')))]) : _vm._e(), _vm._v(" "), _c('p', {
-    staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Send Message")])]) : _vm._e()], 1)])])])])
+    })], 1)]), _vm._v(" "), _c('hr')])
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-78922e20", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 28:
+/***/ 31:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(117),
+  __webpack_require__(121),
   /* template */
-  __webpack_require__(156),
+  __webpack_require__(171),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Office.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/events/Events.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Office.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Events.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -455,9 +198,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4082efca", Component.options)
+    hotAPI.createRecord("data-v-78922e20", Component.options)
   } else {
-    hotAPI.reload("data-v-4082efca", Component.options)
+    hotAPI.reload("data-v-78922e20", Component.options)
   }
 })()}
 

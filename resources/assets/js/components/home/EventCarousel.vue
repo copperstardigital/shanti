@@ -12,13 +12,17 @@
                     <div v-if="event.image">
                         <div class="row">
                             <div class="col-md-5">
-                                <div v-if="event.link">
+                                <div v-if="event.image && event.link">
                                     <a :href="event.link" target="_blank">
                                         <img :src="'/uploads/events/' + event.image" class="thumbnail img-responsive" :alt="event.headline" />
                                     </a>
                                 </div>
-                                <div v-if="event.image">
-                                    <img :src="'/uploads/events/' + event.image" class="thumbnail img-responsive" :alt="event.headline" />
+                                <div v-else-if="event.image && !event.link">
+                                    <a :href="event.link" target="_blank">
+                                        <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}">
+                                            <img :src="'/uploads/events/' + event.image" class="thumbnail img-responsive" :alt="event.headline" />
+                                        </router-link>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-7">
@@ -30,7 +34,7 @@
 
                                 <br />
 
-                                <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore}}</router-link>
+                                <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore }}</router-link>
 
                                 <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
                             </div>
@@ -45,7 +49,7 @@
 
                         <br />
 
-                        <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">Read More...</router-link>
+                        <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore }}</router-link>
 
                         <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
                     </div>
@@ -92,7 +96,8 @@
                                 hero_text: event.es_hero_text,
                                 category: event.category,
                                 slug: event.slug,
-                                image: event.image
+                                image: event.image,
+                                link: event.link
                             });
                         });
                     } else {
@@ -102,7 +107,8 @@
                                 hero_text: event.en_hero_text,
                                 category: event.category,
                                 slug: event.slug,
-                                image: event.image
+                                image: event.image,
+                                link: event.link
                             });
                         });
                     }

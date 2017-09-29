@@ -8087,7 +8087,7 @@ footer a:hover {
   padding: 0;
 }
 
-.VueCarousel-inner a img {
+.VueCarousel-inner > .logo > a img {
   max-height: 85px;
   max-width: 90%;
   position: absolute;
