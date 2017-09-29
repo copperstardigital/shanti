@@ -981,8 +981,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.generalFunds))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-red",
-      "now": "30",
-      "goal": "1000"
+      "now": "10000",
+      "goal": "30000"
     }
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.aidsWalkArizona))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
@@ -1433,8 +1433,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "icon": "fa fa-home red",
       "rule": "br-red",
       "text": _vm.housed,
-      "max": "10",
-      "interval": "500"
+      "max": "58",
+      "interval": "1000"
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-2 col-sm-4 col-xs-6"
@@ -1443,7 +1443,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "icon": "fa fa-briefcase green",
       "rule": "br-green",
       "text": _vm.vocRehab,
-      "max": "10",
+      "max": "146",
       "interval": "500"
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -1453,7 +1453,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "icon": "fa fa-ambulance lblue",
       "rule": "br-lblue",
       "text": _vm.outpatients,
-      "max": "10",
+      "max": "146",
       "interval": "500"
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -1463,7 +1463,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "icon": "fa fa-heart yellow",
       "rule": "br-yellow",
       "text": _vm.counseled,
-      "max": "10",
+      "max": "146",
       "interval": "500"
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -1473,7 +1473,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "icon": "fa fa-book purple",
       "rule": "br-purple",
       "text": _vm.educated,
-      "max": "10",
+      "max": "146",
       "interval": "500"
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -1483,8 +1483,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "icon": "fa fa-clock-o brown",
       "rule": "br-brown",
       "text": _vm.volunteerHours,
-      "max": "10",
-      "interval": "500"
+      "max": "1200",
+      "interval": "100"
     }
   })], 1)])])])
 },staticRenderFns: []}
@@ -1793,7 +1793,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     reformatted.push({
                         headline: event.es_headline,
                         hero_text: event.es_hero_text,
-                        category: event.category,
+                        category: {
+                            category_name: event.category.es_category_name
+                        },
                         slug: event.slug,
                         image: event.image,
                         link: event.link
@@ -1804,7 +1806,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     reformatted.push({
                         headline: event.en_headline,
                         hero_text: event.en_hero_text,
-                        category: event.category,
+                        category: {
+                            category_name: event.category.en_category_name
+                        },
                         slug: event.slug,
                         image: event.image,
                         link: event.link

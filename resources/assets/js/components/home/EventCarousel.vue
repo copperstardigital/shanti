@@ -94,7 +94,9 @@
                             reformatted.push({
                                 headline: event.es_headline,
                                 hero_text: event.es_hero_text,
-                                category: event.category,
+                                category: {
+                                    category_name: event.category.es_category_name
+                                },
                                 slug: event.slug,
                                 image: event.image,
                                 link: event.link
@@ -105,7 +107,9 @@
                             reformatted.push({
                                 headline: event.en_headline,
                                 hero_text: event.en_hero_text,
-                                category: event.category,
+                                category: {
+                                    category_name: event.category.en_category_name
+                                },
                                 slug: event.slug,
                                 image: event.image,
                                 link: event.link

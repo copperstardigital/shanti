@@ -8,8 +8,8 @@
         <h6>{{ generalFunds }}</h6>
         <psg-progress-bar
                 bar="progress-bar progress-bar-red"
-                now="30"
-                goal="1000"
+                now="10000"
+                goal="30000"
         ></psg-progress-bar>
 
         <h6>{{ aidsWalkArizona }}</h6>

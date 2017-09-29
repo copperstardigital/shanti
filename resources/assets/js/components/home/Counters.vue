@@ -9,8 +9,8 @@
                             icon="fa fa-home red"
                             rule="br-red"
                             :text="housed"
-                            max="10"
-                            interval="500"
+                            max="58"
+                            interval="1000"
                     ></psg-counter>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6">
@@ -19,7 +19,7 @@
                             icon="fa fa-briefcase green"
                             rule="br-green"
                             :text="vocRehab"
-                            max="10"
+                            max="146"
                             interval="500"
                     ></psg-counter>
                 </div>
@@ -29,7 +29,7 @@
                             icon="fa fa-ambulance lblue"
                             rule="br-lblue"
                             :text="outpatients"
-                            max="10"
+                            max="146"
                             interval="500"
                     ></psg-counter>
                 </div>
@@ -39,7 +39,7 @@
                             icon="fa fa-heart yellow"
                             rule="br-yellow"
                             :text="counseled"
-                            max="10"
+                            max="146"
                             interval="500"
                     ></psg-counter>
                 </div>
@@ -49,7 +49,7 @@
                             icon="fa fa-book purple"
                             rule="br-purple"
                             :text="educated"
-                            max="10"
+                            max="146"
                             interval="500"
                     ></psg-counter>
                 </div>
@@ -59,8 +59,8 @@
                             icon="fa fa-clock-o brown"
                             rule="br-brown"
                             :text="volunteerHours"
-                            max="10"
-                            interval="500"
+                            max="1200"
+                            interval="100"
                     ></psg-counter>
                 </div>
             </div>

@@ -3,23 +3,34 @@
         <div slot="copy">
             <div v-html="article.body"></div>
 
-            <h3>Chairman</h3>
-            <p>Rudy Navarro</p>
-            <p>Affiliation: ASU, Phoenix College</p>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <h3>{{ chairman }}</h3>
+                    <h5>Rudy Navarro</h5>
+                    <p>{{ affiliation }}: Arizona State University, Phoenix College</p>
 
-            <h3>Secretary</h3>
-            <h3>Trent Tripp</h3>
-            <p>Affiliation: Rehab Specialists</p>
+                    <hr />
 
-            <h3>Treasurer</h3>
-            <p>Shirley McLauglin</p>
+                    <h3>{{ secretary }}</h3>
+                    <h5>Trent Tripp</h5>
+                    <p>{{ affiliation }}: Rehab Specialists</p>
 
-            <h3>Director</h3>
-            <p>Dr. Charles Boag</p>
+                    <hr />
 
-            <h3>Member</h3>
-            <p>Sue Tormala</p>
-            <p>Affiliation: Owner, Chiropractic Physicians Group, Inc.</p>
+                    <h3>{{ treasurer }}</h3>
+                    <h5>Open</h5>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Director</h3>
+                    <h5>Dr. Charles Boag</h5>
+
+                    <hr />
+
+                    <h3>{{ member}}</h3>
+                    <h5>Wayne Tormala</h5>
+                    <p>{{ affiliation }}: Chief of the Tobacco and Chronic Disease Division of AZ Department of Health Services (ADHS)</p>
+                </div>
+            </div>
 
             <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
         </div>
@@ -67,6 +78,43 @@
         },
         components: {
             'psg-speak': TextToSpeech
+        },
+        computed: {
+            chairman() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Presidente';
+                } else {
+                    return 'Chairman';
+                }
+            },
+            secretary() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Secretario';
+                } else {
+                    return 'Secretary';
+                }
+            },
+            treasurer() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Tesorero';
+                } else {
+                    return 'Treasurer';
+                }
+            },
+            member() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Miembro';
+                } else {
+                    return 'Member';
+                }
+            },
+            affiliation() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Afiliación';
+                } else {
+                    return 'Affiliation';
+                }
+            }
         }
     }
 </script>

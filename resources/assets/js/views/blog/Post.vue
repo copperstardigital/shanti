@@ -64,7 +64,7 @@
                             if (post !== null) {
                                 this.article = {
                                     headline: post.es_headline,
-                                    subhead: post.category.category_name,
+                                    subhead: post.category.es_category_name,
                                     callout: post.es_hero_text,
                                     image: post.image,
                                     link: post.link,
@@ -89,7 +89,7 @@
                             if (post !== null) {
                                 this.article = {
                                     headline: post.en_headline,
-                                    subhead: post.category.category_name,
+                                    subhead: post.category.en_category_name,
                                     callout: post.en_hero_text,
                                 };
 

@@ -35,6 +35,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -78,6 +89,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {
         'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
+    },
+    computed: {
+        chairman: function chairman() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Presidente';
+            } else {
+                return 'Chairman';
+            }
+        },
+        secretary: function secretary() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Secretario';
+            } else {
+                return 'Secretary';
+            }
+        },
+        treasurer: function treasurer() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Tesorero';
+            } else {
+                return 'Treasurer';
+            }
+        },
+        member: function member() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Miembro';
+            } else {
+                return 'Member';
+            }
+        },
+        affiliation: function affiliation() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Afiliación';
+            } else {
+                return 'Affiliation';
+            }
+        }
     }
 });
 
@@ -98,7 +146,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     domProps: {
       "innerHTML": _vm._s(_vm.article.body)
     }
-  }), _vm._v(" "), _c('h3', [_vm._v("Chairman")]), _vm._v(" "), _c('p', [_vm._v("Rudy Navarro")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: ASU, Phoenix College")]), _vm._v(" "), _c('h3', [_vm._v("Secretary")]), _vm._v(" "), _c('h3', [_vm._v("Trent Tripp")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: Rehab Specialists")]), _vm._v(" "), _c('h3', [_vm._v("Treasurer")]), _vm._v(" "), _c('p', [_vm._v("Shirley McLauglin")]), _vm._v(" "), _c('h3', [_vm._v("Director")]), _vm._v(" "), _c('p', [_vm._v("Dr. Charles Boag")]), _vm._v(" "), _c('h3', [_vm._v("Member")]), _vm._v(" "), _c('p', [_vm._v("Sue Tormala")]), _vm._v(" "), _c('p', [_vm._v("Affiliation: Owner, Chiropractic Physicians Group, Inc.")]), _vm._v(" "), _c('psg-speak', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-4 col-sm-offset-2"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.chairman))]), _vm._v(" "), _c('h5', [_vm._v("Rudy Navarro")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Arizona State University, Phoenix College")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.secretary))]), _vm._v(" "), _c('h5', [_vm._v("Trent Tripp")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Rehab Specialists")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.treasurer))]), _vm._v(" "), _c('h5', [_vm._v("Open")])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('h3', [_vm._v("Director")]), _vm._v(" "), _c('h5', [_vm._v("Dr. Charles Boag")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.member))]), _vm._v(" "), _c('h5', [_vm._v("Wayne Tormala")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Chief of the Tobacco and Chronic Disease Division of AZ Department of Health Services (ADHS)")])])]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": _vm.article.body,
       "loading": _vm.loading,
