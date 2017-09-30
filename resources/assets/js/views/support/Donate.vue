@@ -12,18 +12,18 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <fieldset>
-                            <legend>Donor Information</legend>
+                            <legend>{{ donorInformation }}</legend>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="first_name">First Name</label>
+                                        <label for="first_name">{{ first }}</label>
                                         <input type="text" class="form-control" id="first_name" v-model="donation.first_name" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="last_name">Last Name</label>
+                                        <label for="last_name">{{ last }}</label>
                                         <input type="text" class="form-control" id="last_name" v-model="donation.last_name" />
                                     </div>
                                 </div>
@@ -32,13 +32,13 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="email">Email Address</label>
+                                        <label for="email">{{ emailAddy }}</label>
                                         <input type="email" class="form-control" id="email" v-model="donation.email" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="phone_number">Phone Number</label>
+                                        <label for="phone_number">{{ phoneNumber }}</label>
                                         <input type="text" class="form-control" id="phone_number" v-model="donation.phone_number" />
                                     </div>
                                 </div>
@@ -47,13 +47,13 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="address">Address</label>
+                                        <label for="address">{{ addressOf }}</label>
                                         <input type="text" class="form-control" id="address" v-model="donation.address" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="city">City</label>
+                                        <label for="city">{{ cityName }}</label>
                                         <input type="text" class="form-control" id="city" v-model="donation.city" />
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="state">State</label>
+                                        <label for="state">{{ stateInUS }}</label>
                                         <select name="state" class="form-control" id="state" v-model="donation.state">
                                             <option value="">Select one...</option>
                                             <option value="AL">Alabama</option>
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="zip_code">Zip Code</label>
+                                        <label for="zip_code">{{ zipCode }}</label>
                                         <input type="text" class="form-control" id="zip_code" v-model="donation.zip_code" />
                                     </div>
                                 </div>
@@ -131,13 +131,13 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="password">Password</label>
+                                        <label for="password">{{ passwordOf }}</label>
                                         <input type="password" class="form-control" id="password" v-model="donation.password" />
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="password_confirmation">Password Confirmation</label>
+                                        <label for="password_confirmation">{{ passwordConfirmationOf }}</label>
                                         <input type="password" class="form-control" id="password_confirmation" v-model="donation.password_confirmation" />
                                     </div>
                                 </div>
@@ -146,23 +146,23 @@
                     </div>
                     <div class="col-sm-6">
                         <fieldset style="margin-bottom: 20px;">
-                            <legend>Donation Information</legend>
+                            <legend>{{ donationInformation }}</legend>
 
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="donation_id">Recurring Donation</label>
+                                        <label for="donation_id">{{ recurringDonation }}</label>
                                         <select name="donation_id" id="donation_id" class="form-control" v-model="donation.donation_id">
-                                            <option value="">Select one...</option>
-                                            <optgroup label="Business Donations">
-                                                <option value="1">Gold ($500 per month)</option>
-                                                <option value="2">Silver ($100 per month)</option>
-                                                <option value="3">Bronze ($50 per month)</option>
+                                            <option value="">{{ selectOne }}</option>
+                                            <optgroup :label="businessDonations">
+                                                <option value="1">{{ goldBusiness }}</option>
+                                                <option value="2">{{ silverBusiness }}</option>
+                                                <option value="3">{{ bronzeBusiness}}</option>
                                             </optgroup>
-                                            <optgroup label="Individual Donations">
-                                                <option value="4">Gold ($30 per month)</option>
-                                                <option value="5">Silver ($20 per month)</option>
-                                                <option value="6">Bronze ($10 per month)</option>
+                                            <optgroup :label="individualDonations">
+                                                <option value="4">{{ goldIndividual}}</option>
+                                                <option value="5">{{ silverIndividual }}</option>
+                                                <option value="6">{{ bronzeIndividual }}</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -171,14 +171,14 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="other_business">Recurring Business Donation</label>
+                                        <label for="other_business">{{ recurringBusiness }}</label>
                                         <input type="text" class="form-control" id="other_business"  v-model="donation.other_business"/>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label for="other_individual">Recurring Individual Donation</label>
+                                            <label for="other_individual">{{ recurringIndividual }}</label>
                                             <input type="text" class="form-control" id="other_individual" v-model="donation.other_individual" />
                                         </div>
                                     </div>
@@ -187,13 +187,13 @@
                         </fieldset>
 
                         <fieldset style="margin-bottom: 20px;">
-                            <legend>Weekly Newsletter</legend>
+                            <legend>{{ weeklyNewsletter }}</legend>
 
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" name="newsletter" value="1" checked="checked"  v-model="donation.newsletter"/> Opt into weekly newsletter?</label>
+                                            <label><input type="checkbox" name="newsletter" value="1" checked="checked"  v-model="donation.newsletter"/> {{ optIn }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +201,7 @@
                         </fieldset>
 
                         <fieldset>
-                            <legend>Credit Card Information</legend>
+                            <legend>{{ creditCardInfo }}</legend>
                             <!--<div class="row">
 
                                 <div class="col-sm-12">
@@ -268,7 +268,7 @@
 
                                 </div>
                             </div>-->
-                            <psg-stripe :paying="donating"></psg-stripe>
+                            <psg-stripe :paying="donating" :label="creditOrDebit" :buttonText="donateTo"></psg-stripe>
                         </fieldset>
                     </div>
                 </div>
@@ -367,6 +367,212 @@
                     });
                 })
             }
+        },
+        computed: {
+            first() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Nombre de pila';
+                } else {
+                    return 'First Name';
+                }
+            },
+            last() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Apellido';
+                } else {
+                    return 'Last Name';
+                }
+            },
+            emailAddy() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Dirección de correo electrónico';
+                } else {
+                    return 'Email Address';
+                }
+            },
+            phoneNumber() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Número de teléfono';
+                } else {
+                    return 'Phone Number';
+                }
+            },
+            addressOf() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Dirección';
+                } else {
+                    return 'Address';
+                }
+            },
+            cityName() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Ciudad';
+                } else {
+                    return 'City';
+                }
+            },
+            stateInUS() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Estado';
+                } else {
+                    return 'State';
+                }
+            },
+            zipCode() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Código postal';
+                } else {
+                    return 'Zip Code';
+                }
+            },
+            passwordOf() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Contraseña';
+                } else {
+                    return 'Password';
+                }
+            },
+            passwordConfirmationOf() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Confirmación de contraseña';
+                } else {
+                    return 'Password Confirmation';
+                }
+            },
+            donationInformation() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Información de donación';
+                } else {
+                    return 'Donation Information';
+                }
+            },
+            recurringDonation() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donación Recurrente';
+                } else {
+                    return 'Recurring Donation';
+                }
+            },
+            recurringBusiness() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donación Recurrente de Empresas (Otros)';
+                } else {
+                    return 'Recurring Business Donation (Other)';
+                }
+            },
+            recurringIndividual() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donación Individual Recurrente (Otro)';
+                } else {
+                    return 'Recurring Individual Donation (Other)';
+                }
+            },
+            weeklyNewsletter() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Boletín semanal';
+                } else {
+                    return 'Weekly Newsletter';
+                }
+            },
+            donorInformation() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Información del Donante';
+                } else {
+                    return 'Donor Information';
+                }
+            },
+            optIn() {
+                if (this.$cookie.get('language') === 'es') {
+                    return '¿Ingresar al boletín semanal?';
+                } else {
+                    return 'Opt in to weekly newsletter?';
+                }
+            },
+            creditCardInfo() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Información de tarjeta de crédito';
+                } else {
+                    return 'Credit Card Information';
+                }
+            },
+            creditOrDebit() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Tarjeta de crédito o débito';
+                } else {
+                    return 'Credit or Debit Card';
+                }
+            },
+            businessDonations() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donaciones empresariales';
+                } else {
+                    return 'Business Donations';
+                }
+            },
+            individualDonations() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donaciones individuales';
+                } else {
+                    return 'Individual Donations';
+                }
+            },
+            selectOne() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Seleccione uno ...';
+                } else {
+                    return 'Select one...';
+                }
+            },
+            goldBusiness() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Oro ($ 500 por mes)';
+                } else {
+                    return 'Gold ($500 per month)';
+                }
+            },
+            silverBusiness() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Plata ($ 100 por mes)';
+                } else {
+                    return 'Silver ($100 per month)';
+                }
+            },
+            bronzeBusiness() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Bronce ($ 50 por mes)';
+                } else {
+                    return 'Bronze ($50 per month)';
+                }
+            },
+            goldIndividual() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Oro ($ 30 por mes)';
+                } else {
+                    return 'Gold ($30 per month)';
+                }
+            },
+            silverIndividual() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Plata ($ 20 por mes)';
+                } else {
+                    return 'Silver ($20 per month)';
+                }
+            },
+            bronzeIndividual() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Bronce ($ 20 por mes)';
+                } else {
+                    return 'Bronze ($20 per month)';
+                }
+            },
+            donateTo() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donar';
+                } else {
+                    return 'Donate';
+                }
+            }
+
         }
     }
 </script>

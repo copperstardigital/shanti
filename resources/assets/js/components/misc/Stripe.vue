@@ -1,12 +1,12 @@
 <template>
     <div>
-        <label>Credit or Debit Card</label>
+        <label>{{ label }}</label>
         <card class="stripe-card"
               :class="{ complete }"
               :stripe="stripe"
               @change="complete = $event.complete"
         />
-        <button class="pay-with-stripe btn btn-color pull-right" @click="pay" :disabled="paying || !complete">Donate <i v-show="paying" class="fa fa-refresh fa-spin"></i></button>
+        <button class="pay-with-stripe btn btn-color pull-right" @click="pay" :disabled="paying || !complete">{{ buttonText }} <i v-show="paying" class="fa fa-refresh fa-spin"></i></button>
     </div>
 </template>
 
@@ -26,7 +26,7 @@
 
         components: { Card },
 
-        props: ['paying'],
+        props: ['paying', 'label', 'buttonText'],
 
         methods: {
             pay () {

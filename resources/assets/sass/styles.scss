@@ -8087,11 +8087,11 @@ footer a:hover {
   padding: 0;
 }
 
-.VueCarousel-inner > .logo > a img {
+.VueCarousel-inner a img.logo-carousel {
   max-height: 85px;
   max-width: 90%;
   position: absolute;
-  top: 20px;
+  top: 30px;
   bottom: 0;
   left: 0;
   right: 0;

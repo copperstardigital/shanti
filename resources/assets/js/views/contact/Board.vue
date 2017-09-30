@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
+            <psg-speak text="Rudy Navarro is the chairman. Trent Tripp is the secretary. The treasurer position is open. Dr. Charles Boag is the director. Wayne Tormala is a member." :loading="loading" primary="true"></psg-speak>
         </div>
     </psg-page>
 </template>

@@ -1196,7 +1196,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/aunt_ritas.png",
       "alt": "Aunt Rita's Foundation"
@@ -1209,7 +1209,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/united_way.jpeg",
       "alt": "Valley of the Sun United Way"
@@ -1222,7 +1222,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/elizabeth_taylor.png",
       "alt": "Elizabeth Taylor AIDS Foundation"
@@ -1235,7 +1235,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/broadway_cares.jpeg",
       "alt": "Broadway Cares"
@@ -1243,7 +1243,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])])])]), _vm._v(" "), _c('slide', {
     staticClass: "pale-purple"
   }, [_c('div', {
-    staticClass: "carousel-container less-padding"
+    staticClass: "carousel-container logo-carousel less-padding"
   }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
@@ -1254,7 +1254,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/macys.jpeg",
       "alt": "Macy's"
@@ -1267,7 +1267,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/AHF.png",
       "alt": "AIDS Healthcare Foundation"
@@ -1280,7 +1280,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/topaz.png",
       "alt": "Topaz Systems"
@@ -1293,7 +1293,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/triyoung.png",
       "alt": "TriYoung Business Solutions"
@@ -1301,7 +1301,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])])])]), _vm._v(" "), _c('slide', {
     staticClass: "pale-purple"
   }, [_c('div', {
-    staticClass: "carousel-container less-padding"
+    staticClass: "carousel-container logo-carousel less-padding"
   }, [_c('div', {
     staticClass: "row frame"
   }, [_c('div', {
@@ -1312,7 +1312,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/copper_star.png",
       "alt": "Copper Star Digital"
@@ -1325,7 +1325,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/lazboy.png",
       "alt": "La-Z-Boy"
@@ -1338,7 +1338,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/buffalo_exchange.jpeg",
       "alt": "Buffalo Exchange"
@@ -1351,7 +1351,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "target": "_blank"
     }
   }, [_c('img', {
-    staticClass: "img-responsive",
+    staticClass: "logo-carousel",
     attrs: {
       "src": "/uploads/sponsors/trash_city.jpg",
       "alt": "Trash City Beads"

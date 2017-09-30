@@ -97,19 +97,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading,
       "primary": "true"
     }
-  }), _vm._v(" "), _c('carousel-3d', {
-    attrs: {
-      "width": 600,
-      "height": 400
-    }
-  }, _vm._l((_vm.slides), function(slide, i) {
+  }), _vm._v(" "), _c('carousel-3d', _vm._l((_vm.slides), function(slide, i) {
     return _c('slide', {
       key: "i",
       attrs: {
         "index": i
       }
     }, [_c('img', {
-      staticClass: "img-responsive",
       attrs: {
         "src": slide.image
       }

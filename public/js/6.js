@@ -168,9 +168,163 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         formInstructions: function formInstructions() {
             if (this.$cookie.get('language') === 'es') {
-                return 'Fill out the form below to inquire about volunteer opportunities.';
+                return 'Llene el siguiente formulario para informarse sobre las oportunidades de voluntariado.';
             } else {
                 return 'Fill out the form below to inquire about volunteer opportunities.';
+            }
+        },
+        first: function first() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Nombre de pila';
+            } else {
+                return 'First Name';
+            }
+        },
+        last: function last() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Apellido';
+            } else {
+                return 'Last Name';
+            }
+        },
+        emailAddy: function emailAddy() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Dirección de correo electrónico';
+            } else {
+                return 'Email Address';
+            }
+        },
+        phoneNumber: function phoneNumber() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Número de teléfono';
+            } else {
+                return 'Phone Number';
+            }
+        },
+        message: function message() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Comentarios';
+            } else {
+                return 'Comments';
+            }
+        },
+        required: function required() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Necesario';
+            } else {
+                return 'Required';
+            }
+        },
+        volunteerAt: function volunteerAt() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ofrecerse';
+            } else {
+                return 'Volunteer';
+            }
+        },
+        selectOne: function selectOne() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Seleccione uno ...';
+            } else {
+                return 'Select one...';
+            }
+        },
+        positionAt: function positionAt() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Oficio';
+            } else {
+                return 'Position';
+            }
+        },
+        foodPantry: function foodPantry() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Despensa de alimentos';
+            } else {
+                return 'Food Pantry';
+            }
+        },
+        hygienePantry: function hygienePantry() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Despensa de higiene personal';
+            } else {
+                return 'Personal Hygiene Pantry';
+            }
+        },
+        shelterConstruction: function shelterConstruction() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Construcción / Reparación de Refugios';
+            } else {
+                return 'Shelter Construction/Repair';
+            }
+        },
+        specialEvents: function specialEvents() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Despensa de alimentos';
+            } else {
+                return 'Special Events Coordinator';
+            }
+        },
+        traditionalMedia: function traditionalMedia() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Coordinador de Medios Tradicionales';
+            } else {
+                return 'Traditional Media Coordinator';
+            }
+        },
+        socialMedia: function socialMedia() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Coordinador de Medios Sociales';
+            } else {
+                return 'Social Media Coordinator';
+            }
+        },
+        legalAssistance: function legalAssistance() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Coordinador de Asistencia Legal';
+            } else {
+                return 'Legal Assistance Coordinator';
+            }
+        },
+        corporateIncentives: function corporateIncentives() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Coordinador de Incentivos Corporativos';
+            } else {
+                return 'Corporate Incentives Coordinator';
+            }
+        },
+        other: function other() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Otro';
+            } else {
+                return 'Other';
+            }
+        },
+        firstRequired: function firstRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Se requiere el primer nombre.';
+            } else {
+                return 'The first name is required.';
+            }
+        },
+        lastRequired: function lastRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'El apellido es obligatorio.';
+            } else {
+                return 'The last name is required.';
+            }
+        },
+        emailRequired: function emailRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Se requiere una dirección de correo electrónico válida.';
+            } else {
+                return 'A valid email address is required.';
+            }
+        },
+        positionRequired: function positionRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'La posición es necesaria.';
+            } else {
+                return 'The position is required.';
             }
         }
     },
@@ -287,7 +441,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "first_name"
     }
-  }, [_vm._v("First Name")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.first))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -319,9 +473,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.has('firstName')) ? _c('p', {
     staticClass: "text-danger"
-  }, [_vm._v("The first name is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.firstRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.required))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
       'has-error': _vm.errors.has('lastName')
@@ -330,7 +484,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "last_name"
     }
-  }, [_vm._v("Last Name")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.last))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -362,9 +516,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.has('lastName')) ? _c('p', {
     staticClass: "text-danger"
-  }, [_vm._v("The last name is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.lastRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.required))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group",
     class: {
       'has-error': _vm.errors.has('emailAddress')
@@ -373,7 +527,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("Email Address")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.emailAddy))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -405,15 +559,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.errors.has('emailAddress')) ? _c('p', {
     staticClass: "text-danger"
-  }, [_vm._v("A valid email address is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.emailRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.required))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
       "for": "phone"
     }
-  }, [_vm._v("Phone")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.phoneNumber))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -443,7 +597,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "position"
     }
-  }, [_vm._v("Position")]), _vm._v(" "), _c('select', {
+  }, [_vm._v(_vm._s(_vm.positionAt))]), _vm._v(" "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -478,53 +632,53 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": ""
     }
-  }, [_vm._v("Select one...")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.selectOne))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Food Pantry"
     }
-  }, [_vm._v("Food Pantry")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.foodPantry))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Personal Hygiene Pantry"
     }
-  }, [_vm._v("Personal Hygiene Pantry")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.hygienePantry))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Shelter Construction/Repair"
     }
-  }, [_vm._v("Shelter Construction/Repair")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.shelterConstruction))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Special Events Coordinator"
     }
-  }, [_vm._v("Special Events Coordinator")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.specialEvents))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Traditional Media Coordinator"
     }
-  }, [_vm._v("Traditional Media Coordinator")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.traditionalMedia))]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "Social Media Coordinator"
+    }
+  }, [_vm._v(_vm._s(_vm.socialMedia))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Legal Assistance Coordinator"
     }
-  }, [_vm._v("Legal Assistance Coordinator")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "Legal Assistance Coordinator"
-    }
-  }, [_vm._v("Legal Assistance Coordinator")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.legalAssistance))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Corporate Incentives Coordinator"
     }
-  }, [_vm._v("Corporate Incentives Coordinator")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.corporateIncentives))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "Other"
     }
-  }, [_vm._v("Other")])]), _vm._v(" "), (_vm.errors.has('position')) ? _c('p', {
+  }, [_vm._v(_vm._s(_vm.other))])]), _vm._v(" "), (_vm.errors.has('position')) ? _c('p', {
     staticClass: "text-danger"
-  }, [_vm._v("The position is required.")]) : _vm._e(), _vm._v(" "), _c('p', {
+  }, [_vm._v(_vm._s(_vm.positionRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
     staticClass: "help-block"
-  }, [_vm._v("Required")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.required))])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', {
     attrs: {
       "for": "comments"
     }
-  }, [_vm._v("Comments")]), _vm._v(" "), _c('textarea', {
+  }, [_vm._v(_vm._s(_vm.message))]), _vm._v(" "), _c('textarea', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -553,7 +707,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "submit",
       "disabled": _vm.sending
     }
-  }, [_vm._v("Volunteer "), _c('i', {
+  }, [_vm._v(_vm._s(_vm.volunteerAt) + " "), _c('i', {
     directives: [{
       name: "show",
       rawName: "v-show",

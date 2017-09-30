@@ -36,7 +36,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: { Card: __WEBPACK_IMPORTED_MODULE_0_vue_stripe_elements__["Card"] },
 
-    props: ['paying'],
+    props: ['paying', 'label', 'buttonText'],
 
     methods: {
         pay: function pay() {
@@ -430,6 +430,211 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             });
         }
+    },
+    computed: {
+        first: function first() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Nombre de pila';
+            } else {
+                return 'First Name';
+            }
+        },
+        last: function last() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Apellido';
+            } else {
+                return 'Last Name';
+            }
+        },
+        emailAddy: function emailAddy() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Dirección de correo electrónico';
+            } else {
+                return 'Email Address';
+            }
+        },
+        phoneNumber: function phoneNumber() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Número de teléfono';
+            } else {
+                return 'Phone Number';
+            }
+        },
+        addressOf: function addressOf() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Dirección';
+            } else {
+                return 'Address';
+            }
+        },
+        cityName: function cityName() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Ciudad';
+            } else {
+                return 'City';
+            }
+        },
+        stateInUS: function stateInUS() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Estado';
+            } else {
+                return 'State';
+            }
+        },
+        zipCode: function zipCode() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Código postal';
+            } else {
+                return 'Zip Code';
+            }
+        },
+        passwordOf: function passwordOf() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Contraseña';
+            } else {
+                return 'Password';
+            }
+        },
+        passwordConfirmationOf: function passwordConfirmationOf() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Confirmación de contraseña';
+            } else {
+                return 'Password Confirmation';
+            }
+        },
+        donationInformation: function donationInformation() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Información de donación';
+            } else {
+                return 'Donation Information';
+            }
+        },
+        recurringDonation: function recurringDonation() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Donación Recurrente';
+            } else {
+                return 'Recurring Donation';
+            }
+        },
+        recurringBusiness: function recurringBusiness() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Donación Recurrente de Empresas (Otros)';
+            } else {
+                return 'Recurring Business Donation (Other)';
+            }
+        },
+        recurringIndividual: function recurringIndividual() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Donación Individual Recurrente (Otro)';
+            } else {
+                return 'Recurring Individual Donation (Other)';
+            }
+        },
+        weeklyNewsletter: function weeklyNewsletter() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Boletín semanal';
+            } else {
+                return 'Weekly Newsletter';
+            }
+        },
+        donorInformation: function donorInformation() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Información del Donante';
+            } else {
+                return 'Donor Information';
+            }
+        },
+        optIn: function optIn() {
+            if (this.$cookie.get('language') === 'es') {
+                return '¿Ingresar al boletín semanal?';
+            } else {
+                return 'Opt in to weekly newsletter?';
+            }
+        },
+        creditCardInfo: function creditCardInfo() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Información de tarjeta de crédito';
+            } else {
+                return 'Credit Card Information';
+            }
+        },
+        creditOrDebit: function creditOrDebit() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Tarjeta de crédito o débito';
+            } else {
+                return 'Credit or Debit Card';
+            }
+        },
+        businessDonations: function businessDonations() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Donaciones empresariales';
+            } else {
+                return 'Business Donations';
+            }
+        },
+        individualDonations: function individualDonations() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Donaciones individuales';
+            } else {
+                return 'Individual Donations';
+            }
+        },
+        selectOne: function selectOne() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Seleccione uno ...';
+            } else {
+                return 'Select one...';
+            }
+        },
+        goldBusiness: function goldBusiness() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Oro ($ 500 por mes)';
+            } else {
+                return 'Gold ($500 per month)';
+            }
+        },
+        silverBusiness: function silverBusiness() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Plata ($ 100 por mes)';
+            } else {
+                return 'Silver ($100 per month)';
+            }
+        },
+        bronzeBusiness: function bronzeBusiness() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Bronce ($ 50 por mes)';
+            } else {
+                return 'Bronze ($50 per month)';
+            }
+        },
+        goldIndividual: function goldIndividual() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Oro ($ 30 por mes)';
+            } else {
+                return 'Gold ($30 per month)';
+            }
+        },
+        silverIndividual: function silverIndividual() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Plata ($ 20 por mes)';
+            } else {
+                return 'Silver ($20 per month)';
+            }
+        },
+        bronzeIndividual: function bronzeIndividual() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Bronce ($ 20 por mes)';
+            } else {
+                return 'Bronze ($20 per month)';
+            }
+        },
+        donateTo: function donateTo() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Donar';
+            } else {
+                return 'Donate';
+            }
+        }
     }
 });
 
@@ -486,7 +691,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('label', [_vm._v("Credit or Debit Card")]), _vm._v(" "), _c('card', {
+  return _c('div', [_c('label', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('card', {
     staticClass: "stripe-card",
     class: {
       complete: _vm.complete
@@ -507,7 +712,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.pay
     }
-  }, [_vm._v("Donate "), _c('i', {
+  }, [_vm._v(_vm._s(_vm.buttonText) + " "), _c('i', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -578,7 +783,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-6"
-  }, [_c('fieldset', [_c('legend', [_vm._v("Donor Information")]), _vm._v(" "), _c('div', {
+  }, [_c('fieldset', [_c('legend', [_vm._v(_vm._s(_vm.donorInformation))]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-6"
@@ -588,7 +793,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "first_name"
     }
-  }, [_vm._v("First Name")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.first))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -617,7 +822,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "last_name"
     }
-  }, [_vm._v("Last Name")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.last))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -648,7 +853,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("Email Address")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.emailAddy))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -677,7 +882,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "phone_number"
     }
-  }, [_vm._v("Phone Number")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.phoneNumber))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -708,7 +913,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "address"
     }
-  }, [_vm._v("Address")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.addressOf))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -737,7 +942,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "city"
     }
-  }, [_vm._v("City")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.cityName))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -768,7 +973,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "state"
     }
-  }, [_vm._v("State")]), _vm._v(" "), _c('select', {
+  }, [_vm._v(_vm._s(_vm.stateInUS))]), _vm._v(" "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1011,7 +1216,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "zip_code"
     }
-  }, [_vm._v("Zip Code")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.zipCode))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1042,7 +1247,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "password"
     }
-  }, [_vm._v("Password")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.passwordOf))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1071,7 +1276,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "password_confirmation"
     }
-  }, [_vm._v("Password Confirmation")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.passwordConfirmationOf))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1098,7 +1303,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "margin-bottom": "20px"
     }
-  }, [_c('legend', [_vm._v("Donation Information")]), _vm._v(" "), _c('div', {
+  }, [_c('legend', [_vm._v(_vm._s(_vm.donationInformation))]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-12"
@@ -1108,7 +1313,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "donation_id"
     }
-  }, [_vm._v("Recurring Donation")]), _vm._v(" "), _c('select', {
+  }, [_vm._v(_vm._s(_vm.recurringDonation))]), _vm._v(" "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1135,39 +1340,39 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": ""
     }
-  }, [_vm._v("Select one...")]), _vm._v(" "), _c('optgroup', {
+  }, [_vm._v(_vm._s(_vm.selectOne))]), _vm._v(" "), _c('optgroup', {
     attrs: {
-      "label": "Business Donations"
+      "label": _vm.businessDonations
     }
   }, [_c('option', {
     attrs: {
       "value": "1"
     }
-  }, [_vm._v("Gold ($500 per month)")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.goldBusiness))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "2"
     }
-  }, [_vm._v("Silver ($100 per month)")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.silverBusiness))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "3"
     }
-  }, [_vm._v("Bronze ($50 per month)")])]), _vm._v(" "), _c('optgroup', {
+  }, [_vm._v(_vm._s(_vm.bronzeBusiness))])]), _vm._v(" "), _c('optgroup', {
     attrs: {
-      "label": "Individual Donations"
+      "label": _vm.individualDonations
     }
   }, [_c('option', {
     attrs: {
       "value": "4"
     }
-  }, [_vm._v("Gold ($30 per month)")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.goldIndividual))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "5"
     }
-  }, [_vm._v("Silver ($20 per month)")]), _vm._v(" "), _c('option', {
+  }, [_vm._v(_vm._s(_vm.silverIndividual))]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "6"
     }
-  }, [_vm._v("Bronze ($10 per month)")])])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.bronzeIndividual))])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-6"
@@ -1177,7 +1382,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "other_business"
     }
-  }, [_vm._v("Recurring Business Donation")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.recurringBusiness))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1208,7 +1413,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "other_individual"
     }
-  }, [_vm._v("Recurring Individual Donation")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.recurringIndividual))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -1233,7 +1438,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "margin-bottom": "20px"
     }
-  }, [_c('legend', [_vm._v("Weekly Newsletter")]), _vm._v(" "), _c('div', {
+  }, [_c('legend', [_vm._v(_vm._s(_vm.weeklyNewsletter))]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-6"
@@ -1275,9 +1480,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v(" Opt into weekly newsletter?")])])])])])]), _vm._v(" "), _c('fieldset', [_c('legend', [_vm._v("Credit Card Information")]), _vm._v(" "), _c('psg-stripe', {
+  }), _vm._v(" " + _vm._s(_vm.optIn))])])])])])]), _vm._v(" "), _c('fieldset', [_c('legend', [_vm._v(_vm._s(_vm.creditCardInfo))]), _vm._v(" "), _c('psg-stripe', {
     attrs: {
-      "paying": _vm.donating
+      "paying": _vm.donating,
+      "label": _vm.creditOrDebit,
+      "buttonText": _vm.donateTo
     }
   })], 1)])])])], 1)])
 },staticRenderFns: []}

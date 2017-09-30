@@ -154,7 +154,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-sm-4"
   }, [_c('h3', [_vm._v("Director")]), _vm._v(" "), _c('h5', [_vm._v("Dr. Charles Boag")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.member))]), _vm._v(" "), _c('h5', [_vm._v("Wayne Tormala")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Chief of the Tobacco and Chronic Disease Division of AZ Department of Health Services (ADHS)")])])]), _vm._v(" "), _c('psg-speak', {
     attrs: {
-      "text": _vm.article.body,
+      "text": "Rudy Navarro is the chairman. Trent Tripp is the secretary. The treasurer position is open. Dr. Charles Boag is the director. Wayne Tormala is a member.",
       "loading": _vm.loading,
       "primary": "true"
     }
