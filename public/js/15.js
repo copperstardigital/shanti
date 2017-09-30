@@ -171,6 +171,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "posts"
+    },
     slot: "posts"
   }, _vm._l((_vm.posts), function(post, index) {
     return _c('div', {

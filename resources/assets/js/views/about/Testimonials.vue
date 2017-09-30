@@ -36,7 +36,7 @@
                 player: null,
                 contextmenu: [],
                 logo: '/img/shanti_logo_white.png',
-                testimonials:  [
+                testimonials: [
                     {
                         name: 'Jose A.',
                         clip: '/uploads/video/jose.mp4'
@@ -102,6 +102,9 @@
                 // console.log('play callback')
             },
             switchVideo(newVideo) {
+//                let video = this.testimonials[Math.floor(Math.random() * this.testimonials.length)];
+//                newVideo = video.clip;
+
                 this.player.switchVideo({
                     url: newVideo
                 });

@@ -90,6 +90,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "article": _vm.article
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, [_vm._v("\n        " + _vm._s(_vm.refer) + " "), _c('router-link', {
     attrs: {

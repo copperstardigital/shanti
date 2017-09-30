@@ -742,6 +742,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, [_c('div', {
     staticStyle: {
@@ -1471,7 +1474,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           var $$v = "1",
             $$i = _vm._i($$a, $$v);
           if ($$el.checked) {
-            $$i < 0 && (_vm.donation.newsletter = $$a.concat($$v))
+            $$i < 0 && (_vm.donation.newsletter = $$a.concat([$$v]))
           } else {
             $$i > -1 && (_vm.donation.newsletter = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
           }

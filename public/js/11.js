@@ -120,6 +120,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "events": _vm.events
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, _vm._l((_vm.events), function(event, index) {
     return _c('div', {

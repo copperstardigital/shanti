@@ -87,7 +87,7 @@
                             <div class="foot-item-content" v-if="events">
                                 <ul class="list-unstyled">
                                     <!-- Link -->
-                                    <router-link v-for="(event, index) in events" :to="{ name: 'event/view', params: { slug : event.slug }}" tag="li" key="index"><a>{{ event.event_name }}</a></router-link>
+                                    <router-link v-for="(event, index) in events" :to="{ name: 'event/view', params: { slug : event.slug }}" tag="li" :key="index"><a>{{ event.event_name }}</a></router-link>
                                 </ul>
                             </div>
                             <div v-if="!posts">

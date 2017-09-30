@@ -107,6 +107,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // console.log('play callback')
         },
         switchVideo: function switchVideo(newVideo) {
+            //                let video = this.testimonials[Math.floor(Math.random() * this.testimonials.length)];
+            //                newVideo = video.clip;
+
             this.player.switchVideo({
                 url: newVideo
             });
@@ -825,6 +828,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, [_c('d-player', {
     ref: "player",

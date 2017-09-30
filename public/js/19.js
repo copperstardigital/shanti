@@ -82,6 +82,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, [_c('div', {
     staticClass: "row"

@@ -83,6 +83,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, [_c('carousel-3d', _vm._l((_vm.slides), function(slide, i) {
     return _c('slide', {

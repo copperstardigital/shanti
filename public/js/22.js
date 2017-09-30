@@ -358,6 +358,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "article": _vm.article
     }
   }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
     slot: "copy"
   }, [_c('div', {
     staticClass: "row"
