@@ -8079,12 +8079,34 @@ footer a:hover {
 /* Your CSS codes here */
 .VueCarousel-slide {
   position: relative;
-  color: #999298;
+  color: #FFFFFF;
   background-color: #f3ecf2;
+  text-shadow: 1px 1px #5700B8;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   text-align: left;
   padding: 0;
+}
+
+.VueCarousel-slide h1 {
+  color: #48276c;
+  text-shadow: 1px 1px #FFF;
+}
+
+.VueCarousel-slide a {
+  color: #48276c;
+  text-shadow: none;
+
+}
+
+.VueCarousel-slide a:hover {
+  color: #5700B8;
+  text-shadow: 1px 1px #FFF;
+}
+
+.VueCarousel-slide .thumbnail {
+  background-color: #5700B8;
+  box-shadow: 3px 3px 3px #c5b7ff;
 }
 
 .VueCarousel-inner a img.logo-carousel {
@@ -8096,6 +8118,10 @@ footer a:hover {
   left: 0;
   right: 0;
   margin: auto;
+}
+
+.VueCarousel-slide a.btn.btn-color {
+  border: 1px solid #c5b7ff;
 }
 
 .frame {
@@ -8126,7 +8152,7 @@ footer a:hover {
 }
 
 .pale-purple {
-  background-color: #f8f1ff;
+  background-color: #BA74E5;
   border: 1px solid #c5b7ff;
   border-radius: 10px;
 }

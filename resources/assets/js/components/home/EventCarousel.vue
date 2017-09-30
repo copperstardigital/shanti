@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <h1 class="color">{{ event.headline }}</h1>
+                                <h1>{{ event.headline }}</h1>
 
                                 <hr />
 
@@ -36,12 +36,12 @@
 
                                 <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore }}</router-link>
 
-                                <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
+                                <psg-speak :text="copy(event.headline, event.hero_text)"></psg-speak>
                             </div>
                         </div>
                     </div>
                     <div v-if="!event.image">
-                        <h1 class="color">{{ event.headline }}</h1>
+                        <h1>{{ event.headline }}</h1>
 
                         <hr />
 
@@ -51,7 +51,7 @@
 
                         <router-link :to="{ name: 'blog/view', params: { slug : event.slug }}" class="btn btn-color pull-right">{{ readMore }}</router-link>
 
-                        <psg-speak :text="copy(event.headline, event.hero_text)" primary="true"></psg-speak>
+                        <psg-speak :text="copy(event.headline, event.hero_text)"></psg-speak>
                     </div>
                 </div>
             </slide>

@@ -1008,9 +1008,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })])], 1)]) : _vm._e()]), _vm._v(" "), _c('div', {
       staticClass: "col-md-7"
-    }, [_c('h1', {
-      staticClass: "color"
-    }, [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    }, [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(event.hero_text)
       }
@@ -1026,12 +1024,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
       attrs: {
-        "text": _vm.copy(event.headline, event.hero_text),
-        "primary": "true"
+        "text": _vm.copy(event.headline, event.hero_text)
       }
-    })], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', {
-      staticClass: "color"
-    }, [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    })], 1)])]) : _vm._e(), _vm._v(" "), (!event.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(event.headline))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
       domProps: {
         "innerHTML": _vm._s(event.hero_text)
       }
@@ -1047,8 +1042,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
       attrs: {
-        "text": _vm.copy(event.headline, event.hero_text),
-        "primary": "true"
+        "text": _vm.copy(event.headline, event.hero_text)
       }
     })], 1) : _vm._e()])])
   }))], 1)
