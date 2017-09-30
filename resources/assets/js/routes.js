@@ -114,6 +114,12 @@ const Event = resolve => {
     })
 };
 
+const Gallery = resolve => {
+    require.ensure(['./views/events/Gallery'], () => {
+        resolve(require('./views/events/Gallery'));
+    })
+};
+
 const GettingStarted = resolve => {
     require.ensure(['./views/about/GettingStarted'], () => {
         resolve(require('./views/about/GettingStarted'));
@@ -166,6 +172,7 @@ let router = new VueRouter({
         { path: '/blog/30', redirect: '/30'},
         { path: '/blog/:slug', name: 'blog/view', component: Post, meta: { title: { en: 'Blog', es: 'Blog'}}},
         { path: '/events', component: Events, meta: { title: { en: 'Events', es: 'Eventos'}}},
+        { path: '/events/gallery', component: Gallery, meta: { title: { en: 'Gallery', es: 'Galería'}}},
         { path: '/events/:slug', name: 'event/view', component: Event, meta: { title: { en: '', es: ''}}},
         { path: '/getting-started', component: GettingStarted, meta: { title: { en: 'Getting Started', es: 'Emezpando'}}},
         { path: '/site-map', component: SiteMap, meta: { title: { en: 'Site Map', es: 'Mapa de Sitio'}}},

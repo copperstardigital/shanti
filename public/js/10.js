@@ -1,6 +1,6 @@
 webpackJsonp([10],{
 
-/***/ 121:
+/***/ 125:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32,164 +32,141 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: {
-                headline: this.$cookie.get('language') === 'es' ? 'Eventos' : 'Events',
-                subhead: this.$cookie.get('language') === 'es' ? 'Shanti en la Comunidad' : 'Shanti in the Community',
-                callout: this.$cookie.get('language') === 'es' ? 'Shanti frecuentemente participa o participa en eventos en la comunidad local. Encontrará más información sobre ellos aquí.' : 'Shanti frequently puts on or participates in events in the local community. You will find more information about them here.'
-            },
-            loading: false,
-            events: []
+            article: {}
         };
     },
+    created: function created() {
+        var _this = this;
 
-    methods: {
-        getEvents: function getEvents() {
-            var _this = this;
+        this.loading = true;
 
-            this.loading = true;
+        http.get('/articles/6')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
 
-            http.get('/events').then(function (response) {
-                var events = response.body.events;
-                var reformatted = [];
+            _this.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
 
-                if (_this.$cookie.get('language') === 'es') {
-                    events.forEach(function (event) {
-                        reformatted.push({
-                            event_name: event.es_event_name,
-                            event_callout: event.es_event_callout,
-                            slug: event.slug,
-                            image: event.image
-                        });
-                    });
-                } else {
-                    events.forEach(function (event) {
-                        reformatted.push({
-                            event_name: event.en_event_name,
-                            event_callout: event.en_event_callout,
-                            slug: event.slug,
-                            image: event.image
-                        });
-                    });
-                }
+            if (_this.$cookie.get('language') === 'es') {
+                _this.article = {
+                    headline: article.es_headline,
+                    subhead: article.es_subhead,
+                    callout: article.es_callout,
+                    body: article.es_body
+                };
+            }
 
-                _this.events = reformatted;
-
-                _this.loading = false;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        },
-        copy: function copy(event, callout) {
-            return event + ' ' + callout;
-        }
-    },
-    mounted: function mounted() {
-        this.getEvents();
+            _this.loading = false;
+        }).catch(function (error) {
+            console.error(error);
+        });
     },
 
     components: {
         'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
-    },
-    computed: {
-        readMore: function readMore() {
-            if (this.$cookie.get('language') === 'es') {
-                return 'Lee más...';
-            } else {
-                return 'Read more...';
-            }
-        }
     }
 });
 
 /***/ }),
 
-/***/ 171:
+/***/ 166:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('psg-page', {
     attrs: {
       "article": _vm.article,
-      "loading": _vm.loading,
-      "events": _vm.events
+      "loading": _vm.loading
     }
   }, [_c('div', {
     slot: "copy"
-  }, _vm._l((_vm.events), function(event, index) {
-    return _c('div', {
-      key: "index"
-    }, [_c('div', {
-      staticClass: "row"
-    }, [_c('div', {
-      staticClass: "col-md-6"
-    }, [(event.image) ? _c('div', [_c('img', {
-      staticClass: "img-responsive",
-      attrs: {
-        "src": '/uploads/events/' + event.image,
-        "alt": event.event_name
-      }
-    })]) : _vm._e()]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-6"
-    }, [_c('h1', [_vm._v(_vm._s(event.event_name))]), _vm._v(" "), _c('div', {
-      domProps: {
-        "innerHTML": _vm._s(event.event_callout)
-      }
-    }), _vm._v(" "), _c('router-link', {
-      staticClass: "btn btn-color pull-right",
-      attrs: {
-        "to": {
-          name: 'event/view',
-          params: {
-            slug: event.slug
-          }
-        }
-      }
-    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('psg-speak', {
-      directives: [{
-        name: "show",
-        rawName: "v-show",
-        value: (!_vm.loading),
-        expression: "!loading"
-      }],
-      attrs: {
-        "text": _vm.copy(event.event_name, event.event_callout),
-        "primary": "true"
-      }
-    })], 1)]), _vm._v(" "), _c('hr')])
-  }))])
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }]
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/transitional.png",
+      "alt": "Transitional Housing"
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/triplex.png",
+      "alt": "Triplex"
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/permanent.jpg",
+      "alt": "Permanent Housing"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body,
+      "primary": "true"
+    }
+  })], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-78922e20", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-5aabf0eb", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 31:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(121),
+  __webpack_require__(125),
   /* template */
-  __webpack_require__(171),
+  __webpack_require__(166),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/events/Events.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/services/Housing.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Events.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Housing.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -198,9 +175,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-78922e20", Component.options)
+    hotAPI.createRecord("data-v-5aabf0eb", Component.options)
   } else {
-    hotAPI.reload("data-v-78922e20", Component.options)
+    hotAPI.reload("data-v-5aabf0eb", Component.options)
   }
 })()}
 

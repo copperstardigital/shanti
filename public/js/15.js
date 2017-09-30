@@ -1,6 +1,6 @@
 webpackJsonp([15],{
 
-/***/ 115:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -44,108 +44,124 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            article: {
-                headline: '',
-                category: {
-                    category_name: ''
-                },
-                hero_text: '',
-                body: ''
-            },
-            post: {},
-            loading: false
+            article: {},
+            posts: []
         };
     },
 
     methods: {
-        getPost: function getPost(slug) {
+        getPosts: function getPosts() {
             var _this = this;
 
-            this.loading = true;
+            http.get('/posts')
+            //.use(saCache)
+            .then(function (response) {
+                var posts = response.body.posts;
 
-            axios.get('/posts/' + slug).then(function (response) {
-                var post = response.data.post;
+                var reformatted = [];
+
                 if (_this.$cookie.get('language') === 'es') {
-                    if (post !== null) {
-                        _this.article = {
+                    posts.forEach(function (post) {
+                        reformatted.push({
                             headline: post.es_headline,
-                            subhead: post.category.es_category_name,
-                            callout: post.es_hero_text,
+                            hero_text: post.es_hero_text,
+                            slug: post.slug,
                             image: post.image,
-                            link: post.link,
-                            body: post.es_body
-                        };
-
-                        _this.post = {
-                            headline: post.es_headline,
-                            image: post.image,
-                            link: post.link,
-                            body: post.es_body
-                        };
-                    } else {
-                        _this.article = {
-                            headline: 'Mensaje no encontrado',
-                            subhead: 'Error 404',
-                            callout: 'Lo sentimos, pero no hemos podido encontrar la publicación para la que estás buscando. Tal vez sigas un enlace obsoleto, o la entrada se ha eliminado o desactivado.',
-                            body: ''
-                        };
-                    }
+                            link: post.link
+                        });
+                    });
                 } else {
-                    if (post !== null) {
-                        _this.article = {
+                    posts.forEach(function (post) {
+                        reformatted.push({
                             headline: post.en_headline,
-                            subhead: post.category.en_category_name,
-                            callout: post.en_hero_text
-                        };
-
-                        _this.post = {
-                            headline: post.en_headline,
+                            hero_text: post.en_hero_text,
+                            slug: post.slug,
                             image: post.image,
-                            link: post.link,
-                            body: post.en_body
-                        };
-                    } else {
-                        _this.article = {
-                            headline: 'Post Not Found',
-                            subhead: '404 Error',
-                            callout: 'We\'re sorry, but we could not find the post for which you are looking. Perhaps you are following an outdated link, or the post has been deleted or deactivated.',
-                            body: ''
-                        };
-                    }
+                            link: post.link
+                        });
+                    });
                 }
 
-                _this.loading = false;
+                _this.posts = reformatted;
             }).catch(function (error) {
-                return console.log(error);
+                console.error(error);
+            });
+        },
+        getArticle: function getArticle() {
+            var _this2 = this;
+
+            http.get('/articles/11')
+            //.use(saCache)
+            .then(function (response) {
+                var article = response.body.article;
+
+                _this2.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+
+                _this2.loading = false;
+            }).catch(function (error) {
+                console.error(error);
             });
         },
         copy: function copy(headline, _copy) {
             return headline + ' ' + _copy;
         }
     },
-    watch: {
-        '$route': function $route(to, from) {
-            this.getPost(to.params.slug);
-        }
+    beforeMount: function beforeMount() {
+        this.getArticle();
+        this.getPosts();
     },
-    mounted: function mounted() {
-        this.getPost(this.$route.params.slug);
+    created: function created() {
+        this.loading = true;
     },
 
     components: {
         'psg-speak': __WEBPACK_IMPORTED_MODULE_0__components_misc_TextToSpeech___default.a
+    },
+    computed: {
+        readMore: function readMore() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Lee más...';
+            } else {
+                return 'Read more...';
+            }
+        },
+        moreInfo: function moreInfo() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Más información';
+            } else {
+                return 'More Information';
+            }
+        }
     }
 });
 
 /***/ }),
 
-/***/ 150:
+/***/ 164:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -155,98 +171,119 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "loading": _vm.loading
     }
   }, [_c('div', {
-    slot: "copy"
-  }, [(_vm.post.image) ? _c('div', [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-4"
-  }, [(_vm.post.link) ? _c('div', [_c('a', {
-    attrs: {
-      "href": _vm.post.link,
-      "target": "_blank"
-    }
-  }, [_c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": '/uploads/events/' + _vm.post.image,
-      "alt": _vm.post.headline
-    }
-  })])]) : _vm._e(), _vm._v(" "), (_vm.post.image && !_vm.post.link) ? _c('div', [_c('img', {
-    staticClass: "img-responsive",
-    attrs: {
-      "src": '/uploads/events/' + _vm.post.image,
-      "alt": _vm.post.headline
-    }
-  })]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-8"
-  }, [_c('h1', [_vm._v(_vm._s(_vm.post.headline))]), _vm._v(" "), _c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.post.body)
-    }
-  }), _vm._v(" "), (_vm.post.link) ? _c('div', [_c('a', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "href": _vm.post.link
-    }
-  }, [_vm._v("More Information")])]) : _vm._e(), _vm._v(" "), _c('psg-speak', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.loading),
-      expression: "!loading"
-    }],
-    attrs: {
-      "text": _vm.copy(_vm.post.headline, _vm.post.body),
-      "primary": "true"
-    }
-  })], 1)])]) : _vm._e(), _vm._v(" "), (!_vm.post.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(_vm.post.headline))]), _vm._v(" "), _c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.post.body)
-    }
-  }), _vm._v(" "), (_vm.post.link) ? _c('div', [_c('a', {
-    staticClass: "btn btn-color pull-right",
-    attrs: {
-      "href": _vm.post.link
-    }
-  }, [_vm._v("More Information")])]) : _vm._e(), _vm._v(" "), _c('psg-speak', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (!_vm.loading),
-      expression: "!loading"
-    }],
-    attrs: {
-      "text": _vm.copy(_vm.post.headline, _vm.post.body),
-      "primary": "true"
-    }
-  })], 1) : _vm._e()])])
+    slot: "posts"
+  }, _vm._l((_vm.posts), function(post, index) {
+    return _c('div', {
+      key: "index"
+    }, [(post.image) ? _c('div', [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-4"
+    }, [(post.link) ? _c('div', [_c('a', {
+      attrs: {
+        "href": post.link,
+        "target": "_blank"
+      }
+    }, [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + post.image,
+        "alt": post.headline
+      }
+    })])]) : _vm._e(), _vm._v(" "), (post.image && !post.link) ? _c('div', [_c('router-link', {
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + post.image,
+        "alt": post.headline
+      }
+    })])], 1) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-8"
+    }, [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(post.hero_text)
+      }
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('a', {
+      staticClass: "btn btn-default pull-right",
+      attrs: {
+        "href": post.link
+      }
+    }, [_vm._v(_vm._s(_vm.moreInfo))])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))])], 1) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.loading),
+        expression: "!loading"
+      }],
+      attrs: {
+        "text": _vm.copy(post.headline, post.body),
+        "primary": "true"
+      }
+    })], 1)])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(post.hero_text)
+      }
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('a', {
+      staticClass: "btn btn-default pull-right",
+      attrs: {
+        "href": post.link
+      }
+    }, [_vm._v(_vm._s(_vm.moreInfo))])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))])], 1) : _vm._e()]) : _vm._e(), _vm._v(" "), _c('br', {
+      staticStyle: {
+        "clear": "both"
+      }
+    }), _vm._v(" "), _c('hr')])
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-13311084", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-4b99bdb6", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 25:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(115),
+  __webpack_require__(118),
   /* template */
-  __webpack_require__(150),
+  __webpack_require__(164),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Post.vue"
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Posts.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Post.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Posts.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -255,9 +292,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-13311084", Component.options)
+    hotAPI.createRecord("data-v-4b99bdb6", Component.options)
   } else {
-    hotAPI.reload("data-v-13311084", Component.options)
+    hotAPI.reload("data-v-4b99bdb6", Component.options)
   }
 })()}
 

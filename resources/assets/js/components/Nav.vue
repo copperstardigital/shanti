@@ -28,6 +28,7 @@
                 <ul>
                     <router-link to="/blog" tag="li"><a>Blog</a></router-link>
                     <router-link to="/events" tag="li"><a>{{ events }}</a></router-link>
+                    <router-link to="/events/gallery" tag="li"><a>{{ gallery }}</a></router-link>
                 </ul>
             </li>
             <li><a href="http://store.shantiaz.org">{{ store }}</a></li>
@@ -191,6 +192,13 @@
                     return 'Eventos';
                 } else {
                     return 'Events'
+                }
+            },
+            gallery() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Galería';
+                } else {
+                    return 'Gallery'
                 }
             },
             store() {
