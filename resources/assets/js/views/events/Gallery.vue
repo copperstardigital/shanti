@@ -1,9 +1,6 @@
 <template>
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
-            <div v-html="article.body"></div>
-            <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
-
             <carousel-3d>
                 <slide v-for="(slide, i) in slides" :index="i" key="i">
                     <img :src="slide.image">

@@ -21,9 +21,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -87,17 +84,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     slot: "copy"
-  }, [_c('div', {
-    domProps: {
-      "innerHTML": _vm._s(_vm.article.body)
-    }
-  }), _vm._v(" "), _c('psg-speak', {
-    attrs: {
-      "text": _vm.article.body,
-      "loading": _vm.loading,
-      "primary": "true"
-    }
-  }), _vm._v(" "), _c('carousel-3d', _vm._l((_vm.slides), function(slide, i) {
+  }, [_c('carousel-3d', _vm._l((_vm.slides), function(slide, i) {
     return _c('slide', {
       key: "i",
       attrs: {
