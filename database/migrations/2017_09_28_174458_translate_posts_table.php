@@ -16,7 +16,7 @@ class TranslatePostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
             $table->renameColumn('headline', 'en_headline');
             $table->renameColumn('hero_text', 'en_hero_text');
-            $table->renameColumn('body', 'en_body');
+            //$table->renameColumn('body', 'en_body');
             $table->string('es_headline')->nullable()->after('body');
             $table->text('es_hero_text')->nullable()->after('es_headline');
             $table->text('es_body')->nullable()->after('es_hero_text');
