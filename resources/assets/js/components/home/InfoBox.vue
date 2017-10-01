@@ -5,7 +5,7 @@
             <!-- Icon Box Eight Icon -->
             <div class="icon-box-8-icon">
                 <a href="#" class="icon-box-8-icon-top"><i :class="box.icon"></i></a>
-                <a href="#" class="icon-box-8-icon-bottom"><i :class="box.icon"></i></a>
+                <a href="#" class="icon-box-8-icon-bottom"><i class="fa fa-heart"></i></a>
             </div>
             <div v-if="box.link.match('http')">
                 <h4><a :href="box.link" target="_blank">{{ title }}</a></h4>

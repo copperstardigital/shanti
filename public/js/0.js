@@ -1497,14 +1497,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     class: _vm.box.icon
-  })]), _vm._v(" "), _c('a', {
-    staticClass: "icon-box-8-icon-bottom",
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('i', {
-    class: _vm.box.icon
-  })])]), _vm._v(" "), (_vm.box.link.match('http')) ? _c('div', [_c('h4', [_c('a', {
+  })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), (_vm.box.link.match('http')) ? _c('div', [_c('h4', [_c('a', {
     attrs: {
       "href": _vm.box.link,
       "target": "_blank"
@@ -1518,7 +1511,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "text": _vm.copy
     }
   })], 1)])
-},staticRenderFns: []}
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    staticClass: "icon-box-8-icon-bottom",
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-heart"
+  })])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
