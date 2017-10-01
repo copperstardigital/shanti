@@ -4,7 +4,7 @@
             <i v-show="loading" class="fa fa-refresh fa-spin fa-5x color"></i>
         </div>
         <carousel :loop="true" :autoplay="true" :autoplayTimeout="7000" :perPage="1" :navigationEnabled="true">
-            <slide v-for="(event, index) in events" key="index" class="pale-purple">
+            <slide v-for="(event, index) in events" :key="index" class="pale-purple">
                 <div class="event-header">
                     <h4>{{ event.category.category_name }}</h4>
                 </div>

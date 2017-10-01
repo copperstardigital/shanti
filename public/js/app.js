@@ -22871,7 +22871,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "list-unstyled"
   }, _vm._l((_vm.events), function(event, index) {
     return _c('router-link', {
-      key: "index",
+      key: index,
       attrs: {
         "to": {
           name: 'event/view',

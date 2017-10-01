@@ -14,7 +14,7 @@
 
             <br />
 
-            <span v-for="(client, index) in testimonials" key="index">
+            <span v-for="(client, index) in testimonials" :key="index">
                 <button style="margin-right: 10px;" class="btn btn-color" @click="switchVideo(client.clip)">Watch {{ client.name}}</button>
             </span>
         </div>

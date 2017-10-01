@@ -965,7 +965,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.events), function(event, index) {
     return _c('slide', {
-      key: "index",
+      key: index,
       staticClass: "pale-purple"
     }, [_c('div', {
       staticClass: "event-header"

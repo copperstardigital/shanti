@@ -847,7 +847,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('br'), _vm._v(" "), _vm._l((_vm.testimonials), function(client, index) {
     return _c('span', {
-      key: "index"
+      key: index
     }, [_c('button', {
       staticClass: "btn btn-color",
       staticStyle: {
