@@ -1367,18 +1367,20 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "info-boxes"
+  }, [_c('div', {
     staticClass: "icon-box-8 text-center"
   }, [_c('div', {
     staticClass: "row"
   }, _vm._l((_vm.infoBoxes), function(box, index) {
     return _c('div', {
-      key: "index"
+      key: index
     }, [_c('psg-info-box', {
       attrs: {
         "box": box
       }
     })], 1)
-  })), _vm._v(" "), _c('br')])
+  })), _vm._v(" "), _c('br')])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -1482,7 +1484,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "col-md-3 col-sm-6"
+    staticClass: "col-md-3 col-sm-6 info-box"
   }, [_c('div', {
     staticClass: "icon-box-8-item",
     class: _vm.box.color
@@ -1507,11 +1509,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": _vm.box.link,
       "target": "_blank"
     }
-  }, [_vm._v(_vm._s(_vm.title))])])]) : _c('div', [_c('h4', [_c('router-link', {
+  }, [_vm._v(_vm._s(_vm.title))])])]) : (!_vm.box.link.match('http')) ? _c('div', [_c('h4', [_c('router-link', {
     attrs: {
       "to": _vm.box.link
     }
-  }, [_vm._v(_vm._s(_vm.title))])], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.copy))]), _vm._v(" "), _c('psg-speak', {
+  }, [_vm._v(_vm._s(_vm.title))])], 1)]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.copy))]), _vm._v(" "), _c('psg-speak', {
     attrs: {
       "text": _vm.copy
     }
@@ -2042,6 +2044,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__InfoBox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__InfoBox__);
+//
+//
 //
 //
 //

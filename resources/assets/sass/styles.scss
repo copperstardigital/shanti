@@ -71,31 +71,31 @@ blockquote.blockquote-reverse {
 /*********************************/
 .btn.btn-color {
   color: #ffffff;
-  background: #5f1cba;
-  border: 1px solid #5f1cba;
+  background: #5700B8;
+  border: 1px solid #5700B8;
 }
 .btn.btn-color:hover,
 .btn.btn-color:focus,
 .btn.btn-color.active,
 .btn.btn-color:active {
-  background: #5f1cba;
+  background: #5700B8;
   color: #ffffff;
 }
 .btn.btn-color.btn-outline {
   background: transparent !important;
   border: 1px solid #5f1cba !important;
-  color: #5f1cba;
+  color: #5700B8;
 }
 .label.label-color {
-  background: #5f1cba;
+  background: #5700B8;
   color: #ffffff;
 }
 .badge.badge-color {
-  background: #5f1cba;
+  background: #5700B8;
   color: #ffffff;
 }
 .highlight-color {
-  background: #5f1cba;
+  background: #5700B8;
 }
 /*****************/
 /* Dropdown menu */
@@ -8105,8 +8105,7 @@ footer a:hover {
 }
 
 .VueCarousel-slide .thumbnail {
-  background-color: #5700B8;
-  box-shadow: 3px 3px 3px #c5b7ff;
+  box-shadow: 3px 3px 3px #5700B8;
 }
 
 .VueCarousel-inner a img.logo-carousel {
@@ -8208,5 +8207,19 @@ footer a:hover {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.icon-box-8 .info-boxes {
+  overflow: hidden;
+}
+
+.icon-box-8 .icon-box-8-item {
+  padding-bottom: 100%;
+  margin-bottom: -100%;  
+}
+
+.info-boxes {
+  overflow: hidden;
+  width: 100%;
 }
 

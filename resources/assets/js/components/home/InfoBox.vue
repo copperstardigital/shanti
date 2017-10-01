@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-3 col-sm-6 info-box">
         <!-- Icon Box Eight Item -->
         <div class="icon-box-8-item" :class="box.color">
             <!-- Icon Box Eight Icon -->
@@ -10,7 +10,7 @@
             <div v-if="box.link.match('http')">
                 <h4><a :href="box.link" target="_blank">{{ title }}</a></h4>
             </div>
-            <div v-else="!box.link.match('http')">
+            <div v-else-if="!box.link.match('http')">
                 <h4><router-link :to="box.link">{{ title }}</router-link></h4>
             </div>
             <!-- Paragraph -->

@@ -338,6 +338,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -354,7 +366,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: 'success',
             showTop: false,
             flash: '',
-            donating: false
+            donating: false,
+            formSubmitted: false
         };
     },
 
@@ -395,6 +408,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        validateBeforeSubmit: function validateBeforeSubmit(e) {
+            this.$validator.validateAll();
+            if (!this.errors.any()) {
+                this.donate();
+            }
+        },
         donate: function donate() {
             var vm = this;
             this.donating = true;
@@ -634,6 +653,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 return 'Donate';
             }
+        },
+        required: function required() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Necesario';
+            } else {
+                return 'Required';
+            }
+        },
+        firstRequired: function firstRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Se requiere el primer nombre.';
+            } else {
+                return 'The first name is required.';
+            }
+        },
+        lastRequired: function lastRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'El apellido es obligatorio.';
+            } else {
+                return 'The last name is required.';
+            }
+        },
+        emailRequired: function emailRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Se requiere una dirección de correo electrónico válida.';
+            } else {
+                return 'A valid email address is required.';
+            }
+        },
+        passwordRequired: function passwordRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Se requiere la contraseña.';
+            } else {
+                return 'The password is required.';
+            }
+        },
+        passwordConfirmationRequired: function passwordConfirmationRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Se requiere la confirmación de la contraseña.';
+            } else {
+                return 'The password confirmation is required.';
+            }
+        },
+        donationRequired: function donationRequired() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'La donación es necesaria.';
+            } else {
+                return 'The recurring donation is required.';
+            }
         }
     }
 });
@@ -770,7 +838,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "icon-ok-circled alert-icon-float-left"
-  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), _c('form', {
+  }), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.flash))])]), _vm._v(" "), (!_vm.formSubmitted) ? _c('form', {
     attrs: {
       "action": "/support/donate",
       "id": "payment-form",
@@ -779,7 +847,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "submit": function($event) {
         $event.preventDefault();
-        _vm.donate($event)
+        _vm.validateBeforeSubmit($event)
       }
     }
   }, [_c('div', {
@@ -802,11 +870,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.donation.first_name),
       expression: "donation.first_name"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.donation.first_name),
+      expression: "donation.first_name",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "id": "first_name"
+      "id": "first_name",
+      "data-vv-rules": "required"
     },
     domProps: {
       "value": (_vm.donation.first_name)
@@ -817,7 +894,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.donation.first_name = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.has('donation.first_name')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.firstRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.required))])])]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -831,11 +912,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.donation.last_name),
       expression: "donation.last_name"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.donation.last_name),
+      expression: "donation.last_name",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "id": "last_name"
+      "id": "last_name",
+      "data-vv-rules": "required"
     },
     domProps: {
       "value": (_vm.donation.last_name)
@@ -846,7 +936,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.donation.last_name = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.has('donation.last_name')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.lastRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.required))])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-6"
@@ -862,11 +956,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.donation.email),
       expression: "donation.email"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.donation.email),
+      expression: "donation.email",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "email",
-      "id": "email"
+      "id": "email",
+      "data-vv-rules": "required|email"
     },
     domProps: {
       "value": (_vm.donation.email)
@@ -877,7 +980,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.donation.email = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.has('donation.email')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.emailRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.required))])])]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -1256,11 +1363,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.donation.password),
       expression: "donation.password"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.donation.password),
+      expression: "donation.password",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "password",
-      "id": "password"
+      "id": "password",
+      "data-vv-rules": "required"
     },
     domProps: {
       "value": (_vm.donation.password)
@@ -1271,7 +1387,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.donation.password = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.has('donation.password')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.passwordRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.required))])])]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -1285,11 +1405,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.donation.password_confirmation),
       expression: "donation.password_confirmation"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.donation.password_confirmation),
+      expression: "donation.password_confirmation",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "type": "password",
-      "id": "password_confirmation"
+      "id": "password_confirmation",
+      "data-vv-rules": "required"
     },
     domProps: {
       "value": (_vm.donation.password_confirmation)
@@ -1300,7 +1429,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.donation.password_confirmation = $event.target.value
       }
     }
-  })])])])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.has('donation.password_confirmation')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.passwordConfirmationRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.required))])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-6"
   }, [_c('fieldset', {
     staticStyle: {
@@ -1322,11 +1455,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       rawName: "v-model",
       value: (_vm.donation.donation_id),
       expression: "donation.donation_id"
+    }, {
+      name: "validate",
+      rawName: "v-validate.initial",
+      value: (_vm.donation.donation_id),
+      expression: "donation.donation_id",
+      modifiers: {
+        "initial": true
+      }
     }],
     staticClass: "form-control",
     attrs: {
       "name": "donation_id",
-      "id": "donation_id"
+      "id": "donation_id",
+      "data-vv-rules": "required"
     },
     on: {
       "change": function($event) {
@@ -1375,7 +1517,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "6"
     }
-  }, [_vm._v(_vm._s(_vm.bronzeIndividual))])])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.bronzeIndividual))])])]), _vm._v(" "), (_vm.errors.has('donation.donation_id')) ? _c('p', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.donationRequired))]) : _vm._e(), _vm._v(" "), _c('p', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.required))])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-6"
@@ -1489,7 +1635,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": _vm.creditOrDebit,
       "buttonText": _vm.donateTo
     }
-  })], 1)])])])], 1)])
+  })], 1)])])]) : _vm._e()], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

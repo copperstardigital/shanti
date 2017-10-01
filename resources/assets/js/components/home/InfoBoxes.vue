@@ -1,11 +1,13 @@
 <template>
-    <div class="icon-box-8 text-center">
-        <div class="row">
-            <div v-for="(box, index) in infoBoxes" key="index">
-                <psg-info-box :box="box"></psg-info-box>
+    <div class="info-boxes">
+        <div class="icon-box-8 text-center">
+            <div class="row">
+                <div v-for="(box, index) in infoBoxes" :key="index">
+                    <psg-info-box :box="box"></psg-info-box>
+                </div>
             </div>
+            <br />
         </div>
-        <br />
     </div>
 </template>
 

@@ -8,7 +8,7 @@
                 <p>{{ flash }}</p>
             </alert>
 
-            <form action="/support/donate" id="payment-form" method="POST" @submit.prevent="donate">
+            <form action="/support/donate" id="payment-form" method="POST" @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
                 <div class="row">
                     <div class="col-sm-6">
                         <fieldset>
@@ -18,13 +18,17 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="first_name">{{ first }}</label>
-                                        <input type="text" class="form-control" id="first_name" v-model="donation.first_name" />
+                                        <input type="text" class="form-control" id="first_name" v-model="donation.first_name" v-validate.initial="donation.first_name" data-vv-rules="required"/>
+                                        <p class="text-danger" v-if="errors.has('donation.first_name')">{{ firstRequired }}</p>
+                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="last_name">{{ last }}</label>
-                                        <input type="text" class="form-control" id="last_name" v-model="donation.last_name" />
+                                        <input type="text" class="form-control" id="last_name" v-model="donation.last_name"  v-validate.initial="donation.last_name" data-vv-rules="required"/>
+                                        <p class="text-danger" v-if="errors.has('donation.last_name')">{{ lastRequired }}</p>
+                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -33,7 +37,9 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">{{ emailAddy }}</label>
-                                        <input type="email" class="form-control" id="email" v-model="donation.email" />
+                                        <input type="email" class="form-control" id="email" v-model="donation.email"  v-validate.initial="donation.email" data-vv-rules="required|email"/>
+                                        <p class="text-danger" v-if="errors.has('donation.email')">{{ emailRequired }}</p>
+                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -132,13 +138,17 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password">{{ passwordOf }}</label>
-                                        <input type="password" class="form-control" id="password" v-model="donation.password" />
+                                        <input type="password" class="form-control" id="password" v-model="donation.password" v-validate.initial="donation.password" data-vv-rules="required"/>
+                                        <p class="text-danger" v-if="errors.has('donation.password')">{{ passwordRequired }}</p>
+                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password_confirmation">{{ passwordConfirmationOf }}</label>
-                                        <input type="password" class="form-control" id="password_confirmation" v-model="donation.password_confirmation" />
+                                        <input type="password" class="form-control" id="password_confirmation" v-model="donation.password_confirmation" v-validate.initial="donation.password_confirmation" data-vv-rules="required"/>
+                                        <p class="text-danger" v-if="errors.has('donation.password_confirmation')">{{ passwordConfirmationRequired }}</p>
+                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +162,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="donation_id">{{ recurringDonation }}</label>
-                                        <select name="donation_id" id="donation_id" class="form-control" v-model="donation.donation_id">
+                                        <select name="donation_id" id="donation_id" class="form-control" v-model="donation.donation_id" v-validate.initial="donation.donation_id" data-vv-rules="required">
                                             <option value="">{{ selectOne }}</option>
                                             <optgroup :label="businessDonations">
                                                 <option value="1">{{ goldBusiness }}</option>
@@ -165,6 +175,8 @@
                                                 <option value="6">{{ bronzeIndividual }}</option>
                                             </optgroup>
                                         </select>
+                                        <p class="text-danger" v-if="errors.has('donation.donation_id')">{{ donationRequired }}</p>
+                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -293,7 +305,8 @@
                 type: 'success',
                 showTop: false,
                 flash: '',
-                donating: false
+                donating: false,
+                formSubmitted: false
             }
         },
         components: {
@@ -331,6 +344,12 @@
                 });
         },
         methods: {
+            validateBeforeSubmit(e) {
+                this.$validator.validateAll();
+                if (!this.errors.any()) {
+                    this.donate();
+                }
+            },
             donate() {
                 let vm = this;
                 this.donating = true;
@@ -571,8 +590,56 @@
                 } else {
                     return 'Donate';
                 }
+            },
+            required() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Necesario';
+                } else {
+                    return 'Required';
+                }
+            },
+            firstRequired() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Se requiere el primer nombre.';
+                } else {
+                    return 'The first name is required.';
+                }
+            },
+            lastRequired() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'El apellido es obligatorio.';
+                } else {
+                    return 'The last name is required.';
+                }
+            },
+            emailRequired() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Se requiere una dirección de correo electrónico válida.';
+                } else {
+                    return 'A valid email address is required.';
+                }
+            },
+            passwordRequired() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Se requiere la contraseña.';
+                } else {
+                    return 'The password is required.';
+                }
+            },
+            passwordConfirmationRequired() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Se requiere la confirmación de la contraseña.';
+                } else {
+                    return 'The password confirmation is required.';
+                }
+            },
+            donationRequired() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'La donación es necesaria.';
+                } else {
+                    return 'The recurring donation is required.';
+                }
             }
-
         }
     }
 </script>
