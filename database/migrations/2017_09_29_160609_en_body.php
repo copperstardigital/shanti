@@ -14,7 +14,7 @@ class EnBody extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->renameColumn('body', 'en_body');
+            //$table->renameColumn('body', 'en_body');
         });
     }
 
