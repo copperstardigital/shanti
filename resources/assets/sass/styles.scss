@@ -8223,3 +8223,24 @@ footer a:hover {
   width: 100%;
 }
 
+.navbar {
+  margin-top: 20px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #5700B8;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: #AC6EE4;
+  color: #FFF;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: #EDE6F5;
+}
+
+
+
