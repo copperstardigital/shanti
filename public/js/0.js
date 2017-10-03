@@ -1121,13 +1121,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.generalFunds))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-red",
-      "now": "10000",
+      "now": "16300",
       "goal": "30000"
     }
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.aidsWalkArizona))]), _vm._v(" "), _c('psg-progress-bar', {
     attrs: {
       "bar": "progress-bar progress-bar-green",
-      "now": "885",
+      "now": "985",
       "goal": "1500"
     }
   }), _vm._v(" "), _c('h6', [_vm._v(_vm._s(_vm.eventDollarsRaised))]), _vm._v(" "), _c('psg-progress-bar', {

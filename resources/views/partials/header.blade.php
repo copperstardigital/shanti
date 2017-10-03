@@ -123,7 +123,7 @@
                         <div class="col-md-2">
                             <!-- Logo section -->
                             <div class="logo">
-                                <img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group">
+                                <img width="175px" class="hidden-xs" src="/img/shanti_logo.png" alt="Phoenix Shanti Group">
                             </div>
                         </div>
                         <div class="col-md-8">

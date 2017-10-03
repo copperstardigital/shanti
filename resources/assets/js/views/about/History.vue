@@ -5,10 +5,12 @@
             <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
 
             <carousel-3d :width="600" :height="700">
-                <slide v-for="(slide, i) in slides" :index="i" key="i">
+                <slide v-for="(slide, i) in slides" :index="i" :key="i">
                     <img :src="slide.image" class="img-responsive">
                 </slide>
             </carousel-3d>
+
+            <p>Swipe left or right on the central image to view more images.</p>
         </div>
     </psg-page>
 </template>

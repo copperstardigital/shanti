@@ -109,6 +109,7 @@
                                         :album_class=" 'my-album-class' ">
                                 </lightbox>
                             </div>
+                            <br style="clear:both;" />
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">

@@ -2,10 +2,12 @@
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <carousel-3d>
-                <slide v-for="(slide, i) in slides" :index="i" key="i">
+                <slide v-for="(slide, i) in slides" :index="i" :key="i">
                     <img :src="slide.image">
                 </slide>
             </carousel-3d>
+
+            <p>Swipe left or right on the central image to view more images.</p>
         </div>
     </psg-page>
 </template>

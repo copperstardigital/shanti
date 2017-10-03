@@ -19,6 +19,8 @@
 
                     <h3>{{ treasurer }}</h3>
                     <h5>Open</h5>
+
+                    <hr class="visible-xs" />
                 </div>
                 <div class="col-sm-4">
                     <h3>Director</h3>

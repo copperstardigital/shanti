@@ -8242,5 +8242,41 @@ footer a:hover {
   background-color: #EDE6F5;
 }
 
+@media (max-width: 767px){
+  .navbar-default {
+    background-color: #5700B8;
+    border-radius: 5px;
+    padding: 5px 0;
+  }
+
+  .navbar-default .navbar-toggle {
+    background-color: #FFF;
+  }
+
+  .nav > li {
+    background-color: #FFF;
+  }
+
+  .nav-logo {
+    width: 20%;
+    margin-left: 10px;
+  }
+
+  .tb-search {
+    margin-top: 15px;
+  }
+
+  .icon-box-8 .icon-box-8-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .about-us-three .about-hero {
+    font-size: 14px;
+    line-height: 30px;
+    width: 90%;
+  }
+}
 
 

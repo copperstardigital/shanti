@@ -92,7 +92,7 @@
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-md-2">
                         <!-- Logo section -->
-                        <div class="logo">
+                        <div class="logo hidden-xs">
                             <router-link to="/" exact><img width="175px" src="/img/shanti_logo.png" alt="Phoenix Shanti Group"></router-link>
                         </div>
                     </div>

@@ -25,6 +25,10 @@ class Billing {
         ]);
     }
 
+    public function retrieveCustomer($customerId) {
+        return Customer::retrieve($customerId);
+    }
+
     public function subscribe($customer, $planId) {
         try {
             return Subscription::create([

@@ -48,13 +48,6 @@ class DonationController extends Controller
 
         $billing = new Billing();
 
-        $customer = $billing->createCustomer('Description', request('stripe_token'));
-        $response = $billing->subscribe($customer, $donationId);
-
-        if (is_string($response)) {
-            return response()->json(['success' => false, 'message' => $response]);
-        }
-
         $user = User::where('email', request('email'))->first();
 
         if (empty($user)) {
@@ -71,11 +64,27 @@ class DonationController extends Controller
             ]);
         }
 
+        if (empty($user->customer_id)) {
+            $customer = $billing->createCustomer('Donation at ' . $level->donation_level . ' level by ' . $user->first_name . ' ' . $user->last_name, request('stripe_token'));
+        } else {
+            $customer = $billing->retriveCustomer($user->customer_id);
+        }
+        
+        $response = $billing->subscribe($customer, $donationId);
+
+        if (is_string($response)) {
+            return response()->json(['success' => false, 'message' => $response]);
+        }
+
         $user->donations()->create([
             'donation_level_id' => $level->id,
             'amount' => $level->amount,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
+        ]);
+
+        $user->update([
+            'customer_id' => $customer->id
         ]);
 
         if (!empty(request('newsletter'))) {

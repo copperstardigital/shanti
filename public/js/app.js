@@ -14527,6 +14527,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -15055,6 +15056,11 @@ var _computed;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22324,10 +22330,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('router-link', {
     attrs: {
       "to": "/",
-      "tag": "li",
-      "exact": ""
+      "tag": "li"
     }
-  }, [_c('a', [_vm._v(_vm._s(_vm.home))])]), _vm._v(" "), _c('dropdown', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.home))])]), _vm._v(" "), _c('router-link', {
+    staticClass: "visible-xs hidden-sm hidden-md hidden-lg",
+    attrs: {
+      "slot": "brand",
+      "to": "/",
+      "exact": ""
+    },
+    slot: "brand"
+  }, [_c('img', {
+    staticClass: "nav-logo",
+    attrs: {
+      "src": "/img/shanti_logo_white.png",
+      "alt": "Shanti logo"
+    }
+  })]), _vm._v(" "), _c('dropdown', {
     attrs: {
       "text": _vm.about
     }
@@ -22395,15 +22414,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/services/hiv",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v(_vm._s(_vm.services))])]), _vm._v(" "), _c('li', {
-    staticClass: "dropdown"
-  }, [_c('a', {
-    staticClass: "dropdown-toggle",
+  }, [_c('a', [_vm._v(_vm._s(_vm.services))])]), _vm._v(" "), _c('dropdown', {
     attrs: {
-      "href": "#"
+      "text": "@shanti"
     }
-  }, [_vm._v("@shanti")]), _vm._v(" "), _c('ul', {
-    staticClass: "dropdown-menu"
   }, [_c('router-link', {
     attrs: {
       "to": "/blog",
@@ -22419,7 +22433,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": "/events/gallery",
       "tag": "li"
     }
-  }, [_c('a', [_vm._v(_vm._s(_vm.gallery))])])], 1)]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('a', [_vm._v(_vm._s(_vm.gallery))])])], 1), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "http://store.shantiaz.org"
     }
@@ -22666,7 +22680,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
-    staticClass: "logo"
+    staticClass: "logo hidden-xs"
   }, [_c('router-link', {
     attrs: {
       "to": "/",
@@ -22913,7 +22927,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "image_class": 'img-responsive img-rounded',
       "album_class": 'my-album-class'
     }
-  })], 1)])]), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), _c('br', {
+    staticStyle: {
+      "clear": "both"
+    }
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-3 col-sm-6"
   }, [_c('div', {
     staticClass: "foot-item"

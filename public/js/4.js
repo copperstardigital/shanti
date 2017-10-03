@@ -851,7 +851,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('button', {
       staticClass: "btn btn-color",
       staticStyle: {
-        "margin-right": "10px"
+        "margin-right": "10px",
+        "margin-bottom": "10px"
       },
       on: {
         "click": function($event) {

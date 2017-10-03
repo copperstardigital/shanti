@@ -21,6 +21,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -89,7 +91,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "copy"
   }, [_c('carousel-3d', _vm._l((_vm.slides), function(slide, i) {
     return _c('slide', {
-      key: "i",
+      key: i,
       attrs: {
         "index": i
       }
@@ -98,7 +100,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": slide.image
       }
     })])
-  }))], 1)])
+  })), _vm._v(" "), _c('p', [_vm._v("Swipe left or right on the central image to view more images.")])], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

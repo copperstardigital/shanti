@@ -46,6 +46,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -153,7 +155,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-sm-4 col-sm-offset-2"
-  }, [_c('h3', [_vm._v(_vm._s(_vm.chairman))]), _vm._v(" "), _c('h5', [_vm._v("Rudy Navarro")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Arizona State University, Phoenix College")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.secretary))]), _vm._v(" "), _c('h5', [_vm._v("Trent Tripp")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Rehab Specialists")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.treasurer))]), _vm._v(" "), _c('h5', [_vm._v("Open")])]), _vm._v(" "), _c('div', {
+  }, [_c('h3', [_vm._v(_vm._s(_vm.chairman))]), _vm._v(" "), _c('h5', [_vm._v("Rudy Navarro")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Arizona State University, Phoenix College")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.secretary))]), _vm._v(" "), _c('h5', [_vm._v("Trent Tripp")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Rehab Specialists")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.treasurer))]), _vm._v(" "), _c('h5', [_vm._v("Open")]), _vm._v(" "), _c('hr', {
+    staticClass: "visible-xs"
+  })]), _vm._v(" "), _c('div', {
     staticClass: "col-sm-4"
   }, [_c('h3', [_vm._v("Director")]), _vm._v(" "), _c('h5', [_vm._v("Dr. Charles Boag")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.member))]), _vm._v(" "), _c('h5', [_vm._v("Wayne Tormala")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.affiliation) + ": Chief of the Tobacco and Chronic Disease Division of AZ Department of Health Services (ADHS)")])])]), _vm._v(" "), _c('psg-speak', {
     attrs: {

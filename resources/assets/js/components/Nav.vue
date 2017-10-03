@@ -3,7 +3,9 @@
     <div class="shanti-nav">
         <navbar placement="static" type="default">
             <!-- Brand as slot -->
-            <router-link to="/" tag="li" exact=""><a>{{ home }}</a></router-link>
+            <router-link to="/" tag="li"><a>{{ home }}</a></router-link>
+            <router-link to="/" exact slot="brand" class="visible-xs hidden-sm hidden-md hidden-lg"><img class="nav-logo" src="/img/shanti_logo_white.png" alt="Shanti logo"></router-link>
+            
             <!-- You can use dropdown component -->
             <dropdown :text="about">
                 <router-link to="/getting-started" tag="li"><a>{{ gettingStarted }}</a></router-link>
@@ -13,23 +15,26 @@
                 <router-link to="/about/cultural-competency" tag="li"><a>{{ culturalCompetency }}</a></router-link>
                 <router-link to="/about/privacy-policy" tag="li"><a>{{ privacyPolicy }}</a></router-link>
             </dropdown>
+
             <dropdown :text="support">
                 <router-link to="/support/donate" tag="li"><a>{{ donate }}</a></router-link>
                 <router-link to="/support/volunteer" tag="li"><a>{{ volunteer }}</a></router-link>
                 <router-link to="/support/resources" tag="li"><a>{{ resources }}</a></router-link>
                 <router-link to="/support/contribute" tag="li"><a>{{ contribute }}</a></router-link>
             </dropdown>
+
             <router-link to="/services/housing" tag="li"><a>{{ housing }}</a></router-link>
+            
             <router-link to="/services/hiv" tag="li"><a>{{ services }}</a></router-link>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">@shanti</a>
-                <ul class="dropdown-menu">
-                    <router-link to="/blog" tag="li"><a>Blog</a></router-link>
-                    <router-link to="/events" tag="li"><a>{{ events }}</a></router-link>
-                    <router-link to="/events/gallery" tag="li"><a>{{ gallery }}</a></router-link>
-                </ul>
-            </li>
+           
+           <dropdown text="@shanti">
+               <router-link to="/blog" tag="li"><a>Blog</a></router-link>
+               <router-link to="/events" tag="li"><a>{{ events }}</a></router-link>
+               <router-link to="/events/gallery" tag="li"><a>{{ gallery }}</a></router-link>
+           </dropdown>
+                   
             <li><a href="http://store.shantiaz.org">{{ store }}</a></li>
+
             <dropdown :text="contact">
                 <router-link to="/contact/office" tag="li"><a>{{ office }}</a></router-link>
                 <router-link to="/contact/staff" tag="li"><a>{{ staff }}</a></router-link>
