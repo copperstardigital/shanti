@@ -58,6 +58,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: 'Scott H.',
                 clip: '/uploads/video/scott.mp4'
             }, {
+                name: 'AJ P.',
+                clip: '/uploads/video/aj-p.mp4'
+            }, {
+                name: 'Brandy M.',
+                clip: '/uploads/video/brandy-m.mp4'
+            }, {
+                name: 'Courtney',
+                clip: '/uploads/video/Courtney.mp4'
+            }, {
+                name: 'Craig S.',
+                clip: '/uploads/video/craig-s.mp4'
+            }, {
+                name: 'Eraina V.',
+                clip: '/uploads/video/eraina-v.mp4'
+            }, {
+                name: 'Jeannie M.',
+                clip: '/uploads/video/jeannie-m.mp4'
+            }, {
+                name: 'Jesse W.',
+                clip: '/uploads/video/jesse-w.mp4'
+            }, {
+                name: 'Josue B.',
+                clip: '/uploads/video/josue-b.mp4'
+            }, {
+                name: 'Julie Y.',
+                clip: '/uploads/video/julie-y.mp4'
+            }, {
+                name: 'Liz',
+                clip: '/uploads/video/liz.mp4'
+            }, {
+                name: 'Myleshea / Terence',
+                clip: '/uploads/video/mylshea-b-terence-m.mp4'
+            }, {
+                name: 'Shelleye B.',
+                clip: '/uploads/video/shelleye-b.mp4'
+            }, {
+                name: 'Sherrie B.',
+                clip: '/uploads/video/sherrie-b.mp4'
+            }, {
+                name: 'Todd J.',
+                clip: '/uploads/video/todd-j.mp4'
+            }, {
                 name: 'Michael S.',
                 clip: '/uploads/video/michael.mp4'
             }]

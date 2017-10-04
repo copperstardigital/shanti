@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import es6Promise from 'es6-promise';
+es6Promise.polyfill();
+
 window.Vue = Vue;
 Vue.use(VueRouter);
 
