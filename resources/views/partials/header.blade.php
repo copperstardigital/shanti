@@ -29,8 +29,6 @@
 
     <meta name="publishable-key" content="{{config('services.stripe.key') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <script src="https://js.stripe.com/v3/"></script>
-
 
     <!-- Styles -->
     <!-- Font awesome CSS -->

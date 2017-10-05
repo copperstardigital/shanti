@@ -15,7 +15,7 @@
         <h6>{{ aidsWalkArizona }}</h6>
         <psg-progress-bar
                 bar="progress-bar progress-bar-green"
-                now="985"
+                now="1995"
                 goal="1500"
         ></psg-progress-bar>
 
