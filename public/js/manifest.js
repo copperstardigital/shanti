@@ -1,8 +1,6 @@
 "use strict";
 
-/******/
-
-(function (modules) {
+/******/(function (modules) {
   // webpackBootstrap
   /******/ // install a JSONP callback for chunk loading
   /******/var parentJsonpFunction = window["webpackJsonp"];
@@ -171,7 +169,7 @@
   };
   /******/
   /******/ // __webpack_public_path__
-  /******/__webpack_require__.p = "";
+  /******/__webpack_require__.p = "/";
   /******/
   /******/ // on error function for async loading
   /******/__webpack_require__.oe = function (err) {
