@@ -27,7 +27,6 @@
 {{--<!-- Main JS -->--}}
 {{--<script src="/js/main.js"></script>--}}
 
-<script src="/js/manifest.js"></script>
 <script src="https://unpkg.com/vue@2.4.4/dist/vue.min.js"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
