@@ -1,1 +1,539 @@
-webpackJsonp([2],{155:function(e,t,a){var s=a(47)(a(452),a(486),null,null);e.exports=s.exports},424:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=a(465),r=function(e){return e&&e.__esModule?e:{default:e}}(s);t.default={data:function(){return{staff:[],loading:!1}},methods:{getStaff:function(){var e=this;this.loading=!0,http.get("/staff").then(function(t){e.staff=t.body.staff,e.loading=!1}).catch(function(e){})}},mounted:function(){this.loading=!0,this.getStaff()},components:{"psg-staff-member":r.default}}},425:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=a(95),r=function(e){return e&&e.__esModule?e:{default:e}}(s);t.default={data:function(){return{loading:!1}},props:["member"],methods:{contact:function(e,t,a,s,r){return e+" "+t+" "+a+" "+s+" "+r}},components:{"psg-speak":r.default}}},452:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var s=a(464),r=function(e){return e&&e.__esModule?e:{default:e}}(s);t.default={data:function(){return{article:{headline:"es"===this.$cookie.get("language")?"Personal":"Staff",subhead:"es"===this.$cookie.get("language")?"Nuestro equipo":"Our Team",callout:"es"===this.$cookie.get("language")?"Nuestro talentoso y diverso equipo ha brindado apoyo a muchas personas infectadas o afectadas por el VIH / SIDA a lo largo de los años. A través de estos esfuerzos, muchas vidas se han transformado, personal y clientes.":"Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients."},staff:[],loading:!1}},components:{"psg-staff":r.default}}},464:function(e,t,a){var s=a(47)(a(424),a(503),null,null);e.exports=s.exports},465:function(e,t,a){var s=a(47)(a(425),a(511),null,null);e.exports=s.exports},486:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("psg-page",{attrs:{article:e.article,loading:e.loading}},[a("div",{slot:"copy"},[a("psg-staff"),e._v(" "),a("p",[e._v("Professional photography by "),a("a",{attrs:{href:"https://www.facebook.com/irisphotographyllc/",target:"blank"}},[e._v("Iris Photography, LLC")]),e._v(". Other photos from archives.")]),e._v(" "),a("a",{attrs:{href:"https://www.facebook.com/irisphotographyllc/",target:"blank"}},[a("img",{staticClass:"img-responsive",attrs:{src:"/img/iris.png",alt:"Iris Photography",width:"20%"}})])],1)])},staticRenderFns:[]}},503:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",[a("div",{staticClass:"text-center"},[a("i",{directives:[{name:"show",rawName:"v-show",value:e.loading,expression:"loading"}],staticClass:"fa fa-refresh fa-spin fa-5x color"})]),e._v(" "),e._l(e.staff,function(e,t){return a("psg-staff-member",{key:"index",attrs:{member:e}})})],2)},staticRenderFns:[]}},511:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("div",[a("div",{staticClass:"row",staticStyle:{"margin-bottom":"20px"},attrs:{loading:e.loading}},[e.member.staff?a("div",[e.member.staff.image?a("div",[a("div",{staticClass:"col-md-4"},[a("img",{staticClass:"img-responsive",attrs:{src:"/uploads/staff/"+e.member.staff.image,alt:e.member.first_name+" "+e.member.last_name}})]),e._v(" "),a("div",{staticClass:"col-md-8"},[a("h3",[e._v(e._s(e.member.first_name)+" "+e._s(e.member.last_name))]),e._v(" "),a("h5",[e._v(e._s(e.member.staff.title))]),e._v(" "),a("div",{staticClass:"team-member"},[a("div",{staticClass:"team-links"},[e.member.email&&!e.member.staff.hide_email?a("div",[a("a",{attrs:{href:"mailto:"+e.member.email}},[a("i",{staticClass:"fa fa-envelope"}),e._v(" "+e._s(e.member.email))])]):e._e(),e._v(" "),e.member.extension&&e.member.phone_number?a("div",[a("a",{attrs:{href:"tel:"+e.member.phone_number+" x"+e.member.extension}},[a("i",{staticClass:"fa fa-phone"}),e._v(" "+e._s(e.member.phone_number)+" x"+e._s(e.member.extension))])]):e._e(),e._v(" "),!e.member.extension&&e.member.phone_number?a("div",[a("a",{attrs:{href:"tel:"+e.member.phone_number}},[a("i",{staticClass:"fa fa-phone"}),e._v(" "+e._s(e.member.phone_number))])]):e._e()])]),e._v(" "),a("psg-speak",{directives:[{name:"show",rawName:"v-show",value:!e.loading,expression:"!loading"}],attrs:{text:e.contact(e.member.first_name,e.member.last_name,e.member.staff.title,e.member.email,e.member.phone_number),primary:"true"}}),e._v(" "),a("hr"),e._v(" "),e.member.staff.bio?a("div",[a("div",{domProps:{innerHTML:e._s(e.member.staff.bio)}}),e._v(" "),a("psg-speak",{directives:[{name:"show",rawName:"v-show",value:!e.loading,expression:"!loading"}],attrs:{text:e.member.staff.bio}})],1):e._e(),e._v(" "),e.member.staff.bio?e._e():a("div",[a("p",[e._v("Profile information is unavailable.")]),e._v(" "),a("psg-speak",{directives:[{name:"show",rawName:"v-show",value:!e.loading,expression:"!loading"}],attrs:{text:"Profile information is unavailable.",primary:"true"}})],1)],1)]):e._e(),e._v(" "),e.member.staff.image?e._e():a("div",[e.member.staff.bio?a("div",[a("div",{staticClass:"col-md-4"},[a("img",{staticClass:"img-responsive",attrs:{src:"/img/no-avatar.png",alt:e.member.first_name+" "+e.member.last_name}})]),e._v(" "),a("div",{staticClass:"col-md-8"},[a("h3",[e._v(e._s(e.member.first_name)+" "+e._s(e.member.last_name))]),e._v(" "),a("h5",[e._v(e._s(e.member.staff.title))]),e._v(" "),a("div",{staticClass:"team-links"},[e.member.email&&!e.member.staff.hide_email?a("div",[a("a",{attrs:{href:"mailto:"+e.member.email}},[a("i",{staticClass:"fa fa-envelope"}),e._v(" "+e._s(e.member.email))])]):e._e(),e._v(" "),e.member.extension&&e.member.phone_number?a("div",[a("a",{attrs:{href:"tel:"+e.member.phone_number+" x"+e.member.extension}},[a("i",{staticClass:"fa fa-phone"}),e._v(" "+e._s(e.member.phone_number)+" x"+e._s(e.member.extension))])]):e._e(),e._v(" "),!e.member.extension&&e.member.phone_number?a("div",[a("a",{attrs:{href:"tel:"+e.member.phone_number}},[a("i",{staticClass:"fa fa-phone"}),e._v(" "+e._s(e.member.phone_number))])]):e._e()]),e._v(" "),a("hr"),e._v(" "),a("div",{domProps:{innerHTML:e._s(e.member.staff.bio)}}),e._v(" "),a("psg-speak",{directives:[{name:"show",rawName:"v-show",value:!e.loading,expression:"!loading"}],attrs:{text:e.member.staff.bio,primary:"true"}})],1)]):e._e()])]):e._e()]),e._v(" "),a("hr")])},staticRenderFns:[]}}});
+webpackJsonp([2],{
+
+/***/ 155:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(452),
+  /* template */
+  __webpack_require__(486),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Staff.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1d35e242", Component.options)
+  } else {
+    hotAPI.reload("data-v-1d35e242", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 424:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _StaffMember = __webpack_require__(465);
+
+var _StaffMember2 = _interopRequireDefault(_StaffMember);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            staff: [],
+            loading: false
+        };
+    },
+
+    methods: {
+        getStaff: function getStaff() {
+            var _this = this;
+
+            this.loading = true;
+
+            http.get('/staff')
+            //.use(saCache)
+            .then(function (response) {
+                _this.staff = response.body.staff;
+                _this.loading = false;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.loading = true;
+        this.getStaff();
+    },
+
+    components: {
+        'psg-staff-member': _StaffMember2.default
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 425:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _TextToSpeech = __webpack_require__(95);
+
+var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            loading: false
+        };
+    },
+
+    props: ['member'],
+    methods: {
+        contact: function contact(firstName, lastName, title, email, phone) {
+            return firstName + ' ' + lastName + ' ' + title + ' ' + email + ' ' + phone;
+        }
+    },
+    components: {
+        'psg-speak': _TextToSpeech2.default
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 452:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Staff = __webpack_require__(464);
+
+var _Staff2 = _interopRequireDefault(_Staff);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            article: {
+                headline: this.$cookie.get('language') === 'es' ? 'Personal' : 'Staff',
+                subhead: this.$cookie.get('language') === 'es' ? 'Nuestro equipo' : 'Our Team',
+                callout: this.$cookie.get('language') === 'es' ? 'Nuestro talentoso y diverso equipo ha brindado apoyo a muchas personas infectadas o afectadas por el VIH / SIDA a lo largo de los años. A través de estos esfuerzos, muchas vidas se han transformado, personal y clientes.' : 'Our talented and diverse team has provided support for many people infected with or affected by HIV/AIDS over the years. Through these efforts, many lives have been transformed, both staff and clients.'
+            },
+            staff: [],
+            loading: false
+        };
+    },
+
+    components: {
+        'psg-staff': _Staff2.default
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 464:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(424),
+  /* template */
+  __webpack_require__(503),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/contact/Staff.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-72d5db94", Component.options)
+  } else {
+    hotAPI.reload("data-v-72d5db94", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 465:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(425),
+  /* template */
+  __webpack_require__(511),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/components/contact/StaffMember.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] StaffMember.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a6382520", Component.options)
+  } else {
+    hotAPI.reload("data-v-a6382520", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 486:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article,
+      "loading": _vm.loading
+    }
+  }, [_c('div', {
+    slot: "copy"
+  }, [_c('psg-staff'), _vm._v(" "), _c('p', [_vm._v("Professional photography by "), _c('a', {
+    attrs: {
+      "href": "https://www.facebook.com/irisphotographyllc/",
+      "target": "blank"
+    }
+  }, [_vm._v("Iris Photography, LLC")]), _vm._v(". Other photos from archives.")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://www.facebook.com/irisphotographyllc/",
+      "target": "blank"
+    }
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/iris.png",
+      "alt": "Iris Photography",
+      "width": "20%"
+    }
+  })])], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1d35e242", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 503:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "text-center"
+  }, [_c('i', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.loading),
+      expression: "loading"
+    }],
+    staticClass: "fa fa-refresh fa-spin fa-5x color"
+  })]), _vm._v(" "), _vm._l((_vm.staff), function(member, index) {
+    return _c('psg-staff-member', {
+      key: "index",
+      attrs: {
+        "member": member
+      }
+    })
+  })], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-72d5db94", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 511:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "row",
+    staticStyle: {
+      "margin-bottom": "20px"
+    },
+    attrs: {
+      "loading": _vm.loading
+    }
+  }, [(_vm.member.staff) ? _c('div', [(_vm.member.staff.image) ? _c('div', [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": '/uploads/staff/' + _vm.member.staff.image,
+      "alt": _vm.member.first_name + ' ' + _vm.member.last_name
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
+    staticClass: "team-member"
+  }, [_c('div', {
+    staticClass: "team-links"
+  }, [(_vm.member.email && !_vm.member.staff.hide_email) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'mailto:' + _vm.member.email
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope"
+  }), _vm._v(" " + _vm._s(_vm.member.email))])]) : _vm._e(), _vm._v(" "), (_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number + ' x' + _vm.member.extension
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number) + " x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number))])]) : _vm._e()])]), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.contact(_vm.member.first_name, _vm.member.last_name, _vm.member.staff.title, _vm.member.email, _vm.member.phone_number),
+      "primary": "true"
+    }
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.member.staff.bio) ? _c('div', [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.member.staff.bio)
+    }
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.member.staff.bio
+    }
+  })], 1) : _vm._e(), _vm._v(" "), (!_vm.member.staff.bio) ? _c('div', [_c('p', [_vm._v("Profile information is unavailable.")]), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": "Profile information is unavailable.",
+      "primary": "true"
+    }
+  })], 1) : _vm._e()], 1)]) : _vm._e(), _vm._v(" "), (!_vm.member.staff.image) ? _c('div', [(_vm.member.staff.bio) ? _c('div', [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('img', {
+    staticClass: "img-responsive",
+    attrs: {
+      "src": "/img/no-avatar.png",
+      "alt": _vm.member.first_name + ' ' + _vm.member.last_name
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.member.first_name) + " " + _vm._s(_vm.member.last_name))]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.member.staff.title))]), _vm._v(" "), _c('div', {
+    staticClass: "team-links"
+  }, [(_vm.member.email && !_vm.member.staff.hide_email) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'mailto:' + _vm.member.email
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope"
+  }), _vm._v(" " + _vm._s(_vm.member.email))])]) : _vm._e(), _vm._v(" "), (_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number + ' x' + _vm.member.extension
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number) + " x" + _vm._s(_vm.member.extension))])]) : _vm._e(), _vm._v(" "), (!_vm.member.extension && _vm.member.phone_number) ? _c('div', [_c('a', {
+    attrs: {
+      "href": 'tel:' + _vm.member.phone_number
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-phone"
+  }), _vm._v(" " + _vm._s(_vm.member.phone_number))])]) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.member.staff.bio)
+    }
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.member.staff.bio,
+      "primary": "true"
+    }
+  })], 1)]) : _vm._e()]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _c('hr')])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-a6382520", module.exports)
+  }
+}
+
+/***/ })
+
+});

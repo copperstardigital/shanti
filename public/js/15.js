@@ -1,1 +1,311 @@
-webpackJsonp([15],{152:function(t,e,s){var i=s(47)(s(449),s(495),null,null);t.exports=i.exports},449:function(t,e,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=s(95),n=function(t){return t&&t.__esModule?t:{default:t}}(i);e.default={data:function(){return{article:{},posts:[]}},methods:{getPosts:function(){var t=this;http.get("/posts").then(function(e){var s=e.body.posts,i=[];"es"===t.$cookie.get("language")?s.forEach(function(t){i.push({headline:t.es_headline,hero_text:t.es_hero_text,slug:t.slug,image:t.image,link:t.link})}):s.forEach(function(t){i.push({headline:t.en_headline,hero_text:t.en_hero_text,slug:t.slug,image:t.image,link:t.link})}),t.posts=i}).catch(function(t){})},getArticle:function(){var t=this;http.get("/articles/11").then(function(e){var s=e.body.article;t.article={headline:s.en_headline,subhead:s.en_subhead,callout:s.en_callout,body:s.en_body},t.loading=!1}).catch(function(t){})},copy:function(t,e){return t+" "+e}},beforeMount:function(){this.getArticle(),this.getPosts()},created:function(){this.loading=!0},components:{"psg-speak":n.default},computed:{readMore:function(){return"es"===this.$cookie.get("language")?"Lee más...":"Read more..."},moreInfo:function(){return"es"===this.$cookie.get("language")?"Más información":"More Information"}}}},495:function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,s=t._self._c||e;return s("psg-page",{attrs:{article:t.article,loading:t.loading}},[s("div",{slot:"posts"},t._l(t.posts,function(e,i){return s("div",{key:"index"},[e.image?s("div",[s("div",{staticClass:"row"},[s("div",{staticClass:"col-md-4"},[e.link?s("div",[s("a",{attrs:{href:e.link,target:"_blank"}},[s("img",{staticClass:"img-responsive",attrs:{src:"/uploads/events/"+e.image,alt:e.headline}})])]):t._e(),t._v(" "),e.image&&!e.link?s("div",[s("router-link",{attrs:{to:"/blog/"+e.slug}},[s("img",{staticClass:"img-responsive",attrs:{src:"/uploads/events/"+e.image,alt:e.headline}})])],1):t._e()]),t._v(" "),s("div",{staticClass:"col-md-8"},[s("h1",[t._v(t._s(e.headline))]),t._v(" "),s("div",{domProps:{innerHTML:t._s(e.hero_text)}}),t._v(" "),e.link?s("div",[s("router-link",{staticClass:"btn btn-color pull-right",attrs:{to:"/blog/"+e.slug}},[t._v(t._s(t.readMore))]),t._v(" "),s("a",{staticClass:"btn btn-default pull-right",attrs:{href:e.link}},[t._v(t._s(t.moreInfo))])],1):t._e(),t._v(" "),e.link?t._e():s("div",[s("router-link",{staticClass:"btn btn-color pull-right",attrs:{to:"/blog/"+e.slug}},[t._v(t._s(t.readMore))])],1),t._v(" "),s("psg-speak",{directives:[{name:"show",rawName:"v-show",value:!t.loading,expression:"!loading"}],attrs:{text:t.copy(e.headline,e.body),primary:"true"}})],1)])]):t._e(),t._v(" "),e.image?t._e():s("div",[s("h1",[t._v(t._s(e.headline))]),t._v(" "),s("div",{domProps:{innerHTML:t._s(e.hero_text)}}),t._v(" "),e.link?s("div",[s("router-link",{staticClass:"btn btn-color pull-right",attrs:{to:"/blog/"+e.slug}},[t._v(t._s(t.readMore))]),t._v(" "),s("a",{staticClass:"btn btn-default pull-right",attrs:{href:e.link}},[t._v(t._s(t.moreInfo))])],1):t._e(),t._v(" "),e.link?t._e():s("div",[s("router-link",{staticClass:"btn btn-color pull-right",attrs:{to:"/blog/"+e.slug}},[t._v(t._s(t.readMore))])],1)]),t._v(" "),s("br",{staticStyle:{clear:"both"}}),t._v(" "),s("hr")])}))])},staticRenderFns:[]}}});
+webpackJsonp([15],{
+
+/***/ 152:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(449),
+  /* template */
+  __webpack_require__(495),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/blog/Posts.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Posts.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4b99bdb6", Component.options)
+  } else {
+    hotAPI.reload("data-v-4b99bdb6", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 449:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _TextToSpeech = __webpack_require__(95);
+
+var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            article: {},
+            posts: []
+        };
+    },
+
+    methods: {
+        getPosts: function getPosts() {
+            var _this = this;
+
+            http.get('/posts')
+            //.use(saCache)
+            .then(function (response) {
+                var posts = response.body.posts;
+
+                var reformatted = [];
+
+                if (_this.$cookie.get('language') === 'es') {
+                    posts.forEach(function (post) {
+                        reformatted.push({
+                            headline: post.es_headline,
+                            hero_text: post.es_hero_text,
+                            slug: post.slug,
+                            image: post.image,
+                            link: post.link
+                        });
+                    });
+                } else {
+                    posts.forEach(function (post) {
+                        reformatted.push({
+                            headline: post.en_headline,
+                            hero_text: post.en_hero_text,
+                            slug: post.slug,
+                            image: post.image,
+                            link: post.link
+                        });
+                    });
+                }
+
+                _this.posts = reformatted;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        },
+        getArticle: function getArticle() {
+            var _this2 = this;
+
+            http.get('/articles/11')
+            //.use(saCache)
+            .then(function (response) {
+                var article = response.body.article;
+
+                _this2.article = {
+                    headline: article.en_headline,
+                    subhead: article.en_subhead,
+                    callout: article.en_callout,
+                    body: article.en_body
+                };
+
+                _this2.loading = false;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        },
+        copy: function copy(headline, _copy) {
+            return headline + ' ' + _copy;
+        }
+    },
+    beforeMount: function beforeMount() {
+        this.getArticle();
+        this.getPosts();
+    },
+    created: function created() {
+        this.loading = true;
+    },
+
+    components: {
+        'psg-speak': _TextToSpeech2.default
+    },
+    computed: {
+        readMore: function readMore() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Lee más...';
+            } else {
+                return 'Read more...';
+            }
+        },
+        moreInfo: function moreInfo() {
+            if (this.$cookie.get('language') === 'es') {
+                return 'Más información';
+            } else {
+                return 'More Information';
+            }
+        }
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 495:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article,
+      "loading": _vm.loading
+    }
+  }, [_c('div', {
+    slot: "posts"
+  }, _vm._l((_vm.posts), function(post, index) {
+    return _c('div', {
+      key: "index"
+    }, [(post.image) ? _c('div', [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-4"
+    }, [(post.link) ? _c('div', [_c('a', {
+      attrs: {
+        "href": post.link,
+        "target": "_blank"
+      }
+    }, [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + post.image,
+        "alt": post.headline
+      }
+    })])]) : _vm._e(), _vm._v(" "), (post.image && !post.link) ? _c('div', [_c('router-link', {
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_c('img', {
+      staticClass: "img-responsive",
+      attrs: {
+        "src": '/uploads/events/' + post.image,
+        "alt": post.headline
+      }
+    })])], 1) : _vm._e()]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-8"
+    }, [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(post.hero_text)
+      }
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('a', {
+      staticClass: "btn btn-default pull-right",
+      attrs: {
+        "href": post.link
+      }
+    }, [_vm._v(_vm._s(_vm.moreInfo))])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))])], 1) : _vm._e(), _vm._v(" "), _c('psg-speak', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (!_vm.loading),
+        expression: "!loading"
+      }],
+      attrs: {
+        "text": _vm.copy(post.headline, post.body),
+        "primary": "true"
+      }
+    })], 1)])]) : _vm._e(), _vm._v(" "), (!post.image) ? _c('div', [_c('h1', [_vm._v(_vm._s(post.headline))]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(post.hero_text)
+      }
+    }), _vm._v(" "), (post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))]), _vm._v(" "), _c('a', {
+      staticClass: "btn btn-default pull-right",
+      attrs: {
+        "href": post.link
+      }
+    }, [_vm._v(_vm._s(_vm.moreInfo))])], 1) : _vm._e(), _vm._v(" "), (!post.link) ? _c('div', [_c('router-link', {
+      staticClass: "btn btn-color pull-right",
+      attrs: {
+        "to": '/blog/' + post.slug
+      }
+    }, [_vm._v(_vm._s(_vm.readMore))])], 1) : _vm._e()]) : _vm._e(), _vm._v(" "), _c('br', {
+      staticStyle: {
+        "clear": "both"
+      }
+    }), _vm._v(" "), _c('hr')])
+  }))])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4b99bdb6", module.exports)
+  }
+}
+
+/***/ })
+
+});
