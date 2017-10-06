@@ -1,6 +1,41 @@
 webpackJsonp([13],{
 
-/***/ 121:
+/***/ 154:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(451),
+  /* template */
+  __webpack_require__(494),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Office.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Office.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4082efca", Component.options)
+  } else {
+    hotAPI.reload("data-v-4082efca", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 451:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +45,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _vueStrap = __webpack_require__(5);
+var _vueStrap = __webpack_require__(96);
 
 exports.default = {
     data: function data() {
@@ -157,7 +192,7 @@ exports.default = {
 
 /***/ }),
 
-/***/ 164:
+/***/ 494:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -432,41 +467,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-4082efca", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 29:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(121),
-  /* template */
-  __webpack_require__(164),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Office.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Office.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4082efca", Component.options)
-  } else {
-    hotAPI.reload("data-v-4082efca", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
 
 /***/ })
 

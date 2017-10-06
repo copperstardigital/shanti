@@ -1,6 +1,41 @@
 webpackJsonp([2],{
 
-/***/ 122:
+/***/ 155:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(452),
+  /* template */
+  __webpack_require__(486),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Staff.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1d35e242", Component.options)
+  } else {
+    hotAPI.reload("data-v-1d35e242", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 424:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +45,179 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Staff = __webpack_require__(134);
+var _StaffMember = __webpack_require__(465);
+
+var _StaffMember2 = _interopRequireDefault(_StaffMember);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            staff: [],
+            loading: false
+        };
+    },
+
+    methods: {
+        getStaff: function getStaff() {
+            var _this = this;
+
+            this.loading = true;
+
+            http.get('/staff')
+            //.use(saCache)
+            .then(function (response) {
+                _this.staff = response.body.staff;
+                _this.loading = false;
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.loading = true;
+        this.getStaff();
+    },
+
+    components: {
+        'psg-staff-member': _StaffMember2.default
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 425:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _TextToSpeech = __webpack_require__(95);
+
+var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
+        return {
+            loading: false
+        };
+    },
+
+    props: ['member'],
+    methods: {
+        contact: function contact(firstName, lastName, title, email, phone) {
+            return firstName + ' ' + lastName + ' ' + title + ' ' + email + ' ' + phone;
+        }
+    },
+    components: {
+        'psg-speak': _TextToSpeech2.default
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 452:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Staff = __webpack_require__(464);
 
 var _Staff2 = _interopRequireDefault(_Staff);
 
@@ -49,14 +256,14 @@ exports.default = {
 
 /***/ }),
 
-/***/ 134:
+/***/ 464:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(47)(
   /* script */
-  __webpack_require__(94),
+  __webpack_require__(424),
   /* template */
-  __webpack_require__(173),
+  __webpack_require__(503),
   /* scopeId */
   null,
   /* cssModules */
@@ -84,14 +291,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 135:
+/***/ 465:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(1)(
+var Component = __webpack_require__(47)(
   /* script */
-  __webpack_require__(95),
+  __webpack_require__(425),
   /* template */
-  __webpack_require__(181),
+  __webpack_require__(511),
   /* scopeId */
   null,
   /* cssModules */
@@ -119,7 +326,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 156:
+/***/ 486:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -162,7 +369,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 173:
+/***/ 503:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -195,7 +402,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 181:
+/***/ 511:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -329,213 +536,6 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-a6382520", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 30:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(122),
-  /* template */
-  __webpack_require__(156),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/piscean/Sites/shanti/resources/assets/js/views/contact/Staff.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Staff.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1d35e242", Component.options)
-  } else {
-    hotAPI.reload("data-v-1d35e242", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 94:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _StaffMember = __webpack_require__(135);
-
-var _StaffMember2 = _interopRequireDefault(_StaffMember);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    data: function data() {
-        return {
-            staff: [],
-            loading: false
-        };
-    },
-
-    methods: {
-        getStaff: function getStaff() {
-            var _this = this;
-
-            this.loading = true;
-
-            http.get('/staff')
-            //.use(saCache)
-            .then(function (response) {
-                _this.staff = response.body.staff;
-                _this.loading = false;
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
-    },
-    mounted: function mounted() {
-        this.loading = true;
-        this.getStaff();
-    },
-
-    components: {
-        'psg-staff-member': _StaffMember2.default
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _TextToSpeech = __webpack_require__(4);
-
-var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    data: function data() {
-        return {
-            loading: false
-        };
-    },
-
-    props: ['member'],
-    methods: {
-        contact: function contact(firstName, lastName, title, email, phone) {
-            return firstName + ' ' + lastName + ' ' + title + ' ' + email + ' ' + phone;
-        }
-    },
-    components: {
-        'psg-speak': _TextToSpeech2.default
-    }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ })
 

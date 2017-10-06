@@ -1,6 +1,8 @@
 "use strict";
 
-/******/(function (modules) {
+/******/
+
+(function (modules) {
   // webpackBootstrap
   /******/ // install a JSONP callback for chunk loading
   /******/var parentJsonpFunction = window["webpackJsonp"];
