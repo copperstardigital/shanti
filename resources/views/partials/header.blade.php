@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=8">
-    <meta charset="utf-8">
     <title>
         {{--@if (Request::is('admin/*'))--}}
-            {{--@if ($__env->yieldContent('page_title'))--}}
-                {{--Admin |--}}
-                {{--@yield('page_title')--}}
-                {{--| Phoenix Shanti Group--}}
-            {{--@else--}}
-                {{--Admin | Phoenix Shanti Group--}}
-            {{--@endif--}}
+        {{--@if ($__env->yieldContent('page_title'))--}}
+        {{--Admin |--}}
+        {{--@yield('page_title')--}}
+        {{--| Phoenix Shanti Group--}}
         {{--@else--}}
-            {{--@if ($__env->yieldContent('page_title'))--}}
-                {{--@yield('page_title')--}}
-                {{--| Phoenix Shanti Group--}}
-            {{--@else--}}
-                {{--Phoenix Shanti Group--}}
-            {{--@endif--}}
+        {{--Admin | Phoenix Shanti Group--}}
+        {{--@endif--}}
+        {{--@else--}}
+        {{--@if ($__env->yieldContent('page_title'))--}}
+        {{--@yield('page_title')--}}
+        {{--| Phoenix Shanti Group--}}
+        {{--@else--}}
+        {{--Phoenix Shanti Group--}}
+        {{--@endif--}}
         {{--@endif--}}
     </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9,8,7">
+    <meta charset="utf-8">
+
     <!-- Description, Keywords and Author -->
     <meta name="description" content="Phoenix Shanti Group website">
     <meta name="author" content="Copper Star Digital">
