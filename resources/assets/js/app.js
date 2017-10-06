@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import './bootstrap';
 import router from './routes';
 
