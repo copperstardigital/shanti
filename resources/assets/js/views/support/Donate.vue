@@ -205,7 +205,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" name="newsletter" value="1" checked="checked"  v-model="donation.newsletter"/> {{ optIn }}</label>
+                                            <label><input type="checkbox" name="newsletter" value="1" v-model="donation.newsletter"/> {{ optIn }}</label>
                                         </div>
                                     </div>
                                 </div>
