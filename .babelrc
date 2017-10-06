@@ -1,4 +1,4 @@
 {
-  "plugins": ["transform-es3-member-expression-literals", "transform-es2015-shorthand-properties"],
-  "presets": ["es2015"]
+  "plugins": ["transform-es2015-shorthand-properties", "transform-es3-member-expression-literals"],
+  "presets": ["env"]
 }
