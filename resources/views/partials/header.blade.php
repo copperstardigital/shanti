@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=11, IE=10, IE=9">
     <title>
         {{--@if (Request::is('admin/*'))--}}
             {{--@if ($__env->yieldContent('page_title'))--}}
