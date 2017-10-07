@@ -1,0 +1,4 @@
+{
+  "plugins": ["transform-es3-member-expression-literals", "transform-runtime", "transform-es3-property-literals"],
+  "presets": ["env"]
+}

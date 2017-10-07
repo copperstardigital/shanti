@@ -3,7 +3,8 @@ let glob = require('glob');
 let webpack = require('webpack');
 let Mix = require('laravel-mix').config;
 let webpackPlugins = require('laravel-mix').plugins;
-let dotenv = require('dotenv')
+let dotenv = require('dotenv');
+let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
 
 /*
  |--------------------------------------------------------------------------
@@ -92,7 +93,9 @@ module.exports.output = Mix.output();
  |
  */
 
-let plugins = [];
+let plugins = [
+
+];
 
 if (Mix.options.extractVueStyles) {
     var vueExtractTextPlugin = Mix.vueExtractTextPlugin();
