@@ -1,4 +1,7 @@
 //import "babel-polyfill";
+import ESPromise from 'es6-promise';
+ESPromise.polyfill();
+
 import './bootstrap';
 import router from './routes';
 

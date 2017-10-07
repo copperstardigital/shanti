@@ -1,13 +1,13 @@
 webpackJsonp([5],{
 
-/***/ 150:
+/***/ 151:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(47)(
   /* script */
-  __webpack_require__(457),
+  __webpack_require__(459),
   /* template */
-  __webpack_require__(526),
+  __webpack_require__(528),
   /* scopeId */
   null,
   /* cssModules */
@@ -19,7 +19,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 435:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -31,7 +31,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 457:
+/***/ 459:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45,7 +45,7 @@ var _TextToSpeech = __webpack_require__(96);
 
 var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
 
-var _vueCarousel3d = __webpack_require__(435);
+var _vueCarousel3d = __webpack_require__(437);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -115,7 +115,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 526:
+/***/ 528:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

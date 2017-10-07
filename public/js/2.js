@@ -1,13 +1,13 @@
 webpackJsonp([2],{
 
-/***/ 158:
+/***/ 159:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(47)(
   /* script */
-  __webpack_require__(465),
+  __webpack_require__(467),
   /* template */
-  __webpack_require__(500),
+  __webpack_require__(502),
   /* scopeId */
   null,
   /* cssModules */
@@ -19,7 +19,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 437:
+/***/ 439:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _StaffMember = __webpack_require__(479);
+var _StaffMember = __webpack_require__(481);
 
 var _StaffMember2 = _interopRequireDefault(_StaffMember);
 
@@ -79,7 +79,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 438:
+/***/ 440:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -191,7 +191,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 465:
+/***/ 467:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -201,7 +201,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Staff = __webpack_require__(478);
+var _Staff = __webpack_require__(480);
 
 var _Staff2 = _interopRequireDefault(_Staff);
 
@@ -240,14 +240,14 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 478:
+/***/ 480:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(47)(
   /* script */
-  __webpack_require__(437),
+  __webpack_require__(439),
   /* template */
-  __webpack_require__(517),
+  __webpack_require__(519),
   /* scopeId */
   null,
   /* cssModules */
@@ -259,14 +259,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 479:
+/***/ 481:
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(47)(
   /* script */
-  __webpack_require__(438),
+  __webpack_require__(440),
   /* template */
-  __webpack_require__(525),
+  __webpack_require__(527),
   /* scopeId */
   null,
   /* cssModules */
@@ -278,7 +278,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 500:
+/***/ 502:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -314,7 +314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 517:
+/***/ 519:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -340,7 +340,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 525:
+/***/ 527:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
