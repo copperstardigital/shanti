@@ -78,7 +78,7 @@ module.exports.entry = ["babel-polyfill", './resources/assets/js/app.js'];
  |
  */
 
-module.exports.output = Mix.output();
+//module.exports.output = Mix.output();
 module.exports.output = { filename: './public/js/app.js'};
 
 

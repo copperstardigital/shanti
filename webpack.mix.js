@@ -15,8 +15,8 @@ let es3ifyPlugin = require('es3ify-webpack-plugin');
 
 mix.webpackConfig({
     output: {
-        publicPath: '/',
-        chunkFilename: 'js/[name].js'
+        publicPath: './public/',
+        chunkFilename: './public/js/[name].js'
     },
     plugins: [
         new es3ifyPlugin()
