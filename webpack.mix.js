@@ -18,12 +18,12 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .browserSync('shanti.dev');
 
-mix.webpackConfig({
-    output: {
-        publicPath: '/',
-        chunkFilename: 'js/[name].js'
-    }
-});
+// mix.webpackConfig({
+//     output: {
+//         publicPath: '/',
+//         chunkFilename: 'js/[name].js'
+//     }
+// });
 
 if (mix.inProduction()) {
     mix.version();
