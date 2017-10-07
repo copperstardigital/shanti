@@ -23,7 +23,7 @@ mix.webpackConfig({
 });
 
 mix.js('resources/assets/js/app.js', 'public/js')
-    // .extract(['vue'])
+    .extract(['vue'])
     // .babel('public/js/manifest.js', 'public/js/manifest.js')
     // .babel('public/js/vendor.js', 'public/js/vendor.js')
     // .babel('public/js/app.js', 'public/js/app.js')
