@@ -63,7 +63,11 @@ module.exports.context = Mix.Paths.root();
  */
 
 //module.exports.entry = Mix.entry().get();
-module.exports.entry = ["babel-polyfill", './resources/assets/js/app.js'];
+module.exports.entry = {
+    app: ["babel-polyfill", './resources/assets/js/app.js'],
+    vue: ["babel-polyfill", './node_modules/vue/dist/vue.js']
+
+};
 
 
 

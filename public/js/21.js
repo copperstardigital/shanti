@@ -1,13 +1,13 @@
 webpackJsonp([21],{
 
-/***/ 148:
+/***/ 353:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(47)(
+var Component = __webpack_require__(92)(
   /* script */
-  __webpack_require__(456),
+  __webpack_require__(458),
   /* template */
-  __webpack_require__(507),
+  __webpack_require__(509),
   /* scopeId */
   null,
   /* cssModules */
@@ -19,7 +19,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 456:
+/***/ 458:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _TextToSpeech = __webpack_require__(96);
+var _TextToSpeech = __webpack_require__(334);
 
 var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
 
@@ -211,7 +211,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 507:
+/***/ 509:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
