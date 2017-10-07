@@ -446,11 +446,11 @@ if (Mix.options.purifyCss) {
     ));
 }
 
-if (Mix.inProduction && Mix.options.uglify) {
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin(Mix.options.uglify)
-    );
-}
+// if (Mix.inProduction && Mix.options.uglify) {
+//     plugins.push(
+//         new webpack.optimize.UglifyJsPlugin(Mix.options.uglify)
+//     );
+// }
 
 plugins.push(
     new webpack.DefinePlugin(
