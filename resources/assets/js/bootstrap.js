@@ -1,6 +1,3 @@
-import ES6Promise from 'es6-promise';
-ES6Promise.polyfill();
-
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
