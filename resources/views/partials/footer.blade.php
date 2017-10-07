@@ -29,7 +29,7 @@
 
 {{--<script src="/js/manifest.js"></script>--}}
 {{--<script src="/js/vendor.js"></script>--}}
-<!--[if gt IE 8]>
+<!--[if gt IE 9]>
 <script src="/js/vue.js"></script>
 <script src="/js/main.js"></script>
 <![endif]-->
