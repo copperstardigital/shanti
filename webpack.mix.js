@@ -24,10 +24,7 @@ mix.webpackConfig({
     output: {
         publicPath: '/',
         chunkFilename: 'js/[name].js'
-    },
-    plugins : [
-        new reservedWords()
-    ]
+    }
 });
 
 if (mix.inProduction()) {
