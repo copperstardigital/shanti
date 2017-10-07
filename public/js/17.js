@@ -1,1 +1,125 @@
-webpackJsonp([17],{153:function(e,t,a){var n=a(47)(a(461),a(517),null,null);e.exports=n.exports},461:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=a(96),o=function(e){return e&&e.__esModule?e:{"default":e}}(n);t["default"]={data:function(){return{article:{}}},created:function(){var e=this;this.loading=!0,http.get("/articles/5").then(function(t){var a=t.body.article;e.article={headline:a.en_headline,subhead:a.en_subhead,callout:a.en_callout,body:a.en_body},"es"===e.$cookie.get("language")&&(e.article={headline:a.es_headline,subhead:a.es_subhead,callout:a.es_callout,body:a.es_body}),e.loading=!1})["catch"](function(e){})},components:{"psg-speak":o["default"]}}},517:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,a=e._self._c||t;return a("psg-page",{attrs:{article:e.article,loading:e.loading}},[a("div",{attrs:{slot:"copy"},slot:"copy"},[a("div",{domProps:{innerHTML:e._s(e.article.body)}}),e._v(" "),a("psg-speak",{directives:[{name:"show",rawName:"v-show",value:!e.loading,expression:"!loading"}],attrs:{text:e.article.body,primary:"true"}})],1)])},staticRenderFns:[]}}});
+webpackJsonp([17],{
+
+/***/ 153:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(47)(
+  /* script */
+  __webpack_require__(461),
+  /* template */
+  __webpack_require__(517),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 461:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _TextToSpeech = __webpack_require__(96);
+
+var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+exports['default'] = {
+    data: function data() {
+        return {
+            article: {}
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        this.loading = true;
+
+        http.get('/articles/5')
+        //.use(saCache)
+        .then(function (response) {
+            var article = response.body.article;
+
+            _this.article = {
+                headline: article.en_headline,
+                subhead: article.en_subhead,
+                callout: article.en_callout,
+                body: article.en_body
+            };
+
+            if (_this.$cookie.get('language') === 'es') {
+                _this.article = {
+                    headline: article.es_headline,
+                    subhead: article.es_subhead,
+                    callout: article.es_callout,
+                    body: article.es_body
+                };
+            }
+
+            _this.loading = false;
+        })['catch'](function (error) {
+            console.error(error);
+        });
+    },
+
+    components: {
+        'psg-speak': _TextToSpeech2['default']
+    }
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+
+/***/ 517:
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('psg-page', {
+    attrs: {
+      "article": _vm.article,
+      "loading": _vm.loading
+    }
+  }, [_c('div', {
+    attrs: {
+      "slot": "copy"
+    },
+    slot: "copy"
+  }, [_c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.article.body)
+    }
+  }), _vm._v(" "), _c('psg-speak', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (!_vm.loading),
+      expression: "!loading"
+    }],
+    attrs: {
+      "text": _vm.article.body,
+      "primary": "true"
+    }
+  })], 1)])
+},staticRenderFns: []}
+
+/***/ })
+
+});

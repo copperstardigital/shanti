@@ -112,7 +112,7 @@ let rules = [
         loader: 'vue-loader',
         options: {
             loaders: Mix.options.extractVueStyles ? {
-                js: 'babel-loader' + Mix.babelConfig(),
+                //js: 'babel-loader' + Mix.babelConfig(),
                 scss: vueExtractTextPlugin.extract({
                     use: 'css-loader!sass-loader',
                     fallback: 'vue-style-loader'
@@ -134,7 +134,7 @@ let rules = [
                     fallback: 'vue-style-loader'
                 })
             }: {
-                js: 'babel-loader' + Mix.babelConfig(),
+               // js: 'babel-loader' + Mix.babelConfig(),
                 scss: 'vue-style-loader!css-loader!sass-loader',
                 sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
                 less: 'vue-style-loader!css-loader!less-loader',
@@ -446,11 +446,11 @@ if (Mix.options.purifyCss) {
     ));
 }
 
-if (Mix.inProduction && Mix.options.uglify) {
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin(Mix.options.uglify)
-    );
-}
+// if (Mix.inProduction && Mix.options.uglify) {
+//     plugins.push(
+//         new webpack.optimize.UglifyJsPlugin(Mix.options.uglify)
+//     );
+// }
 
 plugins.push(
     new webpack.DefinePlugin(
