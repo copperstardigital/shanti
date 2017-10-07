@@ -467,17 +467,10 @@ if (! Mix.entry().hasScripts()) {
 }
 
 
-// let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
-// module.exports.plugins = {
-//     plugins: [
-//         new reservedWords({ types: 'default'})
-//     ]
-// };
-
-var es3ifyPlugin = require('es3ify-webpack-plugin');
+let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
 module.exports.plugins = {
     plugins: [
-        new es3ifyPlugin()
+        new reservedWords({ types: 'default'})
     ]
 };
 

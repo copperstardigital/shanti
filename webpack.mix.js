@@ -10,6 +10,19 @@ let mix = require('laravel-mix');
  | file for your application, as well as bundling up your JS files.
  |
  */
+
+let es3ifyPlugin = require('es3ify-webpack-plugin');
+
+mix.webpackConfig({
+    output: {
+        publicPath: '/',
+        chunkFilename: 'js/[name].js'
+    },
+    plugins: [
+        new es3ifyPlugin()
+    ]
+});
+
 mix.js('resources/assets/js/app.js', 'public/js')
     // .extract(['vue'])
     // .babel('public/js/manifest.js', 'public/js/manifest.js')
@@ -18,12 +31,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .browserSync('shanti.dev');
 
-// mix.webpackConfig({
-//     output: {
-//         publicPath: '/',
-//         chunkFilename: 'js/[name].js'
-//     }
-// });
 
 if (mix.inProduction()) {
     mix.version();
