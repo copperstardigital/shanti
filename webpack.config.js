@@ -393,7 +393,7 @@ if (Mix.browserSync) {
 if (Mix.options.notifications) {
     plugins.push(
         new webpackPlugins.WebpackNotifierPlugin({
-            title: 'Laravel Mix',
+            title: 'Shanti',
             alwaysNotify: true,
             contentImage: Mix.Paths.root('node_modules/laravel-mix/icons/laravel.png')
         })
