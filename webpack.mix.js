@@ -13,14 +13,6 @@ let mix = require('laravel-mix');
 
 let es3ifyPlugin = require('es3ify-webpack-plugin');
 
-mix.webpackConfig({
-    output: {
-        chunkFilename: './js/[name].js'
-    },
-    plugins: [
-        new es3ifyPlugin()
-    ]
-});
 
 mix.js('resources/assets/js/app.js', 'public/js')
     // .extract(['vue'])
@@ -30,6 +22,14 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .browserSync('shanti.dev');
 
+mix.webpackConfig({
+    output: {
+        chunkFilename: './js/[name].js'
+    },
+    plugins: [
+        new es3ifyPlugin()
+    ]
+});
 
 if (mix.inProduction()) {
     mix.version();
