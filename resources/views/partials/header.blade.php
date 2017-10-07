@@ -58,6 +58,10 @@
 
 </script>
 
+<!--[if lte IE 9]>
+    This website does not support Internet Explorer 7, 8 or 9. Please upgrade to a modern browser.
+<![endif]-->
+
 <div id="app">
     @if (!app()->isDownForMaintenance())
         <psg-header></psg-header>
