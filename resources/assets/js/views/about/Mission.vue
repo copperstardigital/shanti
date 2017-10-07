@@ -2,7 +2,7 @@
     <psg-page :article="article" :loading="loading">
         <div slot="copy">
             <div v-html="article.body"></div>
-            <tabs nav-style="tabs" justified>
+            <!--<tabs nav-style="tabs" justified>
                 <tab :header="whatWeDo">
                     <p>{{ whatWeDoText }}</p>
                 </tab>
@@ -12,7 +12,7 @@
                 <tab :header="whatMakesUsSpecial">
                     <p>{{ whatMakesUsSpecialText }}</p>
                 </tab>
-            </tabs>
+            </tabs>-->
             <psg-speak :text="article.body" :loading="loading" primary="true"></psg-speak>
         </div>
     </psg-page>
@@ -20,8 +20,8 @@
 
 <script>
     import TextToSpeech from '../../components/misc/TextToSpeech';
-    import { tabs } from 'vue-strap';
-    import { tab } from 'vue-strap';
+    //import { tabs } from 'vue-strap';
+    // import { tab } from 'vue-strap';
 
     export default {
         data() {
@@ -121,8 +121,8 @@
         },
         components: {
             'psg-speak': TextToSpeech,
-            tabs: tabs,
-            tab: tab
+           // tabs: tabs,
+           // tab: tab
         }
     }
 </script>

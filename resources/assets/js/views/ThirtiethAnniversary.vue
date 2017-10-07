@@ -15,10 +15,10 @@
 
                      <p>{{ instructions }}</p>
 
-                     <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
+                     <!--<alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
                          <span class="icon-ok-circled alert-icon-float-left"></span>
                          <p>{{ flash }}</p>
-                     </alert>
+                     </alert>-->
 
                      <form>
                          <div class="form-group">
@@ -57,7 +57,7 @@
 </template>
 
 <script>
-    import { alert } from 'vue-strap';
+    //import { alert } from 'vue-strap';
     import TextToSpeech from '../components/misc/TextToSpeech';
 
     export default {
@@ -109,7 +109,7 @@
             }
         },
         components: {
-            alert: alert,
+            // alert: alert,
             'psg-speak': TextToSpeech
         },
         computed: {

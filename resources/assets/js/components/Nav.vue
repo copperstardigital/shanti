@@ -1,12 +1,10 @@
 <template>
     <!-- Navigation starts.  -->
     <div class="shanti-nav">
-        <navbar placement="static" type="default">
-            <!-- Brand as slot -->
+        <!--<navbar placement="static" type="default">
             <router-link to="/" tag="li"><a>{{ home }}</a></router-link>
             <router-link to="/" exact slot="brand" class="visible-xs hidden-sm hidden-md hidden-lg"><img class="nav-logo" src="/img/shanti_logo_white.png" alt="Shanti logo"></router-link>
             
-            <!-- You can use dropdown component -->
             <dropdown :text="about">
                 <router-link to="/getting-started" tag="li"><a>{{ gettingStarted }}</a></router-link>
                 <router-link to="/about/testimonials" tag="li"><a>{{ testimonials }}</a></router-link>
@@ -40,18 +38,18 @@
                 <router-link to="/contact/staff" tag="li"><a>{{ staff }}</a></router-link>
                 <router-link to="/contact/board" tag="li"><a>{{ board }}</a></router-link>
             </dropdown>
-        </navbar>
+        </navbar>-->
     </div>
 <!-- Navigation ends -->
 </template>
 
 <script>
-    import { navbar, dropdown } from 'vue-strap';
+    //import { navbar, dropdown } from 'vue-strap';
 
     export default {
         components: {
-            navbar,
-            dropdown
+          //  navbar,
+          //  dropdown
         },
         computed: {
             home() {

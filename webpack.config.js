@@ -80,7 +80,7 @@ module.exports.entry = ["babel-polyfill", './resources/assets/js/app.js'];
 
 //module.exports.output = Mix.output();
 module.exports.output = {
-    filename: './public/js/app.js',
+    filename:'./public/js/[name].js',
 };
 
 
@@ -490,6 +490,6 @@ module.exports.plugins = plugins;
 
 if (Mix.webpackConfig) {
     module.exports = require('webpack-merge').smart(
-        module.exports, Mix.webpackConfig
+        module.exports
     );
 }
