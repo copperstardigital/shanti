@@ -16,10 +16,10 @@
 
                         <p>{{ formInstructions }}</p>
 
-                        <!--<alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
+                        <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
                             <span class="icon-ok-circled alert-icon-float-left"></span>
                             <p>{{ flash }}</p>
-                        </alert>-->
+                        </alert>
 
                         <form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
                             <div class="form-group" :class="{'has-error': errors.has('firstName')}">
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-    //import { alert } from 'vue-strap';
+    import { alert } from 'vue-strap';
     import TextToSpeech from '../../components/misc/TextToSpeech';
 
     export default {
@@ -141,7 +141,7 @@
             }
         },
         components: {
-          //  alert: alert,
+            alert: alert,
             'psg-speak': TextToSpeech
         },
         computed: {

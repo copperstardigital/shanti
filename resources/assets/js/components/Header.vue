@@ -109,8 +109,8 @@
 
 <script>
     import Nav from './Nav';
-    //import { select } from 'vue-strap';
-    // import { option } from 'vue-strap';
+    import { select } from 'vue-strap';
+    import { option } from 'vue-strap';
 
     export default {
         data() {
@@ -146,8 +146,8 @@
         },
         components: {
             'psg-nav': Nav,
-          //  'v-select': select,
-          //  'v-option': option
+            'v-select': select,
+            'v-option': option
         }
     }
 </script>

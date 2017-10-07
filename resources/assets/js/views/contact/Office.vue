@@ -7,10 +7,10 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="about-us-three">
-                        <!--<alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
+                        <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
                             <span class="icon-ok-circled alert-icon-float-left"></span>
                             <p>{{ flash }}</p>
-                        </alert>-->
+                        </alert>
 
                         <h1>Contact Us</h1>
 
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-    // import { alert } from 'vue-strap';
+    import { alert } from 'vue-strap';
 
     export default {
         data() {
@@ -136,7 +136,7 @@
             });
         },
         components: {
-            // alert: alert
+            alert: alert
         }
     }
 </script>

@@ -3,10 +3,10 @@
         <div slot="copy">
             <div v-html="article.body" style="margin-bottom: 40px;"></div>
 
-            <!--<alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
+            <alert v-model="showTop" placement="top-right" duration="10000" :type="type" width="500px" dismissable>
                 <span class="icon-ok-circled alert-icon-float-left"></span>
                 <p>{{ flash }}</p>
-            </alert>-->
+            </alert>
 
             <form action="/support/donate" id="payment-form" method="POST" @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
                 <div class="row">
@@ -291,7 +291,7 @@
 
 <script>
     import Stripe from '../../components/misc/Stripe';
-    //import { alert } from 'vue-strap';
+    import { alert } from 'vue-strap';
 
     export default {
         data() {
@@ -311,7 +311,7 @@
         },
         components: {
             'psg-stripe': Stripe,
-           // alert
+            alert
         },
         created() {
             this.loading = true;
