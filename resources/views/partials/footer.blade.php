@@ -29,9 +29,9 @@
 
 {{--<script src="/js/manifest.js"></script>--}}
 {{--<script src="/js/vendor.js"></script>--}}
+<!--<script src="/js/vue.js"></script>-->
 <!--[if gt IE 9]>
-<script src="/js/vue.js"></script>
-<script src="/js/main.js"></script>
+<script src="/js/app.js"></script>
 <![endif]-->
 </body>
 </html>
