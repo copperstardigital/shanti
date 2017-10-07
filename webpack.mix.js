@@ -10,8 +10,6 @@ let mix = require('laravel-mix');
  | file for your application, as well as bundling up your JS files.
  |
  */
-let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
-
 mix.js('resources/assets/js/app.js', 'public/js')
     .extract(['vue'])
     // .babel('public/js/manifest.js', 'public/js/manifest.js')
@@ -24,10 +22,7 @@ mix.webpackConfig({
     output: {
         publicPath: '/',
         chunkFilename: 'js/[name].js'
-    },
-    plugins : [
-        new reservedWords()
-    ]
+    }
 });
 
 if (mix.inProduction()) {
