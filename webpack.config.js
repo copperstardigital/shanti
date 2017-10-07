@@ -4,7 +4,6 @@ let webpack = require('webpack');
 let Mix = require('laravel-mix').config;
 let webpackPlugins = require('laravel-mix').plugins;
 let dotenv = require('dotenv');
-let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
 
 /*
  |--------------------------------------------------------------------------
@@ -152,7 +151,10 @@ let rules = [
         loader: 'babel-loader' + Mix.babelConfig()
     },
 
-    { test: /\.js$/, loaders: ['babel-loader'] },
+    {
+        test: /\.js$/,
+        loaders: ['babel-loader']
+    },
 
     {
         test: /\.css$/,
@@ -463,8 +465,15 @@ if (! Mix.entry().hasScripts()) {
     plugins.push(new webpackPlugins.MockEntryPlugin(Mix.output().path));
 }
 
-module.exports.plugins = plugins;
 
+let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
+module.exports.plugins = {
+    plugins: [
+        new reservedWords({ types: 'default'})
+    ]
+};
+
+module.exports.plugins = plugins;
 
 
 /*
