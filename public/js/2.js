@@ -1,13 +1,13 @@
 webpackJsonp([2],{
 
-/***/ 364:
+/***/ 164:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(92)(
+var Component = __webpack_require__(48)(
   /* script */
-  __webpack_require__(469),
+  __webpack_require__(468),
   /* template */
-  __webpack_require__(504),
+  __webpack_require__(503),
   /* scopeId */
   null,
   /* cssModules */
@@ -19,7 +19,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 441:
+/***/ 440:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _StaffMember = __webpack_require__(483);
+var _StaffMember = __webpack_require__(482);
 
 var _StaffMember2 = _interopRequireDefault(_StaffMember);
 
@@ -79,7 +79,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 442:
+/***/ 441:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89,7 +89,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _TextToSpeech = __webpack_require__(334);
+var _TextToSpeech = __webpack_require__(96);
 
 var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
 
@@ -191,7 +191,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 469:
+/***/ 468:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -201,7 +201,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Staff = __webpack_require__(482);
+var _Staff = __webpack_require__(481);
 
 var _Staff2 = _interopRequireDefault(_Staff);
 
@@ -240,14 +240,33 @@ exports['default'] = {
 
 /***/ }),
 
+/***/ 481:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(48)(
+  /* script */
+  __webpack_require__(440),
+  /* template */
+  __webpack_require__(520),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ 482:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(92)(
+var Component = __webpack_require__(48)(
   /* script */
   __webpack_require__(441),
   /* template */
-  __webpack_require__(521),
+  __webpack_require__(528),
   /* scopeId */
   null,
   /* cssModules */
@@ -259,26 +278,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 483:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(92)(
-  /* script */
-  __webpack_require__(442),
-  /* template */
-  __webpack_require__(529),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 504:
+/***/ 503:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -314,7 +314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 521:
+/***/ 520:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -340,7 +340,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 529:
+/***/ 528:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

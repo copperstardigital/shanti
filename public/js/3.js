@@ -1,13 +1,13 @@
 webpackJsonp([3],{
 
-/***/ 367:
+/***/ 167:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(92)(
+var Component = __webpack_require__(48)(
   /* script */
-  __webpack_require__(472),
+  __webpack_require__(471),
   /* template */
-  __webpack_require__(511),
+  __webpack_require__(510),
   /* scopeId */
   null,
   /* cssModules */
@@ -19,7 +19,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 439:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -31,7 +31,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 472:
+/***/ 471:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41,11 +41,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _TextToSpeech = __webpack_require__(334);
+var _TextToSpeech = __webpack_require__(96);
 
 var _TextToSpeech2 = _interopRequireDefault(_TextToSpeech);
 
-var _vueCarousel3d = __webpack_require__(439);
+var _vueCarousel3d = __webpack_require__(438);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -112,7 +112,7 @@ exports['default'] = {
 
 /***/ }),
 
-/***/ 511:
+/***/ 510:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

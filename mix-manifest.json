@@ -7,6 +7,7 @@
   "/manfest.js": "/manfest.js",
   "/js/manfest.js": "/js/manfest.js",
   "/main.js": "/main.js",
+  "/./public/js/babel-polyfill.js": "/./public/js/babel-polyfill.js",
   "/./public/js/app.js": "/./public/js/app.js",
   "/./public/js/vue.js": "/./public/js/vue.js"
 }
