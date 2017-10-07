@@ -81,7 +81,6 @@ module.exports.entry = ["babel-polyfill", './resources/assets/js/app.js'];
 //module.exports.output = Mix.output();
 module.exports.output = {
     filename: './public/js/app.js',
-    chunkFilename: './public/js/[name].js'
 };
 
 
@@ -472,12 +471,8 @@ if (! Mix.entry().hasScripts()) {
 }
 
 
-let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
-module.exports.plugins = {
-    plugins: [
-        new reservedWords({ types: 'default'})
-    ]
-};
+let es3ifyPlugin = require('es3ify-webpack-plugin');
+plugins.push(new es3ifyPlugin());
 
 module.exports.plugins = plugins;
 
@@ -495,6 +490,6 @@ module.exports.plugins = plugins;
 
 if (Mix.webpackConfig) {
     module.exports = require('webpack-merge').smart(
-        module.exports
+        module.exports, Mix.webpackConfig
     );
 }

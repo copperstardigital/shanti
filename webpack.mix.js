@@ -13,15 +13,6 @@ let mix = require('laravel-mix');
 
 let es3ifyPlugin = require('es3ify-webpack-plugin');
 
-
-mix.js('resources/assets/js/app.js', 'public/js')
-    // .extract(['vue'])
-    // .babel('public/js/manifest.js', 'public/js/manifest.js')
-    // .babel('public/js/vendor.js', 'public/js/vendor.js')
-    // .babel('public/js/app.js', 'public/js/app.js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
-    .browserSync('shanti.dev');
-
 mix.webpackConfig({
     output: {
         chunkFilename: './js/[name].js'
@@ -30,6 +21,14 @@ mix.webpackConfig({
         new es3ifyPlugin()
     ]
 });
+
+mix.js('resources/assets/js/app.js', 'public/js')
+    // .extract(['vue'])
+    // .babel('public/js/manifest.js', 'public/js/manifest.js')
+    // .babel('public/js/vendor.js', 'public/js/vendor.js')
+    // .babel('public/js/app.js', 'public/js/app.js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .browserSync('shanti.dev');
 
 if (mix.inProduction()) {
     mix.version();
