@@ -14,9 +14,9 @@ let reservedWords = require('babel-plugin-transform-es3-member-expression-litera
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .extract(['vue'])
-    .babel('public/js/manifest.js', 'public/js/manifest.js')
-    .babel('public/js/vendor.js', 'public/js/vendor.js')
-    .babel('public/js/app.js', 'public/js/app.js')
+    // .babel('public/js/manifest.js', 'public/js/manifest.js')
+    // .babel('public/js/vendor.js', 'public/js/vendor.js')
+    // .babel('public/js/app.js', 'public/js/app.js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .browserSync('shanti.dev');
 
@@ -24,7 +24,10 @@ mix.webpackConfig({
     output: {
         publicPath: '/',
         chunkFilename: 'js/[name].js'
-    }
+    },
+    plugins : [
+        new reservedWords()
+    ]
 });
 
 if (mix.inProduction()) {
