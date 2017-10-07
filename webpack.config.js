@@ -145,15 +145,16 @@ let rules = [
         }
     },
 
-    {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader' + Mix.babelConfig()
-    },
+    // {
+    //     test: /\.jsx?$/,
+    //     exclude: /(node_modules|bower_components)/,
+    //     loader: 'babel-loader' + Mix.babelConfig()
+    // },
 
     {
-        test: /\.js$/,
-        loaders: ['babel-loader']
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loaders: ['es3ify-loader', `babel-loader?${JSON.stringify({ presets: ['env'] })}`],
     },
 
     {
@@ -466,10 +467,17 @@ if (! Mix.entry().hasScripts()) {
 }
 
 
-let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
+// let reservedWords = require('babel-plugin-transform-es3-member-expression-literals');
+// module.exports.plugins = {
+//     plugins: [
+//         new reservedWords({ types: 'default'})
+//     ]
+// };
+
+var es3ifyPlugin = require('es3ify-webpack-plugin');
 module.exports.plugins = {
     plugins: [
-        new reservedWords({ types: 'default'})
+        new es3ifyPlugin()
     ]
 };
 
