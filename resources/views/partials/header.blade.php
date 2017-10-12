@@ -20,6 +20,8 @@
     <!-- Owl carousel -->
     <!--<link href="/css/owl.carousel.css" rel="stylesheet">-->
 
+    <script src="https://js.stripe.com/v3/"></script>
+
     <!-- CSS for this page -->
     <!-- Parallax slider -->
     <!--<link href="/css/parallax-slider.css" rel="stylesheet">-->

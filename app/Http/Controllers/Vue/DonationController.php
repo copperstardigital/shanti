@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Vue;
 
 use App\Models\User;
-use App\Shanti\Billing\Billing;
 use App\Models\DonationLevel;
+use App\Shanti\Billing\Billing;
 use function bcrypt;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -53,21 +53,44 @@ class DonationController extends Controller
         if (empty($user)) {
             $user = User::create([
                'first_name' => request('first_name'),
-               'last_name' => request('first_name'),
+               'last_name' => request('last_name'),
                'email' => request('email'),
                'phone_number' => request('phone_number'),
                'password' => bcrypt(request('password')),
                'address' => request('address'),
                'city' => request('city'),
                'state' => request('state'),
-               'zip_code' => request('zip_code'),
+               'zip_code' => request('zip_code')
+            ]);
+        } else {
+            $user->update([
+                'first_name' => request('first_name'),
+                'last_name' => request('last_name'),
+                'phone_number' => request('phone_number'),
+                'address' => request('address'),
+                'city' => request('city'),
+                'state' => request('state'),
+                'zip_code' => request('zip_code')
             ]);
         }
 
         if (empty($user->customer_id)) {
             $customer = $billing->createCustomer('Donation at ' . $level->donation_level . ' level by ' . $user->first_name . ' ' . $user->last_name, request('stripe_token'));
         } else {
-            $customer = $billing->retriveCustomer($user->customer_id);
+            $customer = $billing->retrieveCustomer($user->customer_id);
+        }
+
+        $donationId = $level->id;
+        $amount = $level->amount;
+
+        if (!empty(request('other_business'))) {
+            $donationId = 7; // Business flex
+            $amount = request('other_business');
+        }
+
+        if (!empty(request('other_individual'))) {
+            $donationId = 8; // Individual flex
+            $amount = request('other_individual');
         }
         
         $response = $billing->subscribe($customer, $donationId);
@@ -77,15 +100,17 @@ class DonationController extends Controller
         }
 
         $user->donations()->create([
-            'donation_level_id' => $level->id,
-            'amount' => $level->amount,
+            'donation_level_id' => $donationId,
+            'amount' => $amount,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
-        $user->update([
-            'customer_id' => $customer->id
-        ]);
+        if (empty($user->customer_id)) {
+            $user->update([
+                'customer_id' => $customer->id
+            ]);
+        }
 
         if (!empty(request('newsletter'))) {
             $this->mailchimp();

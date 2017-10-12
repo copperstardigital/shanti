@@ -174,6 +174,10 @@
                                                 <option value="5">{{ silverIndividual }}</option>
                                                 <option value="6">{{ bronzeIndividual }}</option>
                                             </optgroup>
+                                            <optgroup :label="other">
+                                                <option value="7">{{ recurringBusinessFillIn }}</option>
+                                                <option value="8">{{ recurringIndividualFillIn }}</option>
+                                            </optgroup>
                                         </select>
                                         <p class="text-danger" v-if="errors.has('donation.donation_id')">{{ donationRequired }}</p>
                                         <p class="help-block">{{ required }}</p>
@@ -360,6 +364,7 @@
                         first_name: vm.donation.first_name,
                         last_name: vm.donation.last_name,
                         email: vm.donation.email,
+                        phone_number: vm.donation.phone_number,
                         address: vm.donation.address,
                         city: vm.donation.city,
                         state: vm.donation.state,
@@ -484,6 +489,20 @@
                     return 'Donación Individual Recurrente (Otro)';
                 } else {
                     return 'Recurring Individual Donation (Other)';
+                }
+            },
+            recurringBusinessFillIn() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donación Recurrente de Empresas (Rellene abajo)';
+                } else {
+                    return 'Recurring Business Donation (Fill in Below)';
+                }
+            },
+            recurringIndividualFillIn() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donación Individual Recurrente (Rellene abajo)';
+                } else {
+                    return 'Recurring Individual Donation (Fill in Below)';
                 }
             },
             weeklyNewsletter() {
@@ -638,6 +657,13 @@
                     return 'La donación es necesaria.';
                 } else {
                     return 'The recurring donation is required.';
+                }
+            },
+            other() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Otro';
+                } else {
+                    return 'Other';
                 }
             }
         }
