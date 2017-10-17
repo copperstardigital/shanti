@@ -45,7 +45,7 @@
         .ExternalClass{
             width: 100%;
             background-color: #3f3f3f;
-            background-color: #272727
+            background-color: #5700B8
         }
 
         /* outlook */
@@ -116,7 +116,7 @@
 </head>
 
 
-<body bgcolor="#272727" text="#ffffff" alink="#3498db" vlink="#3498db" style="margin: 0;padding: 0;background-color: #272727;color: #fff;">
+<body bgcolor="#5700B8" text="#ffffff" alink="#3498db" vlink="#3498db" style="margin: 0;padding: 0;background-color: #5700B8;color: #fff;">
 
 
 <!-- ====== START EMAIL CONTENT ====== -->
@@ -126,18 +126,18 @@
     <!-- UTILITY BAR -->
 
 
-    <table id="utility" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#272727" style="background-color: #272727;">
+    <table id="utility" class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#5700B8" style="background-color: #272727;">
         <tbody>
         <tr>
-            <td class="vb-outer" align="center" valign="top" bgcolor="#272727" style="padding-left: 9px;padding-right: 9px;background-color: #272727;">
+            <td class="vb-outer" align="center" valign="top" bgcolor="#5700B8" style="padding-left: 9px;padding-right: 9px;background-color: #5700B8;">
                 <div style="display: none; font-size: 1px; color: #333333; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"></div>
 
                 <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
                 <div style="max-width: 570px;">
-                    <table width="570" border="0" cellpadding="0" cellspacing="0" class="vb-row halfpad" bgcolor="#272727" style="border-collapse: separate;border-spacing: 0;padding-left: 9px;padding-right: 9px;width: 100%;max-width: 570px;background-color: #272727;">
+                    <table width="570" border="0" cellpadding="0" cellspacing="0" class="vb-row halfpad" bgcolor="#5700B8" style="border-collapse: separate;border-spacing: 0;padding-left: 9px;padding-right: 9px;width: 100%;max-width: 570px;background-color: #5700B8;">
                         <tbody>
                         <tr>
-                            <td align="center" valign="top" bgcolor="#272727" style="font-size: 0; background-color: #272727;">
+                            <td align="center" valign="top" bgcolor="#5700B8" style="font-size: 0; background-color: #5700B8;">
 
                                 <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="552"><tr><![endif]-->
                                 <!--[if (gte mso 9)|(lte ie 8)]><td align="left" valign="top" width="276"><![endif]-->
@@ -255,10 +255,10 @@
 
     <!-- ====== FOOTER AREA ====== -->
 
-    <table id="footer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#272727" style="background-color: #272727;">
+    <table id="footer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#5700B8" style="background-color: #5700B8;">
         <tbody>
         <tr>
-            <td align="center" valign="top" bgcolor="#272727" style="background-color: #272727;">
+            <td align="center" valign="top" bgcolor="#5700B8" style="background-color: #5700B8;">
 
                 <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
                 <div style="max-width: 570px;">

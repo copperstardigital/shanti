@@ -379,10 +379,21 @@
                             vm.type = 'danger';
                         }
 
+                        if (response.data.success) {
+                            vm.donation = {
+                                state: '',
+                                donation_id: '',
+                                newsletter: 1
+                            };
+                        }
+
                         vm.showTop = true;
                         vm.flash = response.data.message;
 
                         vm.donating = false;
+                    })
+                    .then(() => {
+                        vm.errors.clear();
                     })
                     .catch(error => {
                         console.log(error);

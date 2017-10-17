@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Vue;
 
+use App\Mail\DonationEmail;
 use App\Models\User;
 use App\Models\DonationLevel;
 use App\Shanti\Billing\Billing;
@@ -9,6 +10,7 @@ use function bcrypt;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Mailchimp;
 use Mailchimp_List_AlreadySubscribed;
 use function response;
@@ -115,6 +117,8 @@ class DonationController extends Controller
         if (!empty(request('newsletter'))) {
             $this->mailchimp();
         }
+
+        Mail::to(request('email'))->send(new DonationEmail(request('first_name'), $amount));
 
         return response()->json(['success' => true, 'message' => 'Thank you for your donation. You are now subscribed to the ' . $level->donation_level . ' plan.']);
     }
