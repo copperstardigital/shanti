@@ -20,20 +20,27 @@
                          <p>{{ flash }}</p>
                      </alert>
 
-                     <form>
-                         <div class="form-group">
+                     <form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
+                         <div class="form-group" :class="{'has-error': errors.has('first_name') }">
                              <label for="first_name">{{ first }}</label>
-                             <input type="text" id="first_name" v-model="firstName" class="form-control"/>
+                             <input type="text" id="first_name" v-model="firstName" class="form-control" v-validate.initial="firstName" data-vv-rules="required"/>
+                             <p class="text-danger" v-if="errors.has('firstName')">The first name is required.</p>
+
+                             <p class="help-block">Required</p>
                          </div>
 
-                         <div class="form-group">
+                         <div class="form-group" :class="{'has-error': errors.has('last_name') }">
                              <label for="last_name">{{ last }}</label>
-                             <input type="text" id="last_name" v-model="lastName" class="form-control"/>
+                             <input type="text" id="last_name" v-model="lastName" class="form-control" v-validate.initial="lastName" data-vv-rules="required"/>
+                             <p class="text-danger" v-if="errors.has('lastName')">The last name is required.</p>
+                             <p class="help-block">Required</p>
                          </div>
 
-                         <div class="form-group">
+                         <div class="form-group" :class="{'has-error': errors.has('emailAddress') }">
                              <label for="email">{{ emailAddy }}</label>
-                             <input type="text" id="email" v-model="emailAddress" class="form-control"/>
+                             <input type="text" id="email" v-model="emailAddress" class="form-control" v-validate.initial="emailAddress" data-vv-rules="required|email"/>
+                             <p class="text-danger" v-if="errors.has('emailAddress')">A valid email address is required.</p>
+                             <p class="help-block">Required</p>
                          </div>
 
                          <div class="form-group">
@@ -47,7 +54,7 @@
                          </div>
 
                          <div class="form-group">
-                             <button type="button" class="btn btn-color pull-right" @click.prevent="rsvp" :disabled="loading">RSVP <i v-show="loading" class="fa fa-refresh fa-spin"></i></button>
+                             <button type="submit" class="btn btn-color pull-right" :disabled="loading">RSVP <i v-show="loading" class="fa fa-refresh fa-spin"></i></button>
                          </div>
                      </form>
                  </div>
@@ -69,6 +76,7 @@
                 phone: '',
                 comments: '',
                 showTop: false,
+                formSubmitted: false,
                 type: 'success',
                 flash: '',
                 loading: false,
@@ -81,8 +89,16 @@
             }
         },
         methods: {
+            validateBeforeSubmit(e) {
+                this.$validator.validateAll();
+                if (!this.errors.any()) {
+                    this.rsvp();
+                }
+            },
             rsvp() {
+                this.formSubmitted = true;
                 this.loading = true;
+
                 axios.post('/30th-anniversary', {
                     first_name: this.firstName,
                     last_name: this.lastName,

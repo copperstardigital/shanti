@@ -22,8 +22,8 @@
         <h6>{{ eventDollarsRaised }}</h6>
         <psg-progress-bar
                 bar="progress-bar progress-bar-lblue"
-                now="50"
-                goal="1000"
+                now="8850"
+                goal="10000"
         ></psg-progress-bar>
     </div>
 </template>

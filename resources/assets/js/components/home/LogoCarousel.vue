@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-md-3">
                                 <a href="http://www.topazsystems.com/index.html" target="_blank">
-                                    <img class="logo-carousel" src="/uploads/sponsors/topaz.png" alt="Topaz Systems" />
+                                    <img class="logo-carousel" src="/uploads/sponsors/topaz_new.png" alt="Topaz Systems" />
                                 </a>
                             </div>
                             <div class="col-md-3">
