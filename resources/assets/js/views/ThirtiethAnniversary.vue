@@ -20,7 +20,7 @@
                          <p>{{ flash }}</p>
                      </alert>
 
-                     <form @submit.prevent="validateBeforeSubmit" v-if="!formSubmitted">
+                     <form @submit.prevent="validateBeforeSubmit">
                          <div class="form-group" :class="{'has-error': errors.has('first_name') }">
                              <label for="first_name">{{ first }}</label>
                              <input type="text" id="first_name" v-model="firstName" class="form-control" v-validate.initial="firstName" data-vv-rules="required"/>
@@ -117,6 +117,8 @@
                     this.comments = '';
 
                     this.loading = false;
+                }).then(() => {
+                    this.errors.clear();
                 }).catch(error => {
                     this.showTop = true;
                     this.type = 'danger';
