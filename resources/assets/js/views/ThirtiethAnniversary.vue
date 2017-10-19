@@ -140,9 +140,9 @@
             },
             date() {
                 if (this.$cookie.get('language') === 'es') {
-                    return '9 de diciembre en Encanto Park Clubhouse, de 4 pm a 8 pm';
+                    return '9 de diciembre en Encanto Park Clubhouse, de 2 pm a 6 pm';
                 } else {
-                    return 'Dec. 9 at Encanto Park Clubhouse, 4 pm to 8 pm';
+                    return 'Dec. 9 at Encanto Park Clubhouse, 2 pm to 6 pm';
                 }
             },
             instructions() {
