@@ -23,14 +23,20 @@ class SearchController extends Controller
             ->orWhere('es_body', 'LIKE', '%' . $keywords . '%')
             ->get();
 
-        $posts = Post::where('headline', 'LIKE', '%' . $keywords . '%')
-            ->orWhere('hero_text', 'LIKE', '%' . $keywords . '%')
-            ->orWhere('body', 'LIKE', '%' . $keywords . '%')
+        $posts = Post::where('en_headline', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('en_hero_text', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('en_body', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('es_headline', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('es_body', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('es_hero_text', 'LIKE', '%' . $keywords . '%')
             ->get();
 
-        $events = Event::where('event_name', 'LIKE', '%' . $keywords . '%')
-            ->orWhere('event_callout', 'LIKE', '%' . $keywords . '%')
-            ->orWhere('event_description', 'LIKE', '%' . $keywords . '%')
+        $events = Event::where('en_event_name', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('en_event_callout', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('en_event_description', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('es_event_name', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('es_event_description', 'LIKE', '%' . $keywords . '%')
+            ->orWhere('es_event_callout', 'LIKE', '%' . $keywords . '%')
             ->get();
 
         return response()->json([
