@@ -153,8 +153,48 @@
                     }
 
                     this.articles = reformatted;
-                    this.posts = response.data.posts;
-                    this.events = response.data.events;
+
+                    let posts = response.data.posts;
+                    let reformattedPosts = [];
+                    if (this.$cookie.get('language') === 'es') {
+                        posts.forEach(post => {
+                            reformattedPosts.push({
+                                headline: post.es_headline,
+                                hero_text: post.es_hero_text,
+                                slug: post.slug
+                            });
+                        });
+                    } else {
+                        posts.forEach(post => {
+                            reformattedPosts.push({
+                                headline: post.en_headline,
+                                hero_text: post.en_hero_text
+                                link: post.link
+                            });
+                        });
+                    }
+                    this.posts = reformattedPosts;
+
+                    let events = response.data.events;
+                    let reformattedEvents = [];
+                    if (this.$cookie.get('language') === 'es') {
+                        events.forEach(event => {
+                            reformattedPosts.push({
+                                event_name: event.es_event_name,
+                                event_callout: event.es_event_callout,
+                                slug: event.slug
+                            });
+                        });
+                    } else {
+                        events.forEach(event => {
+                            reformattedPosts.push({
+                                event_name: event.en_event_name,
+                                event_callout: event.en_event_callout,
+                                slug: event.slug
+                            });
+                        });
+                    }
+                    this.events = reformattedEvents;
 
                     this.loading = false;
                 })
