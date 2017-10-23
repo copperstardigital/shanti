@@ -168,7 +168,7 @@
                         posts.forEach(post => {
                             reformattedPosts.push({
                                 headline: post.en_headline,
-                                hero_text: post.en_hero_text
+                                hero_text: post.en_hero_text,
                                 link: post.link
                             });
                         });
@@ -179,7 +179,7 @@
                     let reformattedEvents = [];
                     if (this.$cookie.get('language') === 'es') {
                         events.forEach(event => {
-                            reformattedPosts.push({
+                            reformattedEvents.push({
                                 event_name: event.es_event_name,
                                 event_callout: event.es_event_callout,
                                 slug: event.slug
@@ -187,7 +187,7 @@
                         });
                     } else {
                         events.forEach(event => {
-                            reformattedPosts.push({
+                            reformattedEvents.push({
                                 event_name: event.en_event_name,
                                 event_callout: event.en_event_callout,
                                 slug: event.slug
