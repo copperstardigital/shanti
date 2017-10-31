@@ -2,7 +2,7 @@
 
 Dear {{ $firstName }},
 
-The Phoenix Shanti Group would like to thank you for your generous donation of ${{ number_format(($amount / 100), 2) }}. The Phoenix Shanti Group is an Arizona Non-Profit 501(c) (3) Corporation which was founded in 1987.  Our mission is to provide housing, education and patient services to people infected with and affected by HIV/AIDS.
+The Phoenix Shanti Group would like to thank you for your generous donation of ${{ number_format($amount, 2) }}. The Phoenix Shanti Group is an Arizona Non-Profit 501(c) (3) Corporation which was founded in 1987.  Our mission is to provide housing, education and patient services to people infected with and affected by HIV/AIDS.
 
 Donations are fully tax deductible as allowed by tax law.
 
