@@ -140,6 +140,13 @@ class DonationController extends Controller
                return response()->json(['success' => false, 'message' => $response]);
            }
 
+           $user->donations()->create([
+               'donation_level_id' => 9, // individual flex
+               'amount' => request('one_time_donation'),
+               'created_at' => Carbon::now(),
+               'updated_at' => Carbon::now()
+           ]);
+
            Mail::to(request('email'))->send(new OneTimeDonationEmail(request('first_name'), request('one_time_donation')));
 
            return response()->json(['success' => true, 'message' => 'Thank you for your donation of $' . request('one_time_donation')]);
