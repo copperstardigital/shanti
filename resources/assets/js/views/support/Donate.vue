@@ -159,10 +159,10 @@
                             <legend>{{ donationInformation }}</legend>
 
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="donation_id">{{ recurringDonation }}</label>
-                                        <select name="donation_id" id="donation_id" class="form-control" v-model="donation.donation_id" v-validate.initial="donation.donation_id" data-vv-rules="required">
+                                        <select name="donation_id" id="donation_id" class="form-control" v-model="donation.donation_id">
                                             <option value="">{{ selectOne }}</option>
                                             <optgroup :label="businessDonations">
                                                 <option value="1">{{ goldBusiness }}</option>
@@ -174,29 +174,33 @@
                                                 <option value="5">{{ silverIndividual }}</option>
                                                 <option value="6">{{ bronzeIndividual }}</option>
                                             </optgroup>
-                                            <optgroup :label="other">
+                                           <!--<optgroup :label="other">
                                                 <option value="7">{{ recurringBusinessFillIn }}</option>
                                                 <option value="8">{{ recurringIndividualFillIn }}</option>
-                                            </optgroup>
+                                            </optgroup>-->
                                         </select>
-                                        <p class="text-danger" v-if="errors.has('donation.donation_id')">{{ donationRequired }}</p>
-                                        <p class="help-block">{{ required }}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="other_business">{{ recurringBusiness }}</label>
-                                        <input type="text" class="form-control" id="other_business"  v-model="donation.other_business"/>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
+                                <!--<div class="row">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="other_individual">{{ recurringIndividual }}</label>
-                                            <input type="text" class="form-control" id="other_individual" v-model="donation.other_individual" />
+                                            <label for="other_business">{{ recurringBusiness }}</label>
+                                            <input type="text" class="form-control" id="other_business"  v-model="donation.other_business"/>
                                         </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="other_individual">{{ recurringIndividual }}</label>
+                                                <input type="text" class="form-control" id="other_individual" v-model="donation.other_individual" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="one_time_donation">{{ oneTimeDonation }}</label>
+                                        <input type="text" class="form-control" id="one_time_donation"v-model="donation.one_time_donation" />
                                     </div>
                                 </div>
                             </div>
@@ -372,9 +376,9 @@
                         password: vm.donation.password,
                         newsletter: vm.donation.newsletter,
                         donation_id: vm.donation.donation_id,
-                        other_business: vm.donation.other_business,
-                        other_individual: vm.donation.other_individual
+                        one_time_donation: vm.donation.one_time_donation,
                     }).then(response => {
+                        console.log(response);
                         if (!response.data.success) {
                             vm.type = 'danger';
                         }
@@ -396,9 +400,21 @@
                         vm.errors.clear();
                     })
                     .catch(error => {
-                        console.log(error);
+                        let errors = error.response.data.errors;
+                        console.log(errors);
+                        vm.type = 'danger';
                         vm.showTop = true;
-                       // vm.flash = error.data.error;
+                        let validation = [];
+                        for (let property in errors) {
+                            if (errors.hasOwnProperty(property)) {
+                                errors[property].forEach(err => {
+                                    validation.push(err);
+                                });
+                            }
+                        }
+
+                        vm.flash = validation[0];
+                        this.donating = false;
                     });
                 })
             }
@@ -675,6 +691,13 @@
                     return 'Otro';
                 } else {
                     return 'Other';
+                }
+            },
+            oneTimeDonation() {
+                if (this.$cookie.get('language') === 'es') {
+                    return 'Donación en dolares de una sola vez';
+                } else {
+                    return 'One-time Donation in Dollars';
                 }
             }
         }

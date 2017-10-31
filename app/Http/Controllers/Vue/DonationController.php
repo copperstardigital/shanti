@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Vue;
 
-use App\Mail\DonationEmail;
+use App\Mail\RecurringDonationEmail;
+use App\Mail\OneTimeDonationEmail;
 use App\Models\User;
 use App\Models\DonationLevel;
 use App\Shanti\Billing\Billing;
@@ -45,8 +46,17 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-        $donationId = request('donation_id');
-        $level = DonationLevel::findOrFail($donationId);
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'one_time_donation' => 'integer|sometimes'
+        ]);
+
+        if (!empty(request('donation_id'))) {
+            $donationId = request('donation_id');
+            $level = DonationLevel::findOrFail($donationId);
+        }
 
         $billing = new Billing();
 
@@ -76,51 +86,64 @@ class DonationController extends Controller
             ]);
         }
 
-        if (empty($user->customer_id)) {
-            $customer = $billing->createCustomer('Donation at ' . $level->donation_level . ' level by ' . $user->first_name . ' ' . $user->last_name, request('stripe_token'));
-        } else {
-            $customer = $billing->retrieveCustomer($user->customer_id);
-        }
+       if (!empty(request('donation_id'))) {
+           if (empty($user->customer_id)) {
+               $customer = $billing->createCustomer('Donation at ' . $level->donation_level . ' level by ' . $user->first_name . ' ' . $user->last_name, request('stripe_token'));
+           } else {
+               $customer = $billing->retrieveCustomer($user->customer_id);
+           }
 
-        $donationId = $level->id;
-        $amount = $level->amount;
+           $donationId = $level->id;
+           $amount = $level->amount;
 
-        if (!empty(request('other_business'))) {
-            $donationId = 7; // Business flex
-            $amount = request('other_business');
-        }
+          // if (!empty(request('other_business'))) {
+//            $donationId = 7; // Business flex
+//            $amount = request('other_business');
+//        }
+//
+//        if (!empty(request('other_individual'))) {
+//            $donationId = 8; // Individual flex
+//            $amount = request('other_individual');
+//        }
 
-        if (!empty(request('other_individual'))) {
-            $donationId = 8; // Individual flex
-            $amount = request('other_individual');
-        }
-        
-        $response = $billing->subscribe($customer, $donationId);
+           $response = $billing->subscribe($customer, $donationId);
 
-        if (is_string($response)) {
-            return response()->json(['success' => false, 'message' => $response]);
-        }
+           if (is_string($response)) {
+               return response()->json(['success' => false, 'message' => $response]);
+           }
 
-        $user->donations()->create([
-            'donation_level_id' => $donationId,
-            'amount' => $amount,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+           $user->donations()->create([
+               'donation_level_id' => $donationId,
+               'amount' => $amount,
+               'created_at' => Carbon::now(),
+               'updated_at' => Carbon::now()
+           ]);
 
-        if (empty($user->customer_id)) {
-            $user->update([
-                'customer_id' => $customer->id
-            ]);
-        }
+           if (empty($user->customer_id)) {
+               $user->update([
+                   'customer_id' => $customer->id
+               ]);
+           }
 
-        if (!empty(request('newsletter'))) {
-            $this->mailchimp();
-        }
+           if (!empty(request('newsletter'))) {
+               $this->mailchimp();
+           }
 
-        Mail::to(request('email'))->send(new DonationEmail(request('first_name'), $amount));
+           Mail::to(request('email'))->send(new RecurringDonationEmail(request('first_name'), $amount));
 
-        return response()->json(['success' => true, 'message' => 'Thank you for your donation. You are now subscribed to the ' . $level->donation_level . ' plan.']);
+           return response()->json(['success' => true, 'message' => 'Thank you for your donation. You are now subscribed to the ' . $level->donation_level . ' plan']);
+       } else {
+           $billing = new Billing();
+           $response = $billing->charge(request('one_time_donation'), request(), $user);
+
+           if (is_string($response)) {
+               return response()->json(['success' => false, 'message' => $response]);
+           }
+
+           Mail::to(request('email'))->send(new OneTimeDonationEmail(request('first_name'), request('one_time_donation')));
+
+           return response()->json(['success' => true, 'message' => 'Thank you for your donation of $' . request('one_time_donation')]);
+       }
     }
 
     private function mailchimp() {

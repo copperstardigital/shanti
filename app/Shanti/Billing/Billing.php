@@ -2,6 +2,7 @@
 
 namespace App\Shanti\Billing;
 
+use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Error\ApiConnection;
 use Stripe\Error\Authentication;
@@ -54,14 +55,14 @@ class Billing {
         }
     }
 
-    public function charge($request, $shipping, $tax)
+    public function charge($amount, $request, $user)
     {
         try {
             return Charge::create(array(
-                'amount' => (int) round(($request->subtotal * 100) + $shipping + $tax, 2),
+                'amount' => $amount * 100,
                 'currency' => 'usd',
                 'source' => $request->stripe_token,
-                'description' => 'Purchase by ' . auth()->user()->first_name . ' ' . auth()->user()->last_name
+                'description' => 'Donation by ' . $user->first_name . ' ' . $user->last_name
             ));
         } catch (Card $e) {
             return $e->getMessage();

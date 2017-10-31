@@ -7,12 +7,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class DonationEmail extends Mailable
+class OneTimeDonationEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    /**
-     * @var
-     */
+
     public $amount;
     /**
      * @var
@@ -37,8 +35,8 @@ class DonationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.html.donation')
-            ->text('emails.plain.donation')
+        return $this->view('emails.html.one-time-donation')
+            ->text('emails.plain.one-time-donation')
             ->subject('Thank you for your donation')
             ->bcc('dfloth@shantiaz.org');
     }
