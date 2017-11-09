@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function carousel()
     {
-        $events = Post::with('category')->where('category_id', 2)->latest()->take(5)->get();
+        $events = Post::with('category')->where('category_id', 2)->where('expires_at', '>', Carbon::now())->latest()->take(5)->get();
         return response()->json(['events' => $events]);
     }
 
